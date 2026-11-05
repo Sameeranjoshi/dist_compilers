@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+
+# LaTeX build products (keep sources and generated .tex tables)
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz
+paper/*.toc
+paper/*.lof
+paper/*.lot
+paper/sections/*.aux
+paper/build/
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# Never commit paper PDFs other than the built manuscript
+*.pdf
+!paper/figures/*.pdf
+!paper/main.pdf

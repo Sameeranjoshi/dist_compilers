@@ -1,0 +1,26 @@
+\section{Taxonomy}
+\label{sec:taxonomy}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{taxonomy.pdf}
+  \caption{The taxonomy is a set of orthogonal axes, not a tree: each paper or system takes one or more values on every axis. Only the six axes used most in the text are shown; the catalog carries eleven. Generated from the machine-readable taxonomy so that the figure cannot drift from the catalog.}
+  \label{fig:taxonomy}
+\end{figure}
+
+\ours{We classify each paper or system along eleven independent axes (Fig.~\ref{fig:taxonomy}): (A)~target and memory model; (B)~programming abstraction (RQ1); (C)~data decomposition (RQ2); (D)~computation mapping (RQ3); (E)~communication synthesis (RQ4); (F)~compilation time, i.e. the compiler/runtime boundary (RQ5); (G)~compiler architecture; (H)~optimization objective (RQ7); (I)~maturity and artifact status; (J)~paper type; and (K)~compiler representation (RQ6).} The value lists are maintained in the repository and enforced by a validator.
+
+\subsection{Why chronology alone is insufficient}
+\infer{HPF (1993) and GSPMD (2021) take the same values on axis~C (block distribution over a logical processor grid) and on axis~E (communication inserted by propagating distributions through the program), yet they are three eras apart; inspector--executor runtimes (1990) and distributed sparse-tensor compilers (2022--2025) share the \emph{runtime inspector} value on axis~F.} A chronological list hides these recurrences, which are among the survey's main findings (Section~\ref{sec:synthesis}). Chronology is therefore one dimension (Section~\ref{sec:history}), used to explain \emph{why} a value was chosen at a given time, while the axes explain \emph{what} was chosen.
+
+\subsection{Provenance of category names}
+Where a standard term exists we use it: \emph{owner-computes} from the Kali/Fortran~D literature, \emph{inspector--executor} from PARTI, \emph{BLOCK}, \emph{CYCLIC}, and \emph{block-cyclic} from HPF, \emph{partition propagation} from GSPMD, \emph{inter-} and \emph{intra-operator parallelism} from Alpa~\cite{zheng2022alpa}. The grouping of these into axes, and the decision to place ML sharding compilers and wafer-scale compilers on the same axes as 1990s HPF compilers, is ours.
+
+\subsection{Tagging discipline}
+A tag is attached to a catalog entry only when an evidence pointer names the section of the primary source supporting it. Entries whose full text has not been consulted are tagged only on the axes their abstract clearly supports. Lineage fields record only relationships that a paper states itself or that a cited survey states; inferred lineages are kept separately. Table~\ref{tab:eras} summarises the eras, Table~\ref{tab:systems} the core systems, and Tables~\ref{tab:decomposition}--\ref{tab:evaluation} the decomposition support, compiler architecture, and evaluation methodology of each system; all are generated from the catalog.
+
+\input{tables/table-a-eras}
+\input{tables/table-b-systems}
+\input{tables/table-c-decomposition}
+\input{tables/table-d-architecture}
+\input{tables/table-e-evaluation}

@@ -1,0 +1,65 @@
+% Compiling for Distributed Memory: A Historical Survey and Taxonomy
+% Build: cd paper && latexmk -pdf main.tex   (or `make paper` from the repo root)
+\documentclass[journal]{IEEEtran}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{amsmath,amssymb}
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\graphicspath{{figures/}}
+
+% ---- evidence-level markup (see docs/methodology.md, Sec. 9) ----------------
+% \fact{...}   source-supported statement (must carry a \cite)
+% \ours{...}   survey taxonomy / grouping introduced by this paper
+% \infer{...}  inference or synthesis; also listed in docs/historical-claims.md
+% \todo{...}   incomplete claim or missing evidence
+\newcommand{\fact}[1]{#1}
+\newcommand{\ours}[1]{#1}
+\newcommand{\infer}[1]{#1}
+\newcommand{\todo}[1]{\textcolor{red!70!black}{[TODO: #1]}}
+\newcommand{\sys}[1]{\textsc{#1}}
+
+\begin{document}
+
+\title{Compiling for Distributed Memory: A Historical Survey and Taxonomy from Global Arrays to Mesh-Sharded AI Systems}
+
+\author{Sameeran~Joshi%
+\thanks{Manuscript draft generated from the open catalog at \url{https://github.com/Sameeranjoshi/dist_compilers}. This is a working draft; see the repository ROADMAP for status.}}
+
+\markboth{Draft --- Distributed-Memory Compilers: A Historical Survey and Taxonomy}{}
+
+\maketitle
+
+\input{abstract}
+
+\begin{IEEEkeywords}
+Distributed-memory compilers, data distribution, owner-computes, communication generation, High Performance Fortran, inspector--executor, polyhedral compilation, SPMD partitioning, tensor sharding, wafer-scale compilation.
+\end{IEEEkeywords}
+
+\input{sections/01-introduction}
+\input{sections/02-methodology}
+\input{sections/03-foundations}
+\input{sections/04-compiler-architecture}
+\input{sections/05-taxonomy}
+\input{sections/06-historical-evolution}
+\input{sections/07-data-and-computation-mapping}
+\input{sections/08-communication-generation}
+\input{sections/09-runtime-and-irregularity}
+\input{sections/10-performance-modeling}
+\input{sections/11-modern-ml-and-accelerators}
+\input{sections/12-cross-era-synthesis}
+\input{sections/13-open-problems}
+\input{sections/14-conclusion}
+
+\bibliographystyle{IEEEtran}
+\bibliography{../bibliography/references}
+
+\end{document}

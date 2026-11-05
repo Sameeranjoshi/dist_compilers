@@ -1,0 +1,383 @@
+# Systems grouped from catalog/papers.yaml.  Table cells marked "?" are not yet
+# filled from a primary source; decomposition_support uses yes/no/partial/unknown.
+version: 0.1 (first pass, 2026-11-05)
+systems:
+  - id: superb
+    name: SUPERB
+    versions: []
+    papers: [zima1988superb, gerndt1990updating]
+    frontend: Sequential Fortran 77 with interactive distribution choices
+    compiler_architecture: [source-to-source, interactive-restructuring]
+    runtime: SUPRENUM message passing
+    targets: [dm-multicomputer]
+    open_source_status: artifact-unavailable
+    active_years: 1986-1992
+    institution: University of Bonn / GMD
+    successors: [vienna-fortran]
+    table_b: {input: "Fortran 77 + interactive distribution", distribution: "?", work_mapping: "?", communication: "?", runtime: "SUPRENUM MP", targets: "SUPRENUM", artifact: "unavailable"}
+    decomposition_support: {block: "unknown", cyclic: "unknown", block_cyclic: "unknown", replication: "unknown", halo: "yes", dynamic: "unknown", irregular: "unknown", hierarchical: "no"}
+    notes: "halo=yes from gerndt1990updating (overlap areas); other cells await the SUPERB paper text."
+  - id: kali
+    name: Kali
+    versions: [KF1]
+    papers: [mehrotra1990kali, koelbel1991compiling, koelbel1991kali, koelbel1991regular]
+    frontend: Fortran with processor arrays, dist/map statements and doall-on loops (global name space)
+    compiler_architecture: [source-to-source, compiler-runtime-codesign]
+    runtime: Kali runtime with cached inspector/executor
+    targets: [dm-multicomputer, hypercube-mpp]
+    open_source_status: artifact-unavailable
+    active_years: 1989-1992
+    institution: ICASE / Purdue
+    successors: [vienna-fortran, hpf]
+    table_b: {input: "Fortran + dist + doall/on", distribution: "block, cyclic, block_cyclic, user map, dynamic", work_mapping: "on clause / owner()", communication: "in/out sets static or run-time inspector", runtime: "cached inspector/executor", targets: "iPSC-class multicomputers", artifact: "unavailable"}
+    decomposition_support: {block: "yes", cyclic: "yes", block_cyclic: "yes", replication: "yes", halo: "unknown", dynamic: "yes", irregular: "partial", hierarchical: "no"}
+    notes: "Cells from the mehrotra1990kali card (ICASE 90-69)."
+  - id: vienna-fortran
+    name: Vienna Fortran / VFCS
+    versions: [Vienna Fortran (1991), Vienna Fortran 90]
+    papers: [chapman1991vienna, chapman1992vienna, zima1993compiling, benkner1999compiling]
+    frontend: Fortran 77/90 with DIST/ALIGN/DYNAMIC/INDIRECT annotations and FORALL-ON
+    compiler_architecture: [source-to-source]
+    runtime: VFCS runtime; PARTI-style support planned for INDIRECT
+    targets: [dm-multicomputer, hypercube-mpp]
+    open_source_status: artifact-unavailable
+    active_years: 1991-1999
+    institution: University of Vienna / ICASE
+    predecessors: [superb, kali]
+    successors: [hpf]
+    table_b: {input: "Fortran 77 + DIST/ALIGN", distribution: "block, cyclic(k), user-defined, INDIRECT, dynamic", work_mapping: "owner computes; FORALL ON", communication: "overlap areas, vectorised messages (VFCS)", runtime: "VFCS", targets: "iPSC/860, GENESIS, SUPRENUM", artifact: "unavailable"}
+    decomposition_support: {block: "yes", cyclic: "yes", block_cyclic: "yes", replication: "yes", halo: "yes", dynamic: "partial", irregular: "yes", hierarchical: "no"}
+    notes: "dynamic=partial: language defines it, 1992 implementation status says unimplemented (chapman1992vienna Sec. 7)."
+  - id: fortran-d
+    name: Fortran D
+    versions: []
+    papers: [callahan1988compiling, hiranandani1991fortrand, hiranandani1992compiling, hiranandani1992evaluation]
+    frontend: Fortran 77 with DECOMPOSITION / ALIGN / DISTRIBUTE
+    compiler_architecture: [source-to-source, dependence-based]
+    runtime: Intel NX message passing (iPSC/860); PARTI for irregular extensions
+    targets: [hypercube-mpp]
+    open_source_status: artifact-unavailable
+    active_years: 1991-1996
+    institution: Rice University
+    successors: [hpf]
+    table_b: {input: "Fortran 77 + decomposition directives", distribution: "?", work_mapping: "?", communication: "?", runtime: "NX / PARTI", targets: "iPSC/860", artifact: "unavailable"}
+    decomposition_support: {block: "unknown", cyclic: "unknown", block_cyclic: "unknown", replication: "unknown", halo: "unknown", dynamic: "unknown", irregular: "unknown", hierarchical: "no"}
+  - id: hpf
+    name: High Performance Fortran (language)
+    versions: [HPF 1.0 (1993), HPF 1.1 (1994), HPF 2.0 (1997)]
+    papers: [loveman1993hpf, hpfforum1993spec, kennedy2007rise]
+    frontend: Fortran 90 + ALIGN/DISTRIBUTE/TEMPLATE/PROCESSORS directives
+    compiler_architecture: [language-spec]
+    runtime: implementation-defined
+    targets: [dm-multicomputer]
+    open_source_status: language-specification
+    active_years: 1993-2000
+    predecessors: [fortran-d, vienna-fortran, kali]
+    successors: [dec-hpf, fortran90d]
+    table_b: {input: "Fortran 90 + directives", distribution: "BLOCK, CYCLIC, CYCLIC(k), replicated; 2.0 adds INDIRECT, GEN_BLOCK", work_mapping: "implementation-defined (owner computes typical)", communication: "implementation-defined", runtime: "n/a", targets: "n/a", artifact: "specification"}
+    decomposition_support: {block: "yes", cyclic: "yes", block_cyclic: "yes", replication: "yes", halo: "no", dynamic: "yes", irregular: "partial", hierarchical: "no"}
+    notes: "irregular=partial: INDIRECT is HPF 2.0 (approved extension); halo not expressible in the language."
+  - id: fortran90d
+    name: Fortran 90D/HPF (Syracuse)
+    versions: []
+    papers: [bozkus1993fortran90d]
+    frontend: Fortran 90D (array statements + HPF directives)
+    compiler_architecture: [source-to-source, library-backed]
+    runtime: collective communication library
+    targets: [hypercube-mpp]
+    open_source_status: artifact-unavailable
+    active_years: 1993-1995
+    institution: Syracuse University / NPAC
+    predecessors: [hpf]
+    table_b: {input: "Fortran 90D", distribution: "?", work_mapping: "?", communication: "runtime collective library", runtime: "F90D runtime", targets: "?", artifact: "unavailable"}
+    decomposition_support: {block: "unknown", cyclic: "unknown", block_cyclic: "unknown", replication: "unknown", halo: "unknown", dynamic: "unknown", irregular: "unknown", hierarchical: "no"}
+  - id: paradigm
+    name: PARADIGM
+    versions: []
+    papers: [gupta1992automatic, su1993paradigm, banerjee1995paradigm, palermo1996dynamic, ramaswamy1996redistribution]
+    frontend: Sequential Fortran 77 (automatic partitioning; optional directives)
+    compiler_architecture: [source-to-source, dependence-based]
+    runtime: Parafrase-2 based; message passing libraries
+    targets: [hypercube-mpp]
+    open_source_status: artifact-unavailable
+    active_years: 1992-1997
+    institution: University of Illinois
+    table_b: {input: "Fortran 77 (automatic)", distribution: "?", work_mapping: "?", communication: "?", runtime: "?", targets: "iPSC, Paragon, CM-5 (to verify)", artifact: "unavailable"}
+    decomposition_support: {block: "unknown", cyclic: "unknown", block_cyclic: "unknown", replication: "unknown", halo: "unknown", dynamic: "yes", irregular: "unknown", hierarchical: "no"}
+    notes: "dynamic=yes from the title of palermo1996dynamic; remaining cells await full text."
+  - id: parti-chaos
+    name: PARTI / CHAOS
+    versions: [PARTI (1989-1992), CHAOS (1993-1996)]
+    papers: [saltz1990runtime, saltz1991multiprocessor, das1991irregular, ponnusamy1993schedule, das1994communication, ponnusamy1995runtime, hwang1995chaos]
+    frontend: Runtime library called by hand or by compilers (ARF, Fortran D extensions, HPF/Fortran 90D irregular extensions)
+    compiler_architecture: [compiler-runtime-codesign, runtime-plan-generator]
+    runtime: PARTI/CHAOS primitives (translation tables, schedules, gather/scatter)
+    targets: [hypercube-mpp, dm-multicomputer]
+    open_source_status: artifact-unavailable
+    active_years: 1989-1997
+    institution: ICASE / University of Maryland
+    table_b: {input: "irregular loops with index arrays", distribution: "mapping arrays via translation tables; partitioner-driven", work_mapping: "iteration partitioning via RIG/partitioner", communication: "inspector-built import/export schedules; schedule reuse", runtime: "PARTI/CHAOS", targets: "iPSC/2, iPSC/860, CM-2", artifact: "unavailable"}
+    decomposition_support: {block: "yes", cyclic: "no", block_cyclic: "no", replication: "no", halo: "no", dynamic: "yes", irregular: "yes", hierarchical: "no"}
+    notes: "Cells from the saltz1990runtime, saltz1991multiprocessor and das1991irregular cards (ICASE reports)."
+  - id: dec-hpf
+    name: Digital (DEC) Fortran 90 HPF compiler
+    versions: [HPF 1.1 subset]
+    papers: [harris1995dechpf]
+    frontend: HPF 1.1 (DEC Fortran 90)
+    compiler_architecture: [dependence-based, compiler-runtime-codesign]
+    runtime: Digital Parallel Software Environment (PSE)
+    targets: [workstation-cluster]
+    open_source_status: closed-commercial
+    active_years: 1994-1998
+    institution: Digital Equipment Corporation
+    predecessors: [hpf]
+    table_b: {input: "HPF 1.1", distribution: "BLOCK, CYCLIC, replicated, alignment", work_mapping: "data-parallel; owner computes not strictly enforced", communication: "region assignments; vectorised sends; shadow edges; inlined reductions", runtime: "PSE SEND/RECEIVE", targets: "Alpha workstation farms, AlphaServer SMP", artifact: "commercial, unavailable"}
+    decomposition_support: {block: "yes", cyclic: "yes", block_cyclic: "unknown", replication: "yes", halo: "yes", dynamic: "no", irregular: "partial", hierarchical: "no"}
+    notes: "Cells from the harris1995dechpf card; dynamic=no because dynamic remapping is listed as unsupported."
+  - id: caf
+    name: Co-array Fortran
+    papers: [numrich1998coarray]
+    frontend: Fortran 95 with co-dimensions
+    compiler_architecture: [language-spec]
+    runtime: one-sided communication (implementation-defined)
+    targets: [pgas-target]
+    open_source_status: language-specification
+    active_years: 1998-present
+    table_b: {input: "Fortran + [ ] co-dimensions", distribution: "one co-array per image", work_mapping: "SPMD, programmer", communication: "explicit co-array references", runtime: "?", targets: "Cray T3E and later", artifact: "spec; Fortran 2008 coarrays"}
+    decomposition_support: {block: "yes", cyclic: "no", block_cyclic: "no", replication: "yes", halo: "no", dynamic: "no", irregular: "no", hierarchical: "no"}
+  - id: upc
+    name: Unified Parallel C (Berkeley UPC)
+    papers: [chen2003upc]
+    frontend: UPC
+    compiler_architecture: [source-to-source]
+    runtime: GASNet
+    targets: [pgas-target]
+    open_source_status: open-source-active
+    active_years: 2002-present
+    source_code_url: https://upc.lbl.gov/
+    table_b: {input: "UPC", distribution: "?", work_mapping: "upc_forall affinity", communication: "?", runtime: "GASNet", targets: "clusters", artifact: "open source"}
+    decomposition_support: {block: "yes", cyclic: "yes", block_cyclic: "yes", replication: "no", halo: "no", dynamic: "no", irregular: "no", hierarchical: "no"}
+    notes: "Cells from the UPC language's block-size layout qualifier (general knowledge); to be confirmed from the UPC specification before citing."
+  - id: titanium
+    name: Titanium
+    papers: [yelick1998titanium]
+    frontend: Java dialect with global address space
+    compiler_architecture: [source-to-source]
+    runtime: GASNet
+    targets: [pgas-target]
+    open_source_status: open-source-archived
+    active_years: 1998-2010
+    table_b: {input: "Titanium (Java dialect)", distribution: "?", work_mapping: "SPMD", communication: "?", runtime: "GASNet", targets: "clusters", artifact: "archived"}
+    decomposition_support: {block: "unknown", cyclic: "unknown", block_cyclic: "unknown", replication: "unknown", halo: "unknown", dynamic: "unknown", irregular: "unknown", hierarchical: "unknown"}
+  - id: x10
+    name: X10
+    papers: [charles2005x10]
+    frontend: X10 (places, async, distributed arrays)
+    compiler_architecture: [source-to-source]
+    runtime: X10RT
+    targets: [pgas-target]
+    open_source_status: open-source-archived
+    active_years: 2004-2020
+    table_b: {input: "X10", distribution: "?", work_mapping: "at(place) / async", communication: "?", runtime: "X10RT", targets: "clusters", artifact: "archived"}
+    decomposition_support: {block: "unknown", cyclic: "unknown", block_cyclic: "unknown", replication: "unknown", halo: "unknown", dynamic: "unknown", irregular: "unknown", hierarchical: "unknown"}
+  - id: chapel
+    name: Chapel
+    papers: [chamberlain2007chapel]
+    frontend: Chapel (locales, domain maps)
+    compiler_architecture: [source-to-source, llvm-based]
+    runtime: Chapel runtime (GASNet/uGNI/libfabric)
+    targets: [pgas-target, cpu-cluster, multi-gpu-cluster]
+    open_source_status: open-source-active
+    active_years: 2005-present
+    source_code_url: https://github.com/chapel-lang/chapel
+    table_b: {input: "Chapel", distribution: "user-defined domain maps (Block, Cyclic, BlockCyclic, Replicated, ...)", work_mapping: "forall over distributed domains; on clauses", communication: "compiler + runtime (GET/PUT, aggregation)", runtime: "Chapel runtime", targets: "clusters, GPUs", artifact: "open source"}
+    decomposition_support: {block: "yes", cyclic: "yes", block_cyclic: "yes", replication: "yes", halo: "partial", dynamic: "partial", irregular: "partial", hierarchical: "partial"}
+    notes: "Cells reflect the abstract-level description of domain maps; verify against Chapel documentation."
+  - id: sequoia
+    name: Sequoia
+    papers: [fatahalian2006sequoia]
+    frontend: Sequoia task trees with explicit machine mapping
+    compiler_architecture: [dsl-compiler, compiler-runtime-codesign]
+    runtime: Sequoia runtime
+    targets: [hierarchical-heterogeneous, cpu-cluster]
+    open_source_status: artifact-unavailable
+    active_years: 2006-2010
+    institution: Stanford University
+    successors: [legion-regent]
+    table_b: {input: "task trees", distribution: "?", work_mapping: "task-to-memory-level mapping", communication: "bulk copies between levels", runtime: "Sequoia runtime", targets: "Cell, clusters", artifact: "unavailable"}
+    decomposition_support: {block: "unknown", cyclic: "unknown", block_cyclic: "unknown", replication: "unknown", halo: "unknown", dynamic: "unknown", irregular: "unknown", hierarchical: "yes"}
+  - id: pluto-distmem
+    name: Pluto distributed-memory code generation (Bondhugula et al.)
+    papers: [bondhugula2008pluto, bondhugula2011automatic, bondhugula2013compiling, dathathri2016compiling]
+    frontend: Sequential C affine loop nests
+    compiler_architecture: [polyhedral, source-to-source]
+    runtime: MPI (+ OpenMP); dynamic task runtime in the 2016 work
+    targets: [cpu-cluster, multi-gpu-cluster]
+    open_source_status: open-source-active
+    active_years: 2011-2016
+    source_code_url: https://github.com/bondhugula/pluto
+    institution: Indian Institute of Science
+    table_b: {input: "C affine loop nests", distribution: "derived from computation partition (flow-out sets)", work_mapping: "polyhedral iteration-space partitioning", communication: "polyhedral communication sets to MPI", runtime: "MPI / dynamic scheduler", targets: "InfiniBand clusters", artifact: "open source (pluto distmem branch)"}
+    decomposition_support: {block: "yes", cyclic: "unknown", block_cyclic: "unknown", replication: "unknown", halo: "unknown", dynamic: "no", irregular: "no", hierarchical: "partial"}
+    notes: "Cells from the 2011 report's abstract/introduction; remaining cells await the SC13 paper text."
+  - id: molly
+    name: Molly
+    papers: [kruse2014molly]
+    frontend: C/C++ with distribution declarations (via Polly/LLVM)
+    compiler_architecture: [llvm-based, polyhedral]
+    runtime: MPI (asynchronous)
+    targets: [cpu-cluster]
+    open_source_status: open-source-archived
+    active_years: 2014-2015
+    table_b: {input: "C++ + layout declarations", distribution: "programmer-declared", work_mapping: "polyhedral", communication: "generated asynchronous MPI", runtime: "MPI", targets: "Blue Gene/Q (intended)", artifact: "archived"}
+    decomposition_support: {block: "yes", cyclic: "unknown", block_cyclic: "unknown", replication: "unknown", halo: "unknown", dynamic: "no", irregular: "no", hierarchical: "unknown"}
+  - id: legion-regent
+    name: Legion / Regent
+    papers: [bauer2012legion, slaughter2015regent]
+    frontend: Legion C++ API; Regent language
+    compiler_architecture: [compiler-runtime-codesign, llvm-based]
+    runtime: Legion (Realm)
+    targets: [multi-gpu-cluster, hierarchical-heterogeneous, cpu-cluster]
+    open_source_status: open-source-active
+    active_years: 2012-present
+    source_code_url: https://github.com/StanfordLegion/legion
+    institution: Stanford University
+    predecessors: [sequoia]
+    table_b: {input: "tasks + logical regions", distribution: "region partitions chosen by program/mapper", work_mapping: "mapper interface", communication: "runtime-managed coherence and copies", runtime: "Legion/Realm", targets: "GPU clusters", artifact: "open source"}
+    decomposition_support: {block: "yes", cyclic: "partial", block_cyclic: "partial", replication: "yes", halo: "yes", dynamic: "yes", irregular: "yes", hierarchical: "yes"}
+    notes: "Cells are abstract-level; confirm from the Legion paper and documentation."
+  - id: distal
+    name: DISTAL / SpDISTAL
+    papers: [yadav2022distal, yadav2022spdistal]
+    frontend: Tensor index notation + tensor distribution notation + schedule (extends TACO)
+    compiler_architecture: [dsl-compiler, library-backed, compiler-runtime-codesign]
+    runtime: Legion
+    targets: [multi-gpu-cluster, cpu-cluster]
+    open_source_status: open-source-archived
+    active_years: 2022-2023
+    source_code_url: https://github.com/rohany/taco/tree/DISTAL
+    institution: Stanford University
+    predecessors: [legion-regent]
+    table_b: {input: "tensor index notation + formats + schedule", distribution: "tensor distribution notation over a processor grid; sparse non-zero/universe partitions", work_mapping: "distribute/communicate/rotate schedule to index-task launches", communication: "Legion partitions (bounds analysis; image/preimage for sparse)", runtime: "Legion", targets: "Lassen CPU/GPU nodes", artifact: "open source"}
+    decomposition_support: {block: "yes", cyclic: "no", block_cyclic: "no", replication: "yes", halo: "no", dynamic: "partial", irregular: "yes", hierarchical: "yes"}
+    notes: "Cells from the yadav2022distal/spdistal cards."
+  - id: mesh-tensorflow
+    name: Mesh-TensorFlow
+    papers: [shazeer2018meshtf]
+    frontend: TensorFlow graph with named dimensions and a layout
+    compiler_architecture: [graph-compiler]
+    runtime: TensorFlow / TPU SPMD
+    targets: [tpu-accelerator-mesh]
+    open_source_status: open-source-archived
+    active_years: 2018-2021
+    source_code_url: https://github.com/tensorflow/mesh
+    successors: [xla-spmd]
+    table_b: {input: "TF graph + named dims + layout", distribution: "dimension-to-mesh-axis layout", work_mapping: "SPMD per layout", communication: "allreduce/allgather/alltoall derived from layouts", runtime: "TF/TPU", targets: "TPUv2 pods", artifact: "archived"}
+    decomposition_support: {block: "yes", cyclic: "no", block_cyclic: "no", replication: "yes", halo: "no", dynamic: "no", irregular: "no", hierarchical: "no"}
+  - id: flexflow
+    name: FlexFlow
+    papers: [jia2019flexflow]
+    frontend: Operator graph
+    compiler_architecture: [graph-compiler, runtime-plan-generator]
+    runtime: Legion-based FlexFlow runtime
+    targets: [multi-gpu-cluster]
+    open_source_status: open-source-active
+    active_years: 2018-present
+    source_code_url: https://github.com/flexflow/FlexFlow
+    table_b: {input: "operator graph", distribution: "SOAP output-tensor partitions", work_mapping: "MCMC search with simulator", communication: "task graph with transfer tasks", runtime: "FlexFlow/Legion", targets: "P100/K80 clusters", artifact: "open source"}
+    decomposition_support: {block: "yes", cyclic: "no", block_cyclic: "no", replication: "yes", halo: "no", dynamic: "no", irregular: "no", hierarchical: "no"}
+  - id: xla-spmd
+    name: XLA SPMD partitioner (GShard / GSPMD)
+    papers: [lepikhin2020gshard, xu2021gspmd]
+    frontend: XLA HLO with mesh_split / sharding annotations
+    compiler_architecture: [graph-compiler]
+    runtime: XLA runtime on TPU/GPU
+    targets: [tpu-accelerator-mesh, multi-gpu-cluster]
+    open_source_status: open-source-active
+    active_years: 2020-present
+    source_code_url: https://github.com/openxla/xla
+    predecessors: [mesh-tensorflow]
+    successors: [shardy, alpa]
+    table_b: {input: "HLO + sharding annotations", distribution: "replicated / tiled / partially tiled per tensor over device mesh", work_mapping: "SPMD; sharding propagation", communication: "collectives + halo exchange + resharding inserted per operator", runtime: "XLA", targets: "TPUv3 pods (GPU supported)", artifact: "open source (XLA)"}
+    decomposition_support: {block: "yes", cyclic: "no", block_cyclic: "no", replication: "yes", halo: "yes", dynamic: "no", irregular: "no", hierarchical: "yes"}
+    notes: "Cells from the xu2021gspmd card."
+  - id: alpa
+    name: Alpa
+    papers: [zheng2022alpa]
+    frontend: JAX program
+    compiler_architecture: [graph-compiler, runtime-plan-generator]
+    runtime: Alpa MPMD runtime over XLA + GSPMD
+    targets: [multi-gpu-cluster]
+    open_source_status: open-source-archived
+    active_years: 2022-2023
+    source_code_url: https://github.com/alpa-projects/alpa
+    predecessors: [xla-spmd]
+    table_b: {input: "JAX graph", distribution: "per-stage sharding specs (ILP)", work_mapping: "DP over stages/submeshes + ILP intra-op", communication: "GSPMD collectives + cross-mesh resharding", runtime: "Alpa MPMD runtime", targets: "64x V100", artifact: "archived"}
+    decomposition_support: {block: "yes", cyclic: "no", block_cyclic: "no", replication: "yes", halo: "no", dynamic: "no", irregular: "no", hierarchical: "yes"}
+  - id: partir
+    name: PartIR
+    papers: [alabed2025partir]
+    frontend: StableHLO + partitioning schedule (tactics)
+    compiler_architecture: [mlir-based]
+    runtime: XLA
+    targets: [tpu-accelerator-mesh, multi-gpu-cluster]
+    open_source_status: artifact-unavailable
+    active_years: 2021-2025
+    institution: Google DeepMind
+    predecessors: [xla-spmd]
+    successors: [shardy]
+    table_b: {input: "StableHLO + tactics", distribution: "?", work_mapping: "?", communication: "?", runtime: "XLA", targets: "TPU, GPU", artifact: "?"}
+    decomposition_support: {block: "unknown", cyclic: "unknown", block_cyclic: "unknown", replication: "unknown", halo: "unknown", dynamic: "unknown", irregular: "unknown", hierarchical: "unknown"}
+    notes: "Cells to be filled from the alabed2025partir card."
+  - id: shardy
+    name: Shardy (OpenXLA)
+    papers: [openxla2024shardy]
+    frontend: StableHLO with SDY dialect shardings
+    compiler_architecture: [mlir-based]
+    runtime: XLA
+    targets: [tpu-accelerator-mesh, multi-gpu-cluster]
+    open_source_status: open-source-active
+    active_years: 2024-present
+    source_code_url: https://github.com/openxla/shardy
+    documentation_url: https://openxla.org/shardy
+    predecessors: [xla-spmd, partir]
+    table_b: {input: "StableHLO + SDY shardings", distribution: "per-axis mesh shardings", work_mapping: "propagation", communication: "?", runtime: "XLA", targets: "TPU, GPU", artifact: "open source"}
+    decomposition_support: {block: "yes", cyclic: "unknown", block_cyclic: "unknown", replication: "yes", halo: "unknown", dynamic: "unknown", irregular: "no", hierarchical: "unknown"}
+  - id: mlir-shard
+    name: MLIR shard dialect (formerly mesh)
+    papers: [mlir2025shard]
+    frontend: MLIR tensors with shard.sharding attributes
+    compiler_architecture: [mlir-based]
+    runtime: implementation-defined (lowers to collectives / MPI)
+    targets: [tpu-accelerator-mesh, multi-gpu-cluster, cpu-cluster]
+    open_source_status: open-source-active
+    active_years: 2023-present
+    source_code_url: https://github.com/llvm/llvm-project/tree/main/mlir/lib/Dialect/Shard
+    documentation_url: https://mlir.llvm.org/docs/Dialects/Shard/
+    table_b: {input: "MLIR + shard.grid/shard.sharding", distribution: "per-axis grid sharding with halos", work_mapping: "SPMD", communication: "all_gather, all_reduce, all_to_all, reduce_scatter, update_halo, send/recv", runtime: "n/a", targets: "n/a", artifact: "upstream MLIR"}
+    decomposition_support: {block: "yes", cyclic: "no", block_cyclic: "no", replication: "yes", halo: "yes", dynamic: "no", irregular: "no", hierarchical: "partial"}
+  - id: xdsl-stencil
+    name: xDSL stencil / dmp / mpi stack
+    papers: [bisbas2024shared, stawinoga2026mlir]
+    frontend: Devito, PSyclone, Open Earth Compiler, Flang stencil programs
+    compiler_architecture: [mlir-based, multi-level-ir]
+    runtime: MPI; Cerebras CSL runtime library
+    targets: [cpu-cluster, multi-gpu-cluster, wafer-scale]
+    open_source_status: open-source-active
+    active_years: 2023-present
+    source_code_url: https://github.com/xdslproject/xdsl
+    table_b: {input: "stencil DSLs", distribution: "static Cartesian rank-grid decomposition (dmp)", work_mapping: "owner computes per block; one z-column per PE on WSE", communication: "dmp.swap halo exchange to mpi dialect or CSL chunked prefetch", runtime: "MPI / CSL library", targets: "ARCHER2, GPUs, FPGA, CS-2/CS-3", artifact: "open source"}
+    decomposition_support: {block: "yes", cyclic: "no", block_cyclic: "no", replication: "no", halo: "yes", dynamic: "no", irregular: "no", hierarchical: "no"}
+  - id: cerebras-csl
+    name: Cerebras WSE programming (CSL / hand-mapped stencils)
+    papers: [rocki2020cerebras, jacquelin2022wse, tramm2024cerebras]
+    frontend: CSL (Cerebras Software Language) kernels
+    compiler_architecture: [dsl-compiler]
+    runtime: Cerebras SDK fabric routing
+    targets: [wafer-scale]
+    open_source_status: closed-commercial
+    active_years: 2020-present
+    documentation_url: https://sdk.cerebras.net/
+    table_b: {input: "CSL", distribution: "programmer-placed per-PE tiles", work_mapping: "spatial placement", communication: "fabric colours / routes configured by programmer", runtime: "SDK", targets: "CS-1/CS-2/CS-3", artifact: "commercial SDK"}
+    decomposition_support: {block: "yes", cyclic: "no", block_cyclic: "no", replication: "no", halo: "yes", dynamic: "no", irregular: "partial", hierarchical: "no"}
+    notes: "Cells are abstract-level for Rocki 2020 and need confirmation from the paper card."

@@ -1,0 +1,39 @@
+# Events for Figure 1 (assets/timeline.svg).  Every event names the catalog
+# paper that dates it (`paper`) or, for hardware/standards, the source noted
+# in `source`.  Lanes: hardware, abstraction, representation, distribution,
+# systems.  Keep this list short; the figure must stay readable in two-column
+# print.  `callout: true` marks major transitions drawn with a flag.
+version: 0.1
+events:
+  - {year: 1957, lane: abstraction, label: "FORTRAN I", paper: backus1957fortran, callout: true}
+  - {year: 1968, lane: hardware, label: "ILLIAC IV\n(array processor)", paper: barnes1968illiac}
+  - {year: 1974, lane: representation, label: "Hyperplane method\n(Lamport)", paper: lamport1974parallel}
+  - {year: 1975, lane: hardware, label: "Dataflow processor\n(Dennis)", paper: dennis1975preliminary}
+  - {year: 1976, lane: hardware, label: "CRAY-1\nvector machine", paper: russell1978cray1}
+  - {year: 1981, lane: representation, label: "Dependence graphs\n(Kuck et al.)", paper: kuck1981dependence}
+  - {year: 1982, lane: hardware, label: "Systolic arrays (Kung)", paper: kung1982systolic}
+  - {year: 1985, lane: hardware, label: "Cosmic Cube /\nhypercubes", paper: seitz1985cosmic, callout: true}
+  - {year: 1986, lane: abstraction, label: "Data-parallel\nalgorithms (CM)", paper: hillis1986data}
+  - {year: 1988, lane: systems, label: "Callahan-Kennedy; SUPERB;\nChen-Choo-Li", paper: callahan1988compiling, callout: true}
+  - {year: 1988, lane: distribution, label: "Distribution functions,\noverlap regions", paper: zima1988superb}
+  - {year: 1990, lane: systems, label: "Kali; PARTI\ninspector-executor", paper: saltz1990runtime}
+  - {year: 1991, lane: distribution, label: "Alignment + distribution\n(Li-Chen; Fortran D)", paper: li1991alignment}
+  - {year: 1991, lane: abstraction, label: "Fortran D / Vienna\nFortran directives", paper: hiranandani1991fortrand}
+  - {year: 1993, lane: abstraction, label: "HPF 1.0", paper: loveman1993hpf, callout: true}
+  - {year: 1993, lane: representation, label: "Communication sets,\nlocal addresses", paper: chatterjee1993generating}
+  - {year: 1994, lane: abstraction, label: "MPI 1.0", source: "MPI Forum", callout: true}
+  - {year: 1995, lane: systems, label: "PARADIGM; CHAOS;\nvendor HPF", paper: banerjee1995paradigm}
+  - {year: 1996, lane: distribution, label: "Dynamic redistribution", paper: ramaswamy1996redistribution}
+  - {year: 1998, lane: abstraction, label: "Co-array Fortran;\nTitanium", paper: numrich1998coarray}
+  - {year: 2005, lane: abstraction, label: "X10 places;\nChapel locales", paper: charles2005x10}
+  - {year: 2006, lane: distribution, label: "Hierarchical memory\ntasks (Sequoia)", paper: fatahalian2006sequoia}
+  - {year: 2008, lane: representation, label: "Polyhedral (Pluto)", paper: bondhugula2008pluto}
+  - {year: 2012, lane: abstraction, label: "Logical regions\n(Legion)", paper: bauer2012legion, callout: true}
+  - {year: 2013, lane: systems, label: "Distributed polyhedral\ncodegen; Molly (2014)", paper: bondhugula2013compiling}
+  - {year: 2018, lane: distribution, label: "Named-dimension layouts\non a mesh (Mesh-TF)", paper: shazeer2018meshtf}
+  - {year: 2019, lane: systems, label: "FlexFlow; PipeDream;\nMegatron-LM", paper: jia2019flexflow}
+  - {year: 2021, lane: systems, label: "GSPMD", paper: xu2021gspmd, callout: true}
+  - {year: 2022, lane: systems, label: "Alpa; DISTAL;\nSpDISTAL", paper: zheng2022alpa}
+  - {year: 2020, lane: hardware, label: "Wafer-scale\nengine stencils", paper: rocki2020cerebras}
+  - {year: 2024, lane: representation, label: "MLIR shard / Shardy;\nstencil DM stack", paper: bisbas2024shared}
+  - {year: 2025, lane: systems, label: "PartIR; MLIR distributed\nsparse tensors", paper: alabed2025partir}

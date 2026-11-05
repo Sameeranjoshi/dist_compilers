@@ -1,0 +1,18 @@
+\section{Data Decomposition and Computation Mapping}
+\label{sec:mapping}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{decomposition-taxonomy.pdf}
+  \caption{Data-decomposition taxonomy (axis~C) drawn as example grids coloured by owning place. Rectilinear forms (A) are expressible as closed-form owner functions; structured non-rectilinear forms (B) still are, but need block-cyclic address arithmetic; irregular forms (C) require a mapping array or graph partition and, consequently, runtime-built communication schedules. Hatched cells are ghost copies.}
+  \label{fig:decomposition}
+\end{figure}
+
+\subsection{Representing ownership (RQ2)}
+\ours{We group decompositions into rectilinear, structured non-rectilinear, and irregular (Fig.~\ref{fig:decomposition}).} \fact{Fortran~D and HPF expressed ownership as an alignment of arrays to a template followed by a distribution of the template over a processor arrangement, using BLOCK, CYCLIC, and CYCLIC($k$)~\cite{hiranandani1992compiling,loveman1993hpf}.} \fact{Li and Chen treated alignment as an optimisation problem on a component-affinity graph~\cite{li1991alignment}, and Ramanujam and Sadayappan derived distributions from loop dependences at compile time~\cite{ramanujam1991compiletime}.} \fact{Irregular ownership was expressed through mapping arrays in PARTI/CHAOS and user-specified irregular distributions~\cite{ponnusamy1995runtime}.} \fact{Modern systems express ownership as per-dimension sharding over a device mesh~\cite{xu2021gspmd} or as tensor distribution formats~\cite{yadav2022distal}.}
+
+\subsection{Assigning computation (RQ3)}
+\fact{Owner-computes assigns each assignment to the owner of its left-hand side~\cite{koelbel1991compiling,hiranandani1992compiling}; PARADIGM and later polyhedral work partition iteration spaces instead~\cite{banerjee1995paradigm,bondhugula2013compiling}; Legion places tasks through a mapper~\cite{bauer2012legion}; ML systems choose among data, operator, and pipeline parallelism~\cite{zheng2022alpa}.}
+
+\subsection{Synthesis}
+\todo{Compare the expressiveness of HPF's distribution language with GSPMD's sharding specs and DISTAL's formats, with evidence from the respective specifications.}

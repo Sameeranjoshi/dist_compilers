@@ -1,0 +1,6 @@
+\section{Runtime Analysis and Irregular Computation}
+\label{sec:runtime}
+
+\fact{Saltz and colleagues introduced the inspector--executor scheme in which an inspector pass examines index arrays to build a communication schedule reused by an executor~\cite{saltz1990runtime}; the PARTI and CHAOS libraries supplied import/export schedules, translation tables, and schedule reuse that compilers could target~\cite{das1994communication,ponnusamy1995runtime}.} \fact{Legion moves the entire decision of data movement to a runtime that reasons about logical regions and privileges~\cite{bauer2012legion}.} \fact{SpDISTAL compiles distributed sparse tensor computations with distribution formats and runtime communication planning~\cite{yadav2022spdistal}.}
+
+\emph{Synthesis.} \infer{Axis~F separates systems more sharply than any other: fully static closed-form systems (HPF, polyhedral) are fast and predictable but limited to affine codes, while runtime-inspected systems (PARTI, Legion, SpDISTAL) handle irregularity at the cost of inspector overhead that must be amortised.} \todo{Quantify inspector overhead from the CHAOS and SpDISTAL evaluations.}

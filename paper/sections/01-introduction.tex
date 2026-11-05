@@ -1,0 +1,23 @@
+\section{Introduction}
+\label{sec:introduction}
+
+A machine whose memory is distributed forces a compiler to answer three questions that a shared-memory compiler can defer to hardware: where each datum is stored, which place executes each operation, and what messages must flow so that operands are present when they are needed. \fact{The first compilers to pose these as compiler problems appeared in 1988 for hypercube and multicomputer targets~\cite{callahan1988compiling,zima1988superb,chen1988compiling}.} \fact{Within five years the answers had been standardised in the directive language High Performance Fortran (HPF)~\cite{loveman1993hpf}, and the message-passing interface MPI had been standardised as the portable alternative in which the programmer answers all three questions by hand~\cite{gropp1996mpich}.} \infer{We observe that the same three questions are now being answered again, by SPMD partitioners such as GSPMD~\cite{xu2021gspmd} and PartIR~\cite{alabed2025partir}, by distributed tensor-algebra compilers such as DISTAL~\cite{yadav2022distal}, and by compilers for wafer-scale and spatial accelerators~\cite{rocki2020cerebras}, often with terminology that does not acknowledge the earlier work.}
+
+\subsection{Why the problem keeps reappearing}
+\infer{Every time a new class of machine with distinct memories becomes important---hypercubes, clusters, multi-GPU nodes, accelerator pods, wafers---the trade-off between programmer control and compiler automation is re-opened, and the compiler community rebuilds a stack of ownership representation, computation mapping, and communication synthesis for that class.} The repository that accompanies this survey exists to make that rebuilding less amnesiac: it records, with evidence, which mechanism solved which problem, under what assumptions, and with what limitation.
+
+\subsection{Scope}
+We define a \emph{distributed-memory compiler} as a compiler, compiler framework, programming system, or compiler-integrated runtime that transforms a program for execution across multiple computational places whose memories are physically or logically distinct at the relevant compilation level (Section~\ref{sec:methodology} gives the inclusion criteria). Multiple GPUs are a distributed-memory target when the compiler must partition data or computation and generate communication between device memories; wafer-scale and spatial architectures count when individual processing elements have distinct local memories and data movement must be compiled explicitly. Distributed databases, distributed operating systems, cloud schedulers, hardware-only papers, and shared-memory-only compilers are out of scope.
+
+\subsection{Central question and research questions}
+The central question is: \emph{how have compilers for machines with physically distributed memories represented, decomposed, mapped, communicated, optimized, and executed data and computation?} We refine it into ten research questions (RQ1--RQ10) on programming abstraction, data decomposition and ownership, computation decomposition, communication generation, the compiler/runtime boundary, compiler representation, optimization objectives, evaluation, historical continuity, and open problems. Section~\ref{sec:taxonomy} maps each to an axis of the taxonomy.
+
+\subsection{Contributions}
+\begin{enumerate}[leftmargin=*,nosep]
+  \item An operational definition and inclusion criteria for distributed-memory compilers that span 1950--2026 while keeping pre-1980 work explicitly labelled as \emph{foundations} rather than as distributed-memory compilation (Section~\ref{sec:foundations}).
+  \item A reproducible survey methodology with an open, schema-validated catalog in which every entry carries evidence pointers and a screening status (Section~\ref{sec:methodology}).
+  \item A common architecture for distributed-memory compilers (Section~\ref{sec:architecture}) and a multi-axis taxonomy (Section~\ref{sec:taxonomy}), both derived from the catalog.
+  \item A historical narrative organised by era (Section~\ref{sec:history}) and by mechanism (Sections~\ref{sec:mapping}--\ref{sec:modern}), each ending with the limitation that motivated the next step.
+  \item A cross-era synthesis identifying ideas that persisted, failed, or were rediscovered under new names (Section~\ref{sec:synthesis}), and a list of open problems (Section~\ref{sec:open}).
+\end{enumerate}
+\todo{We do not claim that this is the first comprehensive survey of the area; an explicit search for prior surveys is logged in the repository and the claim will be revisited once it is complete. Known prior overviews include \cite{zima1993compiling,benkner1999compiling,unat2017trends}.}

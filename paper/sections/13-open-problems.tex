@@ -1,0 +1,13 @@
+\section{Open Problems}
+\label{sec:open}
+
+\begin{itemize}[leftmargin=*,nosep]
+  \item \textbf{Unified ownership/layout IR.} No representation today spans HPF-style affine distributions, mapping arrays, logical regions, and mesh shardings; MLIR dialects are the current candidates. \todo{cite MLIR shard and Shardy documentation once verified.}
+  \item \textbf{Dynamic and irregular partitioning.} Inspector--executor techniques and sparse tensor distribution formats remain separate lines of work.
+  \item \textbf{Hierarchical heterogeneous systems.} Node--device--core hierarchies are handled by nested mappings in Sequoia and Alpa but not by a general mechanism.
+  \item \textbf{Topology and memory-capacity modelling.} Cost models in SPMD partitioners seldom model network topology or capacity limits jointly.
+  \item \textbf{Correctness and consistency.} Verification of generated communication is rarely addressed.
+  \item \textbf{Communication/computation overlap, composability, debuggability, performance portability.}
+  \item \textbf{Wafer-scale and fine-grained local-memory machines.} Spatial placement with per-PE memory re-opens the placement problem at a scale where closed-form distributions do not apply.
+\end{itemize}
+\todo{Each item needs evidence from at least one catalog entry stating the limitation.}

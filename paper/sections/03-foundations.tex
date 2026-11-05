@@ -1,0 +1,16 @@
+\section{Foundations (c.~1950--1979)}
+\label{sec:foundations}
+
+This section exists to separate what the distributed-memory compilers of the late 1980s \emph{inherited} from what they \emph{invented}. Nothing in this section is a distributed-memory compiler; the machines of the period had a single address space or lock-step SIMD control, and ``data placement'' was not a compiler concern.
+
+\subsection{Automatic programming and compiler construction}
+\fact{The FORTRAN~I compiler of 1957 established that a translator could produce object code competitive with hand coding for numerical loops~\cite{backus1957fortran}.} \infer{Every subsequent attempt to hide a machine's structure from the scientific programmer, including HPF and today's sharding compilers, re-states that bargain: accept a higher-level program in exchange for compiler-chosen low-level decisions.}
+
+\subsection{Dependence analysis and loop transformation}
+\fact{Lamport's hyperplane method showed that the iterations of a nested DO loop could be re-ordered and executed concurrently when the dependence structure permits~\cite{lamport1974parallel}}, and \fact{Kuck and colleagues framed dependence graphs as the central representation for compiler optimisation and parallelisation~\cite{kuck1981dependence}}. \fact{Allen and Kennedy's vectoriser applied these ideas to translate FORTRAN into vector form~\cite{allen1987automatic}.} \ours{We treat dependence analysis as the representation foundation (axis~K) that Era~2 compilers reused unchanged; what they added was the ownership function.}
+
+\subsection{Machine abstractions}
+\fact{The ILLIAC~IV array processor~\cite{barnes1968illiac} and the CRAY-1 vector processor~\cite{russell1978cray1} defined the two regular-parallel machine classes that early parallelising compilers targeted.} \fact{Dennis's dataflow architecture~\cite{dennis1975preliminary} and Kung's systolic arrays~\cite{kung1982systolic} introduced explicitly local communication between processing elements with their own state.} \infer{Systolic and dataflow concepts appear to be the closest ancestors of today's spatial and wafer-scale targets, in which the compiler again schedules neighbour-to-neighbour data movement on a fabric.} \todo{Verify from primary sources which vectorising compilers were shipped for CDC and Cray systems and whether any addressed memory banks as distributed; cite only after reading.}
+
+\subsection{Synthesis}
+What the foundations supplied: a trusted compiler pipeline, dependence-based legality for loop reordering, and machine models with regular parallel structure. What was missing: any representation of \emph{where} data resides. \fact{The first multicomputers with physically private memories, such as the Cosmic Cube~\cite{seitz1985cosmic}, made that omission the central compiler problem of Era~1--2.}

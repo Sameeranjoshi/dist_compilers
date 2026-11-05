@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Sameeranjoshi/dist_compilers/catalog/schema.json",
+  "title": "Distributed-memory compiler survey catalog",
+  "description": "Schema for catalog/papers.yaml and catalog/systems.yaml. Enumerated values for taxonomy fields are checked against catalog/taxonomy.yaml by scripts/validate_catalog.py (not expressible here without duplication).",
+  "$defs": {
+    "nonempty": {"type": "string", "minLength": 1},
+    "idstring": {"type": "string", "pattern": "^[a-z][a-z0-9]*[0-9]{4}[a-z0-9]+$"},
+    "sysid": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+    "url": {"type": ["string", "null"], "pattern": "^https?://"},
+    "taglist": {"type": "array", "items": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"}, "uniqueItems": true},
+    "evidence": {
+      "type": "object",
+      "required": ["source", "section"],
+      "properties": {
+        "source": {"$ref": "#/$defs/nonempty", "description": "What was consulted: 'full text', 'abstract', 'introduction', 'official documentation', 'Crossref metadata', etc."},
+        "section": {"$ref": "#/$defs/nonempty"},
+        "pages": {"type": ["string", "null"]},
+        "note": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "paper": {
+      "type": "object",
+      "required": [
+        "id", "title", "authors", "year", "venue", "paper_type", "doi", "arxiv",
+        "official_url", "pdf_url", "access_status", "era", "relevance_tier",
+        "status", "verified", "summary", "taxonomy_tags", "evidence"
+      ],
+      "properties": {
+        "id": {"$ref": "#/$defs/idstring", "description": "Stable key: firstauthor + year + keyword, e.g. callahan1988compiling"},
+        "title": {"$ref": "#/$defs/nonempty"},
+        "authors": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/nonempty"}},
+        "year": {"type": "integer", "minimum": 1945, "maximum": 2027},
+        "venue": {"$ref": "#/$defs/nonempty"},
+        "venue_short": {"type": ["string", "null"]},
+        "paper_type": {"type": "string"},
+        "doi": {"type": ["string", "null"], "pattern": "^10\\.[0-9]{4,9}/\\S+$"},
+        "arxiv": {"type": ["string", "null"], "pattern": "^([0-9]{4}\\.[0-9]{4,5}|[a-z-]+/[0-9]{7})(v[0-9]+)?$"},
+        "official_url": {"$ref": "#/$defs/url"},
+        "pdf_url": {"$ref": "#/$defs/url"},
+        "access_status": {"type": "string"},
+        "artifact_url": {"$ref": "#/$defs/url"},
+        "source_code_url": {"$ref": "#/$defs/url"},
+        "era": {"type": "string", "pattern": "^era[0-9]$"},
+        "relevance_tier": {"type": "string"},
+        "status": {"type": "string"},
+        "verified": {"type": "boolean"},
+        "verified_by": {"type": ["string", "null"]},
+        "verified_date": {"type": ["string", "null"], "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+        "summary": {"$ref": "#/$defs/nonempty", "description": "Original one-to-three sentence technical summary; never a copied abstract."},
+        "why_read": {"type": ["string", "null"], "description": "One sentence for the README reading lists."},
+        "problem": {"type": ["string", "null"]},
+        "input_abstraction": {"$ref": "#/$defs/taglist"},
+        "target_hardware": {"$ref": "#/$defs/taglist"},
+        "memory_model": {"type": ["string", "null"]},
+        "programming_model": {"type": ["string", "null"]},
+        "data_decomposition": {"$ref": "#/$defs/taglist"},
+        "computation_mapping": {"$ref": "#/$defs/taglist"},
+        "communication_generation": {"$ref": "#/$defs/taglist"},
+        "compiler_runtime_boundary": {"$ref": "#/$defs/taglist"},
+        "compiler_architecture": {"$ref": "#/$defs/taglist"},
+        "ir_representation": {"$ref": "#/$defs/taglist"},
+        "optimization_objectives": {"$ref": "#/$defs/taglist"},
+        "maturity": {"$ref": "#/$defs/taglist"},
+        "evaluation_method": {"type": ["string", "null"]},
+        "benchmarks": {"type": "array", "items": {"type": "string"}},
+        "main_contribution": {"type": ["string", "null"]},
+        "main_limitation": {"type": ["string", "null"]},
+        "predecessors": {"type": "array", "items": {"$ref": "#/$defs/idstring"}},
+        "successors": {"type": "array", "items": {"$ref": "#/$defs/idstring"}},
+        "related_versions": {"type": "array", "items": {"$ref": "#/$defs/idstring"}, "description": "Other versions (TR, workshop, journal) of the same work."},
+        "systems": {"type": "array", "items": {"$ref": "#/$defs/sysid"}},
+        "taxonomy_tags": {"$ref": "#/$defs/taglist", "description": "README category tags, e.g. foundations, hpf, irregular, ml-compilers."},
+        "readme_categories": {"$ref": "#/$defs/taglist"},
+        "technique_lists": {"$ref": "#/$defs/taglist"},
+        "start_here": {"type": ["integer", "null"], "minimum": 1},
+        "evidence": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/evidence"}},
+        "metadata_sources": {"type": "array", "items": {"type": "string"}},
+        "notes": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "system": {
+      "type": "object",
+      "required": ["id", "name", "papers", "frontend", "compiler_architecture", "runtime", "targets", "open_source_status", "active_years"],
+      "properties": {
+        "id": {"$ref": "#/$defs/sysid"},
+        "name": {"$ref": "#/$defs/nonempty"},
+        "versions": {"type": "array", "items": {"type": "string"}},
+        "papers": {"type": "array", "items": {"$ref": "#/$defs/idstring"}},
+        "frontend": {"$ref": "#/$defs/nonempty", "description": "Language or input representation."},
+        "compiler_architecture": {"$ref": "#/$defs/taglist"},
+        "runtime": {"$ref": "#/$defs/nonempty"},
+        "targets": {"$ref": "#/$defs/taglist"},
+        "open_source_status": {"type": "string"},
+        "source_code_url": {"$ref": "#/$defs/url"},
+        "documentation_url": {"$ref": "#/$defs/url"},
+        "active_years": {"type": "string", "pattern": "^[0-9]{4}(-([0-9]{4}|present))?$"},
+        "predecessors": {"type": "array", "items": {"$ref": "#/$defs/sysid"}},
+        "successors": {"type": "array", "items": {"$ref": "#/$defs/sysid"}},
+        "institution": {"type": ["string", "null"]},
+        "table_b": {
+          "type": "object",
+          "description": "Columns for Table B / C / D / E that are not derivable from paper tags.",
+          "properties": {
+            "input": {"type": "string"}, "distribution": {"type": "string"}, "work_mapping": {"type": "string"},
+            "communication": {"type": "string"}, "runtime": {"type": "string"}, "targets": {"type": "string"}, "artifact": {"type": "string"},
+            "benchmarks": {"type": "string"}, "baseline": {"type": "string"}, "scale": {"type": "string"},
+            "metrics": {"type": "string"}, "productivity_eval": {"type": "string"}
+          },
+          "additionalProperties": false
+        },
+        "decomposition_support": {
+          "type": "object",
+          "properties": {
+            "block": {"type": "string"}, "cyclic": {"type": "string"}, "block_cyclic": {"type": "string"},
+            "replication": {"type": "string"}, "halo": {"type": "string"}, "dynamic": {"type": "string"},
+            "irregular": {"type": "string"}, "hierarchical": {"type": "string"}
+          },
+          "additionalProperties": false,
+          "description": "Values: yes, no, partial, unknown. 'unknown' means not verified from a primary source."
+        },
+        "notes": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "oneOf": [
+    {"required": ["papers"], "properties": {"version": {}, "papers": {"type": "array", "items": {"$ref": "#/$defs/paper"}}}, "additionalProperties": false},
+    {"required": ["systems"], "properties": {"version": {}, "systems": {"type": "array", "items": {"$ref": "#/$defs/system"}}}, "additionalProperties": false}
+  ]
+}

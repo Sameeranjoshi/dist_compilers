@@ -1,0 +1,6 @@
+\section{Performance Modeling and Optimization Objectives}
+\label{sec:performance}
+
+\fact{Chen, Choo, and Li compiled by optimising an explicit performance model~\cite{chen1988compiling}; Ramanujam and Sadayappan and Gupta and Banerjee chose distributions from compile-time cost estimates~\cite{ramanujam1991compiletime,gupta1992automatic}; PARADIGM used a cost model for distribution selection~\cite{banerjee1995paradigm}.} \fact{Alpa formulates intra-operator parallelism as an integer linear program and inter-operator parallelism as dynamic programming over a profiled cost model~\cite{zheng2022alpa}; FlexFlow uses a simulator-guided search~\cite{jia2019flexflow}.}
+
+\emph{Synthesis.} \ours{Axis~H records objectives: communication volume and message count dominate Eras~2--3, memory capacity and overlap dominate Era~6.} \todo{Tabulate the objective of each core system with evidence pointers.}

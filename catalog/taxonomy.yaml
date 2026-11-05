@@ -1,0 +1,221 @@
+# Taxonomy axes for the distributed-memory compiler survey.
+#
+# Each axis is independent; a paper or system may carry several values per
+# axis.  Values are referenced from catalog/papers.yaml via the field named in
+# `field`.  The validator (scripts/validate_catalog.py) rejects values not
+# listed here, so add a value to this file *first* when a new category is
+# needed, together with a one-line definition.
+#
+# Provenance of this taxonomy: it is a survey taxonomy introduced by this
+# project (see docs/taxonomy.md).  Where a category name is taken from the
+# literature (e.g. "owner-computes", "inspector-executor", "block-cyclic") the
+# definition notes the originating body of work; the *grouping* is ours.
+
+version: 0.1
+axes:
+  - key: target_memory_model
+    name: "A. Target / memory model"
+    field: target_hardware
+    values:
+      - {id: vector-array-foundation, name: "Vector or array processor (foundation)", def: "Pipelined vector or lock-step array machine; not distributed-memory itself, but the compiler ideas feed later work."}
+      - {id: simd-systolic-cm, name: "SIMD / systolic / Connection Machine", def: "Fine-grained lock-step machines with per-PE memory."}
+      - {id: dm-multicomputer, name: "Distributed-memory multicomputer", def: "MIMD nodes with private memory connected by a message network (generic)."}
+      - {id: hypercube-mpp, name: "Hypercube / MPP", def: "Commercial 1980s-90s massively parallel systems (iPSC, nCUBE, CM-5, Paragon, SP2, T3D)."}
+      - {id: workstation-cluster, name: "Workstation or commodity cluster", def: "Networks of workstations or Beowulf-style clusters."}
+      - {id: pgas-target, name: "PGAS target", def: "Machine presented to the compiler as a partitioned global address space (one-sided RMA)."}
+      - {id: cpu-cluster, name: "CPU cluster", def: "Modern multicore CPU nodes with MPI interconnect."}
+      - {id: multi-gpu-cluster, name: "Multi-GPU cluster", def: "Multiple GPUs within or across nodes with distinct device memories."}
+      - {id: tpu-accelerator-mesh, name: "TPU / ML-accelerator mesh", def: "Accelerator pods organised as a logical device mesh."}
+      - {id: spatial-accelerator, name: "Spatial accelerator", def: "Dataflow or CGRA-style accelerators with explicitly placed compute and local memories."}
+      - {id: wafer-scale, name: "Wafer-scale architecture", def: "Very large PE arrays on one wafer with per-PE memory and explicit fabric routing."}
+      - {id: hierarchical-heterogeneous, name: "Hierarchical heterogeneous system", def: "Nodes containing several memory levels or device types that the compiler maps across."}
+
+  - key: programming_abstraction
+    name: "B. Programming abstraction"
+    field: input_abstraction
+    values:
+      - {id: sequential-auto, name: "Sequential source, automatic parallelization", def: "Unannotated sequential code; the compiler decides distribution and parallelism."}
+      - {id: global-arrays, name: "Global arrays", def: "Programmer writes against a single global index space; compiler localises."}
+      - {id: data-parallel-language, name: "Data-parallel language", def: "Array-statement or forall semantics (Fortran 90, CM Fortran, HPF, NESL)."}
+      - {id: distribution-directives, name: "Distribution directives", def: "Explicit ALIGN/DISTRIBUTE-style annotations on arrays."}
+      - {id: explicit-message-passing, name: "Explicit message passing", def: "Programmer writes sends/receives or collectives (MPI, NX, PVM)."}
+      - {id: pgas, name: "PGAS", def: "Partitioned global address space with locality-aware references (UPC, CAF, Titanium, Chapel, X10)."}
+      - {id: task-region, name: "Task or logical-region model", def: "Tasks declare the regions they touch; the system schedules and moves data."}
+      - {id: tensor-algebra, name: "Tensor algebra", def: "Index notation or einsum-style expressions over dense or sparse tensors."}
+      - {id: computational-graph, name: "Computational graph", def: "Dataflow graph of operators (ML frameworks, XLA HLO)."}
+      - {id: sharding-annotations, name: "Sharding annotations", def: "Per-tensor sharding specs on a device mesh that the compiler propagates."}
+      - {id: schedule-language, name: "Schedule or partitioning language", def: "Separate schedule/partition program (Halide-style, DISTAL formats, PartIR tactics)."}
+      - {id: dsl, name: "Domain-specific language", def: "Stencil, mesh, or other domain DSL whose compiler handles distribution."}
+
+  - key: data_decomposition
+    name: "C. Data decomposition"
+    field: data_decomposition
+    values:
+      - {id: replicated, name: "Replicated", def: "Every place holds a full copy."}
+      - {id: block-1d, name: "One-dimensional block", def: "Contiguous slabs along one dimension."}
+      - {id: block-nd, name: "Multidimensional block", def: "Contiguous blocks along several dimensions."}
+      - {id: uneven-block, name: "Uneven block", def: "Block boundaries chosen by the compiler or user, not equal-sized (GEN_BLOCK)."}
+      - {id: cyclic, name: "Cyclic", def: "Round-robin assignment of elements."}
+      - {id: block-cyclic, name: "Block-cyclic", def: "Round-robin assignment of fixed-size blocks."}
+      - {id: tiled-hierarchical, name: "Tiled / hierarchical", def: "Nested distributions across machine levels (node, device, core)."}
+      - {id: halo-overlap, name: "Halo / overlap", def: "Owned region extended by ghost cells replicated from neighbours."}
+      - {id: affine-owner-map, name: "Affine or skewed owner map", def: "Owner given by an affine function of the index (alignment, skew)."}
+      - {id: mapping-array, name: "Mapping-array ownership", def: "Ownership stored in a runtime array (INDIRECT distribution)."}
+      - {id: graph-partition, name: "Graph / mesh partition", def: "Partition derived from a graph partitioner on the mesh or sparsity structure."}
+      - {id: sparse-tensor-partition, name: "Sparse tensor partition", def: "Partition of a sparse tensor by coordinates, nonzeros, or hyper-graph."}
+      - {id: model-state-sharding, name: "Operator-state / model-state sharding", def: "Sharding of weights, optimizer state, or activations in ML training."}
+      - {id: dynamic-distribution, name: "Dynamic distribution", def: "Distribution changes during execution (redistribution, repartitioning)."}
+      - {id: application-defined, name: "Application-defined distribution", def: "User supplies the partition function or map object."}
+
+  - key: computation_mapping
+    name: "D. Computation mapping"
+    field: computation_mapping
+    values:
+      - {id: owner-computes, name: "Owner-computes", def: "Statement executed by the owner of the left-hand-side element."}
+      - {id: restricted-owner-computes, name: "Restricted owner-computes", def: "Owner-computes relaxed for selected statements or operands."}
+      - {id: iteration-space-partitioning, name: "Iteration-space partitioning", def: "Loop iterations partitioned independently of data ownership."}
+      - {id: loop-to-processor, name: "Loop-to-processor mapping", def: "Explicit affine map from iterations to processors."}
+      - {id: task-placement, name: "Task placement", def: "Discrete tasks assigned to places by scheduler or mapper."}
+      - {id: region-placement, name: "Region placement", def: "Logical regions mapped to memories, tasks follow."}
+      - {id: data-parallelism, name: "Data parallelism", def: "Replicated program, partitioned batch/data."}
+      - {id: operator-tensor-parallelism, name: "Operator / tensor parallelism", def: "Single operator split across devices."}
+      - {id: pipeline-parallelism, name: "Pipeline parallelism", def: "Stages of the graph assigned to different devices."}
+      - {id: expert-parallelism, name: "Expert parallelism", def: "Mixture-of-experts sub-networks placed on different devices."}
+      - {id: spatial-placement, name: "Spatial placement", def: "Computation placed on a 2-D PE fabric with neighbour communication."}
+      - {id: hierarchical-mapping, name: "Hierarchical mapping", def: "Nested mapping across machine levels."}
+
+  - key: communication_synthesis
+    name: "E. Communication synthesis"
+    field: communication_generation
+    values:
+      - {id: programmer-explicit, name: "Explicit programmer-authored", def: "Communication written by hand."}
+      - {id: compiler-p2p, name: "Compiler-generated point-to-point", def: "Compiler emits sends/receives."}
+      - {id: communication-sets, name: "Communication-set generation", def: "Closed-form or enumerated sets of elements to exchange."}
+      - {id: message-vectorization, name: "Message aggregation / vectorization", def: "Element messages hoisted and coalesced."}
+      - {id: broadcast-multicast, name: "Broadcast / multicast", def: "One-to-many patterns recognised or generated."}
+      - {id: reduction-allreduce, name: "Reduction / all-reduce", def: "Reductions recognised and mapped to collectives."}
+      - {id: scatter-gather, name: "Scatter / gather", def: "Distribution and collection patterns."}
+      - {id: all-to-all, name: "All-to-all", def: "Full exchange patterns (transposes, redistributions)."}
+      - {id: halo-exchange, name: "Halo exchange", def: "Ghost-region update between neighbours."}
+      - {id: import-export-schedule, name: "Import / export schedule", def: "Runtime-built schedules describing off-processor accesses."}
+      - {id: inspector-executor, name: "Inspector-executor", def: "Runtime inspection of indices followed by scheduled execution."}
+      - {id: redistribution-resharding, name: "Redistribution / resharding", def: "Change of distribution between program phases."}
+      - {id: overlapped, name: "Overlapped communication", def: "Communication scheduled to overlap computation."}
+      - {id: communication-pipelining, name: "Communication pipelining", def: "Messages split and staggered along pipelines."}
+      - {id: runtime-collective-selection, name: "Runtime collective selection", def: "Collective algorithm chosen at runtime."}
+
+  - key: compilation_time
+    name: "F. Compilation time"
+    field: compiler_runtime_boundary
+    values:
+      - {id: fully-static, name: "Fully static", def: "All distribution and communication decided at compile time."}
+      - {id: static-with-directives, name: "Compile-time with user directives", def: "Static, but driven by programmer annotations."}
+      - {id: profile-guided, name: "Profile-guided", def: "Decisions informed by profile data."}
+      - {id: autotuned, name: "Autotuned", def: "Search over configurations with measurement."}
+      - {id: load-time, name: "Load-time", def: "Decisions fixed when the program starts (machine size known)."}
+      - {id: jit, name: "JIT", def: "Compiled during execution."}
+      - {id: runtime-inspector, name: "Runtime inspector", def: "Communication derived from runtime index inspection."}
+      - {id: adaptive, name: "Adaptive / dynamic repartitioning", def: "Distribution revised during execution."}
+
+  - key: compiler_architecture
+    name: "G. Compiler architecture"
+    field: compiler_architecture
+    values:
+      - {id: source-to-source, name: "Source-to-source", def: "Emits a program in the source language plus communication calls."}
+      - {id: interactive-restructuring, name: "Interactive restructuring", def: "User steers transformations in a tool."}
+      - {id: dependence-based, name: "Dependence-based parallelizer", def: "Dependence graphs drive partitioning."}
+      - {id: polyhedral, name: "Affine / polyhedral compiler", def: "Integer-set representation of iteration and data spaces."}
+      - {id: compiler-runtime-codesign, name: "Compiler/runtime co-design", def: "Compiler emits calls into a purpose-built runtime."}
+      - {id: graph-compiler, name: "Graph compiler", def: "Operates on operator graphs."}
+      - {id: multi-level-ir, name: "Multi-level IR", def: "Progressive lowering through several IR levels."}
+      - {id: llvm-based, name: "LLVM-based", def: "Built on LLVM IR."}
+      - {id: mlir-based, name: "MLIR-based", def: "Built on MLIR dialects."}
+      - {id: dsl-compiler, name: "Standalone DSL compiler", def: "Purpose-built compiler for a DSL."}
+      - {id: library-backed, name: "Library-backed compiler", def: "Compiler emits calls to a distributed library (ScaLAPACK, NCCL, Legion)."}
+      - {id: runtime-plan-generator, name: "Runtime plan generator", def: "Produces an execution plan interpreted by a runtime."}
+      - {id: language-spec, name: "Language specification", def: "Defines semantics; no compiler of its own."}
+
+  - key: optimization_objective
+    name: "H. Optimization objective"
+    field: optimization_objectives
+    values:
+      - {id: local-memory-fit, name: "Local-memory fit", def: ""}
+      - {id: load-balance, name: "Load balance", def: ""}
+      - {id: communication-volume, name: "Communication volume", def: ""}
+      - {id: message-count, name: "Message count", def: ""}
+      - {id: latency, name: "Latency", def: ""}
+      - {id: topology-hops, name: "Network topology / hops", def: ""}
+      - {id: synchronization, name: "Synchronization", def: ""}
+      - {id: overlap, name: "Computation/communication overlap", def: ""}
+      - {id: memory-bandwidth, name: "Memory bandwidth", def: ""}
+      - {id: energy, name: "Energy", def: ""}
+      - {id: search-cost, name: "Compilation / search cost", def: ""}
+      - {id: performance-portability, name: "Performance portability", def: ""}
+      - {id: productivity, name: "Programmer productivity", def: ""}
+
+  - key: maturity
+    name: "I. Maturity / artifact status"
+    field: maturity
+    values:
+      - {id: theory, name: "Theory", def: ""}
+      - {id: prototype, name: "Prototype", def: ""}
+      - {id: research-compiler, name: "Research compiler", def: ""}
+      - {id: production-compiler, name: "Production compiler", def: ""}
+      - {id: language-specification, name: "Language specification", def: ""}
+      - {id: runtime-library, name: "Runtime library", def: ""}
+      - {id: open-source-active, name: "Open source, active", def: ""}
+      - {id: open-source-archived, name: "Open source, archived", def: ""}
+      - {id: closed-commercial, name: "Closed / commercial", def: ""}
+      - {id: artifact-unavailable, name: "Artifact unavailable", def: ""}
+
+  - key: paper_type
+    name: "J. Paper type"
+    field: paper_type
+    values:
+      - {id: foundational, name: "Foundational", def: "Pre-distributed-memory work the field builds on."}
+      - {id: language, name: "Language", def: "Defines a language or language extension."}
+      - {id: compiler-technique, name: "Compiler technique", def: "One analysis or transformation."}
+      - {id: full-system, name: "Full compiler/system", def: "Describes a complete compiler or system."}
+      - {id: runtime, name: "Runtime", def: "Runtime system with compiler integration."}
+      - {id: performance-model, name: "Performance model", def: ""}
+      - {id: specification, name: "Specification / standard", def: ""}
+      - {id: survey, name: "Survey", def: "Genuine survey or invited overview."}
+      - {id: experience, name: "Experience / evaluation", def: ""}
+      - {id: position, name: "Position paper", def: ""}
+      - {id: hardware, name: "Hardware / architecture", def: "Architecture paper included only as context for a target class."}
+
+  - key: ir_representation
+    name: "K. Compiler representation (RQ6)"
+    field: ir_representation
+    values:
+      - {id: source-annotations, name: "Source annotations", def: ""}
+      - {id: distribution-functions, name: "Distribution functions", def: "Closed-form owner/index maps."}
+      - {id: dependence-graph, name: "Dependence graph", def: ""}
+      - {id: polyhedral-sets, name: "Polyhedral sets / relations", def: ""}
+      - {id: graph-ir, name: "Graph IR", def: ""}
+      - {id: multi-level-ir, name: "Multi-level IR", def: ""}
+      - {id: mlir-dialect, name: "MLIR dialect", def: ""}
+      - {id: logical-regions, name: "Logical regions", def: ""}
+      - {id: device-mesh, name: "Device mesh", def: ""}
+      - {id: runtime-schedule, name: "Runtime schedule / translation table", def: ""}
+      - {id: array-statements, name: "Array statements", def: ""}
+      - {id: none, name: "Not applicable", def: ""}
+
+relevance_tiers:
+  - {id: core, def: "Central to the taxonomy; must have a paper card eventually."}
+  - {id: bridge, def: "Compiler-adjacent (language, runtime, training system) with substantial compilation content."}
+  - {id: foundation, def: "Pre-distributed-memory foundation or hardware context."}
+  - {id: adjacent, def: "Referenced for context only; not classified on every axis."}
+
+status_levels:
+  - {id: discovered, def: "Metadata only."}
+  - {id: screened, def: "Abstract / introduction checked."}
+  - {id: core, def: "Judged clearly relevant to the taxonomy."}
+  - {id: read, def: "Enough of the paper read to summarise accurately."}
+  - {id: verified, def: "Metadata, categorization and summary reviewed against the primary source."}
+
+access_status:
+  - {id: open, def: "Freely readable at the official URL (arXiv, author copy, open access)."}
+  - {id: paywalled, def: "Publisher page requires subscription; metadata verified, text not consulted unless noted."}
+  - {id: abstract-only, def: "Only the abstract was consulted."}
+  - {id: unavailable, def: "No accessible copy located."}
