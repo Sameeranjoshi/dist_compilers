@@ -1,5 +1,5 @@
 # Parallel Languages and Compilers: Perspective From the Titanium Experience
-**Catalog id:** `yelick1998titanium`
+**Catalog id:** `yelick2007titanium`
 **Citation:** Katherine Yelick, Paul Hilfinger, Susan Graham, Dan Bonachea, Jimmy Su, Amir Kamil, Kaushik Datta, Phillip Colella, Tong Wen. "Parallel Languages and Compilers: Perspective From the Titanium Experience." The International Journal of High Performance Computing Applications 21(3), 266-290, 2007. DOI 10.1177/1094342007078449 (as printed on the supplied PDF). Note: the catalog id carries 1998; see the Notes field of the record.
 **Paper type:** experience
 **Access:** PDF supplied by the repository owner. Full text read. The text layer is complete for the body and references; the chart data in Figs. 4, 5, 7 and 8 is not legible in the text layer, so statements about those figures rely on captions and the running text.

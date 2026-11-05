@@ -1288,32 +1288,58 @@ papers:
   source_code_url: null
   era: era2
   relevance_tier: core
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: '[metadata-level] Yale work (Crystal) on compiling parallel programs by optimising an explicit performance
-    model to choose data layout and communication; details to be confirmed from the primary source.'
-  why_read: Introduces performance-model-driven compilation, the ancestor of cost-model-based partition search.
+  summary: Crystal is a functional language based on mathematical notation and the lambda calculus, in which programs
+    are data fields over index domains with communication metrics. The compiler reshapes them with morphisms, and
+    the paper reports compiled C for two matrix multiplications and LU decomposition on iPSC/1 and NCUBE hypercubes.
+  why_read: An early example of a functional source language whose compiler derives partitioning and communication
+    from a formal model.
   problem: null
   input_abstraction: []
   target_hardware:
-  - dm-multicomputer
+  - hypercube-mpp
   memory_model: null
   programming_model: null
-  data_decomposition: []
-  computation_mapping: []
-  communication_generation: []
-  compiler_runtime_boundary: []
-  compiler_architecture: []
-  ir_representation: []
+  data_decomposition:
+  - block-1d
+  - block-nd
+  computation_mapping:
+  - iteration-space-partitioning
+  - spatial-placement
+  communication_generation:
+  - compiler-p2p
+  - broadcast-multicast
+  - reduction-allreduce
+  - communication-pipelining
+  compiler_runtime_boundary:
+  - fully-static
+  - adaptive
+  compiler_architecture:
+  - source-to-source
+  - compiler-runtime-codesign
+  ir_representation:
+  - graph-ir
+  - dependence-graph
   optimization_objectives:
+  - local-memory-fit
+  - load-balance
   - communication-volume
+  - message-count
+  - latency
   maturity: []
-  evaluation_method: null
-  benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  evaluation_method: Measured speedup and timings of compiler-generated C on iPSC/1 (32 nodes) and NCUBE (128 nodes),
+    with an analytic performance model.
+  benchmarks:
+  - block-partitioned matrix multiplication
+  - pipelined matrix multiplication
+  - pipelined LU decomposition
+  main_contribution: A morphism-based optimization framework (partition, contraction, space-time realization, fan-in
+    and fan-out reduction) that generates hypercube C code.
+  main_limitation: The evaluation covers three kernels at a few fixed sizes on two hypercubes, and the run-time
+    environment is described without reported measurements.
   predecessors: []
   successors: []
   related_versions: []
@@ -1328,13 +1354,23 @@ papers:
   - data-distribution
   start_here: null
   evidence:
-  - source: Crossref metadata
-    section: bibliographic record
-    pages: 171-207
+  - source: full text
+    section: Sec. 1
+  - source: full text
+    section: Sec. 2.3-2.4
+  - source: full text
+    section: Sec. 4.5
+  - source: full text
+    section: Sec. 5.1, 5.3
+  - source: full text
+    section: Sec. 6.2-6.3, Tables 2-4
   metadata_sources:
   - crossref
+  - full text read (paper card)
   - supplied PDF (owner-provided, not redistributed)
-  notes: null
+  notes: 'Discusses: Chen 1986a; Chen 1986b; Choo and Chen 1988; Allen and Kennedy 1985; Cytron 1986; Fisher et
+    al. 1984; Loveman 1977; Padua and Wolfe 1986; Backus 1978; Treleaven et al.; Hudak 1986; Chen and Jacquemin
+    1988; Chen and Young 1986.'
 - id: gerndt1990updating
   title: Updating distributed variables in local computations
   authors:
@@ -2330,32 +2366,66 @@ papers:
   source_code_url: null
   era: era2
   relevance_tier: core
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: '[metadata-level] Supercomputing ''91 paper on the Fortran D compiler''s optimisations (message vectorisation,
-    collective recognition, pipelining) for MIMD distributed-memory machines; details to be confirmed.'
-  why_read: The optimisation catalogue of the Fortran D compiler.
+  summary: The paper describes compiler algorithms that turn Fortran D programs, whose data layout is given by alignment
+    and distribution directives, into SPMD message-passing node programs for MIMD distributed-memory machines. It
+    concentrates on owner-computes partitioning, message vectorization and collective communication, and on pipelining
+    loops whose cross-processor dependences serialize computation.
+  why_read: It is an early, detailed account of how a compiler derives node programs and message passing from data
+    decomposition directives.
   problem: null
   input_abstraction:
   - distribution-directives
   target_hardware:
-  - hypercube-mpp
+  - dm-multicomputer
   memory_model: null
   programming_model: null
-  data_decomposition: []
-  computation_mapping: []
-  communication_generation: []
-  compiler_runtime_boundary: []
-  compiler_architecture: []
-  ir_representation: []
-  optimization_objectives: []
+  data_decomposition:
+  - replicated
+  - block-1d
+  - block-nd
+  - cyclic
+  - block-cyclic
+  - halo-overlap
+  - dynamic-distribution
+  computation_mapping:
+  - owner-computes
+  - iteration-space-partitioning
+  - pipeline-parallelism
+  communication_generation:
+  - compiler-p2p
+  - communication-sets
+  - message-vectorization
+  - broadcast-multicast
+  - reduction-allreduce
+  - all-to-all
+  - halo-exchange
+  - inspector-executor
+  - communication-pipelining
+  compiler_runtime_boundary:
+  - static-with-directives
+  - runtime-inspector
+  compiler_architecture:
+  - dependence-based
+  ir_representation:
+  - source-annotations
+  - dependence-graph
+  - distribution-functions
+  optimization_objectives:
+  - load-balance
+  - communication-volume
+  - message-count
+  - overlap
   maturity: []
-  evaluation_method: null
+  evaluation_method: none
   benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  main_contribution: A compile-time strategy for Fortran D that partitions data and computation, generates communication
+    sets, and applies message vectorization, collective communication and pipelining.
+  main_limitation: The prototype implements only message vectorization for block-distributed arrays, and the paper
+    reports no measurements.
   predecessors: []
   successors: []
   related_versions:
@@ -2372,13 +2442,28 @@ papers:
   - owner-computes
   start_here: null
   evidence:
-  - source: Crossref metadata
-    section: bibliographic record
-    pages: 86-100
+  - source: full text
+    section: '1'
+  - source: full text
+    section: '2'
+  - source: full text
+    section: 3.1-3.1.4
+  - source: full text
+    section: 3.2-3.2.3
+  - source: full text
+    section: 3.3-3.3.3
+  - source: full text
+    section: 3.4.2
+  - source: full text
+    section: 4-4.1
+  - source: full text
+    section: '5'
   metadata_sources:
   - crossref
+  - full text read (paper card)
   - supplied PDF (owner-provided, not redistributed)
-  notes: null
+  notes: 'Discusses: SUPERB; ParaScope; Id Nouveau; Crystal; ASPAR; Kali; PARTI; ARF; AL; CM Fortran; DINO; MIMDizer;
+    Pandore; Paragon; SPOT; Li and Chen; Balasundaram.'
 - id: hiranandani1992compiling
   title: Compiling Fortran D for MIMD distributed-memory machines
   authors:
@@ -2468,33 +2553,75 @@ papers:
   source_code_url: null
   era: era2
   relevance_tier: core
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: '[metadata-level] ICS ''92 evaluation of the Fortran D compiler optimisations on an iPSC/860; details
-    to be confirmed.'
-  why_read: Measured effect of each Fortran D optimisation; the first systematic evaluation methodology for this
-    class of compiler.
+  summary: 'The paper classifies Fortran D compiler optimizations for MIMD distributed-memory machines by the cost
+    they reduce: startup, copy and transit time, or lack of parallelism. It evaluates them on Livermore, Jacobi,
+    SOR and ADI kernels on an Intel iPSC/860 and derives profitability formulas for each.'
+  why_read: It shows with measurements which communication and parallelism optimizations matter most for a data-parallel
+    compiler, and where they stop paying off.
   problem: null
   input_abstraction:
   - distribution-directives
   target_hardware:
-  - hypercube-mpp
+  - dm-multicomputer
   memory_model: null
   programming_model: null
-  data_decomposition: []
-  computation_mapping: []
-  communication_generation: []
-  compiler_runtime_boundary: []
-  compiler_architecture: []
-  ir_representation: []
-  optimization_objectives: []
+  data_decomposition:
+  - replicated
+  - block-1d
+  - block-nd
+  - cyclic
+  - block-cyclic
+  - halo-overlap
+  - dynamic-distribution
+  computation_mapping:
+  - owner-computes
+  - iteration-space-partitioning
+  - pipeline-parallelism
+  - data-parallelism
+  communication_generation:
+  - compiler-p2p
+  - message-vectorization
+  - communication-sets
+  - halo-exchange
+  - broadcast-multicast
+  - reduction-allreduce
+  - all-to-all
+  - communication-pipelining
+  - overlapped
+  compiler_runtime_boundary:
+  - static-with-directives
+  - profile-guided
+  compiler_architecture:
+  - dependence-based
+  ir_representation:
+  - source-annotations
+  - dependence-graph
+  optimization_objectives:
+  - latency
+  - message-count
+  - communication-volume
+  - overlap
+  - synchronization
   maturity: []
-  evaluation_method: null
-  benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  evaluation_method: Timings of hand-selected kernel versions on 8 to 32 nodes of an Intel iPSC/860, compared with
+    a no-communication baseline and with analytic cost formulas.
+  benchmarks:
+  - Livermore kernel 3 (inner product)
+  - Livermore kernel 11 (first sum)
+  - Livermore kernel 18 (explicit hydrodynamics)
+  - Livermore kernel 23 (implicit hydrodynamics)
+  - Jacobi
+  - red-black SOR
+  - SOR
+  - ADI integration
+  main_contribution: A classification of Fortran D optimizations, cost formulas for them, and an empirical comparison
+    of their effects on iPSC/860 kernels.
+  main_limitation: Results come from one machine and a small set of kernels, several optimizations were applied
+    by hand, and the cost model keeps communication cost fixed per message.
   predecessors: []
   successors: []
   related_versions: []
@@ -2508,13 +2635,25 @@ papers:
   technique_lists: []
   start_here: null
   evidence:
-  - source: Crossref metadata
-    section: bibliographic record
-    pages: 1-14
+  - source: full text
+    section: 1-2
+  - source: full text
+    section: '3'
+  - source: full text
+    section: 4-4.4
+  - source: full text
+    section: 5-5.3
+  - source: full text
+    section: 6-6.3
+  - source: full text
+    section: 7-8
   metadata_sources:
   - crossref
+  - full text read (paper card)
   - supplied PDF (owner-provided, not redistributed)
-  notes: null
+  notes: 'Discusses: SUPERB; Vienna Fortran; Kali; PARTI; Id Nouveau; Crystal; ASPAR; P3 C; CM Fortran; ParaScope;
+    DINO; PARAFRASE-2; Callahan and Kennedy; Li and Chen; Balasundaram; Gerndt; Rogers and Pingali; Kennedy and
+    McKinley; Hiranandani, Kennedy and Tseng (1991).'
 - id: das1991irregular
   title: 'Distributed memory compiler methods for irregular problems: data copy reuse and runtime partitioning'
   authors:
@@ -3587,34 +3726,59 @@ papers:
   source_code_url: null
   era: era3
   relevance_tier: core
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: '[metadata-level] IEEE TPDS paper on runtime support and compilation methods for user-specified irregular
-    data distributions (mapping arrays) in an HPF-like setting; details to be confirmed.'
-  why_read: How irregular (mapping-array) distributions were integrated into a directive-based compiler.
+  summary: The paper lets a Fortran 90D/HPF user name a partitioner that works from connectivity, coordinates or
+    loads, so the compiler can distribute irregular arrays at run time. It also gives a conservative test that reuses
+    inspector results when indirection arrays are unchanged.
+  why_read: It is an early, clear account of how a compiler can support irregular data distributions by calling
+    partitioners and reusing run-time communication schedules.
   problem: null
   input_abstraction: []
   target_hardware:
+  - dm-multicomputer
   - hypercube-mpp
   memory_model: null
   programming_model: null
   data_decomposition:
+  - block-1d
   - mapping-array
-  computation_mapping: []
+  - graph-partition
+  - dynamic-distribution
+  computation_mapping:
+  - loop-to-processor
   communication_generation:
+  - import-export-schedule
   - inspector-executor
+  - message-vectorization
+  - scatter-gather
+  - redistribution-resharding
   compiler_runtime_boundary:
+  - static-with-directives
   - runtime-inspector
-  compiler_architecture: []
-  ir_representation: []
-  optimization_objectives: []
+  - adaptive
+  compiler_architecture:
+  - library-backed
+  - language-spec
+  ir_representation:
+  - source-annotations
+  - runtime-schedule
+  optimization_objectives:
+  - load-balance
+  - communication-volume
+  - message-count
   maturity: []
-  evaluation_method: null
-  benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  evaluation_method: measured execution time on Intel iPSC/860 against hand-coded versions
+  benchmarks:
+  - 3-D unstructured Euler solver (10K and 53K meshes)
+  - CHARMM electrostatic force loop (648-atom water)
+  - reactive flow combustion code
+  main_contribution: Compiler directives that build a GeoCoL graph for user-chosen partitioners, plus a conservative
+    run-time test for reusing inspector results in Fortran 90D/HPF loops.
+  main_limitation: The reuse test is conservative and can add high run-time overhead in some cases, and the results
+    come from a single machine.
   predecessors: []
   successors: []
   related_versions: []
@@ -3630,13 +3794,30 @@ papers:
   - irregular-ownership
   start_here: null
   evidence:
-  - source: Crossref metadata
-    section: bibliographic record
-    pages: 815-831
+  - source: full text
+    section: I-B
+  - source: full text
+    section: II-B
+  - source: full text
+    section: III
+  - source: full text
+    section: IV-A
+  - source: full text
+    section: V.B-V.C
+  - source: full text
+    section: VI (Table IV)
+  - source: full text
+    section: VI.B-VI.C (Table IX)
+  - source: full text
+    section: VII
   metadata_sources:
   - crossref
+  - full text read (paper card)
   - supplied PDF (owner-provided, not redistributed)
-  notes: null
+  notes: 'Discusses: PARTI; Kali; ARF; Fortran D; Vienna Fortran; HPF; pC++; von Hanxleden value-based decompositions;
+    Williams DIME; Baden particle programming environment; Jade; DINO; CODE; Chen (Yale) irregular loop work; Das,
+    Saltz and von Hanxleden slicing analysis; Ponnusamy et al. 1992 runtime mapping scheme; Ponnusamy et al. 1993
+    Supercomputing paper; Ponnusamy et al. 1995 HPF irregular distributions; Simon spectral partitioner.'
 - id: hwang1995chaos
   title: Runtime and language support for compiling adaptive irregular programs on distributed‐memory machines
   authors:
@@ -3659,37 +3840,58 @@ papers:
   source_code_url: null
   era: era3
   relevance_tier: core
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: 'Software: Practice and Experience paper on CHAOS runtime and language support for compiling adaptive
-    irregular programs, where access patterns and data distributions change during execution and schedules must
-    be regenerated.'
-  why_read: 'Adaptive irregular programs: what breaks when the mesh changes and how CHAOS handled it.'
+  summary: The paper presents the CHAOS runtime library, which adds light-weight schedules and two-phase schedule
+    generation for programs whose indirection arrays change during a run. It also shows that a Fortran 90D/HPF compiler
+    can embed CHAOS calls for molecular dynamics and particle-in-cell kernels.
+  why_read: It shows concretely how adaptive irregular codes, such as molecular dynamics and particle simulation,
+    are handled by reusing or rebuilding communication schedules.
   problem: null
   input_abstraction: []
   target_hardware:
+  - dm-multicomputer
   - hypercube-mpp
   memory_model: null
   programming_model: null
   data_decomposition:
+  - block-1d
   - mapping-array
   - dynamic-distribution
-  computation_mapping: []
+  computation_mapping:
+  - owner-computes
+  - loop-to-processor
   communication_generation:
+  - import-export-schedule
   - inspector-executor
+  - scatter-gather
+  - message-vectorization
+  - redistribution-resharding
   compiler_runtime_boundary:
+  - static-with-directives
   - runtime-inspector
   - adaptive
-  compiler_architecture: []
-  ir_representation: []
-  optimization_objectives: []
+  compiler_architecture:
+  - library-backed
+  - language-spec
+  ir_representation:
+  - source-annotations
+  - runtime-schedule
+  optimization_objectives:
+  - communication-volume
+  - message-count
+  - load-balance
   maturity: []
-  evaluation_method: null
-  benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  evaluation_method: measured execution times on Intel iPSC/860 for CHARMM and DSMC, including hand-coded comparisons
+  benchmarks:
+  - CHARMM molecular dynamics (MbCO plus 3830 water molecules)
+  - 2-D and 3-D direct simulation Monte Carlo (DSMC)
+  main_contribution: The CHAOS runtime primitives for adaptive irregular loops (light-weight schedules, incremental
+    and merged schedules via hash-table stamps) and a proposed reduce(append) construct for data movement.
+  main_limitation: Compiler results come from one prototype and one machine, and the reduce(append) construct needs
+    user-supplied knowledge that the loop is a reduction.
   predecessors: []
   successors: []
   related_versions: []
@@ -3704,13 +3906,29 @@ papers:
   - irregular-ownership
   start_here: null
   evidence:
-  - source: abstract (Crossref)
-    section: abstract
-    pages: 597-621
+  - source: full text
+    section: Abstract
+  - source: full text
+    section: 'Runtime support: two-phase schedule generation'
+  - source: full text
+    section: 'Runtime support: light-weight schedules'
+  - source: full text
+    section: Experimental results (Tables I-IV)
+  - source: full text
+    section: 'Language support: reduce append'
+  - source: full text
+    section: Compiler implementation (Tables VI-VII)
+  - source: full text
+    section: Related work
   metadata_sources:
   - crossref
+  - full text read (paper card)
   - supplied PDF (owner-provided, not redistributed)
-  notes: null
+  notes: 'Discusses: PARTI; Kali; ARF; Fortran D; HPF; Vienna Fortran; pC++; Syracuse Fortran 90D/HPF compiler;
+    DIME (Williams); Baden particle programming environment; Jade; DINO; CODE; Chen (Yale) work; Mirchandaney et
+    al. 1988 runtime support; Saltz, Berryman and Wu 1991; Das et al. 1994 communication optimizations; Ponnusamy
+    et al. technical report (later TPDS paper); Ponnusamy et al. CS-TR-3268 (irregular distributions in Fortran
+    90D/HPF); Brooks et al. CHARMM; Wilmoth DSMC.'
 - id: bik1993sparse
   title: Compilation techniques for sparse matrix computations
   authors:
@@ -4248,13 +4466,15 @@ papers:
   source_code_url: null
   era: era4
   relevance_tier: core
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: '[metadata-level] Parallel Computing paper on generating efficient tiled code for distributed-memory
-    machines (Tang and Xue): tiling plus message generation for affine loop nests; details to be confirmed.'
-  why_read: Tiling-based distributed code generation between the HPF era and the polyhedral revival.
+  summary: The paper gives compiler techniques that generate SPMD message-passing code for rectangularly tiled,
+    skewed iteration spaces. Tiles are assigned to processors first, data follow by the computer-owns rule, and
+    communication is aggregated per tile.
+  why_read: It is an early, detailed treatment of compiling tiled loop nests for distributed memory, including local
+    address translation and memory reduction.
   problem: null
   input_abstraction:
   - sequential-auto
@@ -4262,19 +4482,38 @@ papers:
   - dm-multicomputer
   memory_model: null
   programming_model: null
-  data_decomposition: []
+  data_decomposition:
+  - block-cyclic
+  - halo-overlap
   computation_mapping:
   - iteration-space-partitioning
-  communication_generation: []
-  compiler_runtime_boundary: []
-  compiler_architecture: []
-  ir_representation: []
-  optimization_objectives: []
+  - loop-to-processor
+  communication_generation:
+  - communication-sets
+  - compiler-p2p
+  - message-vectorization
+  - halo-exchange
+  - overlapped
+  compiler_runtime_boundary:
+  - fully-static
+  compiler_architecture:
+  - polyhedral
+  ir_representation:
+  - polyhedral-sets
+  optimization_objectives:
+  - load-balance
+  - message-count
+  - overlap
+  - local-memory-fit
   maturity: []
-  evaluation_method: null
-  benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  evaluation_method: Measured speedup on a Fujitsu AP1000 for skewed SOR, with ablations of tile size, processor
+    layout, validity-test cost and memory optimizations.
+  benchmarks:
+  - SOR (five-point, skewed and expanded)
+  main_contribution: A computation-first code generation scheme for tiled iteration spaces, with message-passing
+    code for arbitrary and rectangular spaces and two memory optimizations.
+  main_limitation: The method needs rectangular tiling after skewing, and the evaluation covers a single stencil
+    kernel on 1990s hardware.
   predecessors: []
   successors: []
   related_versions: []
@@ -4288,13 +4527,23 @@ papers:
   - communication-generation
   start_here: null
   evidence:
-  - source: Crossref metadata
-    section: bibliographic record
-    pages: 1369-1410
+  - source: full text
+    section: Title page; Abstract
+  - source: full text
+    section: Sec. 1-4
+  - source: full text
+    section: Sec. 5-8
+  - source: full text
+    section: Sec. 9, Fig. 13
+  - source: full text
+    section: Sec. 10-11
   metadata_sources:
   - crossref
+  - full text read (paper card)
   - supplied PDF (owner-provided, not redistributed)
-  notes: null
+  notes: 'Discusses: Fortran D; Vienna Fortran; HPF; Tang and Zigman 1994; Chatterjee et al. 1993; Gerndt 1990;
+    Omega Calculator; Ramanujam and Sadayappan 1992; Schreiber and Dongarra 1990; Irigoin and Triolet 1988; Xue
+    1997; Chen and Xue 1998.'
 - id: numrich1998coarray
   title: Co-array Fortran for parallel programming
   authors:
@@ -4313,35 +4562,48 @@ papers:
   source_code_url: null
   era: era4
   relevance_tier: bridge
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: 'ACM Fortran Forum paper defining Co-array Fortran: a small SPMD extension of Fortran 95 in which a co-dimension
-    in square brackets names the image that owns a copy of a variable, making remote accesses explicit in the syntax.'
-  why_read: 'The minimal PGAS idea: distribution as an extra array dimension indexed by processor.'
+  summary: Co-Array Fortran extends Fortran 95 with trailing square-bracket co-dimensions, so that remote data are
+    named by image index and local data need no extra syntax. The paper gives the language specification and worked
+    examples but reports no performance measurements.
+  why_read: It is the defining reference for the co-array model that later PGAS-style Fortran and UPC-style languages
+    build on.
   problem: null
   input_abstraction:
   - pgas
   target_hardware:
+  - dm-multicomputer
   - pgas-target
   memory_model: null
   programming_model: null
   data_decomposition:
-  - replicated
-  - block-1d
-  computation_mapping: []
+  - application-defined
+  computation_mapping:
+  - loop-to-processor
   communication_generation:
   - programmer-explicit
-  compiler_runtime_boundary: []
-  compiler_architecture: []
+  - compiler-p2p
+  - halo-exchange
+  - reduction-allreduce
+  - redistribution-resharding
+  compiler_runtime_boundary:
+  - load-time
+  compiler_architecture:
+  - language-spec
   ir_representation: []
-  optimization_objectives: []
+  optimization_objectives:
+  - productivity
+  - latency
   maturity: []
-  evaluation_method: null
+  evaluation_method: none
   benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  main_contribution: A minimal syntactic extension to Fortran 95 for one-sided, image-indexed data access with explicit
+    synchronization intrinsics.
+  main_limitation: The paper gives no measured performance, and it leaves synchronization correctness and the runtime
+    design to the programmer and implementer.
   predecessors: []
   successors: []
   related_versions: []
@@ -4356,13 +4618,22 @@ papers:
   - data-distribution
   start_here: null
   evidence:
-  - source: abstract (Crossref)
-    section: abstract
-    pages: 1-31
+  - source: full text
+    section: Sec. 1
+  - source: full text
+    section: Sec. 2-4
+  - source: full text
+    section: Sec. 3.2-3.8
+  - source: full text
+    section: Sec. 5
   metadata_sources:
   - crossref
+  - full text read (paper card)
   - supplied PDF (owner-provided, not redistributed)
-  notes: ' Era 4 assignment deliberate: PGAS lineage; year precedes the provisional era boundary.'
+  notes: 'Era 4 assignment deliberate: PGAS lineage; year precedes the provisional era boundary. Discusses: HPF;
+    CRAFT; OpenMP; MPI; SHMEM; BSP (Valiant 1990; Hill et al. 1997); F-- (Numrich 1997; Numrich and Steidel 1997);
+    Cray Fortran 90 compiler; Sawdey et al. 1995; Numrich, Reid and Kim 1998. The PDF prints no venue or year. The
+    1998 date is consistent with the catalog id and with the reference in chen2003upc, which gives it as RAL-TR-1998-060.'
 - id: chen2003upc
   title: A performance analysis of the Berkeley UPC compiler
   authors:
@@ -4385,33 +4656,61 @@ papers:
   source_code_url: null
   era: era4
   relevance_tier: bridge
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: '[metadata-level] ICS ''03 performance analysis of the Berkeley UPC compiler (source-to-source translation
-    to C plus GASNet); details to be confirmed.'
-  why_read: How a PGAS compiler is built and where its overheads come from.
+  summary: The Berkeley UPC compiler translates UPC into C that calls a runtime layer built on GASNet, and the authors
+    tune pointer representation and local-access handling. Measured on a Quadrics-connected AlphaServer cluster,
+    it is competitive with HP's commercial UPC compiler, faster in some cases and slower in others.
+  why_read: It is the reference description of a portable UPC compiler and of the cost model behind its shared-pointer
+    and affinity handling.
   problem: null
   input_abstraction:
   - pgas
   target_hardware:
+  - cpu-cluster
   - pgas-target
   memory_model: null
   programming_model: null
-  data_decomposition: []
-  computation_mapping: []
-  communication_generation: []
-  compiler_runtime_boundary: []
+  data_decomposition:
+  - block-cyclic
+  - cyclic
+  computation_mapping:
+  - owner-computes
+  - loop-to-processor
+  communication_generation:
+  - programmer-explicit
+  - compiler-p2p
+  - communication-pipelining
+  - overlapped
+  compiler_runtime_boundary:
+  - load-time
   compiler_architecture:
   - source-to-source
+  - library-backed
   ir_representation: []
-  optimization_objectives: []
+  optimization_objectives:
+  - latency
+  - message-count
+  - overlap
+  - local-memory-fit
   maturity: []
-  evaluation_method: null
-  benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  evaluation_method: Micro-benchmarks for pointer and affinity costs plus synthetic and NAS application kernels,
+    timed against HP UPC on the same machine.
+  benchmarks:
+  - vector add
+  - gups pair
+  - scale
+  - EP
+  - IS
+  - CG
+  - NPBCG
+  - MG
+  main_contribution: A portable UPC-to-C compiler design with packed and phaseless pointer-to-shared representations
+    and a GASNet runtime, evaluated against a commercial compiler.
+  main_limitation: The comparison is against one commercial compiler on one cluster at one thread per node, and
+    the communication optimizations are hand-applied upper bounds rather than compiler output.
   predecessors: []
   successors: []
   related_versions: []
@@ -4425,13 +4724,23 @@ papers:
   technique_lists: []
   start_here: null
   evidence:
-  - source: Crossref metadata
-    section: bibliographic record
-    pages: 63-73
+  - source: full text
+    section: Sec. 1-2
+  - source: full text
+    section: Sec. 2.1, Fig. 4
+  - source: full text
+    section: Sec. 3, Table 1
+  - source: full text
+    section: Sec. 4
+  - source: full text
+    section: Sec. 5, Figs. 5-18, Table 2
   metadata_sources:
   - crossref
+  - full text read (paper card)
   - supplied PDF (owner-provided, not redistributed)
-  notes: null
+  notes: 'Discusses: UPC; Titanium; Co-Array Fortran (Numwich and Reid 1998); OpenMP; MPI; GASNet (Bonachea 2002);
+    HP UPC; El-Ghazawi and Cantonnet 2002; Krishnamurthy and Yelick 1996; Chakrabarti et al. 1996; Zhu and Hendren
+    1999; Lee and Padua 2001; Liblit and Aiken 2000; Luk and Mowry 1996; Bell et al. 2003; NAS Parallel Benchmarks.'
 - id: yelick1998titanium
   title: 'Titanium: a high-performance Java dialect'
   authors:
@@ -4459,7 +4768,7 @@ papers:
   source_code_url: null
   era: era4
   relevance_tier: bridge
-  status: screened
+  status: discovered
   verified: false
   verified_by: null
   verified_date: null
@@ -4503,8 +4812,7 @@ papers:
     pages: 825-836
   metadata_sources:
   - crossref
-  - supplied PDF (owner-provided, not redistributed)
-  notes: ' Era 4 assignment deliberate: PGAS lineage; year precedes the provisional era boundary.'
+  notes: null
 - id: charles2005x10
   title: 'X10: an object-oriented approach to non-uniform cluster computing'
   authors:
@@ -4594,38 +4902,49 @@ papers:
   source_code_url: null
   era: era4
   relevance_tier: bridge
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: 'IJHPCA paper presenting Chapel''s design for parallel programmability: a global-view language with locales,
-    user-defined domain maps (distributions) and separation of parallelism from locality.'
-  why_read: Global-view programming with user-definable distributions, the HPCS-era answer to HPF's fixed distribution
-    set.
+  summary: The paper lists desiderata for productive parallel languages and describes how the Chapel language meets
+    them. Chapel offers a global-view model built on distributed domains, arrays and locale placement, with user-definable
+    distributions and general nested parallelism.
+  why_read: It sets out the design reasoning behind Chapel, a major global-view language, and the productivity arguments
+    that shaped it.
   problem: null
   input_abstraction:
   - pgas
   - global-arrays
   target_hardware:
-  - pgas-target
   - cpu-cluster
   memory_model: null
   programming_model: null
   data_decomposition:
   - application-defined
-  - block-nd
+  - block-1d
   - cyclic
-  computation_mapping: []
+  - graph-partition
+  computation_mapping:
+  - owner-computes
+  - task-placement
+  - data-parallelism
   communication_generation: []
-  compiler_runtime_boundary: []
-  compiler_architecture: []
-  ir_representation: []
-  optimization_objectives: []
+  compiler_runtime_boundary:
+  - adaptive
+  compiler_architecture:
+  - language-spec
+  ir_representation:
+  - none
+  optimization_objectives:
+  - productivity
+  - performance-portability
   maturity: []
-  evaluation_method: null
+  evaluation_method: none
   benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  main_contribution: A set of ten design principles for productive parallel languages, and a description of how
+    Chapel's domains, forall loops, on-clauses and task constructs respond to them.
+  main_limitation: The paper reports no experimental results, and it concedes weak execution-model transparency
+    and open issues in portability and interoperability.
   predecessors: []
   successors: []
   related_versions: []
@@ -4640,13 +4959,22 @@ papers:
   - data-distribution
   start_here: null
   evidence:
-  - source: abstract (Crossref)
-    section: abstract
-    pages: 291-312
+  - source: full text
+    section: Title page; Abstract
+  - source: full text
+    section: Sec. 2.2
+  - source: full text
+    section: Sec. 3.1-3.6
+  - source: full text
+    section: Sec. 4.1-4.9
+  - source: full text
+    section: Sec. 5, Table 1
   metadata_sources:
   - crossref
+  - full text read (paper card)
   - supplied PDF (owner-provided, not redistributed)
-  notes: null
+  notes: 'Discusses: ZPL; HPF; Vienna Fortran; OpenMP; Cilk; MPI; PVM; SHMEM; ARMCI; GASNet; Co-array Fortran; UPC;
+    Titanium; Babel; Diaconescu and Zima 2007.'
 - id: fatahalian2006sequoia
   title: 'Sequoia: Programming the Memory Hierarchy'
   authors:
@@ -4674,15 +5002,15 @@ papers:
   source_code_url: null
   era: era4
   relevance_tier: core
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: '[metadata-level] SC ''06 paper on Sequoia, a language in which programs are trees of tasks mapped explicitly
-    onto a machine''s memory hierarchy, with the compiler generating bulk data movement between levels; details
-    to be confirmed.'
-  why_read: Hierarchical memory as the programming abstraction; the ancestor of hierarchical mapping in Legion and
-    Alpa.
+  summary: Sequoia is a language in which programs are hierarchies of side-effect-free tasks whose arguments describe
+    data movement through a tree model of machine memory. A separate per-machine mapping specification selects task
+    variants and tunables, so one program can run on a Cell blade and on a PC cluster.
+  why_read: It is an early, explicit treatment of hierarchical memory and communication as language constructs,
+    and a reference point for later task-hierarchy languages.
   problem: null
   input_abstraction:
   - task-region
@@ -4692,20 +5020,45 @@ papers:
   memory_model: null
   programming_model: null
   data_decomposition:
+  - block-nd
+  - uneven-block
+  - halo-overlap
   - tiled-hierarchical
   computation_mapping:
-  - hierarchical-mapping
+  - iteration-space-partitioning
   - task-placement
-  communication_generation: []
-  compiler_runtime_boundary: []
-  compiler_architecture: []
+  - hierarchical-mapping
+  communication_generation:
+  - programmer-explicit
+  - communication-pipelining
+  - overlapped
+  compiler_runtime_boundary:
+  - static-with-directives
+  compiler_architecture:
+  - source-to-source
+  - dsl-compiler
   ir_representation: []
-  optimization_objectives: []
+  optimization_objectives:
+  - local-memory-fit
+  - memory-bandwidth
+  - communication-volume
+  - overlap
+  - performance-portability
   maturity: []
-  evaluation_method: null
-  benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  evaluation_method: GFLOP/s and speedup on a dual-Cell blade and a 16-node PC cluster, time breakdown, and a portability
+    study
+  benchmarks:
+  - SAXPY
+  - SGEMV
+  - SGEMM
+  - ITERCONV2D
+  - FFT3D
+  - GRAVITY
+  - HMMER
+  main_contribution: A task-based language with blocking and mapping primitives, a machine-tree model with virtual
+    cluster levels, and compilers and runtimes for Cell and PC clusters.
+  main_limitation: The authors state that the primitives may not express dynamic applications whose accesses cannot
+    be listed as task arguments, and the evaluation covers only regular algorithms.
   predecessors: []
   successors: []
   related_versions: []
@@ -4721,13 +5074,42 @@ papers:
   - compiler-runtime-codesign
   start_here: null
   evidence:
-  - source: Crossref metadata
-    section: bibliographic record
-    pages: 4-4
+  - source: full text
+    section: Abstract
+  - source: full text
+    section: Sec. 1
+  - source: full text
+    section: Sec. 2
+  - source: full text
+    section: Sec. 3.1
+  - source: full text
+    section: Sec. 3.3
+  - source: full text
+    section: Sec. 4
+  - source: full text
+    section: Sec. 5.1
+  - source: full text
+    section: Sec. 5.2
+  - source: full text
+    section: Sec. 5.3
+  - source: full text
+    section: Sec. 6.1
+  - source: full text
+    section: Sec. 6.2
+  - source: full text
+    section: Discussion and Future Work
+  - source: full text
+    section: Related Work
   metadata_sources:
   - crossref
+  - full text read (paper card)
   - supplied PDF (owner-provided, not redistributed)
-  notes: null
+  notes: 'Discusses: Alpern et al. 1995, space-limited procedures; Alpern et al. 1993, parallel memory hierarchy
+    model; Hierarchically tiled arrays (Bikshandi et al. 2006); Brook (Buck et al. 2004); Cilk [Blumofe et al. 1995];
+    X10 [Charles et al. 2005]; Chapel [Callahan et al. 2004]; Fortress [Allen et al. 2005]; UPC [Carlson et al.
+    1999]; Titanium [Yelick et al. 1998]; Co-Array Fortran [Numrich and Reid 1998]; ZPL [Deitz et al. 2004]; Chameleon
+    [Alverson and Notkin 1993]; CHORES [Eager and Jahorjan 1993]; Lim et al. 2001; Whaley et al. 2001 (ATLAS); Kennedy
+    et al. 2001 (telescoping languages).'
 - id: baskaran2008automatic
   title: Automatic data movement and computation mapping for multi-level parallel architectures with explicitly
     managed memories
@@ -4751,14 +5133,15 @@ papers:
   source_code_url: null
   era: era4
   relevance_tier: core
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: '[metadata-level] PPoPP ''08 polyhedral method for automatic data movement and computation mapping for
-    multi-level parallel architectures with explicitly managed memories (GPU shared memory, Cell); details to be
-    confirmed.'
-  why_read: Polyhedral data-movement generation for explicitly managed memories, one step before distributed memory.
+  summary: The paper automatically allocates scratchpad buffers for the data accessed by a block of computation
+    and generates code that moves data between global and local memory. It also applies multi-level tiling, with
+    tile sizes chosen by a cost model, to spread work across GPU multiprocessors and their inner SIMD units.
+  why_read: It shows how a compiler can manage explicitly managed memories and map polyhedral loop nests onto a
+    two-level parallel machine, a useful precursor for polyhedral code generation on distributed memory.
   problem: null
   input_abstraction:
   - sequential-auto
@@ -4766,20 +5149,32 @@ papers:
   - hierarchical-heterogeneous
   memory_model: null
   programming_model: null
-  data_decomposition: []
-  computation_mapping: []
+  data_decomposition:
+  - tiled-hierarchical
+  computation_mapping:
+  - iteration-space-partitioning
+  - hierarchical-mapping
   communication_generation: []
-  compiler_runtime_boundary: []
+  compiler_runtime_boundary:
+  - fully-static
   compiler_architecture:
   - polyhedral
+  - library-backed
   ir_representation:
   - polyhedral-sets
-  optimization_objectives: []
+  optimization_objectives:
+  - local-memory-fit
+  - memory-bandwidth
+  - synchronization
   maturity: []
-  evaluation_method: null
-  benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  evaluation_method: Measured execution time on a GeForce 8800 GTX against GPU-only global memory and a CPU
+  benchmarks:
+  - Mpeg4 motion estimation kernel
+  - 1-D Jacobi kernel
+  main_contribution: An automatic framework for scratchpad buffer allocation and data-movement code generation,
+    combined with multi-level tiling and a tile-size search for a GPU.
+  main_limitation: Copy-in and copy-out sets are not yet reduced using dependence information, and the evaluation
+    covers two kernels on one GPU.
   predecessors: []
   successors: []
   related_versions: []
@@ -4792,13 +5187,36 @@ papers:
   technique_lists: []
   start_here: null
   evidence:
-  - source: Crossref metadata
-    section: bibliographic record
-    pages: 1-10
+  - source: full text
+    section: Abstract
+  - source: full text
+    section: Sec. 1
+  - source: full text
+    section: Sec. 2
+  - source: full text
+    section: Sec. 3.1
+  - source: full text
+    section: Sec. 3.1.1
+  - source: full text
+    section: Sec. 3.1.3
+  - source: full text
+    section: Sec. 3.1.4
+  - source: full text
+    section: Sec. 4.1
+  - source: full text
+    section: Sec. 4.3
+  - source: full text
+    section: Sec. 6
+  - source: full text
+    section: Sec. 7
   metadata_sources:
   - crossref
+  - full text read (paper card)
   - supplied PDF (owner-provided, not redistributed)
-  notes: null
+  notes: 'Discusses: Bondhugula et al. 2007 affine transformation framework [7]; Kim et al. multi-level tiling [26];
+    Krishnamoorthy et al. stencil parallelization [27]; Fatahalian et al. Sequoia [13]; Schreiber and Cronquist
+    [38]; Kandemir et al. scratchpad management [25]; Anantharaman and Pande [1]; Eisenbeis et al. [12]; Clauss
+    [9]; Pugh [35].'
 - id: bondhugula2008pluto
   title: A practical automatic polyhedral parallelizer and locality optimizer
   authors:
@@ -4990,14 +5408,16 @@ papers:
   source_code_url: null
   era: era5
   relevance_tier: core
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: '[metadata-level] SC ''13 paper on compiling affine loop nests for distributed-memory parallel architectures:
-    polyhedral dependence analysis drives generation of MPI communication sets with flow-out partitioning; archival
-    version of the 2011 report.'
-  why_read: The reference modern polyhedral approach to automatic MPI generation.
+  summary: The paper presents a source-level polyhedral framework that turns sequential affine loop nests into MPI
+    code without any programmer-supplied data distribution. Per-tile flow-out and write-out sets are computed at
+    compile time, and run-time helper functions find the receiving processes, so each needed element is sent only
+    to the processes that read it.
+  why_read: It is a concrete, end-to-end account of how a polyhedral compiler can generate correct MPI communication
+    code for arbitrary affine loop nests.
   problem: null
   input_abstraction:
   - sequential-auto
@@ -5005,24 +5425,47 @@ papers:
   - cpu-cluster
   memory_model: null
   programming_model: null
-  data_decomposition: []
-  computation_mapping: []
+  data_decomposition:
+  - replicated
+  computation_mapping:
+  - iteration-space-partitioning
+  - loop-to-processor
   communication_generation:
   - communication-sets
   - compiler-p2p
+  - broadcast-multicast
+  - message-vectorization
+  - scatter-gather
   compiler_runtime_boundary:
-  - fully-static
+  - runtime-inspector
   compiler_architecture:
-  - polyhedral
   - source-to-source
+  - polyhedral
   ir_representation:
+  - dependence-graph
   - polyhedral-sets
-  optimization_objectives: []
+  optimization_objectives:
+  - communication-volume
+  - message-count
   maturity: []
-  evaluation_method: null
-  benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  evaluation_method: Strong scaling on a 32-node InfiniBand cluster, compared with sequential code, Pluto-sequential
+    code, hand-written MPI, a naive all-gather variant and pghpf.
+  benchmarks:
+  - strmm
+  - trmm
+  - dsyr2k
+  - covcol
+  - seidel
+  - jac-2d
+  - fdtd-2d
+  - 2d-heat
+  - 3d-heat
+  - lu
+  - floyd-warshall
+  main_contribution: Parametric communication code generation for affine loop nests, valid for any process count
+    and any affine computation partition.
+  main_limitation: Every process holds all data, and communication volume is not optimal when parts of one flow-out
+    set have different receivers.
   predecessors:
   - bondhugula2008pluto
   successors: []
@@ -5041,13 +5484,23 @@ papers:
   - communication-generation
   start_here: 10
   evidence:
-  - source: Crossref metadata
-    section: bibliographic record
-    pages: 1-12
+  - source: full text
+    section: Title page; Abstract
+  - source: full text
+    section: Sec. 1, 3, 4
+  - source: full text
+    section: Sec. 5.1-5.6
+  - source: full text
+    section: Sec. 6, Table 2
+  - source: full text
+    section: Sec. 7
   metadata_sources:
   - crossref
+  - full text read (paper card)
   - supplied PDF (owner-provided, not redistributed)
-  notes: null
+  notes: 'Discusses: Amarasinghe and Lam 1993; Adve and Mellor-Crummey 1998; Classen and Griebl 2006; dHPF; Dathathri
+    et al. 2013; Pluto; Baskaran et al. 2009; Kim et al. 2010; R-STREAM; Kwon et al. 2012; Griebl 2004; Baskaran
+    et al. 2008.'
 - id: dathathri2016compiling
   title: Compiling Affine Loop Nests for a Dynamic Scheduling Runtime on Shared and Distributed Memory
   authors:
@@ -5389,38 +5842,59 @@ papers:
   source_code_url: https://github.com/StanfordLegion/legion
   era: era5
   relevance_tier: core
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: '[metadata-level] SC ''12 paper introducing Legion, a programming model and runtime based on logical
-    regions that express locality and independence of data, with a mapping interface that places tasks and regions
-    on heterogeneous distributed machines; details to be confirmed.'
-  why_read: 'Logical regions and mappers: the task-based alternative to compiler-chosen distribution.'
+  summary: Legion is a programming model and runtime in which logical regions describe data locality and independence,
+    and tasks declare the privileges and coherence with which they access regions. A distributed scheduler extracts
+    parallelism from these declarations, and a mapping interface lets applications control task and memory placement
+    without changing correctness.
+  why_read: It is the foundational region-based task runtime that later region-based and task-based compilers build
+    on.
   problem: null
   input_abstraction:
   - task-region
   target_hardware:
   - multi-gpu-cluster
+  - cpu-cluster
   - hierarchical-heterogeneous
   memory_model: null
   programming_model: null
-  data_decomposition: []
+  data_decomposition:
+  - application-defined
+  - block-nd
+  - halo-overlap
+  - tiled-hierarchical
   computation_mapping:
   - task-placement
   - region-placement
-  communication_generation: []
-  compiler_runtime_boundary: []
+  - hierarchical-mapping
+  communication_generation:
+  - overlapped
+  compiler_runtime_boundary:
+  - runtime-inspector
+  - adaptive
   compiler_architecture: []
   ir_representation:
   - logical-regions
-  optimization_objectives: []
+  optimization_objectives:
+  - load-balance
+  - communication-volume
+  - overlap
+  - latency
+  - performance-portability
   maturity:
   - open-source-active
-  evaluation_method: null
-  benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  evaluation_method: Strong and weak scaling on three GPU clusters against hand-coded CUDA, PARSEC and BoxLib references
+  benchmarks:
+  - circuit simulation
+  - fluidanimate port from PARSEC
+  - three-level adaptive mesh refinement heat equation (BoxLib)
+  main_contribution: A region-based programming model with a distributed software out-of-order scheduler and a mapping
+    interface that separates performance decisions from correctness.
+  main_limitation: Communication overhead grows with node count in two of the three applications, and the strongest
+    results depend on application-specific mappers.
   predecessors: []
   successors: []
   related_versions: []
@@ -5435,13 +5909,35 @@ papers:
   - compiler-runtime-codesign
   start_here: null
   evidence:
-  - source: Crossref metadata
-    section: bibliographic record
-    pages: 1-11
+  - source: full text
+    section: Abstract
+  - source: full text
+    section: Sec. I
+  - source: full text
+    section: Sec. II
+  - source: full text
+    section: Sec. III-A
+  - source: full text
+    section: Sec. III-C
+  - source: full text
+    section: Sec. IV-A
+  - source: full text
+    section: Sec. IV-C
+  - source: full text
+    section: Sec. V-A
+  - source: full text
+    section: Sec. V-B
+  - source: full text
+    section: Sec. V-C
+  - source: full text
+    section: Sec. VI
   metadata_sources:
   - crossref
+  - full text read (paper card)
   - supplied PDF (owner-provided, not redistributed)
-  notes: null
+  notes: 'Discusses: Sequoia (Fatahalian et al. 2006) [1]; Bauer et al. 2011, Sequoia for irregular parallelism
+    [10]; SSMP (Perez et al. 2010) [11]; Chapel [12, 13]; X10 [15-18]; DPJ [19]; Object assemblies [20]; Galois
+    [21]; Cilk [5]; UPC [3]; Titanium [25]; PARSEC fluidanimate [8]; BoxLib [9]; Gay and Aiken, regions [27].'
 - id: slaughter2015regent
   title: 'Regent: a high-productivity programming language for HPC with logical regions'
   authors:
@@ -5463,38 +5959,53 @@ papers:
   source_code_url: null
   era: era5
   relevance_tier: core
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: '[metadata-level] SC ''15 paper on Regent, a language and optimising compiler for the Legion programming
-    model with logical regions, which statically checks privileges and generates Legion runtime calls; details to
-    be confirmed.'
-  why_read: 'The compiler half of Legion: what can be decided statically about regions and tasks.'
+  summary: Regent is a language whose programs look sequential, with tasks and logical regions whose privileges
+    the type system checks. An optimizing compiler translates it into Legion code and uses index launches, mapping
+    elision and related optimizations to cut runtime overhead.
+  why_read: It shows how a compiler can place a high-level language over a dynamic task runtime, a direct comparison
+    point for compiler-based distributed programming systems.
   problem: null
   input_abstraction:
   - task-region
   target_hardware:
-  - multi-gpu-cluster
-  - hierarchical-heterogeneous
+  - cpu-cluster
   memory_model: null
   programming_model: null
-  data_decomposition: []
-  computation_mapping: []
-  communication_generation: []
-  compiler_runtime_boundary: []
+  data_decomposition:
+  - application-defined
+  - halo-overlap
+  computation_mapping:
+  - data-parallelism
+  - task-placement
+  communication_generation:
+  - overlapped
+  compiler_runtime_boundary:
+  - jit
+  - runtime-inspector
   compiler_architecture:
-  - compiler-runtime-codesign
   - llvm-based
+  - language-spec
   ir_representation:
   - logical-regions
-  optimization_objectives: []
+  optimization_objectives:
+  - productivity
+  - memory-bandwidth
   maturity:
   - open-source-active
-  evaluation_method: null
-  benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  evaluation_method: Single and multi-node throughput against hand-tuned Legion, OpenMP and MPI+Kokkos, knockout
+    experiments and lines-of-code counts
+  benchmarks:
+  - circuit simulation
+  - PENNANT
+  - MiniAero
+  main_contribution: A region-based language and optimizing compiler that generates Legion code with performance
+    comparable to hand-tuned C++ Legion on the paper's benchmarks.
+  main_limitation: Simultaneous (SPMD-style) region access is not implemented, so scaling beyond roughly 10 to 100
+    nodes requires restructuring by the programmer.
   predecessors:
   - bauer2012legion
   successors: []
@@ -5510,13 +6021,35 @@ papers:
   - compiler-runtime-codesign
   start_here: null
   evidence:
-  - source: Crossref metadata
-    section: bibliographic record
-    pages: 1-12
+  - source: full text
+    section: Abstract
+  - source: full text
+    section: Sec. 1
+  - source: full text
+    section: Sec. 2
+  - source: full text
+    section: Sec. 3.1
+  - source: full text
+    section: Sec. 3.1.3
+  - source: full text
+    section: Sec. 4
+  - source: full text
+    section: Sec. 5
+  - source: full text
+    section: Sec. 6.1
+  - source: full text
+    section: Sec. 6.4
+  - source: full text
+    section: Sec. 7
   metadata_sources:
   - crossref
+  - full text read (paper card)
   - supplied PDF (owner-provided, not redistributed)
-  notes: null
+  notes: 'Discusses: Legion (Bauer et al. 2012) [9]; Treichler et al. 2013, static type system for Legion [33];
+    Sequoia (Fatahalian et al. 2006) [22]; Sequoia compiler (Ren et al. 2008) [29]; Bauer et al. 2014, structure
+    slicing [10]; Bauer thesis, simultaneous coherence [7]; DPJ [11, 12]; Jade [30]; Swift/T [5, 34]; Charm++ [27];
+    Uintah [19]; StarPU [6]; OCR [4]; UPC [14, 2]; Titanium [35]; Chapel [16, 15]; X10 [18, 17, 25]; HPX [26]; Terra
+    [20]; PENNANT [23]; MiniAero [3]; Kokkos [21].'
 - id: shazeer2018meshtf
   title: 'Mesh-TensorFlow: Deep Learning for Supercomputers'
   authors:
@@ -7772,31 +8305,52 @@ papers:
   source_code_url: null
   era: era3
   relevance_tier: bridge
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: PLDI '97 paper on compiler and runtime support for placing data on cache-coherent distributed-shared-memory
-    machines, where pages and data distributions affect locality; a bridge entry on data distribution outside message
-    passing.
-  why_read: null
+  summary: The paper adds Fortran directives for regular and reshaped array distribution on a cache-coherent NUMA
+    multiprocessor, with affinity scheduling to run iterations where their data lives. It reports that reshaping,
+    together with compiler optimizations of the resulting address arithmetic, can beat page-granular placement on
+    fine-grained distributions.
+  why_read: It shows how a production compiler can offer data placement on shared-memory machines where OS page
+    granularity is too coarse for some distributions.
   problem: null
   input_abstraction: []
   target_hardware: []
   memory_model: null
   programming_model: null
-  data_decomposition: []
-  computation_mapping: []
+  data_decomposition:
+  - block-1d
+  - block-nd
+  - cyclic
+  - block-cyclic
+  - dynamic-distribution
+  computation_mapping:
+  - owner-computes
+  - iteration-space-partitioning
   communication_generation: []
-  compiler_runtime_boundary: []
-  compiler_architecture: []
-  ir_representation: []
-  optimization_objectives: []
+  compiler_runtime_boundary:
+  - static-with-directives
+  - load-time
+  compiler_architecture:
+  - language-spec
+  - dependence-based
+  ir_representation:
+  - source-annotations
+  optimization_objectives:
+  - local-memory-fit
+  - latency
   maturity: []
-  evaluation_method: null
-  benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  evaluation_method: measured speedup and execution time on a 128-processor Origin-2000
+  benchmarks:
+  - NAS LU class C
+  - matrix transpose 5000x5000
+  - 2-D convolution 1000x1000 and 5000x5000
+  main_contribution: Regular and reshaped data distribution directives with affinity scheduling, implemented in
+    the SGI MIPSpro compiler, plus optimizations that reduce the cost of reshaped array addressing.
+  main_limitation: Reshaped arrays cannot be redistributed dynamically and carry legality restrictions and addressing
+    overhead.
   predecessors: []
   successors: []
   related_versions: []
@@ -7809,14 +8363,28 @@ papers:
   technique_lists: []
   start_here: null
   evidence:
-  - source: supplied PDF, first page and abstract read
-    section: title page
-    pages: null
+  - source: full text
+    section: '1'
+  - source: full text
+    section: 3.2-3.4
+  - source: full text
+    section: 4.2-4.3
+  - source: full text
+    section: '5'
+  - source: full text
+    section: '7'
+  - source: full text
+    section: 8.1-8.4
+  - source: full text
+    section: '9'
   metadata_sources:
   - crossref
+  - full text read (paper card)
   - supplied PDF
   - supplied PDF (owner-provided, not redistributed)
-  notes: null
+  notes: 'Discusses: HPF; HPF-2.0; Fortran D; Vienna Fortran; Anderson, Amarasinghe and Lam (AAL95); Anderson and
+    Lam (AnL93); Hiranandani et al. (HKM+93); Gupta and Banerjee (GuB92); Kennedy and Kremer (KeK95); Sheffler et
+    al. (SSP+95); Verghese et al. (VDG+96); Koelbel et al. HPF handbook (KLS+94).'
 - id: shen2007eliminating
   title: Eliminating Redundant Communication of Code Generation for Distributed Memory Machines
   authors:
@@ -7837,30 +8405,45 @@ papers:
   source_code_url: null
   era: era4
   relevance_tier: core
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: Work on eliminating redundant communication in code generated for distributed-memory machines from affine
-    loops, so that data already present on a processor is not resent; a core communication-generation entry.
-  why_read: null
+  summary: The paper revisits the Amarasinghe and Lam communication-set algorithms and removes iteration variables
+    that do not affect which element or processor is involved. On an LU kernel this reduces generated communication
+    and cuts running time on a small cluster.
+  why_read: It is a short, concrete example of how the messages a compiler generates can be pruned by projecting
+    away iteration variables.
   problem: null
   input_abstraction: []
-  target_hardware: []
+  target_hardware:
+  - cpu-cluster
   memory_model: null
   programming_model: null
-  data_decomposition: []
-  computation_mapping: []
-  communication_generation: []
-  compiler_runtime_boundary: []
-  compiler_architecture: []
-  ir_representation: []
-  optimization_objectives: []
+  data_decomposition:
+  - block-1d
+  computation_mapping:
+  - loop-to-processor
+  communication_generation:
+  - communication-sets
+  - compiler-p2p
+  compiler_runtime_boundary:
+  - fully-static
+  compiler_architecture:
+  - polyhedral
+  ir_representation:
+  - polyhedral-sets
+  optimization_objectives:
+  - message-count
+  - communication-volume
   maturity: []
-  evaluation_method: null
-  benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  evaluation_method: measured running time of generated LU kernel on an 8-node cluster, before and after the optimization
+  benchmarks:
+  - LU decomposition kernel (256x256)
+  main_contribution: Revised communication-set formulas with redundant-iteration projection, implemented as modified
+    code generation algorithms.
+  main_limitation: Only one LU kernel at one size was measured on a small Fast Ethernet cluster, and examples that
+    need all iteration variables gain nothing.
   predecessors: []
   successors: []
   related_versions: []
@@ -7874,15 +8457,29 @@ papers:
   - communication-generation
   start_here: null
   evidence:
-  - source: supplied PDF, first page and abstract read
-    section: title page
-    pages: null
+  - source: full text
+    section: '1'
+  - source: full text
+    section: '2'
+  - source: full text
+    section: '3'
+  - source: full text
+    section: '4'
+  - source: full text
+    section: '5.1'
+  - source: full text
+    section: 5.2 (Fig. 9)
+  - source: full text
+    section: '6'
   metadata_sources:
   - crossref
+  - full text read (paper card)
   - supplied PDF
   - supplied PDF (owner-provided, not redistributed)
-  notes: The PDF is marked as a regular paper supported by a Chinese national programme; the Crossref venue (SNPD
-    2007) is used. Verify the journal version if one exists.
+  notes: 'The PDF is marked as a regular paper supported by a Chinese national programme; the Crossref venue (SNPD
+    2007) is used. Verify the journal version if one exists. Discusses: Amarasinghe and Lam (PLDI 1993); Feautrier
+    array expansion; Shan Shan Wang array data-flow analysis; Ferner (revisiting communication code generation);
+    Ya Nan Shen (automatic code generation of data decomposition); Xue Rong Gong (MPI code generation).'
 - id: su1995advanced
   title: Advanced compilation techniques in the PARADIGM compiler for distributed-memory multicomputers
   authors:
@@ -7970,31 +8567,65 @@ papers:
   source_code_url: null
   era: era5
   relevance_tier: bridge
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: IISc master's thesis on compiling affine programs for a dataflow runtime on distributed-memory machines,
-    the thesis version of the work later published with Mullapudi and Bondhugula; a bridge entry for runtime-based
-    polyhedral distributed compilation.
-  why_read: null
+  summary: The thesis proposes a polyhedral source-to-source framework that generates low-volume data movement for
+    affine loop nests on clusters and heterogeneous nodes. It also generates a dynamically scheduled dataflow runtime
+    whose task functions are evaluated per node without building the task graph in memory.
+  why_read: It covers both halves of compiler-driven distributed execution, communication volume reduction and dataflow
+    scheduling, in one worked system.
   problem: null
   input_abstraction: []
-  target_hardware: []
+  target_hardware:
+  - cpu-cluster
+  - hierarchical-heterogeneous
   memory_model: null
   programming_model: null
-  data_decomposition: []
-  computation_mapping: []
-  communication_generation: []
-  compiler_runtime_boundary: []
-  compiler_architecture: []
-  ir_representation: []
-  optimization_objectives: []
+  data_decomposition:
+  - replicated
+  computation_mapping:
+  - iteration-space-partitioning
+  - loop-to-processor
+  - task-placement
+  communication_generation:
+  - communication-sets
+  - compiler-p2p
+  - broadcast-multicast
+  - message-vectorization
+  - overlapped
+  compiler_runtime_boundary:
+  - runtime-inspector
+  - adaptive
+  compiler_architecture:
+  - source-to-source
+  - polyhedral
+  - runtime-plan-generator
+  ir_representation:
+  - dependence-graph
+  - polyhedral-sets
+  - runtime-schedule
+  optimization_objectives:
+  - communication-volume
+  - overlap
+  - load-balance
+  - message-count
   maturity: []
-  evaluation_method: null
-  benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  evaluation_method: Communication volume and execution time on a 32-node InfiniBand cluster, a multi-GPU heterogeneous
+    node and a shared-memory multicore, compared with FO, FOIFI, OMPD, UPC, auto-static and Intel CnC.
+  benchmarks:
+  - floyd-warshall
+  - lu
+  - adi
+  - fdtd-2d
+  - heat-2d
+  - heat-3d
+  - cholesky
+  main_contribution: Flow-out partitioning, a compile-time partitioning of flow dependences that sends each data
+    partition only to its receivers, together with a compiler-generated dataflow runtime interface.
+  main_limitation: Minimal volume is claimed only for most dependence patterns, and placement and data tiling are
+    left out of scope.
   predecessors: []
   successors: []
   related_versions: []
@@ -8009,11 +8640,141 @@ papers:
   technique_lists: []
   start_here: null
   evidence:
-  - source: supplied PDF, first page and abstract read
-    section: title page
-    pages: null
+  - source: full text
+    section: Title page; Abstract
+  - source: full text
+    section: Sec. 1-3
+  - source: full text
+    section: Sec. 3.6
+  - source: full text
+    section: Sec. 4.1-4.4
+  - source: full text
+    section: Sec. 5-6
   metadata_sources:
+  - full text read (paper card)
   - supplied PDF
   - supplied PDF (owner-provided, not redistributed)
-  notes: Thesis, not peer-reviewed; the journal article dathathri2016compiling is the archival version. Submitted
-    April 2014 per the title page.
+  notes: 'Thesis, not peer-reviewed; the journal article dathathri2016compiling is the archival version. Submitted
+    April 2014 per the title page. Discusses: Baskaran et al. 2008; Baskaran et al. 2009; Bondhugula 2013; Amarasinghe
+    and Lam 1993; Adve and Mellor-Crummey 1998; Chavarria-Miranda and Mellor-Crummey 2005; Classen and Griebl 2006;
+    Kwon et al. 2012; Kim et al. 2010; Leung et al. 2010; Song and Dongarra 2012; DAGuE; DPLASMA; Parameterized
+    Task Graph; Intel CnC; StarPU; SWARM; OCR; CGCM; DyManD; AMM; Reddy and Bondhugula 2014. No catalog record for
+    this id is in the local abstracts file, so title, author and year were checked against the title page only.'
+- id: yelick2007titanium
+  title: 'Parallel Languages and Compilers: Perspective From the Titanium Experience'
+  authors:
+  - K. Yelick
+  - P. Hilfinger
+  - S. Graham
+  - D. Bonachea
+  - J. Su
+  year: 2007
+  venue: The International Journal of High Performance Computing Applications 21(3)
+  venue_short: null
+  paper_type: language
+  doi: 10.1177/1094342007078449
+  arxiv: null
+  official_url: https://doi.org/10.1177/1094342007078449
+  pdf_url: null
+  access_status: paywalled
+  artifact_url: null
+  source_code_url: null
+  era: era4
+  relevance_tier: bridge
+  status: read
+  verified: false
+  verified_by: null
+  verified_date: null
+  summary: Titanium is a Java dialect for scientific computing with a partitioned global address space, SPMD parallelism,
+    and multi-dimensional domain-based arrays. The paper reviews its design, compiler analyses and runtime, and
+    reports results on NAS FT and MG and on AMR and immersed boundary applications.
+  why_read: It is a long-form account of how a PGAS language was designed, compiled and used on real applications,
+    with the reasoning behind each choice.
+  problem: null
+  input_abstraction:
+  - pgas
+  target_hardware:
+  - cpu-cluster
+  - pgas-target
+  memory_model: null
+  programming_model: null
+  data_decomposition:
+  - block-nd
+  - application-defined
+  computation_mapping:
+  - loop-to-processor
+  communication_generation:
+  - programmer-explicit
+  - compiler-p2p
+  - overlapped
+  - inspector-executor
+  - broadcast-multicast
+  - reduction-allreduce
+  - all-to-all
+  - halo-exchange
+  compiler_runtime_boundary:
+  - static-with-directives
+  - runtime-inspector
+  - adaptive
+  compiler_architecture:
+  - source-to-source
+  - library-backed
+  ir_representation: []
+  optimization_objectives:
+  - latency
+  - overlap
+  - productivity
+  - local-memory-fit
+  - message-count
+  maturity: []
+  evaluation_method: Measured speedups and runtimes on six production clusters against Fortran with MPI and Chombo,
+    plus line counts and GASNet microbenchmarks.
+  benchmarks:
+  - NAS FT
+  - NAS MG
+  - NAS CG
+  - NAS IS
+  - NAS EP
+  - adaptive mesh refinement
+  - immersed boundary method
+  main_contribution: A PGAS Java dialect with domain calculus, textually aligned barriers, and a C-emitting compiler
+    with concurrency, alias and locality analyses over GASNet.
+  main_limitation: The authors leave distributed garbage collection and region safety unresolved, and their expressiveness
+    evidence is line counts rather than a controlled study.
+  predecessors:
+  - yelick1998titanium
+  successors: []
+  related_versions: []
+  systems:
+  - titanium
+  taxonomy_tags:
+  - pgas
+  - titanium
+  readme_categories:
+  - pgas-languages
+  technique_lists: []
+  start_here: null
+  evidence:
+  - source: full text
+    section: Sec. 1-2
+  - source: full text
+    section: Sec. 3-5
+  - source: full text
+    section: Sec. 6
+  - source: full text
+    section: Sec. 7
+  - source: full text
+    section: Sec. 8, Table 1
+  metadata_sources:
+  - crossref
+  - full text read (paper card)
+  - supplied PDF (owner-provided, not redistributed)
+  notes: 'Supplied PDF is the 2007 IJHPCA article ''Parallel Languages and Compilers: Perspective From the Titanium
+    Experience'' (DOI 10.1177/1094342007078449). The 1998 Concurrency paper ''Titanium: a high-performance Java
+    dialect'' is the catalog entry yelick1998titanium and was not supplied. Discusses: Split-C; CC++; AC; FIDIL;
+    HPF; ZPL; NESL; pC++; HPJava; Charm++; OpenMP; UPC; Co-Array Fortran; MPI; MPI-2 one-sided interface; SHMEM;
+    ARMCI; Chombo; FFTW; GASNet; Aiken and Gay 1998; Gay and Aiken 2001; Liblit and Aiken 2000; Su and Yelick 2005;
+    Kamil and Yelick 2005; Chen et al. 2003; Yelick et al. 1998; Bonachea and Duell 2003; Boehm-Demers-Weiser collector.
+    Supplied PDF is the 2007 IJHPCA article ''Parallel Languages and Compilers: Perspective From the Titanium Experience''
+    (DOI 10.1177/1094342007078449). The 1998 Concurrency paper ''Titanium: a high-performance Java dialect'' is
+    the catalog entry yelick1998titanium and was not supplied.'

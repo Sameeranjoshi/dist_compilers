@@ -1,0 +1,34 @@
+{
+ "id": "ramaswamy1996redistribution",
+ "summary": "Ramaswamy, Simons and Banerjee represent each regular distribution as a family of line segments (FALLS), so the data to move between two processor sets is an intersection of such families. They add a locality-aware packing scheme and a contention-reducing send order, and report Intel Paragon timings showing that these optimizations cut redistribution time.",
+ "why_read": "It explains concretely how a runtime library can compute which elements move between arbitrary processor subsets for regular distributions.",
+ "main_contribution": "A FALLS representation and period-based intersection algorithm for regular distributions, with locality-aware packing and a contention-reducing schedule for redistribution between arbitrary processor sets.",
+ "main_limitation": "Only regular per-dimension distributions and whole-array redistribution are handled, without array reshaping, and the results come from one machine with the authors' earlier algorithm as the only baseline.",
+ "evaluation_method": "Wall-clock timings of three algorithm variants on the Intel Paragon over 27 cases, plus measured analysis overhead.",
+ "benchmarks": ["27 array redistributions of 100x100, 200x200 and 400x400 arrays on the Intel Paragon"],
+ "optimization_objectives": ["message-count"],
+ "data_decomposition": ["block-1d", "block-nd", "cyclic", "block-cyclic"],
+ "computation_mapping": [],
+ "communication_generation": ["communication-sets", "redistribution-resharding"],
+ "compiler_runtime_boundary": ["runtime-inspector"],
+ "target_hardware": ["dm-multicomputer"],
+ "ir_representation": ["distribution-functions", "runtime-schedule"],
+ "compiler_architecture": ["library-backed", "runtime-plan-generator"],
+ "states_relationship_to": [
+  "Agrawal, Sussman and Saltz 1993 (runtime redistribution schedules)",
+  "Wakatani and Wolfe 1994 (strip-mining redistribution)",
+  "Dongarra et al. 1995 (ScaLAPACK redistribution using PVM)",
+  "Thakur, Choudhary and Fox 1994 (HPF array redistribution)",
+  "Coelho and Ancourt 1995 (HPF remappings)",
+  "Chatterjee et al. (local address generation for block-cyclic accesses)",
+  "Ramaswamy and Banerjee 1995 (earlier redistribution work)",
+  "PARADIGM compiler (Banerjee et al. 1995)"
+ ],
+ "evidence": [
+  {"source": "full text", "section": "Sec. 1.1"},
+  {"source": "full text", "section": "Sec. 2"},
+  {"source": "full text", "section": "Sec. 3.2 to 3.3"},
+  {"source": "full text", "section": "Sec. 4, Tables I-IV"}
+ ],
+ "notes": ""
+}

@@ -6,16 +6,16 @@
 **Card status:** full-read
 
 ## Problem
-In adaptive irregular programs, such as adaptive mesh codes, molecular dynamics and particle-in-cell codes, the indirection arrays change during the run, so inspector work and data movement must be repeated (Sec. "Adaptive irregular loop structures", pp. 598-600). The paper presents the CHAOS library, which subsumes PARTI and adds light-weight schedules and two-phase schedule generation for such programs, and tests it inside a Fortran 90D/HPF compiler (Abstract, p. 597; Sec. "Runtime support", pp. 600-605).
+In adaptive irregular programs, indirection arrays change during the run, so inspector work and data movement must be repeated (Sec. "Adaptive irregular loop structures", pp. 598-600). The paper presents the CHAOS library, which subsumes PARTI and adds light-weight schedules for such programs, and tests it in a Fortran 90D/HPF compiler (Abstract, p. 597).
 
 ## Input abstraction
-Loops that reach distributed arrays through indirection arrays indexed by the loop variable. The modification pattern is occasional in CHARMM (non-bonded list) and frequent in DSMC (cell membership) (pp. 598-600, Figs. 2-4). The language inputs are Fortran D DECOMPOSITION, DISTRIBUTE and ALIGN directives, the REDUCE construct, and a proposed reduce(append) intrinsic (pp. 612-615, Figs. 10-13).
+Loops that reach distributed arrays through indirection arrays indexed by the loop variable. The modification pattern is occasional in CHARMM (non-bonded list) and frequent in DSMC (cell membership) (pp. 598-600, Figs. 2-4). Language inputs are Fortran D directives, REDUCE, and a proposed reduce(append) intrinsic (pp. 612-615, Figs. 10-13).
 
 ## Target
 Distributed-memory message-passing machines. The library is described for the Paragon, Delta, CM-5 and SP-1 (p. 597). All measurements are on an Intel iPSC/860 hypercube (pp. 604, 616).
 
 ## Data decomposition
-Distributed arrays are laid out irregularly through a translation table that gives processor and offset for each global index (p. 602). CHARMM atoms are partitioned by recursive coordinate and inertial bisection, which use spatial data and load (pp. 605-606). DSMC cells are repartitioned every 40 steps by RCB, RIB or a one-dimensional chain partitioner (pp. 610-611, Table V). BLOCK and CYCLIC are the standard distributions (p. 612).
+Distributed arrays are laid out irregularly through a translation table that gives processor and offset for each global index (p. 602). CHARMM atoms are partitioned by recursive coordinate and inertial bisection, which use spatial data and load (pp. 605-606). DSMC cells are repartitioned every 40 steps by RCB, RIB or a one-dimensional chain partitioner (pp. 610-611, Table V).
 
 ## Computation mapping
 Non-bonded loop iterations go to the processor that owns the atom. Bonded loop iterations go to the processor holding the most of their elements, with ties broken by lower load (pp. 606-607).
@@ -27,14 +27,14 @@ Schedule generation has two phases. An index analysis phase hashes global indice
 Directive processing and the loop transformations are compile time (pp. 613-618). The generated code calls CHAOS for remapping, inspection and execution. It records when indirection arrays may have changed and rebuilds schedules only when needed (p. 616, Fig. 15). The reduce(append) intrinsic lets the compiler choose light-weight schedules (pp. 613-615).
 
 ## Evaluation
-CHARMM (MbCO plus 3830 water molecules) and a 2-D and 3-D DSMC code, both on the iPSC/860 (pp. 605-618). CHARMM execution time is 781.8 s at 128 processors (Table I, p. 607). Compiler-generated CHARMM loops are within about 2 percent of hand code in total time on 32 and 64 processors (Table VI, p. 616). Compiler-generated DSMC is slower: total time 15.47 s versus 8.51 s on 4 processors and 5.30 s versus 3.75 s on 32 (Table VII, p. 618). Light-weight schedules cut 2-D DSMC time from 63.74 s to 20.14 s on 16 processors with 48x48 cells (Table IV, p. 611).
+CHARMM (MbCO plus 3830 water molecules) and a 2-D and 3-D DSMC code, both on the iPSC/860 (pp. 605-618). Compiler-generated CHARMM loops are within about 2 percent of hand code in total time on 32 and 64 processors (Table VI, p. 616). Compiler-generated DSMC is slower: total time 15.47 s versus 8.51 s on 4 processors and 5.30 s versus 3.75 s on 32 (Table VII, p. 618). Light-weight schedules cut 2-D DSMC time from 63.74 s to 20.14 s on 16 processors with 48x48 cells (Table IV, p. 611).
 
 ## Principal limitation
 The authors state that in highly adaptive programs the inspector is not a one-time cost and must be repeated whenever an indirection array changes (p. 601). They also state that current compilers do not detect reductions in data movement, so the user must signal reduce(append) through the proposed intrinsic (p. 613).
 our observation: both application studies use one machine (iPSC/860) and one prototype compiler, so the compiler-versus-hand comparison rests on a narrow base.
 
 ## Relationship to earlier / later work
-The paper states that CHAOS subsumes PARTI, which had its own specialized incremental and merged schedules, and that CHAOS unifies them behind one global hash table (pp. 597, 603-604). It credits Kali with the first inspector/executor preprocessing and ARF with the first irregular arrays (p. 618). It cites a technical report by Ponnusamy and co-authors on irregular distributions for preprocessing reuse (ref. 6, "to appear in IEEE TPDS"; p. 616). That report is the Ponnusamy card in this set. It notes that HPF-1 supports only BLOCK and CYCLIC (p. 614) and that reduce(append) can be carried into HPF as a list-scatter reduction (p. 615). Other systems it lists are DIME, Baden's particle environment, Jade, DINO, CODE and work at Yale (p. 618).
+The paper states that CHAOS subsumes PARTI, which had its own specialized incremental and merged schedules, and that CHAOS unifies them behind one global hash table (pp. 597, 603-604). It credits Kali with the first inspector/executor preprocessing and ARF with the first irregular arrays (p. 618). It cites a technical report by Ponnusamy and co-authors on irregular distributions for preprocessing reuse (ref. 6, "to appear in IEEE TPDS"; p. 616). inferred: that report is the same work as the ponnusamy1995runtime card in this set, which has the same title and authors. It notes that HPF-1 supports only BLOCK and CYCLIC (p. 614) and that reduce(append) can be carried into HPF as a list-scatter reduction (p. 615).
 
 ## Sources used
 | claim | section / page |

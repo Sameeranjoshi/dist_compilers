@@ -1,0 +1,27 @@
+{
+ "id": "hiranandani1992evaluation",
+ "summary": "The paper classifies Fortran D compiler optimizations for MIMD distributed-memory machines by the cost they reduce: startup, copy and transit time, or lack of parallelism. It evaluates them on Livermore, Jacobi, SOR and ADI kernels on an Intel iPSC/860 and derives profitability formulas for each.",
+ "why_read": "It shows with measurements which communication and parallelism optimizations matter most for a data-parallel compiler, and where they stop paying off.",
+ "main_contribution": "A classification of Fortran D optimizations, cost formulas for them, and an empirical comparison of their effects on iPSC/860 kernels.",
+ "main_limitation": "Results come from one machine and a small set of kernels, several optimizations were applied by hand, and the cost model keeps communication cost fixed per message.",
+ "evaluation_method": "Timings of hand-selected kernel versions on 8 to 32 nodes of an Intel iPSC/860, compared with a no-communication baseline and with analytic cost formulas.",
+ "benchmarks": ["Livermore kernel 3 (inner product)", "Livermore kernel 11 (first sum)", "Livermore kernel 18 (explicit hydrodynamics)", "Livermore kernel 23 (implicit hydrodynamics)", "Jacobi", "red-black SOR", "SOR", "ADI integration"],
+ "optimization_objectives": ["latency", "message-count", "communication-volume", "overlap", "synchronization"],
+ "data_decomposition": ["replicated", "block-1d", "block-nd", "cyclic", "block-cyclic", "halo-overlap", "dynamic-distribution"],
+ "computation_mapping": ["owner-computes", "iteration-space-partitioning", "pipeline-parallelism", "data-parallelism"],
+ "communication_generation": ["compiler-p2p", "message-vectorization", "communication-sets", "halo-exchange", "broadcast-multicast", "reduction-allreduce", "all-to-all", "communication-pipelining", "overlapped"],
+ "compiler_runtime_boundary": ["static-with-directives", "profile-guided"],
+ "target_hardware": ["dm-multicomputer"],
+ "ir_representation": ["source-annotations", "dependence-graph"],
+ "compiler_architecture": ["dependence-based"],
+ "states_relationship_to": ["SUPERB", "Vienna Fortran", "Kali", "PARTI", "Id Nouveau", "Crystal", "ASPAR", "P3 C", "CM Fortran", "ParaScope", "DINO", "PARAFRASE-2", "Callahan and Kennedy", "Li and Chen", "Balasundaram", "Gerndt", "Rogers and Pingali", "Kennedy and McKinley", "Hiranandani, Kennedy and Tseng (1991)"],
+ "evidence": [
+  {"source": "full text", "section": "1-2"},
+  {"source": "full text", "section": "3"},
+  {"source": "full text", "section": "4-4.4"},
+  {"source": "full text", "section": "5-5.3"},
+  {"source": "full text", "section": "6-6.3"},
+  {"source": "full text", "section": "7-8"}
+ ],
+ "notes": ""
+}

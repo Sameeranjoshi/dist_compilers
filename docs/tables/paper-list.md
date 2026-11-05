@@ -16,14 +16,14 @@
 | hillis1986data | 1986 | Data parallel algorithms | foundational | foundation | screened | no | paywalled |
 | allen1987automatic | 1987 | Automatic translation of FORTRAN programs to vector form | foundational | foundation | screened | no | paywalled |
 | callahan1988compiling | 1988 | Compiling programs for distributed-memory multiprocessors | compiler-technique | core | discovered | no | paywalled |
-| chen1988compiling | 1988 | Compiling parallel programs by optimizing performance | compiler-technique | core | screened | no | paywalled |
+| chen1988compiling | 1988 | Compiling parallel programs by optimizing performance | compiler-technique | core | read | no | paywalled |
 | zima1988superb | 1988 | SUPERB: A tool for semi-automatic MIMD/SIMD parallelization | full-system | core | discovered | no | paywalled |
 | gerndt1990updating | 1990 | Updating distributed variables in local computations | compiler-technique | core | screened | no | paywalled |
 | mehrotra1990kali | 1990 | Programming distributed memory architectures using Kali | language | core | verified | yes | open |
 | saltz1990runtime | 1990 | Run-time scheduling and execution of loops on message passing machines | runtime | core | verified | yes | open |
 | chapman1991vienna | 1991 | Vienna Fortran: A Fortran language extension for distributed memory multiprocessors | language | core | read | no | open |
 | das1991irregular | 1991 | Distributed memory compiler methods for irregular problems: data copy reuse and runtime partitioning | runtime | core | read | no | open |
-| hiranandani1991fortrand | 1991 | Compiler optimizations for Fortran D on MIMD distributed-memory machines | compiler-technique | core | screened | no | paywalled |
+| hiranandani1991fortrand | 1991 | Compiler optimizations for Fortran D on MIMD distributed-memory machines | compiler-technique | core | read | no | paywalled |
 | koelbel1991compiling | 1991 | Compiling global name-space parallel loops for distributed execution | compiler-technique | core | discovered | no | paywalled |
 | koelbel1991kali | 1991 | Programming data parallel algorithms on distributed memory using Kali | language | core | discovered | no | paywalled |
 | koelbel1991regular | 1991 | Compile-time generation of regular communications patterns | compiler-technique | core | screened | no | paywalled |
@@ -33,7 +33,7 @@
 | chapman1992vienna | 1992 | Programming in Vienna Fortran | language | core | read | no | open |
 | gupta1992automatic | 1992 | Demonstration of automatic data partitioning techniques for parallelizing compilers on multicomputers | compiler-technique | core | screened | no | paywalled |
 | hiranandani1992compiling | 1992 | Compiling Fortran D for MIMD distributed-memory machines | full-system | core | discovered | no | paywalled |
-| hiranandani1992evaluation | 1992 | Evaluation of compiler optimizations for Fortran D on MIMD distributed memory machines | experience | core | screened | no | paywalled |
+| hiranandani1992evaluation | 1992 | Evaluation of compiler optimizations for Fortran D on MIMD distributed memory machines | experience | core | read | no | paywalled |
 | amarasinghe1993communication | 1993 | Communication optimization and code generation for distributed memory machines | compiler-technique | core | discovered | no | paywalled |
 | anderson1993global | 1993 | Global optimizations for parallelism and locality on scalable parallel machines | compiler-technique | core | discovered | no | paywalled |
 | bik1993sparse | 1993 | Compilation techniques for sparse matrix computations | compiler-technique | core | discovered | no | paywalled |
@@ -52,34 +52,35 @@
 | banerjee1995paradigm | 1995 | The Paradigm compiler for distributed-memory multicomputers | full-system | core | screened | no | paywalled |
 | gupta1995hpf | 1995 | An HPF compiler for the IBM SP2 | full-system | core | screened | no | paywalled |
 | harris1995dechpf | 1995 | Compiling High Performance Fortran for Distributed-Memory Systems | full-system | core | read | no | open |
-| hwang1995chaos | 1995 | Runtime and language support for compiling adaptive irregular programs on distributed‐memory machines | runtime | core | screened | no | paywalled |
+| hwang1995chaos | 1995 | Runtime and language support for compiling adaptive irregular programs on distributed‐memory machines | runtime | core | read | no | paywalled |
 | lee1995techniques | 1995 | Techniques for compiling programs on distributed memory multicomputers | compiler-technique | core | screened | no | paywalled |
-| ponnusamy1995runtime | 1995 | Runtime support and compilation methods for user-specified irregular data distributions | runtime | core | screened | no | paywalled |
+| ponnusamy1995runtime | 1995 | Runtime support and compilation methods for user-specified irregular data distributions | runtime | core | read | no | paywalled |
 | su1995advanced | 1995 | Advanced compilation techniques in the PARADIGM compiler for distributed-memory multicomputers | compiler-technique | core | screened | no | paywalled |
 | bik1996automatic | 1996 | Automatic Data Structure Selection and Transformation for Sparse Matrix Computations | compiler-technique | adjacent | screened | no | paywalled |
 | gropp1996mpich | 1996 | A high-performance, portable implementation of the MPI message passing interface standard | runtime | bridge | discovered | no | paywalled |
 | palermo1996dynamic | 1996 | Dynamic Data Partitioning for Distributed-Memory Multicomputers | compiler-technique | core | screened | no | paywalled |
 | ramaswamy1996redistribution | 1996 | Optimizations for Efficient Array Redistribution on Distributed Memory Multicomputers | compiler-technique | core | screened | no | paywalled |
-| chandra1997datadist | 1997 | Data distribution support on distributed shared memory multiprocessors | compiler-technique | bridge | screened | no | paywalled |
-| numrich1998coarray | 1998 | Co-array Fortran for parallel programming | language | bridge | screened | no | paywalled |
-| yelick1998titanium | 1998 | Titanium: a high-performance Java dialect | language | bridge | screened | no | paywalled |
+| chandra1997datadist | 1997 | Data distribution support on distributed shared memory multiprocessors | compiler-technique | bridge | read | no | paywalled |
+| numrich1998coarray | 1998 | Co-array Fortran for parallel programming | language | bridge | read | no | paywalled |
+| yelick1998titanium | 1998 | Titanium: a high-performance Java dialect | language | bridge | discovered | no | paywalled |
 | benkner1999compiling | 1999 | Compiling High Performance Fortran for distributed-memory architectures | survey | core | screened | no | paywalled |
-| tang2000tiled | 2000 | Generating efficient tiled code for distributed memory machines | compiler-technique | core | screened | no | paywalled |
-| chen2003upc | 2003 | A performance analysis of the Berkeley UPC compiler | full-system | bridge | screened | no | paywalled |
+| tang2000tiled | 2000 | Generating efficient tiled code for distributed memory machines | compiler-technique | core | read | no | paywalled |
+| chen2003upc | 2003 | A performance analysis of the Berkeley UPC compiler | full-system | bridge | read | no | paywalled |
 | charles2005x10 | 2005 | X10: an object-oriented approach to non-uniform cluster computing | language | bridge | discovered | no | paywalled |
-| fatahalian2006sequoia | 2006 | Sequoia: Programming the Memory Hierarchy | language | core | screened | no | paywalled |
-| chamberlain2007chapel | 2007 | Parallel Programmability and the Chapel Language | language | bridge | screened | no | paywalled |
+| fatahalian2006sequoia | 2006 | Sequoia: Programming the Memory Hierarchy | language | core | read | no | paywalled |
+| chamberlain2007chapel | 2007 | Parallel Programmability and the Chapel Language | language | bridge | read | no | paywalled |
 | kennedy2007rise | 2007 | The rise and fall of High Performance Fortran | experience | core | screened | no | paywalled |
-| shen2007eliminating | 2007 | Eliminating Redundant Communication of Code Generation for Distributed Memory Machines | compiler-technique | core | screened | no | paywalled |
-| baskaran2008automatic | 2008 | Automatic data movement and computation mapping for multi-level parallel architectures with explicitly managed memories | compiler-technique | core | screened | no | paywalled |
+| shen2007eliminating | 2007 | Eliminating Redundant Communication of Code Generation for Distributed Memory Machines | compiler-technique | core | read | no | paywalled |
+| yelick2007titanium | 2007 | Parallel Languages and Compilers: Perspective From the Titanium Experience | language | bridge | read | no | paywalled |
+| baskaran2008automatic | 2008 | Automatic data movement and computation mapping for multi-level parallel architectures with explicitly managed memories | compiler-technique | core | read | no | paywalled |
 | bondhugula2008pluto | 2008 | A practical automatic polyhedral parallelizer and locality optimizer | full-system | foundation | screened | no | paywalled |
 | bondhugula2011automatic | 2011 | Automatic Distributed-Memory Parallelization and Code Generation using the Polyhedral Framework | compiler-technique | core | read | no | open |
-| bauer2012legion | 2012 | Legion: Expressing locality and independence with logical regions | runtime | core | screened | no | paywalled |
-| bondhugula2013compiling | 2013 | Compiling affine loop nests for distributed-memory parallel architectures | compiler-technique | core | screened | no | paywalled |
-| dathathri2014thesis | 2014 | Compiling for a Dataflow Runtime on Distributed-Memory Parallel Architectures | full-system | bridge | screened | no | paywalled |
+| bauer2012legion | 2012 | Legion: Expressing locality and independence with logical regions | runtime | core | read | no | paywalled |
+| bondhugula2013compiling | 2013 | Compiling affine loop nests for distributed-memory parallel architectures | compiler-technique | core | read | no | paywalled |
+| dathathri2014thesis | 2014 | Compiling for a Dataflow Runtime on Distributed-Memory Parallel Architectures | full-system | bridge | read | no | paywalled |
 | kruse2014molly | 2014 | Introducing Molly: Distributed Memory Parallelization with LLVM | full-system | core | read | no | open |
 | ravishankar2015mixed | 2015 | Distributed memory code generation for mixed Irregular/Regular computations | compiler-technique | core | discovered | no | paywalled |
-| slaughter2015regent | 2015 | Regent: a high-productivity programming language for HPC with logical regions | language | core | screened | no | paywalled |
+| slaughter2015regent | 2015 | Regent: a high-productivity programming language for HPC with logical regions | language | core | read | no | paywalled |
 | dathathri2016compiling | 2016 | Compiling Affine Loop Nests for a Dynamic Scheduling Runtime on Shared and Distributed Memory | compiler-technique | core | screened | no | paywalled |
 | unat2017trends | 2017 | Trends in Data Locality Abstractions for HPC Systems | survey | adjacent | screened | no | paywalled |
 | huang2019gpipe | 2018 | GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism | runtime | bridge | discovered | no | open |

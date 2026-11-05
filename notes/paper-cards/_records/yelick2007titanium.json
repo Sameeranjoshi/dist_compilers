@@ -1,0 +1,109 @@
+{
+ "id": "yelick2007titanium",
+ "summary": "Titanium is a Java dialect for scientific computing with a partitioned global address space, SPMD parallelism, and multi-dimensional domain-based arrays. The paper reviews its design, compiler analyses and runtime, and reports results on NAS FT and MG and on AMR and immersed boundary applications.",
+ "why_read": "It is a long-form account of how a PGAS language was designed, compiled and used on real applications, with the reasoning behind each choice.",
+ "main_contribution": "A PGAS Java dialect with domain calculus, textually aligned barriers, and a C-emitting compiler with concurrency, alias and locality analyses over GASNet.",
+ "main_limitation": "The authors leave distributed garbage collection and region safety unresolved, and their expressiveness evidence is line counts rather than a controlled study.",
+ "evaluation_method": "Measured speedups and runtimes on six production clusters against Fortran with MPI and Chombo, plus line counts and GASNet microbenchmarks.",
+ "benchmarks": [
+  "NAS FT",
+  "NAS MG",
+  "NAS CG",
+  "NAS IS",
+  "NAS EP",
+  "adaptive mesh refinement",
+  "immersed boundary method"
+ ],
+ "optimization_objectives": [
+  "latency",
+  "overlap",
+  "productivity",
+  "local-memory-fit",
+  "message-count"
+ ],
+ "data_decomposition": [
+  "block-nd",
+  "application-defined"
+ ],
+ "computation_mapping": [
+  "loop-to-processor"
+ ],
+ "communication_generation": [
+  "programmer-explicit",
+  "compiler-p2p",
+  "overlapped",
+  "inspector-executor",
+  "broadcast-multicast",
+  "reduction-allreduce",
+  "all-to-all",
+  "halo-exchange"
+ ],
+ "compiler_runtime_boundary": [
+  "static-with-directives",
+  "runtime-inspector",
+  "adaptive"
+ ],
+ "target_hardware": [
+  "cpu-cluster",
+  "pgas-target"
+ ],
+ "ir_representation": [],
+ "compiler_architecture": [
+  "source-to-source",
+  "library-backed"
+ ],
+ "states_relationship_to": [
+  "Split-C",
+  "CC++",
+  "AC",
+  "FIDIL",
+  "HPF",
+  "ZPL",
+  "NESL",
+  "pC++",
+  "HPJava",
+  "Charm++",
+  "OpenMP",
+  "UPC",
+  "Co-Array Fortran",
+  "MPI",
+  "MPI-2 one-sided interface",
+  "SHMEM",
+  "ARMCI",
+  "Chombo",
+  "FFTW",
+  "GASNet",
+  "Aiken and Gay 1998",
+  "Gay and Aiken 2001",
+  "Liblit and Aiken 2000",
+  "Su and Yelick 2005",
+  "Kamil and Yelick 2005",
+  "Chen et al. 2003",
+  "Yelick et al. 1998",
+  "Bonachea and Duell 2003",
+  "Boehm-Demers-Weiser collector"
+ ],
+ "evidence": [
+  {
+   "source": "full text",
+   "section": "Sec. 1-2"
+  },
+  {
+   "source": "full text",
+   "section": "Sec. 3-5"
+  },
+  {
+   "source": "full text",
+   "section": "Sec. 6"
+  },
+  {
+   "source": "full text",
+   "section": "Sec. 7"
+  },
+  {
+   "source": "full text",
+   "section": "Sec. 8, Table 1"
+  }
+ ],
+ "notes": "Supplied PDF is the 2007 IJHPCA article 'Parallel Languages and Compilers: Perspective From the Titanium Experience' (DOI 10.1177/1094342007078449). The 1998 Concurrency paper 'Titanium: a high-performance Java dialect' is the catalog entry yelick1998titanium and was not supplied."
+}

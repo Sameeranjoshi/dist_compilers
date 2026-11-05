@@ -1,0 +1,29 @@
+{
+ "id": "hiranandani1991fortrand",
+ "summary": "The paper describes compiler algorithms that turn Fortran D programs, whose data layout is given by alignment and distribution directives, into SPMD message-passing node programs for MIMD distributed-memory machines. It concentrates on owner-computes partitioning, message vectorization and collective communication, and on pipelining loops whose cross-processor dependences serialize computation.",
+ "why_read": "It is an early, detailed account of how a compiler derives node programs and message passing from data decomposition directives.",
+ "main_contribution": "A compile-time strategy for Fortran D that partitions data and computation, generates communication sets, and applies message vectorization, collective communication and pipelining.",
+ "main_limitation": "The prototype implements only message vectorization for block-distributed arrays, and the paper reports no measurements.",
+ "evaluation_method": "none",
+ "benchmarks": [],
+ "optimization_objectives": ["load-balance", "communication-volume", "message-count", "overlap"],
+ "data_decomposition": ["replicated", "block-1d", "block-nd", "cyclic", "block-cyclic", "halo-overlap", "dynamic-distribution"],
+ "computation_mapping": ["owner-computes", "iteration-space-partitioning", "pipeline-parallelism"],
+ "communication_generation": ["compiler-p2p", "communication-sets", "message-vectorization", "broadcast-multicast", "reduction-allreduce", "all-to-all", "halo-exchange", "inspector-executor", "communication-pipelining"],
+ "compiler_runtime_boundary": ["static-with-directives", "runtime-inspector"],
+ "target_hardware": ["dm-multicomputer"],
+ "ir_representation": ["source-annotations", "dependence-graph", "distribution-functions"],
+ "compiler_architecture": ["dependence-based"],
+ "states_relationship_to": ["SUPERB", "ParaScope", "Id Nouveau", "Crystal", "ASPAR", "Kali", "PARTI", "ARF", "AL", "CM Fortran", "DINO", "MIMDizer", "Pandore", "Paragon", "SPOT", "Li and Chen", "Balasundaram"],
+ "evidence": [
+  {"source": "full text", "section": "1"},
+  {"source": "full text", "section": "2"},
+  {"source": "full text", "section": "3.1-3.1.4"},
+  {"source": "full text", "section": "3.2-3.2.3"},
+  {"source": "full text", "section": "3.3-3.3.3"},
+  {"source": "full text", "section": "3.4.2"},
+  {"source": "full text", "section": "4-4.1"},
+  {"source": "full text", "section": "5"}
+ ],
+ "notes": ""
+}

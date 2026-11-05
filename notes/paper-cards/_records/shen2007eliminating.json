@@ -1,0 +1,28 @@
+{
+ "id": "shen2007eliminating",
+ "summary": "The paper revisits the Amarasinghe and Lam communication-set algorithms and removes iteration variables that do not affect which element or processor is involved. On an LU kernel this reduces generated communication and cuts running time on a small cluster.",
+ "why_read": "It is a short, concrete example of how the messages a compiler generates can be pruned by projecting away iteration variables.",
+ "main_contribution": "Revised communication-set formulas with redundant-iteration projection, implemented as modified code generation algorithms.",
+ "main_limitation": "Only one LU kernel at one size was measured on a small Fast Ethernet cluster, and examples that need all iteration variables gain nothing.",
+ "evaluation_method": "measured running time of generated LU kernel on an 8-node cluster, before and after the optimization",
+ "benchmarks": ["LU decomposition kernel (256x256)"],
+ "optimization_objectives": ["message-count", "communication-volume"],
+ "data_decomposition": ["block-1d"],
+ "computation_mapping": ["loop-to-processor"],
+ "communication_generation": ["communication-sets", "compiler-p2p"],
+ "compiler_runtime_boundary": ["fully-static"],
+ "target_hardware": ["cpu-cluster"],
+ "ir_representation": ["polyhedral-sets"],
+ "compiler_architecture": ["polyhedral"],
+ "states_relationship_to": ["Amarasinghe and Lam (PLDI 1993)", "Feautrier array expansion", "Shan Shan Wang array data-flow analysis", "Ferner (revisiting communication code generation)", "Ya Nan Shen (automatic code generation of data decomposition)", "Xue Rong Gong (MPI code generation)"],
+ "evidence": [
+  {"source": "full text", "section": "1"},
+  {"source": "full text", "section": "2"},
+  {"source": "full text", "section": "3"},
+  {"source": "full text", "section": "4"},
+  {"source": "full text", "section": "5.1"},
+  {"source": "full text", "section": "5.2 (Fig. 9)"},
+  {"source": "full text", "section": "6"}
+ ],
+ "notes": ""
+}

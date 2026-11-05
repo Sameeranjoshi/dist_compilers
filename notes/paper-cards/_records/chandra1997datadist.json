@@ -1,0 +1,28 @@
+{
+ "id": "chandra1997datadist",
+ "summary": "The paper adds Fortran directives for regular and reshaped array distribution on a cache-coherent NUMA multiprocessor, with affinity scheduling to run iterations where their data lives. It reports that reshaping, together with compiler optimizations of the resulting address arithmetic, can beat page-granular placement on fine-grained distributions.",
+ "why_read": "It shows how a production compiler can offer data placement on shared-memory machines where OS page granularity is too coarse for some distributions.",
+ "main_contribution": "Regular and reshaped data distribution directives with affinity scheduling, implemented in the SGI MIPSpro compiler, plus optimizations that reduce the cost of reshaped array addressing.",
+ "main_limitation": "Reshaped arrays cannot be redistributed dynamically and carry legality restrictions and addressing overhead.",
+ "evaluation_method": "measured speedup and execution time on a 128-processor Origin-2000",
+ "benchmarks": ["NAS LU class C", "matrix transpose 5000x5000", "2-D convolution 1000x1000 and 5000x5000"],
+ "optimization_objectives": ["local-memory-fit", "latency"],
+ "data_decomposition": ["block-1d", "block-nd", "cyclic", "block-cyclic", "dynamic-distribution"],
+ "computation_mapping": ["owner-computes", "iteration-space-partitioning"],
+ "communication_generation": [],
+ "compiler_runtime_boundary": ["static-with-directives", "load-time"],
+ "target_hardware": [],
+ "ir_representation": ["source-annotations"],
+ "compiler_architecture": ["language-spec", "dependence-based"],
+ "states_relationship_to": ["HPF", "HPF-2.0", "Fortran D", "Vienna Fortran", "Anderson, Amarasinghe and Lam (AAL95)", "Anderson and Lam (AnL93)", "Hiranandani et al. (HKM+93)", "Gupta and Banerjee (GuB92)", "Kennedy and Kremer (KeK95)", "Sheffler et al. (SSP+95)", "Verghese et al. (VDG+96)", "Koelbel et al. HPF handbook (KLS+94)"],
+ "evidence": [
+  {"source": "full text", "section": "1"},
+  {"source": "full text", "section": "3.2-3.4"},
+  {"source": "full text", "section": "4.2-4.3"},
+  {"source": "full text", "section": "5"},
+  {"source": "full text", "section": "7"},
+  {"source": "full text", "section": "8.1-8.4"},
+  {"source": "full text", "section": "9"}
+ ],
+ "notes": ""
+}

@@ -1,0 +1,29 @@
+{
+ "id": "ponnusamy1995runtime",
+ "summary": "The paper lets a Fortran 90D/HPF user name a partitioner that works from connectivity, coordinates or loads, so the compiler can distribute irregular arrays at run time. It also gives a conservative test that reuses inspector results when indirection arrays are unchanged.",
+ "why_read": "It is an early, clear account of how a compiler can support irregular data distributions by calling partitioners and reusing run-time communication schedules.",
+ "main_contribution": "Compiler directives that build a GeoCoL graph for user-chosen partitioners, plus a conservative run-time test for reusing inspector results in Fortran 90D/HPF loops.",
+ "main_limitation": "The reuse test is conservative and can add high run-time overhead in some cases, and the results come from a single machine.",
+ "evaluation_method": "measured execution time on Intel iPSC/860 against hand-coded versions",
+ "benchmarks": ["3-D unstructured Euler solver (10K and 53K meshes)", "CHARMM electrostatic force loop (648-atom water)", "reactive flow combustion code"],
+ "optimization_objectives": ["load-balance", "communication-volume", "message-count"],
+ "data_decomposition": ["block-1d", "mapping-array", "graph-partition", "dynamic-distribution"],
+ "computation_mapping": ["loop-to-processor"],
+ "communication_generation": ["import-export-schedule", "inspector-executor", "message-vectorization", "scatter-gather", "redistribution-resharding"],
+ "compiler_runtime_boundary": ["static-with-directives", "runtime-inspector", "adaptive"],
+ "target_hardware": ["dm-multicomputer", "hypercube-mpp"],
+ "ir_representation": ["source-annotations", "runtime-schedule"],
+ "compiler_architecture": ["library-backed", "language-spec"],
+ "states_relationship_to": ["PARTI", "Kali", "ARF", "Fortran D", "Vienna Fortran", "HPF", "pC++", "von Hanxleden value-based decompositions", "Williams DIME", "Baden particle programming environment", "Jade", "DINO", "CODE", "Chen (Yale) irregular loop work", "Das, Saltz and von Hanxleden slicing analysis", "Ponnusamy et al. 1992 runtime mapping scheme", "Ponnusamy et al. 1993 Supercomputing paper", "Ponnusamy et al. 1995 HPF irregular distributions", "Simon spectral partitioner"],
+ "evidence": [
+  {"source": "full text", "section": "I-B"},
+  {"source": "full text", "section": "II-B"},
+  {"source": "full text", "section": "III"},
+  {"source": "full text", "section": "IV-A"},
+  {"source": "full text", "section": "V.B-V.C"},
+  {"source": "full text", "section": "VI (Table IV)"},
+  {"source": "full text", "section": "VI.B-VI.C (Table IX)"},
+  {"source": "full text", "section": "VII"}
+ ],
+ "notes": ""
+}

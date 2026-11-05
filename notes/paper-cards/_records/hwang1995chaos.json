@@ -1,0 +1,28 @@
+{
+ "id": "hwang1995chaos",
+ "summary": "The paper presents the CHAOS runtime library, which adds light-weight schedules and two-phase schedule generation for programs whose indirection arrays change during a run. It also shows that a Fortran 90D/HPF compiler can embed CHAOS calls for molecular dynamics and particle-in-cell kernels.",
+ "why_read": "It shows concretely how adaptive irregular codes, such as molecular dynamics and particle simulation, are handled by reusing or rebuilding communication schedules.",
+ "main_contribution": "The CHAOS runtime primitives for adaptive irregular loops (light-weight schedules, incremental and merged schedules via hash-table stamps) and a proposed reduce(append) construct for data movement.",
+ "main_limitation": "Compiler results come from one prototype and one machine, and the reduce(append) construct needs user-supplied knowledge that the loop is a reduction.",
+ "evaluation_method": "measured execution times on Intel iPSC/860 for CHARMM and DSMC, including hand-coded comparisons",
+ "benchmarks": ["CHARMM molecular dynamics (MbCO plus 3830 water molecules)", "2-D and 3-D direct simulation Monte Carlo (DSMC)"],
+ "optimization_objectives": ["communication-volume", "message-count", "load-balance"],
+ "data_decomposition": ["block-1d", "mapping-array", "dynamic-distribution"],
+ "computation_mapping": ["owner-computes", "loop-to-processor"],
+ "communication_generation": ["import-export-schedule", "inspector-executor", "scatter-gather", "message-vectorization", "redistribution-resharding"],
+ "compiler_runtime_boundary": ["static-with-directives", "runtime-inspector", "adaptive"],
+ "target_hardware": ["dm-multicomputer", "hypercube-mpp"],
+ "ir_representation": ["source-annotations", "runtime-schedule"],
+ "compiler_architecture": ["library-backed", "language-spec"],
+ "states_relationship_to": ["PARTI", "Kali", "ARF", "Fortran D", "HPF", "Vienna Fortran", "pC++", "Syracuse Fortran 90D/HPF compiler", "DIME (Williams)", "Baden particle programming environment", "Jade", "DINO", "CODE", "Chen (Yale) work", "Mirchandaney et al. 1988 runtime support", "Saltz, Berryman and Wu 1991", "Das et al. 1994 communication optimizations", "Ponnusamy et al. technical report (later TPDS paper)", "Ponnusamy et al. CS-TR-3268 (irregular distributions in Fortran 90D/HPF)", "Brooks et al. CHARMM", "Wilmoth DSMC"],
+ "evidence": [
+  {"source": "full text", "section": "Abstract"},
+  {"source": "full text", "section": "Runtime support: two-phase schedule generation"},
+  {"source": "full text", "section": "Runtime support: light-weight schedules"},
+  {"source": "full text", "section": "Experimental results (Tables I-IV)"},
+  {"source": "full text", "section": "Language support: reduce append"},
+  {"source": "full text", "section": "Compiler implementation (Tables VI-VII)"},
+  {"source": "full text", "section": "Related work"}
+ ],
+ "notes": ""
+}

@@ -62,7 +62,7 @@ near-exact repeats of others and map to the same id.
 | `systolic_why.pdf` | 10 | `kung1982systolic` | `8c7e08b119c750b7` |
 | `thangamani2024polyhedral.pdf` | 26 | `thangamani2024polyhedral` | `63b047384057a735` |
 | `tiling_distributed_machine.pdf` | 42 | `tang2000tiled` | `04a7368baad9803d` |
-| `titanium_compiler.pdf` | 25 | `yelick1998titanium` | `841e8b5588441873` |
+| `titanium_compiler.pdf` | 25 | `yelick2007titanium` | `841e8b5588441873` |
 | `udya_affine.pdf` | 12 | `bondhugula2013compiling` | `2748c9385972b585` |
 | `vienna.pdf` | 20 | `chapman1992vienna` | `0bf96cf72fc92221` |
 | `zimma.pdf` | 37 | `chen1988compiling` | `6ac022fe093add2a` |
