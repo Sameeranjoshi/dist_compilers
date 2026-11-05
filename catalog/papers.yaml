@@ -2437,7 +2437,7 @@ papers:
   - reduction-allreduce
   - message-vectorization
   compiler_runtime_boundary:
-  - fully-static
+  - analytic-optimization
   compiler_architecture:
   - dependence-based
   - source-to-source
@@ -4611,7 +4611,7 @@ papers:
   - reduction-allreduce
   - communication-pipelining
   compiler_runtime_boundary:
-  - fully-static
+  - analytic-optimization
   compiler_architecture:
   - dependence-based
   - library-backed
@@ -4716,7 +4716,7 @@ papers:
   - redistribution-resharding
   - communication-pipelining
   compiler_runtime_boundary:
-  - fully-static
+  - analytic-optimization
   compiler_architecture:
   - dependence-based
   - source-to-source
@@ -5360,8 +5360,7 @@ papers:
   - pgas-target
   memory_model: null
   programming_model: null
-  data_decomposition:
-  - application-defined
+  data_decomposition: []
   computation_mapping:
   - loop-to-processor
   communication_generation:
@@ -7730,7 +7729,6 @@ papers:
   - replicated
   - block-nd
   - uneven-block
-  - mapping-array
   - tiled-hierarchical
   - model-state-sharding
   computation_mapping:
@@ -7739,6 +7737,7 @@ papers:
   - pipeline-parallelism
   - expert-parallelism
   - hierarchical-mapping
+  - partition-propagation
   communication_generation:
   - reduction-allreduce
   - scatter-gather
@@ -8214,7 +8213,7 @@ papers:
   - reduction-allreduce
   - scatter-gather
   compiler_runtime_boundary:
-  - fully-static
+  - analytic-optimization
   compiler_architecture: []
   ir_representation:
   - polyhedral-sets
@@ -8443,6 +8442,7 @@ papers:
   computation_mapping:
   - data-parallelism
   - operator-tensor-parallelism
+  - partition-propagation
   communication_generation:
   - reduction-allreduce
   - scatter-gather
@@ -8813,7 +8813,6 @@ papers:
   data_decomposition:
   - block-nd
   - halo-overlap
-  - application-defined
   computation_mapping:
   - spatial-placement
   - owner-computes

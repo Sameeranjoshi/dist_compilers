@@ -73,6 +73,8 @@ axes:
     values:
       - {id: owner-computes, name: "Owner-computes", def: "Statement executed by the owner of the left-hand-side element."}
       - {id: restricted-owner-computes, name: "Restricted owner-computes", def: "Owner-computes relaxed for selected statements or operands."}
+      - {id: partition-propagation, name: "Partition propagation", def: "Partitions of unannotated values inferred from annotated ones through the program graph, so no single statement owner fixes the mapping."}
+      - {id: partition-propagation, name: "Partition propagation", def: "Partitions of unannotated values inferred from annotated ones through the program graph, so no single statement's owner decides the mapping."}
       - {id: iteration-space-partitioning, name: "Iteration-space partitioning", def: "Loop iterations partitioned independently of data ownership."}
       - {id: loop-to-processor, name: "Loop-to-processor mapping", def: "Explicit affine map from iterations to processors."}
       - {id: task-placement, name: "Task placement", def: "Discrete tasks assigned to places by scheduler or mapper."}
@@ -108,13 +110,14 @@ axes:
     name: "F. Compilation time"
     field: compiler_runtime_boundary
     values:
-      - {id: fully-static, name: "Fully static", def: "All distribution and communication decided at compile time."}
+      - {id: fully-static, name: "Fully static", def: "All distribution and communication decided at compile time, from declarations or closed-form analysis (no cost-model optimisation)."}
       - {id: static-with-directives, name: "Compile-time with user directives", def: "Static, but driven by programmer annotations."}
       - {id: profile-guided, name: "Profile-guided", def: "Decisions informed by profile data."}
       - {id: autotuned, name: "Autotuned", def: "Search over configurations with measurement."}
       - {id: load-time, name: "Load-time", def: "Decisions fixed when the program starts (machine size known)."}
       - {id: jit, name: "JIT", def: "Compiled during execution."}
       - {id: runtime-inspector, name: "Runtime inspector", def: "Communication derived from runtime index inspection."}
+      - {id: analytic-optimization, name: "Analytic optimization", def: "Decomposition chosen by a closed-form analysis, dynamic program or solver over a cost model, with no profiling or search over executions."}
       - {id: adaptive, name: "Adaptive / dynamic repartitioning", def: "Distribution revised during execution."}
 
   - key: compiler_architecture

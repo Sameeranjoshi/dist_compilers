@@ -1,21 +1,35 @@
 \section{Cross-Era Synthesis}
 \label{sec:synthesis}
 
-\begin{figure*}[t]
-  \centering
-  \includegraphics[width=0.9\textwidth]{rediscovery-map.pdf}
-  \caption{Concepts of 1988--2006 and their 2018--2025 descendants. Each edge names the catalog entries that document the older and the newer form. The pairing is a survey hypothesis: it asserts functional correspondence, not that the newer work cites the older one. Evidence for each pair is tracked in the repository's historical-claims file.}
-  \label{fig:rediscovery}
-\end{figure*}
+The findings of Section~\ref{sec:history} and the mechanisms of Sections~\ref{sec:mapping}--\ref{sec:modern} support a short list of generalizations. Table~\ref{tab:generalizations} states each one with its evidence strength, the observation that would refute it, and what we would need to test it. The list is the contribution of this section; the paper's narrative in earlier sections is the evidence for it.
 
-\subsection{Ideas that persisted}
-\infer{Block distributions over a logical processor arrangement, owner-based assignment of work, and the separation of a global index space from local storage appear in Fortran~D~\cite{hiranandani1992compiling}, Vienna Fortran~\cite{chapman1992vienna}, HPF~\cite{hpfforum1993spec}, and in mesh and sharding systems~\cite{shazeer2018meshtf,xu2021gspmd}. Fig.~\ref{fig:rediscovery} pairs the older concepts with their descendants.}
+\begin{table*}[t]
+\centering
+\scriptsize
+\caption{Generalizations, their evidence strength in the read set, the observation that would refute each, and the test that would settle it. Strength is ``supported'' when the count in the cited table shows it with no counterexample among the papers read, ``suggested'' when the count is consistent but the sample in one era is below ten, and ``open'' when the claim is an inference we have not tested.}
+\label{tab:generalizations}
+\begin{tabular}{p{0.04\textwidth}p{0.30\textwidth}p{0.10\textwidth}p{0.26\textwidth}p{0.20\textwidth}}
+\toprule
+ID & Generalization & Strength & Refuting observation & Test \\
+\midrule
+G1 & A runtime stage is present whenever the ownership of an element is data-dependent at run time. & supported (17 papers) & A read paper with data-dependent ownership and no run-time stage. & Read the open Vienna Fortran INDIRECT mechanism and any further mapping-array systems. \\
+G2 & The cost model moved from analytic (1990s) to profiled or simulated (2019 onward). & suggested & A 2019+ system with an analytic network model as the primary optimiser, or a 1990s system that profiles. & Read the Kali and CHAOS cost discussions in full; read further 2019+ systems. \\
+G3 & Message count was the leading objective of the 1990s and has largely given way to memory fit and productivity. & suggested & A recent system that optimises message count as its primary objective. & Re-code objectives on a second axis and compare with the stated goals of each paper. \\
+G4 & Block-cyclic and mapping-array decompositions disappear after about 2000, while model-state and sparse partitions appear. & suggested & A post-2005 read system that uses block-cyclic as its main decomposition. & Survey the 2000--2010 PGAS and HPCS papers, which are the least covered era. \\
+G5 & Owner-computes is replaced by partition propagation only where the program is a graph of operators. & open & A graph-based system that still uses owner-computes as its main mechanism. & Compare the statement-level rules of Kali and Fortran D with the graph rules of GSPMD on one shared workload. \\
+G6 & Element-level communication survives only inside collective systems. & suggested & A read system with element-level generation and no collective component in Era 5 or later. & Read the inspector and element-level systems of 2010 onward. \\
+G7 & Halo overlap is the one ownership feature present in every era. & supported (2--3 per era) & A read era with no halo-overlap system. & Extend the read set to Eras 0 and 1. \\
+\bottomrule
+\end{tabular}
+\end{table*}
 
-\subsection{Ideas that receded}
-\infer{Automatic distribution selection for general Fortran programs receded after the early 1990s. The 1992 Gupta and Banerjee formulation was NP-hard in general and relied on compile-time estimates~\cite{gupta1992automatic}; PARADIGM's later work still delegated communication code generation in part to the programmer~\cite{su1995advanced}. Kennedy, Koelbel and Zima's retrospective attributes HPF's decline to the factors discussed in Section~\ref{sec:history}~\cite{kennedy2007rise}.} \todo{Confirm the attribution by reading \cite{kennedy2007rise} in full.}
+\subsection{What the generalizations say together}
+\infer{G1 and G2 describe one trade-off from two sides. A run-time stage is needed when ownership is data-dependent, and the cost of choosing a decomposition is paid either by modelling the network or by measuring the program. The systems that avoid the run-time stage pay for it in analysis or in a model, and the systems that pay in measurement avoid the model. G5 and G6 describe the same movement at the level of communication: the unit of reasoning has moved from the statement and the element to the operator and the sharding.}
 
-\subsection{Concepts rediscovered under new names}
-\infer{Processor grid $\rightarrow$ device mesh; ALIGN/DISTRIBUTE $\rightarrow$ sharding annotation; owner-computes $\rightarrow$ partition propagation; communication sets $\rightarrow$ collective insertion; redistribution $\rightarrow$ resharding; inspector--executor $\rightarrow$ run-time sparse communication planning; global arrays $\rightarrow$ distributed tensor values; PARTI import/export schedules $\rightarrow$ sparse slice exchange; hierarchical machine mapping $\rightarrow$ inter-/intra-operator parallelism.} \fact{The inspector--executor split is documented in the 1990 PARTI reports~\cite{saltz1990runtime,saltz1991multiprocessor}, and its sparse descendant appears in SpDISTAL~\cite{yadav2022spdistal}.} \fact{Chatterjee et al.'s local address and communication-set generation~\cite{chatterjee1993generating} and the mesh shardings of MLIR~\cite{mlir2025shard} both answer which elements a processor must touch under a distribution.} \todo{Each rediscovery pair needs a sentence of evidence from both sides; the pairs in Fig.~\ref{fig:rediscovery} are currently supported at the level of the catalog records only.}
+\subsection{What the generalizations do not say}
+The read set contains no paper from Era~0 or Era~1, so nothing above is a claim about the foundations. The counts are over papers whose full text was read, and the catalog contains 51 further entries whose claims rest on bibliographic records alone. Several generalizations depend on the taxonomy's values, which were coded by one coder; a second coding is a precondition for calling any of them a finding.
 
-\subsection{Why explicit MPI became dominant, and why high-level partitioning has returned}
-\infer{We hypothesise that MPI won in Eras 3--4 because its cost model is transparent to the programmer and its performance does not depend on compiler maturity, whereas high-level partitioning has returned in Era 6 because ML programs are expressed as operator graphs with few, large, regular operators, which makes both propagation and cost modelling tractable. The HPF retrospective is the main evidence for the first half~\cite{kennedy2007rise}, and the propagation designs for the second~\cite{xu2021gspmd,alabed2025partir}. \todo{Test both halves against the evaluation sections of \cite{xu2021gspmd,zheng2022alpa,alabed2025partir} and the 1990s records.}}
+\subsection{The cross-era hypothesis about explicit MPI}
+\infer{We hypothesise that explicit MPI won in Eras~3--4 because its cost is transparent to the programmer, whereas high-level partitioning returned in Era~6 because operator graphs make propagation and cost modelling tractable (G2 and G5). The HPF retrospective is the principal evidence for the first half~\cite{kennedy2007rise}. The second half rests on the propagation designs~\cite{xu2021gspmd,alabed2025partir} and is not tested.}
+
+\todo{Test G2 and G5 on the Era~4 PGAS and HPCS papers, which are the least covered era in the read set.}

@@ -35,6 +35,7 @@ figures:
 	$(PYTHON) scripts/render_citation_graph.py
 
 tables:
+	python3 scripts/generate_insights.py
 	$(PYTHON) scripts/generate_tables.py
 
 readme:
