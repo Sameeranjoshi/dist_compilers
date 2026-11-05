@@ -29,10 +29,10 @@ been read beyond their bibliographic record say so.
 | systems | 28 |
 | metadata-verified against Crossref/arXiv | 95 |
 | status `verified` (primary source read) | 4 |
-| status `read` | 39 |
-| status `screened` / `discovered` | 62 |
+| status `read` | 44 |
+| status `screened` / `discovered` | 57 |
 | tier core / bridge / foundation / adjacent | 73 / 14 / 12 / 6 |
-| paper cards | 44 |
+| paper cards | 52 |
 <!-- END:status -->
 
 Status meanings: `discovered` = metadata verified against Crossref/arXiv
@@ -59,7 +59,7 @@ away from it.  Links go to the DOI, arXiv or the official open copy.
 1. [Compiling for distributed-memory systems](https://doi.org/10.1109/5.214550) — Zima and Chapman, 1993.  
    *Learn:* It is a compact early account of how distribution-based compilers turn a global-address Fortran program into message-passing code.
 2. [Compiling High Performance Fortran for distributed-memory architectures](https://doi.org/10.1016/s0167-8191(99)00074-5) — Benkner and Zima, 1999.  
-   *Learn:* An end-of-decade overview of HPF compilation; read it after the 1993 overview to see what matured and what did not.
+   *Learn:* It is a compact overview of HPF compilation and runtime techniques, from layout descriptors to reuse of communication schedules for irregular loops.
 
 **Global arrays and owner-computes**
 
@@ -208,8 +208,8 @@ rationale in `docs/taxonomy.md`.
 - **Anderson and Lam (1993)** — [Global optimizations for parallelism and locality on scalable parallel machines](https://doi.org/10.1145/155090.155101) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   Joint affine decomposition of data and computation, a precursor of polyhedral distributed-memory compilation.  
   `automatic-distribution` `affine`
-- **Rogers and Pingali (1994)** — [Compiling for distributed memory architectures](https://doi.org/10.1109/71.277789) — *full-system*. *(metadata-verified; summary pending full read)*  
-  A non-Fortran, functional-language take on the same distribution and communication problems.  
+- **Rogers and Pingali (1994)** — [Compiling for distributed memory architectures](https://doi.org/10.1109/71.277789) — *full-system*.  
+  It is a clear early account of owner-driven process decomposition with a correct fallback, and of the message optimizations needed to make such generated code usable.  
   `communication-generation`
 - **Banerjee et al. (1995)** — [The Paradigm compiler for distributed-memory multicomputers](https://doi.org/10.1109/2.467577) — *full-system*. *(metadata-verified; summary pending full read)*  
   The most complete automatic (no-directive) distributed-memory compiler of the 1990s.  
@@ -241,8 +241,8 @@ rationale in `docs/taxonomy.md`.
 - **Hiranandani et al. (1992)** — [Evaluation of compiler optimizations for Fortran D on MIMD distributed memory machines](https://doi.org/10.1145/143369.143372) — *experience*.  
   It shows with measurements which communication and parallelism optimizations matter most for a data-parallel compiler, and where they stop paying off.  
   `fortran-d` `evaluation`
-- **Loveman (1993)** — [High performance Fortran](https://doi.org/10.1109/88.219857) — *language*. *(metadata-verified; summary pending full read)*  
-  The HPF language in one article; the directive set every later sharding annotation can be compared with.  
+- **Loveman (1993)** — [High performance Fortran](https://doi.org/10.1109/88.219857) — *language*.  
+  It explains the HPF data mapping model and its design trade-offs in plain terms, for a reader new to data-parallel Fortran.  
   `hpf` `language`
 - **Forum (1993)** — [High Performance Fortran language specification](https://doi.org/10.1145/174223.158909) — *specification*. *(metadata-verified; summary pending full read)*  
   The normative definition of the distribution directives; cite it, not a secondary source, for what HPF 1.0 could express.  
@@ -250,8 +250,8 @@ rationale in `docs/taxonomy.md`.
 - **Bozkus et al. (1993)** — [Fortran 90D/HPF compiler for distributed memory MIMD computers](https://doi.org/10.1145/169627.169750) — *full-system*. *(metadata-verified; summary pending full read)*  
   An HPF-style compiler built around a runtime library of collective operations rather than compiler-synthesised messages.  
   `hpf` `fortran-90d`
-- **Chatterjee et al. (1993)** — [Generating local addresses and communication sets for data-parallel programs](https://doi.org/10.1145/155332.155348) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
-  The address-arithmetic core of every HPF compiler: how a processor knows which of its local elements participate and whom to talk to.  
+- **Chatterjee et al. (1993)** — [Generating local addresses and communication sets for data-parallel programs](https://doi.org/10.1145/155332.155348) — *compiler-technique*.  
+  It explains how HPF-style local addressing and message sets reduce to small per-processor tables, which is a core problem for any data-parallel compiler.  
   `communication-generation` `block-cyclic`
 - **Stichnoth et al. (1994)** — [Generating Communication for Array Statements: Design, Implementation, and Evaluation](https://doi.org/10.1006/jpdc.1994.1048) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   Array-statement communication generation evaluated inside a production research compiler.  
@@ -259,8 +259,8 @@ rationale in `docs/taxonomy.md`.
 - **Harris et al. (1995)** — [Compiling High Performance Fortran for Distributed-Memory Systems](https://ftp.math.utah.edu/pub/tex/bib/idx/dectechj/7/3/5_23.html) — *full-system*.  
   It is a concise, production-oriented description of how a commercial HPF compiler represents distributions and iteration spaces and derives static communication for block/cyclic data, including why strict owner-computes was not adopted.  
   `hpf` `production-compiler`
-- **Gupta et al. (1995)** — [An HPF compiler for the IBM SP2](https://doi.org/10.1145/224170.224422) — *full-system*. *(metadata-verified; summary pending full read)*  
-  A second production HPF compiler, for comparison with Digital's.  
+- **Gupta et al. (1995)** — [An HPF compiler for the IBM SP2](https://doi.org/10.1145/224170.224422) — *full-system*.  
+  It shows what an HPF compiler has to do to turn distribution directives into efficient SPMD code, and which optimizations matter in practice.  
   `hpf` `production-compiler`
 - **Ancourt et al. (1995)** — [A Linear Algebra Framework for Static High Performance Fortran Code Distribution](https://doi.org/10.1155/1997/195689) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   The clearest link between HPF directives and the polyhedral formulation used two decades later.  
@@ -268,8 +268,8 @@ rationale in `docs/taxonomy.md`.
 - **Su et al. (1995)** — [Advanced compilation techniques in the PARADIGM compiler for distributed-memory multicomputers](https://doi.org/10.1145/224538.224650) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   ICS '95 paper describing advanced techniques in the PARADIGM compiler (data and computation partitioning, communication optimisation and task/data parallelism) for distributed-memory multicomputers; the fuller companion to the 1995 Computer article.  
   `paradigm` `automatic-distribution`
-- **Benkner and Zima (1999)** — [Compiling High Performance Fortran for distributed-memory architectures](https://doi.org/10.1016/s0167-8191(99)00074-5) — *survey*. *(metadata-verified; summary pending full read)*  
-  An end-of-decade overview of HPF compilation; read it after the 1993 overview to see what matured and what did not.  
+- **Benkner and Zima (1999)** — [Compiling High Performance Fortran for distributed-memory architectures](https://doi.org/10.1016/s0167-8191(99)00074-5) — *survey*.  
+  It is a compact overview of HPF compilation and runtime techniques, from layout descriptors to reuse of communication schedules for irregular loops.  
   `survey` `hpf`
 - **Kennedy et al. (2007)** — [The rise and fall of High Performance Fortran](https://doi.org/10.1145/1238844.1238851) — *experience*. *(metadata-verified; summary pending full read)*  
   The participants' own account of why the most ambitious distributed-memory compiler project of the 1990s faded; essential context for the cross-era synthesis.  
@@ -529,8 +529,8 @@ rationale in `docs/taxonomy.md`.
 - **Zima and Chapman (1993)** — [Compiling for distributed-memory systems](https://doi.org/10.1109/5.214550) — *survey*.  
   It is a compact early account of how distribution-based compilers turn a global-address Fortran program into message-passing code.  
   `survey` `hpf-era`
-- **Benkner and Zima (1999)** — [Compiling High Performance Fortran for distributed-memory architectures](https://doi.org/10.1016/s0167-8191(99)00074-5) — *survey*. *(metadata-verified; summary pending full read)*  
-  An end-of-decade overview of HPF compilation; read it after the 1993 overview to see what matured and what did not.  
+- **Benkner and Zima (1999)** — [Compiling High Performance Fortran for distributed-memory architectures](https://doi.org/10.1016/s0167-8191(99)00074-5) — *survey*.  
+  It is a compact overview of HPF compilation and runtime techniques, from layout descriptors to reuse of communication schedules for irregular loops.  
   `survey` `hpf`
 - **Kennedy et al. (2007)** — [The rise and fall of High Performance Fortran](https://doi.org/10.1145/1238844.1238851) — *experience*. *(metadata-verified; summary pending full read)*  
   The participants' own account of why the most ambitious distributed-memory compiler project of the 1990s faded; essential context for the cross-era synthesis.  
@@ -643,11 +643,11 @@ rationale in `docs/taxonomy.md`.
   `sparse`
 - **Bozkus et al. (1993)** — [Fortran 90D/HPF compiler for distributed memory MIMD computers](https://doi.org/10.1145/169627.169750) — *full-system*. *(metadata-verified; summary pending full read)*  
   `hpf` `fortran-90d`
-- **Chatterjee et al. (1993)** — [Generating local addresses and communication sets for data-parallel programs](https://doi.org/10.1145/155332.155348) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+- **Chatterjee et al. (1993)** — [Generating local addresses and communication sets for data-parallel programs](https://doi.org/10.1145/155332.155348) — *compiler-technique*.  
   `communication-generation` `block-cyclic`
 - **Forum (1993)** — [High Performance Fortran language specification](https://doi.org/10.1145/174223.158909) — *specification*. *(metadata-verified; summary pending full read)*  
   `hpf` `specification`
-- **Loveman (1993)** — [High performance Fortran](https://doi.org/10.1109/88.219857) — *language*. *(metadata-verified; summary pending full read)*  
+- **Loveman (1993)** — [High performance Fortran](https://doi.org/10.1109/88.219857) — *language*.  
   `hpf` `language`
 - **Ponnusamy et al. (1993)** — [Runtime compilation techniques for data partitioning and communication schedule reuse](https://doi.org/10.1145/169627.169752) — *runtime*. *(metadata-verified; summary pending full read)*  
   `irregular` `chaos`
@@ -659,7 +659,7 @@ rationale in `docs/taxonomy.md`.
   `irregular` `chaos`
 - **Forum (1994)** — [MPI: A Message-Passing Interface Standard (Version 1.0)](https://www.mpi-forum.org/docs/) — *specification*. *(metadata-verified; summary pending full read)*  
   `mpi` `specification`
-- **Rogers and Pingali (1994)** — [Compiling for distributed memory architectures](https://doi.org/10.1109/71.277789) — *full-system*. *(metadata-verified; summary pending full read)*  
+- **Rogers and Pingali (1994)** — [Compiling for distributed memory architectures](https://doi.org/10.1109/71.277789) — *full-system*.  
   `communication-generation`
 - **Stichnoth et al. (1994)** — [Generating Communication for Array Statements: Design, Implementation, and Evaluation](https://doi.org/10.1006/jpdc.1994.1048) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   `communication-generation` `fx`
@@ -667,7 +667,7 @@ rationale in `docs/taxonomy.md`.
   `hpf` `polyhedral`
 - **Banerjee et al. (1995)** — [The Paradigm compiler for distributed-memory multicomputers](https://doi.org/10.1109/2.467577) — *full-system*. *(metadata-verified; summary pending full read)*  
   `paradigm` `automatic-distribution`
-- **Gupta et al. (1995)** — [An HPF compiler for the IBM SP2](https://doi.org/10.1145/224170.224422) — *full-system*. *(metadata-verified; summary pending full read)*  
+- **Gupta et al. (1995)** — [An HPF compiler for the IBM SP2](https://doi.org/10.1145/224170.224422) — *full-system*.  
   `hpf` `production-compiler`
 - **Harris et al. (1995)** — [Compiling High Performance Fortran for Distributed-Memory Systems](https://ftp.math.utah.edu/pub/tex/bib/idx/dectechj/7/3/5_23.html) — *full-system*.  
   `hpf` `production-compiler`
@@ -689,7 +689,7 @@ rationale in `docs/taxonomy.md`.
   `paradigm` `redistribution`
 - **Chandra et al. (1997)** — [Data distribution support on distributed shared memory multiprocessors](https://doi.org/10.1145/258915.258945) — *compiler-technique*.  
   `dsm` `data-distribution`
-- **Benkner and Zima (1999)** — [Compiling High Performance Fortran for distributed-memory architectures](https://doi.org/10.1016/s0167-8191(99)00074-5) — *survey*. *(metadata-verified; summary pending full read)*  
+- **Benkner and Zima (1999)** — [Compiling High Performance Fortran for distributed-memory architectures](https://doi.org/10.1016/s0167-8191(99)00074-5) — *survey*.  
   `survey` `hpf`
 
 ### Era 4: MPI dominance and alternative programming models (2000–2010)
@@ -830,7 +830,7 @@ rationale in `docs/taxonomy.md`.
   `automatic-distribution` `paradigm`
 - **Hiranandani et al. (1992)** — [Compiling Fortran D for MIMD distributed-memory machines](https://doi.org/10.1145/135226.135230) — *full-system*. *(metadata-verified; summary pending full read)*  
   `fortran-d` `owner-computes`
-- **Loveman (1993)** — [High performance Fortran](https://doi.org/10.1109/88.219857) — *language*. *(metadata-verified; summary pending full read)*  
+- **Loveman (1993)** — [High performance Fortran](https://doi.org/10.1109/88.219857) — *language*.  
   `hpf` `language`
 - **Forum (1993)** — [High Performance Fortran language specification](https://doi.org/10.1145/174223.158909) — *specification*. *(metadata-verified; summary pending full read)*  
   `hpf` `specification`
@@ -871,7 +871,7 @@ rationale in `docs/taxonomy.md`.
   `fortran-d` `communication-generation`
 - **Hiranandani et al. (1992)** — [Compiling Fortran D for MIMD distributed-memory machines](https://doi.org/10.1145/135226.135230) — *full-system*. *(metadata-verified; summary pending full read)*  
   `fortran-d` `owner-computes`
-- **Rogers and Pingali (1994)** — [Compiling for distributed memory architectures](https://doi.org/10.1109/71.277789) — *full-system*. *(metadata-verified; summary pending full read)*  
+- **Rogers and Pingali (1994)** — [Compiling for distributed memory architectures](https://doi.org/10.1109/71.277789) — *full-system*.  
   `communication-generation`
 - **Xu et al. (2021)** — [GSPMD: General and Scalable Parallelization for ML Computation Graphs](https://arxiv.org/abs/2105.04663) — *full-system*.  
   `ml-compilers` `mesh-sharding` `spmd`
@@ -890,11 +890,11 @@ rationale in `docs/taxonomy.md`.
   `fortran-d` `owner-computes`
 - **Bozkus et al. (1993)** — [Fortran 90D/HPF compiler for distributed memory MIMD computers](https://doi.org/10.1145/169627.169750) — *full-system*. *(metadata-verified; summary pending full read)*  
   `hpf` `fortran-90d`
-- **Chatterjee et al. (1993)** — [Generating local addresses and communication sets for data-parallel programs](https://doi.org/10.1145/155332.155348) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+- **Chatterjee et al. (1993)** — [Generating local addresses and communication sets for data-parallel programs](https://doi.org/10.1145/155332.155348) — *compiler-technique*.  
   `communication-generation` `block-cyclic`
 - **Amarasinghe and Lam (1993)** — [Communication optimization and code generation for distributed memory machines](https://doi.org/10.1145/155090.155102) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   `communication-generation` `affine`
-- **Rogers and Pingali (1994)** — [Compiling for distributed memory architectures](https://doi.org/10.1109/71.277789) — *full-system*. *(metadata-verified; summary pending full read)*  
+- **Rogers and Pingali (1994)** — [Compiling for distributed memory architectures](https://doi.org/10.1109/71.277789) — *full-system*.  
   `communication-generation`
 - **Stichnoth et al. (1994)** — [Generating Communication for Array Statements: Design, Implementation, and Evaluation](https://doi.org/10.1006/jpdc.1994.1048) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   `communication-generation` `fx`

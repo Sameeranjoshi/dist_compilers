@@ -1,0 +1,42 @@
+{
+ "id": "rogers1994compiling",
+ "summary": "Rogers and Pingali compile a sequential Id-like program together with a data decomposition into per-process C code for the Intel iPSC/2, using run-time resolution as a correct fallback and compile-time resolution where ownership can be analyzed. Vectorization, pipelining and accumulation of messages are added, and the Gauss-Seidel measurements show the best variant at about three quarters of the speed of handwritten code, while SIMPLE speeds up to 32 processors.",
+ "why_read": "It is a clear early account of owner-driven process decomposition with a correct fallback, and of the message optimizations needed to make such generated code usable.",
+ "main_contribution": "A data-driven compilation method with run-time and compile-time resolution, plus vectorization, pipelining and accumulation of messages for distributed-memory code.",
+ "main_limitation": "Compile-time resolution cannot help with complex or irregular data structures whose references are not analyzable, and the generated code remains slower than handwritten code.",
+ "evaluation_method": "Timings of code variants on iPSC/2 compared with handwritten code for Gauss-Seidel, and SIMPLE speedup compared with a modeled handwritten program.",
+ "benchmarks": ["Gauss-Seidel on a 128x128 grid, iPSC/2, 4 to 32 processors", "SIMPLE hydrodynamics benchmark on a 64x64 grid, iPSC/2, 1 to 32 processors"],
+ "optimization_objectives": ["message-count", "latency", "overlap"],
+ "data_decomposition": ["block-1d", "block-nd", "cyclic", "replicated", "application-defined"],
+ "computation_mapping": ["owner-computes", "iteration-space-partitioning"],
+ "communication_generation": ["compiler-p2p", "message-vectorization", "communication-pipelining"],
+ "compiler_runtime_boundary": ["fully-static", "runtime-inspector"],
+ "target_hardware": ["dm-multicomputer"],
+ "ir_representation": ["array-statements", "distribution-functions"],
+ "compiler_architecture": ["dependence-based"],
+ "states_relationship_to": [
+  "Callahan and Kennedy 1988 (compiling for distributed memory multiprocessors)",
+  "Hiranandani, Kennedy and Tseng 1991 (FORTRAN D compiler)",
+  "Zima, Bast and Gerndt 1988 (Superb)",
+  "Tseng 1990 (AL compiler for Warp)",
+  "Chen, Choo and Li 1989 (Crystal)",
+  "Hatcher and Quinn 1991 (C* compiler)",
+  "Rosing, Schnabel and Weaver 1990 (Dino)",
+  "Koelbel, Mehrotra and Van Rosendale 1990 (Kali)",
+  "Saltz, Crowley, Mirchandaney and Berryman 1990 (run-time scheduling of loops)",
+  "Ramanujam and Sadayappan 1990 (pipelining and tiling)",
+  "Lee, Lin and Snyder 1991 (SIMPLE portability study)",
+  "Ekanadham and Arvind 1987 (Id version of SIMPLE)"
+ ],
+ "evidence": [
+  {"source": "full text", "section": "Abstract; Sec. II"},
+  {"source": "full text", "section": "Sec. III.A"},
+  {"source": "full text", "section": "Sec. IV-V"},
+  {"source": "full text", "section": "Sec. V.A; Table I"},
+  {"source": "full text", "section": "Sec. VIII-IX"},
+  {"source": "full text", "section": "Sec. X"},
+  {"source": "full text", "section": "Sec. XI; Table II"},
+  {"source": "full text", "section": "Sec. XII-XIII"}
+ ],
+ "notes": ""
+}

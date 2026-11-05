@@ -1,0 +1,34 @@
+{
+ "id": "chatterjee1993generating",
+ "summary": "Chatterjee et al. show that a processor's local memory access sequence for a regular section under a cyclic(k) distribution with affine alignment is produced by a finite state machine with at most k states. They give table-construction algorithms, extend the method to multidimensional arrays, and reuse the same tables to generate shift and stride-change communication sets.",
+ "why_read": "It explains how HPF-style local addressing and message sets reduce to small per-processor tables, which is a core problem for any data-parallel compiler.",
+ "main_contribution": "A finite-state-machine formulation of local address sequences and communication sets for cyclic(k) distributions with affine alignment and regular sections.",
+ "main_limitation": "No O(k) table algorithm is known to the authors, the stride-change case uses a simpler fallback without a stated bound, and the evaluation is a single DAXPY kernel on one workstation.",
+ "evaluation_method": "Single-processor DAXPY timing over strides and block sizes, preprocessing time against block size, and table-generation and run-time overhead for shift and stride-change communication sets on 32 processors.",
+ "benchmarks": ["DAXPY over regular sections y(l:n:s) on a Sparcstation 2, block sizes 1, 17, 64 and block", "Shift and stride-change communication set generation (32 processors)"],
+ "optimization_objectives": ["message-count", "memory-bandwidth"],
+ "data_decomposition": ["block-1d", "cyclic", "block-cyclic", "block-nd"],
+ "computation_mapping": ["owner-computes"],
+ "communication_generation": ["communication-sets", "message-vectorization"],
+ "compiler_runtime_boundary": ["runtime-inspector"],
+ "target_hardware": ["dm-multicomputer"],
+ "ir_representation": ["distribution-functions", "runtime-schedule"],
+ "compiler_architecture": ["runtime-plan-generator"],
+ "states_relationship_to": [
+  "Koelbel and Mehrotra 1991 (block or cyclic with unit stride)",
+  "Koelbel 1991 (compile-time generation of regular communication patterns)",
+  "MacDonald et al. 1992 (Cray MPP Fortran addressing)",
+  "Dongarra, van de Geijn and Walker 1992 (cyclic(k) for dense linear algebra)",
+  "Mirchandaney et al. 1988 (inspector-executor analogy)",
+  "Bailey 1992 (unfavorable cache strides)",
+  "High Performance Fortran and Fortran D (language specifications)"
+ ],
+ "evidence": [
+  {"source": "full text", "section": "Sec. 1"},
+  {"source": "full text", "section": "Sec. 2, 2.1"},
+  {"source": "full text", "section": "Sec. 5, 5.1-5.3"},
+  {"source": "full text", "section": "Sec. 6, 6.1, 6.2; Figs. 5-6; Table 2"},
+  {"source": "full text", "section": "Sec. 7"}
+ ],
+ "notes": "No conflict with the catalog id: title, first author and 1993 year match the PDF. Version note: this PDF is the 1993 PPoPP paper, while the reference list of the supplied Ramaswamy, Simons and Banerjee 1996 paper cites the same title as J. Parallel Distrib. Comput. 26 (1995) 72-84; the catalog may need to point to the journal version if that is the intended record."
+}

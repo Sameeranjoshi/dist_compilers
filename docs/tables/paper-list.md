@@ -38,19 +38,19 @@
 | anderson1993global | 1993 | Global optimizations for parallelism and locality on scalable parallel machines | compiler-technique | core | discovered | no | paywalled |
 | bik1993sparse | 1993 | Compilation techniques for sparse matrix computations | compiler-technique | core | discovered | no | paywalled |
 | bozkus1993fortran90d | 1993 | Fortran 90D/HPF compiler for distributed memory MIMD computers | full-system | core | discovered | no | paywalled |
-| chatterjee1993generating | 1993 | Generating local addresses and communication sets for data-parallel programs | compiler-technique | core | screened | no | paywalled |
+| chatterjee1993generating | 1993 | Generating local addresses and communication sets for data-parallel programs | compiler-technique | core | read | no | paywalled |
 | hpfforum1993spec | 1993 | High Performance Fortran language specification | specification | core | screened | no | paywalled |
-| loveman1993hpf | 1993 | High performance Fortran | language | core | screened | no | paywalled |
+| loveman1993hpf | 1993 | High performance Fortran | language | core | read | no | paywalled |
 | ponnusamy1993schedule | 1993 | Runtime compilation techniques for data partitioning and communication schedule reuse | runtime | core | discovered | no | paywalled |
 | su1993paradigm | 1993 | Automating Parallelism of Regular Computations for Distributed-Memory Multicomputers in the PARADIGM Compiler | compiler-technique | core | discovered | no | paywalled |
 | zima1993compiling | 1993 | Compiling for distributed-memory systems | survey | core | read | no | paywalled |
 | das1994communication | 1994 | Communication Optimizations for Irregular Scientific Computations on Distributed Memory Architectures | runtime | core | discovered | no | paywalled |
 | mpiforum1994standard | 1994 | MPI: A Message-Passing Interface Standard (Version 1.0) | specification | core | screened | no | open |
-| rogers1994compiling | 1994 | Compiling for distributed memory architectures | full-system | core | screened | no | paywalled |
+| rogers1994compiling | 1994 | Compiling for distributed memory architectures | full-system | core | read | no | paywalled |
 | stichnoth1994generating | 1994 | Generating Communication for Array Statements: Design, Implementation, and Evaluation | compiler-technique | core | discovered | no | paywalled |
 | ancourt1997linear | 1995 | A Linear Algebra Framework for Static High Performance Fortran Code Distribution | compiler-technique | core | screened | no | paywalled |
 | banerjee1995paradigm | 1995 | The Paradigm compiler for distributed-memory multicomputers | full-system | core | screened | no | paywalled |
-| gupta1995hpf | 1995 | An HPF compiler for the IBM SP2 | full-system | core | screened | no | paywalled |
+| gupta1995hpf | 1995 | An HPF compiler for the IBM SP2 | full-system | core | read | no | paywalled |
 | harris1995dechpf | 1995 | Compiling High Performance Fortran for Distributed-Memory Systems | full-system | core | read | no | open |
 | hwang1995chaos | 1995 | Runtime and language support for compiling adaptive irregular programs on distributed‐memory machines | runtime | core | read | no | paywalled |
 | lee1995techniques | 1995 | Techniques for compiling programs on distributed memory multicomputers | compiler-technique | core | screened | no | paywalled |
@@ -63,7 +63,7 @@
 | chandra1997datadist | 1997 | Data distribution support on distributed shared memory multiprocessors | compiler-technique | bridge | read | no | paywalled |
 | numrich1998coarray | 1998 | Co-array Fortran for parallel programming | language | bridge | read | no | paywalled |
 | yelick1998titanium | 1998 | Titanium: a high-performance Java dialect | language | bridge | discovered | no | paywalled |
-| benkner1999compiling | 1999 | Compiling High Performance Fortran for distributed-memory architectures | survey | core | screened | no | paywalled |
+| benkner1999compiling | 1999 | Compiling High Performance Fortran for distributed-memory architectures | survey | core | read | no | paywalled |
 | tang2000tiled | 2000 | Generating efficient tiled code for distributed memory machines | compiler-technique | core | read | no | paywalled |
 | chen2003upc | 2003 | A performance analysis of the Berkeley UPC compiler | full-system | bridge | read | no | paywalled |
 | charles2005x10 | 2005 | X10: an object-oriented approach to non-uniform cluster computing | language | bridge | discovered | no | paywalled |

@@ -1,0 +1,28 @@
+{
+ "id": "benkner1999compiling",
+ "summary": "This overview describes how HPF compilers for distributed-memory machines are built, covering distribution and alignment processing, local index sets, owner-computes translation of regular array statements, and the inspector/executor scheme for irregular independent loops. It closes with the authors' view that some HPF features, such as block-cyclic alignment with non-unit strides, are hard to implement efficiently and that the language needs further development.",
+ "why_read": "It is a compact overview of HPF compilation and runtime techniques, from layout descriptors to reuse of communication schedules for irregular loops.",
+ "main_contribution": "An overview of HPF compilation for distributed memory, covering layout descriptors, work sets and communication schedules for regular statements, and inspector/executor processing with schedule reuse for irregular loops.",
+ "main_limitation": "It is a survey without new measurements, and its conclusions about performance and compiler maturity rest on cited work and the authors' assessment.",
+ "evaluation_method": "none",
+ "benchmarks": [],
+ "optimization_objectives": ["latency", "message-count", "overlap", "communication-volume"],
+ "data_decomposition": ["replicated", "block-1d", "block-nd", "cyclic", "block-cyclic", "uneven-block", "mapping-array", "halo-overlap", "dynamic-distribution", "affine-owner-map"],
+ "computation_mapping": ["owner-computes", "iteration-space-partitioning", "loop-to-processor", "data-parallelism"],
+ "communication_generation": ["compiler-p2p", "communication-sets", "import-export-schedule", "inspector-executor", "broadcast-multicast", "overlapped", "halo-exchange", "redistribution-resharding", "reduction-allreduce"],
+ "compiler_runtime_boundary": ["static-with-directives", "runtime-inspector"],
+ "target_hardware": ["dm-multicomputer", "workstation-cluster"],
+ "ir_representation": ["distribution-functions", "dependence-graph", "runtime-schedule", "source-annotations"],
+ "compiler_architecture": ["source-to-source", "dependence-based", "library-backed"],
+ "states_relationship_to": ["SUPERB", "Kali", "CM Fortran", "Fortran D", "Vienna Fortran", "VFCS", "VFC", "PARTI", "CHAOS", "Pandore", "Data Parallel C", "Crystal", "Booster", "Adapt", "Id Nouveau", "Dino", "Oxygen", "ASPAR", "MIMDizer", "CRAFT", "PARADIGM", "Adaptor", "PILAR", "Ponnusamy et al.", "Chatterjee et al.", "von Hanxleden and Kennedy (Give-N-Take)", "HPF+", "OpenMP", "Opus"],
+ "evidence": [
+  {"source": "full text", "section": "1-2"},
+  {"source": "full text", "section": "3"},
+  {"source": "full text", "section": "4-4.4"},
+  {"source": "full text", "section": "5.1-5.3"},
+  {"source": "full text", "section": "5.4-5.7"},
+  {"source": "full text", "section": "6-6.6"},
+  {"source": "full text", "section": "7-7.3"}
+ ],
+ "notes": ""
+}

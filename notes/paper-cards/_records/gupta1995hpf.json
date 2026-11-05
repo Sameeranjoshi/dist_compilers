@@ -1,0 +1,25 @@
+{
+ "id": "gupta1995hpf",
+ "summary": "This paper describes pHPF, a prototype native HPF compiler for IBM SP machines that accepts Fortran 90 and Fortran 77 with HPF directives. It generates parameterized communication and computation partitioning so that the processor count can remain unknown at compile time, and it reports speedups on four benchmark programs.",
+ "why_read": "It shows what an HPF compiler has to do to turn distribution directives into efficient SPMD code, and which optimizations matter in practice.",
+ "main_contribution": "A set of communication and scalar-mapping optimizations for HPF, including redundancy elimination, coarse-grain wavefronting and fewer shift messages, implemented in a working compiler with measured speedups.",
+ "main_limitation": "The authors state that compiled HPF programs have inherent overheads that leave them slower than highly tuned hand-coded programs.",
+ "evaluation_method": "Speedups on four HPF benchmark programs on up to 32 processors, compared with serial and hand-written MPL versions, plus static counts of communicating references.",
+ "benchmarks": ["grid", "tomcatv", "NCAR shallow-water model", "x42"],
+ "optimization_objectives": ["communication-volume", "message-count", "performance-portability"],
+ "data_decomposition": ["block-1d", "cyclic", "replicated"],
+ "computation_mapping": ["owner-computes", "iteration-space-partitioning", "data-parallelism"],
+ "communication_generation": ["compiler-p2p", "message-vectorization", "broadcast-multicast", "reduction-allreduce", "communication-sets", "communication-pipelining", "overlapped"],
+ "compiler_runtime_boundary": ["static-with-directives", "load-time"],
+ "target_hardware": ["cpu-cluster"],
+ "ir_representation": ["source-annotations", "array-statements", "dependence-graph"],
+ "compiler_architecture": ["library-backed", "dependence-based"],
+ "states_relationship_to": ["Fortran D", "SUPERB", "Fortran 90D", "PARADIGM", "ADAPTOR", "SUIF", "Kali", "Id Nouveau", "Crystal", "xHPF", "PGHPF", "Gupta and Banerjee", "Gupta, Schonberg and Srinivasan"],
+ "evidence": [
+  {"source": "full text", "section": "2.1, 2.2"},
+  {"source": "full text", "section": "3"},
+  {"source": "full text", "section": "4"},
+  {"source": "full text", "section": "5"}
+ ],
+ "notes": "No conflict with the catalog id for title, first author or year. The title page prints no venue or year; 1995 is consistent with the paper's own 1995 references. No DOI in the PDF."
+}
