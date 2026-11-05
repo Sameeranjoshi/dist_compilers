@@ -6,10 +6,10 @@
 **Card status:** full-read
 
 ## Problem
-Hand-written message-passing code is error-prone, so the paper proposes a compiler that takes a sequential program and a data decomposition and specializes the code for each process (Sec. I, Sec. II). Process decomposition is driven by data placement, not by program text (Abstract, Sec. II).
+The paper proposes a compiler that takes a sequential program and a data decomposition and specializes the code for each process, so that process decomposition follows data placement (Abstract, Sec. I, Sec. II).
 
 ## Input abstraction
-The source is an Id-like functional language with I-structures (Sec. III). The programmer gives mappings: wrapped rows or columns, blocks, an explicit process, an expression, or a same-as relation (Sec. III.A). Both sides of a full array assignment must share a mapping (Sec. III.A). The examples use loops with step 1 (Sec. V), and the SIMPLE compiler handles only flat arrays (p. 294, note 7).
+The source is an Id-like functional language with I-structures (Sec. III). The programmer gives mappings: wrapped rows or columns, blocks, an explicit process, an expression, or a same-as relation (Sec. III.A). Both sides of a full array assignment must share a mapping (Sec. III.A). The SIMPLE compiler handles only flat arrays (p. 294, note 7).
 
 ## Target
 The compiler generates C for the Intel iPSC/2 (Sec. II). The machine model is one process per processor, with explicit send and receive (Sec. III.B).
@@ -21,7 +21,7 @@ Each mapping supplies map, local and alloc functions (Sec. III.A). Wrapped (cycl
 The owner of a left-hand side computes the right-hand side (Principle 2, Sec. IV). Under run-time resolution, conditionals and loops run on all processes (Principle 4, Sec. IV). Compile-time resolution restricts work to evaluator sets and iterations that have work (Sec. V). Reductions are assigned to the process that owns most right-hand-side references (Sec. X).
 
 ## Communication generation
-Run-time resolution sends each value to each process that needs it (Sec. IV). Compile-time resolution places sends and receives at the reference after partial evaluation (Sec. V). Vectorization combines messages for read-only references outside conditionals whose communication falls in contiguous iterations (Sec. VIII). Pipelining moves sends to the point where the value is ready, using mailbox numbers and, for array elements, a monotonicity condition (Sec. IX). Accumulation combines partial results of commutative, associative operators (Sec. X).
+Run-time resolution sends each value to each process that needs it (Sec. IV). Compile-time resolution places sends and receives at the reference after partial evaluation (Sec. V). Vectorization combines messages for read-only references outside conditionals whose communication falls in contiguous iterations (Sec. VIII). Pipelining moves sends to where values are ready, using mailboxes (Sec. IX). Accumulation combines partial results of commutative, associative operators (Sec. X).
 
 ## Compiler / runtime split
 Compile-time resolution performs ownership tests at compile time where the mappings allow it. Run-time resolution is the fallback for programs that cannot be analyzed (Abstract, Sec. II, Sec. V). Loops with wrapped mappings are summarized by periodic patterns rather than unrolled (Sec. V).

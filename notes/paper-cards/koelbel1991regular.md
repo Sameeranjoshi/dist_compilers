@@ -6,10 +6,10 @@
 **Card status:** full-read
 
 ## Problem
-Message-passing programs are hard to write because the programmer must insert every send and receive (Sec. 1). The paper gives explicit formulas for the communication and iteration sets of forall loops over block- or cyclic-distributed arrays, so that a compiler can generate the messages (Sec. 1, Sec. 2.3).
+Explicit message passing is hard to program. The paper gives formulas for the communication and iteration sets of forall loops over block- or cyclic-distributed arrays, so that a compiler can generate the messages (Sec. 1, Sec. 2.3).
 
 ## Input abstraction
-The source language is Kali, whose forall loops carry an on clause naming the processor that runs each iteration (Fig. 1, Sec. 2.1). Subscripts are linear in one loop index, f(i) = c0*i + c1 (Sec. 3.1, Sec. 3.2), and the main results assume c0 > 0 (Sec. 3.1). Nested loops and multidimensional arrays are handled per dimension when the subscripts are affine and use distinct loop indices (Sec. 3.3). The author states that the methods apply to any language with array distributions and forall statements (Sec. 1).
+The source language is Kali, whose forall loops carry an on clause naming the processor that runs each iteration (Fig. 1, Sec. 2.1). Subscripts are linear in one loop index, f(i) = c0*i + c1 (Sec. 3.1, Sec. 3.2), and the main results assume c0 > 0 (Sec. 3.1). Nested loops and multidimensional arrays are handled per dimension when the subscripts are affine and use distinct loop indices (Sec. 3.3).
 
 ## Target
 The target is a nonshared-memory, message-passing machine, with generated C code run on iPSC/860 and iPSC/2 systems (Sec. 2.1, Sec. 3.1, Sec. 3.2).
@@ -27,7 +27,7 @@ Each processor sends, runs its local iterations, receives, and then runs its non
 The closed forms are derived at compile time for linear subscripts. The paper states that when the subscript function is unknown until run time the analysis must be dynamic, and it does not treat that case (Sec. 2.5). The generated code evaluates the per-processor bounds at run time (Fig. 4, Fig. 7).
 
 ## Evaluation
-The test program is cyclic reduction for a tridiagonal system, run on iPSC/860 for N = 10000 to 40000 and up to 32 processors (Fig. 5, Fig. 8). For the block version the paper reports parallel efficiency of 50 to 70 percent (Sec. 3.1). For the cyclic version it reports efficiency of 82 percent or better, an average overhead of 2.2 percent against a hand-coded version, and a largest difference of 4.5 percent (Sec. 3.2, p. 109). The author estimates that the block version is within 50 percent of hand coding on 32 processors, and points to the cyclic comparison as support (Sec. 3.1). The locality checks in the nonlocal loop cost about 2 percent on two processors and up to 40 percent on 32 (Sec. 3.1).
+Cyclic reduction on iPSC/860, N = 10000 to 40000, up to 32 processors (Fig. 5, Fig. 8). For the block version the paper reports parallel efficiency of 50 to 70 percent (Sec. 3.1). For the cyclic version it reports efficiency of 82 percent or better, an average overhead of 2.2 percent against a hand-coded version, and a largest difference of 4.5 percent (Sec. 3.2, p. 109). The author estimates that the block version is within 50 percent of hand coding on 32 processors, and points to the cyclic comparison as support (Sec. 3.1). The locality checks in the nonlocal loop cost about 2 percent on two processors and up to 40 percent on 32 (Sec. 3.1).
 
 ## Principal limitation
 The paper concludes that the method "produces very efficient code in the cases where it can be applied" (Sec. 5). Within that scope the analysis is restricted to forall loops, which the author calls stricter than necessary (Sec. 3.3).
@@ -36,7 +36,7 @@ our observation: The evidence is one kernel on one compiler, and the hand-coded 
 ## Relationship to earlier / later work
 - Kali [8] (Koelbel, Mehrotra and Van Rosendale) supplies the forall and on-clause model (Sec. 2.1).
 - Balasundaram, Fox, Kennedy and Kremer [2] show how to choose the communication loop level from reference locality; the Kali compiler did not implement this (Sec. 3.3).
-- Run-time analysis is treated in [7] and [8], and the author's thesis [7] covers negative and zero coefficients (Sec. 2.5, Sec. 3.3).
+- The thesis [7] covers negative and zero coefficients (Sec. 3.3).
 - Other groups (Sec. 4) generally work from the innermost loops outward and do not give explicit communication-set formulas.
 - No later work is discussed.
 

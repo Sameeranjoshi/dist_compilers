@@ -6,10 +6,10 @@
 **Card status:** full-read
 
 ## Problem
-The paper gives a runtime method for moving a distributed array from one regular distribution to another, where the source and target may be different or overlapping processor sets (Sec. 1.1, Fig. 1). It is motivated by programs that change distributions between phases and by task-parallel pipelines in which an inter-task dependence forces a redistribution (Sec. 1.1). The authors argue that using distribution information directly beats the runtime resolution scheme, which computes each element's target at the source (Sec. 1.1, Sec. 2).
+A runtime method for moving a distributed array between regular distributions on different or overlapping processor sets (Sec. 1.1, Fig. 1). The authors motivate it with phase changes and task-parallel pipelines, and argue that it beats runtime resolution, which computes each element's target at the source (Sec. 1.1, Sec. 2).
 
 ## Input abstraction
-Each dimension may use ALL, BLOCK, CYCLIC or BLOCKCYCLIC(x) (Sec. 1.1). Source and target processor sets may be arbitrary subsets, handled with MPI groups and communicators (Sec. 2). Multidimensional arrays are handled by intersecting the per-dimension sets (Sec. 3.4). Reshaping is excluded, and only whole arrays are redistributed (Sec. 1.1, Sec. 5).
+Each dimension may use ALL, BLOCK, CYCLIC or BLOCKCYCLIC(x) (Sec. 1.1). Source and target processor sets may be arbitrary subsets, handled with MPI groups and communicators (Sec. 2). Multidimensional arrays are handled per dimension (Sec. 3.4).
 
 ## Target
 The implementation is an MPI-based library (GroupSend and GroupRecv) run on the Intel Paragon (Sec. 4). The authors wrote their own packing routines because the Paragon lacked support for MPI derived datatypes (Sec. 4).
@@ -21,7 +21,7 @@ A regular distribution of a one-dimensional array is represented as a FALLS (l, 
 None. Redistribution is a data-movement operation. Each source and target runs the pack, send, receive and unpack steps of Fig. 9 (Sec. 3.3).
 
 ## Communication generation
-Each source intersects its FALLS with each target's FALLS, packs the result, and sends it; the target does the reverse (Sec. 3.3, Fig. 9). Intersections are computed within one period of length lcm(str1, str2) (Theorems 1-2, Sec. 3.2), and a constant-time Fourier-elimination test skips pairs that cannot intersect (Sec. 3.2.1). A locality optimization generates fewer, larger contiguous pieces (Sec. 3.2.3), and a schedule in which each source starts at a different destination index reduces contention (Sec. 3.3.1). Data for several arrays bound for the same processor share one message (Sec. 3.5).
+Sources intersect their FALLS with each target's FALLS, pack and send; targets unpack (Sec. 3.3, Fig. 9). Intersections are computed within one period of length lcm(str1, str2) (Theorems 1-2, Sec. 3.2), and a constant-time Fourier-elimination test skips pairs that cannot intersect (Sec. 3.2.1). A locality optimization generates fewer, larger contiguous pieces (Sec. 3.2.3), and a schedule in which each source starts at a different destination index reduces contention (Sec. 3.3.1). Data for several arrays bound for the same processor share one message (Sec. 3.5).
 
 ## Compiler / runtime split
 No compile-time analysis is described. The library computes intersections and messages at run time from processor-grid and array descriptors (Sec. 3.3, Sec. 4).
@@ -36,7 +36,7 @@ our observation: All timings come from one machine and one earlier version of th
 ## Relationship to earlier / later work
 - Compiler techniques for communication generation [8-12] could in principle perform redistribution, but cannot handle statements whose arrays lie on subsets of processors (Sec. 2).
 - Agrawal, Sussman and Saltz [13] build reusable schedules but do not handle CYCLIC or BLOCKCYCLIC distributions or arbitrary processor sets (Sec. 2).
-- The ScaLAPACK routine [15] is described as unclear for arbitrary processor sets, and the HPF runtime routines [17] treat source-target pairs individually with runtime resolution for general cases (Sec. 2).
+- The ScaLAPACK [15] and HPF runtime [17] routines are described as unclear for arbitrary processor sets or as pairwise (Sec. 2).
 - Chatterjee et al. [12] give a more general state-machine method for local addresses; the authors call their own method simpler and adequate here (Sec. 3.2.2).
 - This work extends the authors' earlier report [19] (Sec. 2). No later work is discussed.
 

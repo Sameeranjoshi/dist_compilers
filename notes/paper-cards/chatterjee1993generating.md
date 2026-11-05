@@ -9,7 +9,7 @@
 For HPF-style arrays under a cyclic(k) distribution, a compiler must generate each processor's local memory addresses for a regular section A(l:h:s) and the messages it sends (Sec. 1). The authors state that the general solution does not appear in the literature or, to their knowledge, in any implementation (Sec. 1).
 
 ## Input abstraction
-An array A is affinely aligned to a template (cell a*i + b) and distributed cyclic(k) over p processors, with a section stride s > 0 (Sec. 1, Table 1). Two-level mappings reduce to two one-level problems (Sec. 3), and multidimensional arrays are handled per dimension (Sec. 4). Block and cyclic are the special cases cyclic(ceil(n/p)) and cyclic(1) (Sec. 1).
+An array A is affinely aligned to a template (cell a*i + b) and distributed cyclic(k) over p processors, with a section stride s > 0 (Sec. 1, Table 1). Two-level and multidimensional cases reduce to one-level problems (Sec. 3, Sec. 4). Block and cyclic are the special cases cyclic(ceil(n/p)) and cyclic(1) (Sec. 1).
 
 ## Target
 Distributed memory is the design target (Sec. 1). The reported measurements are sequential, on a Sparcstation 2, with a repeat on one iPSC/860 processor (Sec. 6). The text does not say how the 32-processor values in Table 2 and Figure 6 were obtained.
@@ -21,13 +21,13 @@ Element A(i) lies on processor (i div k) mod p, in course (i div pk) at offset (
 No separate rule is given. Each processor finds the elements of the section that it holds (Sec. 2.1). Local iterations follow the execution model of Koelbel [7] (Sec. 5).
 
 ## Communication generation
-The sender does the work. Each processor makes one pass over its local data, uses the state tables to find each element's destination, and sends one message per destination containing (address, value) pairs. Local iterations run from the message buffer (Sec. 5). For shifts, the state machine is augmented with AP and AC columns (Sec. 5.1). Stride changes need a different construction because the destination pattern can have a period longer than k, and the authors use a simpler technique (Sec. 5.2). Termination is detected by counting elements rather than messages (Sec. 5.3).
+Each processor makes one pass over its local data and sends one message per destination of (address, value) pairs; local iterations run from the message buffer (Sec. 5). For shifts, the state machine is augmented with AP and AC columns (Sec. 5.1). Stride changes need a different construction because the destination pattern can have a period longer than k, and the authors use a simpler technique (Sec. 5.2). Termination is detected by counting elements rather than messages (Sec. 5.3).
 
 ## Compiler / runtime split
 Each processor builds its tables at run time, independently of the others (Sec. 2.1, Sec. 7). The table depends on p, k and s but not on the section bounds or the processor number, so one state machine serves all processors (Sec. 2). If the access sequence is known at compile time, loops can be unrolled, but the benefit is mixed (Sec. 6.1).
 
 ## Evaluation
-The kernel is DAXPY over regular sections, with throughput plotted against stride for several block sizes (Fig. 5). Unit stride reaches 2.0 Mflops on long vectors (Sec. 6). Table generation time is roughly linear in k (Fig. 6, Sec. 6.1). Table 2 reports FSM generation time and run-time loop cost for shifts and stride changes (Sec. 6.2). Communication time is not measured because it varies between machines (Sec. 6.2).
+The kernel is DAXPY over regular sections, with throughput plotted against stride for several block sizes (Fig. 5). Unit stride reaches 2.0 Mflops on long vectors (Sec. 6). Table generation time is roughly linear in k (Fig. 6, Sec. 6.1). Table 2 reports FSM generation time and run-time loop cost for shifts and stride changes (Sec. 6.2).
 
 ## Principal limitation
 The authors state that an O(k) table-construction algorithm remains an open problem, and that a fully parallel algorithm with O(k) parallel time or O(p+k) total work also remains open (Sec. 2.1, Sec. 7).
