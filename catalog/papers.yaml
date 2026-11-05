@@ -18,7 +18,7 @@ papers:
   source_code_url: null
   era: era3
   relevance_tier: core
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -62,6 +62,7 @@ papers:
     pages: 264-287
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: Survey status asserted from venue (Proc. IEEE special issue) and title; to be confirmed when the text is
     read.
 - id: benkner1999compiling
@@ -82,7 +83,7 @@ papers:
   source_code_url: null
   era: era3
   relevance_tier: core
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -128,6 +129,7 @@ papers:
     pages: 1785-1825
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: Survey status asserted from title and authors' role; to be confirmed when the text is read.
 - id: unat2017trends
   title: Trends in Data Locality Abstractions for HPC Systems
@@ -166,7 +168,7 @@ papers:
   source_code_url: null
   era: era5
   relevance_tier: adjacent
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -209,6 +211,7 @@ papers:
     pages: 3007-3020
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: li2021dlcompiler
   title: 'The Deep Learning Compiler: A Comprehensive Survey'
@@ -416,7 +419,8 @@ papers:
     pages: null
   metadata_sources:
   - crossref
-  notes: null
+  - supplied PDF (owner-provided, not redistributed)
+  notes: 2 identical or near-identical copies were supplied.
 - id: kennedy2007rise
   title: The rise and fall of High Performance Fortran
   authors:
@@ -436,7 +440,7 @@ papers:
   source_code_url: null
   era: era4
   relevance_tier: core
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -481,6 +485,7 @@ papers:
     pages: null
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: backus1957fortran
   title: The FORTRAN automatic coding system
@@ -512,7 +517,7 @@ papers:
   source_code_url: null
   era: era0
   relevance_tier: foundation
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -554,6 +559,7 @@ papers:
     pages: 188-198
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: lamport1974parallel
   title: The parallel execution of DO loops
@@ -572,7 +578,7 @@ papers:
   source_code_url: null
   era: era0
   relevance_tier: foundation
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -615,6 +621,7 @@ papers:
     pages: 83-93
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: kuck1981dependence
   title: Dependence graphs and compiler optimizations
@@ -637,7 +644,7 @@ papers:
   source_code_url: null
   era: era0
   relevance_tier: foundation
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -680,7 +687,9 @@ papers:
     pages: 207-218
   metadata_sources:
   - crossref
-  notes: Year 1981 sits at the Era 0/Era 1 boundary; classified as foundation.
+  - supplied PDF (owner-provided, not redistributed)
+  notes: Year 1981 sits at the Era 0/Era 1 boundary; classified as foundation. 3 identical or near-identical copies
+    were supplied.
 - id: allen1987automatic
   title: Automatic translation of FORTRAN programs to vector form
   authors:
@@ -699,7 +708,7 @@ papers:
   source_code_url: null
   era: era1
   relevance_tier: foundation
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -743,6 +752,7 @@ papers:
     pages: 491-542
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: barnes1968illiac
   title: The ILLIAC IV Computer
@@ -766,7 +776,7 @@ papers:
   source_code_url: null
   era: era0
   relevance_tier: foundation
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -808,6 +818,7 @@ papers:
     pages: 746-757
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: russell1978cray1
   title: The CRAY-1 computer system
@@ -826,7 +837,7 @@ papers:
   source_code_url: null
   era: era0
   relevance_tier: foundation
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -868,6 +879,7 @@ papers:
     pages: 63-72
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: dennis1975preliminary
   title: A preliminary architecture for a basic data-flow processor
@@ -947,7 +959,7 @@ papers:
   source_code_url: null
   era: era1
   relevance_tier: foundation
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -992,6 +1004,7 @@ papers:
     pages: 37-46
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: seitz1985cosmic
   title: The cosmic cube
@@ -1054,6 +1067,7 @@ papers:
     pages: 22-33
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: hillis1986data
   title: Data parallel algorithms
@@ -1118,6 +1132,7 @@ papers:
     pages: 1170-1183
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: callahan1988compiling
   title: Compiling programs for distributed-memory multiprocessors
@@ -1273,7 +1288,7 @@ papers:
   source_code_url: null
   era: era2
   relevance_tier: core
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -1318,6 +1333,7 @@ papers:
     pages: 171-207
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: gerndt1990updating
   title: Updating distributed variables in local computations
@@ -1483,6 +1499,7 @@ papers:
   metadata_sources:
   - crossref
   - full text read (paper card)
+  - supplied PDF (owner-provided, not redistributed)
   notes: 'Open copy: ICASE Report 89-7 / NASA CR-181785 (1989), authors Crowley, Saltz, Mirchandaney, Berryman.
     Journal version authors per Crossref: Saltz, Crowley, Mirchandaney, Berryman. The ICASE 89-7 report calls the
     two phases ''preprocessor'' and ''schedule executer''; the words inspector/executor first appear in ICASE 90-59.
@@ -1584,6 +1601,7 @@ papers:
   metadata_sources:
   - crossref
   - full text read (paper card)
+  - supplied PDF (owner-provided, not redistributed)
   notes: 'Open copy: ICASE Report 90-59 / NASA CR-182100 (Sept 1990).'
 - id: mehrotra1990kali
   title: Programming distributed memory architectures using Kali
@@ -1689,6 +1707,7 @@ papers:
   metadata_sources:
   - NASA NTRS record
   - full text read (paper card)
+  - supplied PDF (owner-provided, not redistributed)
   notes: The report uses 'doall', not forall, and has no alignment construct. 'affine-owner-map' reflects the map
     statement (index-to-processor functions).
 - id: koelbel1991compiling
@@ -2026,6 +2045,7 @@ papers:
   metadata_sources:
   - crossref
   - full text read (paper card)
+  - supplied PDF (owner-provided, not redistributed)
   notes: 'Open copy: ICASE Report 92-9 / NASA CR-189623 (March 1992).'
 - id: li1991alignment
   title: The data alignment phase in compiling programs for distributed-memory machines
@@ -2176,7 +2196,7 @@ papers:
   source_code_url: null
   era: era2
   relevance_tier: core
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -2224,6 +2244,7 @@ papers:
     pages: 179-193
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: koelbel1991regular
   title: Compile-time generation of regular communications patterns
@@ -2242,7 +2263,7 @@ papers:
   source_code_url: null
   era: era2
   relevance_tier: core
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -2288,6 +2309,7 @@ papers:
     pages: 101-110
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: hiranandani1991fortrand
   title: Compiler optimizations for Fortran D on MIMD distributed-memory machines
@@ -2308,7 +2330,7 @@ papers:
   source_code_url: null
   era: era2
   relevance_tier: core
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -2355,6 +2377,7 @@ papers:
     pages: 86-100
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: hiranandani1992compiling
   title: Compiling Fortran D for MIMD distributed-memory machines
@@ -2445,7 +2468,7 @@ papers:
   source_code_url: null
   era: era2
   relevance_tier: core
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -2490,6 +2513,7 @@ papers:
     pages: 1-14
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: das1991irregular
   title: 'Distributed memory compiler methods for irregular problems: data copy reuse and runtime partitioning'
@@ -2609,7 +2633,7 @@ papers:
   source_code_url: null
   era: era3
   relevance_tier: core
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -2656,6 +2680,7 @@ papers:
     pages: 25-42
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: hpfforum1993spec
   title: High Performance Fortran language specification
@@ -3021,7 +3046,7 @@ papers:
   source_code_url: null
   era: era3
   relevance_tier: core
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -3069,6 +3094,7 @@ papers:
     pages: 37-47
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: chatterjee1993generating
   title: Generating local addresses and communication sets for data-parallel programs
@@ -3092,7 +3118,7 @@ papers:
   source_code_url: null
   era: era3
   relevance_tier: core
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -3140,6 +3166,7 @@ papers:
     pages: 149-158
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: A TOPLAS version appeared in 1995 (to be added as related version after verification).
 - id: rogers1994compiling
   title: Compiling for distributed memory architectures
@@ -3159,7 +3186,7 @@ papers:
   source_code_url: null
   era: era3
   relevance_tier: core
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -3203,6 +3230,7 @@ papers:
     pages: 281-298
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: stichnoth1994generating
   title: 'Generating Communication for Array Statements: Design, Implementation, and Evaluation'
@@ -3559,7 +3587,7 @@ papers:
   source_code_url: null
   era: era3
   relevance_tier: core
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -3607,6 +3635,7 @@ papers:
     pages: 815-831
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: hwang1995chaos
   title: Runtime and language support for compiling adaptive irregular programs on distributed‐memory machines
@@ -3680,6 +3709,7 @@ papers:
     pages: 597-621
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: bik1993sparse
   title: Compilation techniques for sparse matrix computations
@@ -3759,7 +3789,7 @@ papers:
   source_code_url: null
   era: era3
   relevance_tier: core
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -3802,6 +3832,7 @@ papers:
     pages: 1895-1923
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: palermo1996dynamic
   title: Dynamic Data Partitioning for Distributed-Memory Multicomputers
@@ -3822,7 +3853,7 @@ papers:
   source_code_url: null
   era: era3
   relevance_tier: core
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -3869,6 +3900,7 @@ papers:
     pages: 158-175
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: ramaswamy1996redistribution
   title: Optimizations for Efficient Array Redistribution on Distributed Memory Multicomputers
@@ -3889,7 +3921,7 @@ papers:
   source_code_url: null
   era: era3
   relevance_tier: core
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -3937,6 +3969,7 @@ papers:
     pages: 217-228
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: harris1995dechpf
   title: Compiling High Performance Fortran for Distributed-Memory Systems
@@ -4080,7 +4113,7 @@ papers:
   source_code_url: null
   era: era3
   relevance_tier: core
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -4124,6 +4157,7 @@ papers:
     pages: 71-es
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: ancourt1997linear
   title: A Linear Algebra Framework for Static High Performance Fortran Code Distribution
@@ -4214,7 +4248,7 @@ papers:
   source_code_url: null
   era: era4
   relevance_tier: core
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -4259,6 +4293,7 @@ papers:
     pages: 1369-1410
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: numrich1998coarray
   title: Co-array Fortran for parallel programming
@@ -4326,6 +4361,7 @@ papers:
     pages: 1-31
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: ' Era 4 assignment deliberate: PGAS lineage; year precedes the provisional era boundary.'
 - id: chen2003upc
   title: A performance analysis of the Berkeley UPC compiler
@@ -4349,7 +4385,7 @@ papers:
   source_code_url: null
   era: era4
   relevance_tier: bridge
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -4394,6 +4430,7 @@ papers:
     pages: 63-73
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: yelick1998titanium
   title: 'Titanium: a high-performance Java dialect'
@@ -4422,7 +4459,7 @@ papers:
   source_code_url: null
   era: era4
   relevance_tier: bridge
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -4466,6 +4503,7 @@ papers:
     pages: 825-836
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: ' Era 4 assignment deliberate: PGAS lineage; year precedes the provisional era boundary.'
 - id: charles2005x10
   title: 'X10: an object-oriented approach to non-uniform cluster computing'
@@ -4607,6 +4645,7 @@ papers:
     pages: 291-312
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: fatahalian2006sequoia
   title: 'Sequoia: Programming the Memory Hierarchy'
@@ -4635,7 +4674,7 @@ papers:
   source_code_url: null
   era: era4
   relevance_tier: core
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -4687,6 +4726,7 @@ papers:
     pages: 4-4
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: baskaran2008automatic
   title: Automatic data movement and computation mapping for multi-level parallel architectures with explicitly
@@ -4711,7 +4751,7 @@ papers:
   source_code_url: null
   era: era4
   relevance_tier: core
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -4757,6 +4797,7 @@ papers:
     pages: 1-10
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: bondhugula2008pluto
   title: A practical automatic polyhedral parallelizer and locality optimizer
@@ -4778,7 +4819,7 @@ papers:
   source_code_url: https://github.com/bondhugula/pluto
   era: era4
   relevance_tier: foundation
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -4825,6 +4866,7 @@ papers:
     pages: 101-113
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: bondhugula2011automatic
   title: Automatic Distributed-Memory Parallelization and Code Generation using the Polyhedral Framework
@@ -4948,7 +4990,7 @@ papers:
   source_code_url: null
   era: era5
   relevance_tier: core
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -5004,6 +5046,7 @@ papers:
     pages: 1-12
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: dathathri2016compiling
   title: Compiling Affine Loop Nests for a Dynamic Scheduling Runtime on Shared and Distributed Memory
@@ -5346,7 +5389,7 @@ papers:
   source_code_url: https://github.com/StanfordLegion/legion
   era: era5
   relevance_tier: core
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -5397,6 +5440,7 @@ papers:
     pages: 1-11
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: slaughter2015regent
   title: 'Regent: a high-productivity programming language for HPC with logical regions'
@@ -5419,7 +5463,7 @@ papers:
   source_code_url: null
   era: era5
   relevance_tier: core
-  status: discovered
+  status: screened
   verified: false
   verified_by: null
   verified_date: null
@@ -5471,6 +5515,7 @@ papers:
     pages: 1-12
   metadata_sources:
   - crossref
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: shazeer2018meshtf
   title: 'Mesh-TensorFlow: Deep Learning for Supercomputers'
@@ -5863,6 +5908,7 @@ papers:
   metadata_sources:
   - crossref
   - full text read (paper card)
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: shoeybi2019megatron
   title: 'Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism'
@@ -6730,6 +6776,7 @@ papers:
   metadata_sources:
   - crossref
   - full text read (paper card)
+  - supplied PDF (owner-provided, not redistributed)
   notes: null
 - id: bisbas2024shared
   title: A shared compilation stack for distributed-memory parallelism in stencil DSLs
@@ -7224,6 +7271,7 @@ papers:
   metadata_sources:
   - crossref
   - full text read (paper card)
+  - supplied PDF (owner-provided, not redistributed)
   notes: Workshop page lists authors Vaidya, Singh, Mantri (Utah), Eydenberg, Kelley, Rajamanickam (Sandia), Rountev
     (Ohio State), Sadayappan (Utah). No arXiv version located. PartTensor is the name of the dialect (namespace
     part_tensor), the conversion pass and the runtime library in the text. The Crossref venue is used; the PDF prints
@@ -7575,5 +7623,397 @@ papers:
   metadata_sources:
   - arxiv (abs page lists ASPLOS '26 and DOI 10.1145/3779212.3790124)
   - full text read (paper card)
+  - supplied PDF (owner-provided, not redistributed)
   notes: DOI 10.1145/3779212.3790124 is taken from the arXiv record; it did not resolve in Crossref at catalog time
     and is therefore not entered in the doi field until confirmed.
+- id: misunas1977workshop
+  title: Report on the Workshop on Data Flow Computer and Program Organization
+  authors:
+  - David P. Misunas
+  year: 1977
+  venue: MIT Laboratory for Computer Science, Technical Memo MIT/LCS/TM-92
+  venue_short: null
+  paper_type: foundational
+  doi: null
+  arxiv: null
+  official_url: null
+  pdf_url: null
+  access_status: paywalled
+  artifact_url: null
+  source_code_url: null
+  era: era0
+  relevance_tier: foundation
+  status: screened
+  verified: false
+  verified_by: null
+  verified_date: null
+  summary: MIT technical memorandum reporting a 1977 workshop on dataflow computer architecture and program organisation;
+    included as a foundations source for dataflow machine concepts.
+  why_read: null
+  problem: null
+  input_abstraction: []
+  target_hardware: []
+  memory_model: null
+  programming_model: null
+  data_decomposition: []
+  computation_mapping: []
+  communication_generation: []
+  compiler_runtime_boundary: []
+  compiler_architecture: []
+  ir_representation: []
+  optimization_objectives: []
+  maturity: []
+  evaluation_method: null
+  benchmarks: []
+  main_contribution: null
+  main_limitation: null
+  predecessors: []
+  successors: []
+  related_versions: []
+  systems: []
+  taxonomy_tags:
+  - foundations
+  - dataflow
+  readme_categories:
+  - foundations
+  technique_lists: []
+  start_here: null
+  evidence:
+  - source: supplied PDF, first page and abstract read
+    section: title page
+    pages: null
+  metadata_sources:
+  - supplied PDF
+  - supplied PDF (owner-provided, not redistributed)
+  notes: No DOI or public record located; metadata taken from the PDF title page. Title as printed on the memo cover.
+- id: bik1996automatic
+  title: Automatic Data Structure Selection and Transformation for Sparse Matrix Computations
+  authors:
+  - Aart J. C. Bik
+  - Harry A. G. Wijshoff
+  year: 1996
+  venue: IEEE Transactions on Parallel and Distributed Systems 7(2):109-126
+  venue_short: null
+  paper_type: compiler-technique
+  doi: 10.1109/71.485501
+  arxiv: null
+  official_url: https://doi.org/10.1109/71.485501
+  pdf_url: null
+  access_status: paywalled
+  artifact_url: null
+  source_code_url: null
+  era: era3
+  relevance_tier: adjacent
+  status: screened
+  verified: false
+  verified_by: null
+  verified_date: null
+  summary: TPDS paper on delaying sparse data-structure selection to compile time so that a restructuring compiler
+    can combine loop optimisation with storage choice for sparse matrices; single-node, included as context for
+    sparse-compilation lineage.
+  why_read: null
+  problem: null
+  input_abstraction: []
+  target_hardware: []
+  memory_model: null
+  programming_model: null
+  data_decomposition: []
+  computation_mapping: []
+  communication_generation: []
+  compiler_runtime_boundary: []
+  compiler_architecture: []
+  ir_representation: []
+  optimization_objectives: []
+  maturity: []
+  evaluation_method: null
+  benchmarks: []
+  main_contribution: null
+  main_limitation: null
+  predecessors: []
+  successors: []
+  related_versions: []
+  systems: []
+  taxonomy_tags:
+  - sparse
+  - restructuring-compiler
+  readme_categories:
+  - irregular
+  technique_lists: []
+  start_here: null
+  evidence:
+  - source: supplied PDF, first page and abstract read
+    section: title page
+    pages: null
+  metadata_sources:
+  - crossref
+  - supplied PDF
+  - supplied PDF (owner-provided, not redistributed)
+  notes: null
+- id: chandra1997datadist
+  title: Data distribution support on distributed shared memory multiprocessors
+  authors:
+  - Rohit Chandra
+  - Ding-Kai Chen
+  - Robert Cox
+  - Dror E. Maydan
+  - Nenad Nedeljkovic
+  - Jennifer M. Anderson
+  year: 1997
+  venue: Proceedings of the ACM SIGPLAN 1997 Conference on Programming Language Design and Implementation (PLDI
+    '97)
+  venue_short: null
+  paper_type: compiler-technique
+  doi: 10.1145/258915.258945
+  arxiv: null
+  official_url: https://doi.org/10.1145/258915.258945
+  pdf_url: null
+  access_status: paywalled
+  artifact_url: null
+  source_code_url: null
+  era: era3
+  relevance_tier: bridge
+  status: screened
+  verified: false
+  verified_by: null
+  verified_date: null
+  summary: PLDI '97 paper on compiler and runtime support for placing data on cache-coherent distributed-shared-memory
+    machines, where pages and data distributions affect locality; a bridge entry on data distribution outside message
+    passing.
+  why_read: null
+  problem: null
+  input_abstraction: []
+  target_hardware: []
+  memory_model: null
+  programming_model: null
+  data_decomposition: []
+  computation_mapping: []
+  communication_generation: []
+  compiler_runtime_boundary: []
+  compiler_architecture: []
+  ir_representation: []
+  optimization_objectives: []
+  maturity: []
+  evaluation_method: null
+  benchmarks: []
+  main_contribution: null
+  main_limitation: null
+  predecessors: []
+  successors: []
+  related_versions: []
+  systems: []
+  taxonomy_tags:
+  - dsm
+  - data-distribution
+  readme_categories:
+  - global-arrays
+  technique_lists: []
+  start_here: null
+  evidence:
+  - source: supplied PDF, first page and abstract read
+    section: title page
+    pages: null
+  metadata_sources:
+  - crossref
+  - supplied PDF
+  - supplied PDF (owner-provided, not redistributed)
+  notes: null
+- id: shen2007eliminating
+  title: Eliminating Redundant Communication of Code Generation for Distributed Memory Machines
+  authors:
+  - Ya Nan Shen
+  - Rong Cai Zhao
+  - Lei Wang
+  year: 2007
+  venue: Eighth ACIS International Conference on Software Engineering, Artificial Intelligence, Networking, and
+    Parallel/Distributed Computing (SNPD 2007)
+  venue_short: null
+  paper_type: compiler-technique
+  doi: 10.1109/snpd.2007.482
+  arxiv: null
+  official_url: https://doi.org/10.1109/snpd.2007.482
+  pdf_url: null
+  access_status: paywalled
+  artifact_url: null
+  source_code_url: null
+  era: era4
+  relevance_tier: core
+  status: screened
+  verified: false
+  verified_by: null
+  verified_date: null
+  summary: Work on eliminating redundant communication in code generated for distributed-memory machines from affine
+    loops, so that data already present on a processor is not resent; a core communication-generation entry.
+  why_read: null
+  problem: null
+  input_abstraction: []
+  target_hardware: []
+  memory_model: null
+  programming_model: null
+  data_decomposition: []
+  computation_mapping: []
+  communication_generation: []
+  compiler_runtime_boundary: []
+  compiler_architecture: []
+  ir_representation: []
+  optimization_objectives: []
+  maturity: []
+  evaluation_method: null
+  benchmarks: []
+  main_contribution: null
+  main_limitation: null
+  predecessors: []
+  successors: []
+  related_versions: []
+  systems: []
+  taxonomy_tags:
+  - communication-generation
+  - redundancy-elimination
+  readme_categories:
+  - mpi-generated
+  technique_lists:
+  - communication-generation
+  start_here: null
+  evidence:
+  - source: supplied PDF, first page and abstract read
+    section: title page
+    pages: null
+  metadata_sources:
+  - crossref
+  - supplied PDF
+  - supplied PDF (owner-provided, not redistributed)
+  notes: The PDF is marked as a regular paper supported by a Chinese national programme; the Crossref venue (SNPD
+    2007) is used. Verify the journal version if one exists.
+- id: su1995advanced
+  title: Advanced compilation techniques in the PARADIGM compiler for distributed-memory multicomputers
+  authors:
+  - Ernesto Su
+  - Antonio Lain
+  - Shankar Ramaswamy
+  - Daniel J. Palermo
+  - Eugene W. Hodges IV
+  - Prithviraj Banerjee
+  year: 1995
+  venue: Proceedings of the 9th International Conference on Supercomputing (ICS '95)
+  venue_short: null
+  paper_type: compiler-technique
+  doi: 10.1145/224538.224650
+  arxiv: null
+  official_url: https://doi.org/10.1145/224538.224650
+  pdf_url: null
+  access_status: paywalled
+  artifact_url: null
+  source_code_url: null
+  era: era3
+  relevance_tier: core
+  status: screened
+  verified: false
+  verified_by: null
+  verified_date: null
+  summary: ICS '95 paper describing advanced techniques in the PARADIGM compiler (data and computation partitioning,
+    communication optimisation and task/data parallelism) for distributed-memory multicomputers; the fuller companion
+    to the 1995 Computer article.
+  why_read: null
+  problem: null
+  input_abstraction: []
+  target_hardware: []
+  memory_model: null
+  programming_model: null
+  data_decomposition: []
+  computation_mapping: []
+  communication_generation: []
+  compiler_runtime_boundary: []
+  compiler_architecture: []
+  ir_representation: []
+  optimization_objectives: []
+  maturity: []
+  evaluation_method: null
+  benchmarks: []
+  main_contribution: null
+  main_limitation: null
+  predecessors: []
+  successors: []
+  related_versions: []
+  systems: []
+  taxonomy_tags:
+  - paradigm
+  - automatic-distribution
+  readme_categories:
+  - global-arrays
+  - fortran-d-hpf
+  technique_lists:
+  - data-distribution
+  - communication-generation
+  start_here: null
+  evidence:
+  - source: supplied PDF, first page and abstract read
+    section: title page
+    pages: null
+  metadata_sources:
+  - crossref
+  - supplied PDF
+  - supplied PDF (owner-provided, not redistributed)
+  notes: Distinct from banerjee1995paradigm (IEEE Computer, 1995), which is the magazine overview.
+- id: dathathri2014thesis
+  title: Compiling for a Dataflow Runtime on Distributed-Memory Parallel Architectures
+  authors:
+  - Roshan Dathathri
+  year: 2014
+  venue: M.Sc. (Engineering) thesis, Computer Science and Automation, Indian Institute of Science, Bangalore
+  venue_short: null
+  paper_type: full-system
+  doi: null
+  arxiv: null
+  official_url: null
+  pdf_url: null
+  access_status: paywalled
+  artifact_url: null
+  source_code_url: null
+  era: era5
+  relevance_tier: bridge
+  status: screened
+  verified: false
+  verified_by: null
+  verified_date: null
+  summary: IISc master's thesis on compiling affine programs for a dataflow runtime on distributed-memory machines,
+    the thesis version of the work later published with Mullapudi and Bondhugula; a bridge entry for runtime-based
+    polyhedral distributed compilation.
+  why_read: null
+  problem: null
+  input_abstraction: []
+  target_hardware: []
+  memory_model: null
+  programming_model: null
+  data_decomposition: []
+  computation_mapping: []
+  communication_generation: []
+  compiler_runtime_boundary: []
+  compiler_architecture: []
+  ir_representation: []
+  optimization_objectives: []
+  maturity: []
+  evaluation_method: null
+  benchmarks: []
+  main_contribution: null
+  main_limitation: null
+  predecessors: []
+  successors: []
+  related_versions: []
+  systems: []
+  taxonomy_tags:
+  - polyhedral
+  - runtime
+  - thesis
+  readme_categories:
+  - polyhedral
+  - task-region
+  technique_lists: []
+  start_here: null
+  evidence:
+  - source: supplied PDF, first page and abstract read
+    section: title page
+    pages: null
+  metadata_sources:
+  - supplied PDF
+  - supplied PDF (owner-provided, not redistributed)
+  notes: Thesis, not peer-reviewed; the journal article dathathri2016compiling is the archival version. Submitted
+    April 2014 per the title page.

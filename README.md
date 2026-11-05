@@ -25,13 +25,13 @@ been read beyond their bibliographic record say so.
 <!-- BEGIN:status -->
 | metric | value |
 |---|---|
-| papers in catalog | 98 |
+| papers in catalog | 104 |
 | systems | 28 |
-| metadata-verified against Crossref/arXiv | 90 |
+| metadata-verified against Crossref/arXiv | 94 |
 | status `verified` (primary source read) | 4 |
 | status `read` | 18 |
-| status `screened` / `discovered` | 76 |
-| tier core / bridge / foundation / adjacent | 71 / 11 / 11 / 5 |
+| status `screened` / `discovered` | 82 |
+| tier core / bridge / foundation / adjacent | 73 / 13 / 12 / 6 |
 | paper cards | 22 |
 <!-- END:status -->
 
@@ -139,6 +139,9 @@ rationale in `docs/taxonomy.md`.
 - **Dennis and Misunas (1975)** — [A preliminary architecture for a basic data-flow processor](https://doi.org/10.1145/642089.642111) — *hardware*. *(metadata-verified; summary pending full read)*  
   Dataflow execution with explicit token movement, an ancestor of spatial dataflow accelerators.  
   `foundations` `hardware` `dataflow`
+- **Misunas (1977)** — Report on the Workshop on Data Flow Computer and Program Organization — *foundational*. *(metadata-verified; summary pending full read)*  
+  MIT technical memorandum reporting a 1977 workshop on dataflow computer architecture and program organisation; included as a foundations source for dataflow machine concepts.  
+  `foundations` `dataflow`
 - **Russell (1978)** — [The CRAY-1 computer system](https://doi.org/10.1145/359327.359336) — *hardware*. *(metadata-verified; summary pending full read)*  
   The canonical pipelined vector machine of the foundations era.  
   `foundations` `hardware`
@@ -214,12 +217,18 @@ rationale in `docs/taxonomy.md`.
 - **Lee (1995)** — [Techniques for compiling programs on distributed memory multicomputers](https://doi.org/10.1016/0167-8191(95)00052-6) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   Representative mid-1990s technique paper; also the example used in the methodology for why titles can mislead about paper type.  
   `communication-generation`
+- **Su et al. (1995)** — [Advanced compilation techniques in the PARADIGM compiler for distributed-memory multicomputers](https://doi.org/10.1145/224538.224650) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+  ICS '95 paper describing advanced techniques in the PARADIGM compiler (data and computation partitioning, communication optimisation and task/data parallelism) for distributed-memory multicomputers; the fuller companion to the 1995 Computer article.  
+  `paradigm` `automatic-distribution`
 - **Palermo et al. (1996)** — [Dynamic Data Partitioning for Distributed-Memory Multicomputers](https://doi.org/10.1006/jpdc.1996.0138) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   Phase-wise distribution selection, the 1990s form of what ML compilers now call cross-stage resharding.  
   `paradigm` `redistribution`
 - **Ramaswamy et al. (1996)** — [Optimizations for Efficient Array Redistribution on Distributed Memory Multicomputers](https://doi.org/10.1006/jpdc.1996.0142) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   The redistribution problem in its HPF form.  
   `paradigm` `redistribution`
+- **Chandra et al. (1997)** — [Data distribution support on distributed shared memory multiprocessors](https://doi.org/10.1145/258915.258945) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+  PLDI '97 paper on compiler and runtime support for placing data on cache-coherent distributed-shared-memory machines, where pages and data distributions affect locality; a bridge entry on data distribution outside message passing.  
+  `dsm` `data-distribution`
 
 ### Fortran D / HPF
 
@@ -256,6 +265,9 @@ rationale in `docs/taxonomy.md`.
 - **Ancourt et al. (1995)** — [A Linear Algebra Framework for Static High Performance Fortran Code Distribution](https://doi.org/10.1155/1997/195689) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   The clearest link between HPF directives and the polyhedral formulation used two decades later.  
   `hpf` `polyhedral`
+- **Su et al. (1995)** — [Advanced compilation techniques in the PARADIGM compiler for distributed-memory multicomputers](https://doi.org/10.1145/224538.224650) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+  ICS '95 paper describing advanced techniques in the PARADIGM compiler (data and computation partitioning, communication optimisation and task/data parallelism) for distributed-memory multicomputers; the fuller companion to the 1995 Computer article.  
+  `paradigm` `automatic-distribution`
 - **Benkner and Zima (1999)** — [Compiling High Performance Fortran for distributed-memory architectures](https://doi.org/10.1016/s0167-8191(99)00074-5) — *survey*. *(metadata-verified; summary pending full read)*  
   An end-of-decade overview of HPF compilation; read it after the 1993 overview to see what matured and what did not.  
   `survey` `hpf`
@@ -271,6 +283,9 @@ rationale in `docs/taxonomy.md`.
 - **Gropp et al. (1996)** — [A high-performance, portable implementation of the MPI message passing interface standard](https://doi.org/10.1016/0167-8191(96)00024-5) — *runtime*. *(metadata-verified; summary pending full read)*  
   Why MPI became portable and ubiquitous, which is half the explanation of why HPF lost.  
   `mpi` `runtime`
+- **Shen et al. (2007)** — [Eliminating Redundant Communication of Code Generation for Distributed Memory Machines](https://doi.org/10.1109/snpd.2007.482) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+  Work on eliminating redundant communication in code generated for distributed-memory machines from affine loops, so that data already present on a processor is not resent; a core communication-generation entry.  
+  `communication-generation` `redundancy-elimination`
 - **Bondhugula (2011)** — [Automatic Distributed-Memory Parallelization and Code Generation using the Polyhedral Framework](https://www.csa.iisc.ac.in/~udayb/publications/uday11distmem-tr.pdf) — *compiler-technique*.  
   Learn the flow-out/write-out set formulation of communication from exact dependences and how symbolic process counts are handled by generating runtime helper functions rather than virtual processors.  
   `polyhedral` `automatic-mpi`
@@ -310,6 +325,9 @@ rationale in `docs/taxonomy.md`.
 - **Hwang et al. (1995)** — [Runtime and language support for compiling adaptive irregular programs on distributed‐memory machines](https://doi.org/10.1002/spe.4380250603) — *runtime*. *(metadata-verified; summary pending full read)*  
   Adaptive irregular programs: what breaks when the mesh changes and how CHAOS handled it.  
   `irregular` `chaos`
+- **Bik and Wijshoff (1996)** — [Automatic Data Structure Selection and Transformation for Sparse Matrix Computations](https://doi.org/10.1109/71.485501) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+  TPDS paper on delaying sparse data-structure selection to compile time so that a restructuring compiler can combine loop optimisation with storage choice for sparse matrices; single-node, included as context for sparse-compilation lineage.  
+  `sparse` `restructuring-compiler`
 - **Ravishankar et al. (2015)** — [Distributed memory code generation for mixed Irregular/Regular computations](https://doi.org/10.1145/2688500.2688515) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   Where polyhedral code generation and inspector-executor meet.  
   `polyhedral` `irregular` `inspector-executor`
@@ -367,6 +385,9 @@ rationale in `docs/taxonomy.md`.
 - **Kruse (2014)** — [Introducing Molly: Distributed Memory Parallelization with LLVM](https://arxiv.org/abs/1409.2088) — *full-system*.  
   Learn how array elements (not just iterations) can be modelled as polyhedral points with home-location and where-mapping functions, and how owner-computes plus dependence analysis yields communication inside an LLVM pass.  
   `polyhedral` `llvm` `automatic-mpi`
+- **Dathathri (2014)** — Compiling for a Dataflow Runtime on Distributed-Memory Parallel Architectures — *full-system*. *(metadata-verified; summary pending full read)*  
+  IISc master's thesis on compiling affine programs for a dataflow runtime on distributed-memory machines, the thesis version of the work later published with Mullapudi and Bondhugula; a bridge entry for runtime-based polyhedral distributed compilation.  
+  `polyhedral` `runtime` `thesis`
 - **Ravishankar et al. (2015)** — [Distributed memory code generation for mixed Irregular/Regular computations](https://doi.org/10.1145/2688500.2688515) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   Where polyhedral code generation and inspector-executor meet.  
   `polyhedral` `irregular` `inspector-executor`
@@ -388,6 +409,9 @@ rationale in `docs/taxonomy.md`.
 - **Bauer et al. (2012)** — [Legion: Expressing locality and independence with logical regions](https://doi.org/10.1109/sc.2012.71) — *runtime*. *(metadata-verified; summary pending full read)*  
   Logical regions and mappers: the task-based alternative to compiler-chosen distribution.  
   `task-region` `legion`
+- **Dathathri (2014)** — Compiling for a Dataflow Runtime on Distributed-Memory Parallel Architectures — *full-system*. *(metadata-verified; summary pending full read)*  
+  IISc master's thesis on compiling affine programs for a dataflow runtime on distributed-memory machines, the thesis version of the work later published with Mullapudi and Bondhugula; a bridge entry for runtime-based polyhedral distributed compilation.  
+  `polyhedral` `runtime` `thesis`
 - **Slaughter et al. (2015)** — [Regent: a high-productivity programming language for HPC with logical regions](https://doi.org/10.1145/2807591.2807629) — *language*. *(metadata-verified; summary pending full read)*  
   The compiler half of Legion: what can be decided statically about regions and tasks.  
   `task-region` `regent`
@@ -538,6 +562,8 @@ rationale in `docs/taxonomy.md`.
   `foundations` `dependence`
 - **Dennis and Misunas (1975)** — [A preliminary architecture for a basic data-flow processor](https://doi.org/10.1145/642089.642111) — *hardware*. *(metadata-verified; summary pending full read)*  
   `foundations` `hardware` `dataflow`
+- **Misunas (1977)** — Report on the Workshop on Data Flow Computer and Program Organization — *foundational*. *(metadata-verified; summary pending full read)*  
+  `foundations` `dataflow`
 - **Russell (1978)** — [The CRAY-1 computer system](https://doi.org/10.1145/359327.359336) — *hardware*. *(metadata-verified; summary pending full read)*  
   `foundations` `hardware`
 - **Kuck et al. (1981)** — [Dependence graphs and compiler optimizations](https://doi.org/10.1145/567532.567555) — *foundational*. *(metadata-verified; summary pending full read)*  
@@ -648,12 +674,18 @@ rationale in `docs/taxonomy.md`.
   `communication-generation`
 - **Ponnusamy et al. (1995)** — [Runtime support and compilation methods for user-specified irregular data distributions](https://doi.org/10.1109/71.406958) — *runtime*. *(metadata-verified; summary pending full read)*  
   `irregular` `chaos` `mapping-array`
+- **Su et al. (1995)** — [Advanced compilation techniques in the PARADIGM compiler for distributed-memory multicomputers](https://doi.org/10.1145/224538.224650) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+  `paradigm` `automatic-distribution`
+- **Bik and Wijshoff (1996)** — [Automatic Data Structure Selection and Transformation for Sparse Matrix Computations](https://doi.org/10.1109/71.485501) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+  `sparse` `restructuring-compiler`
 - **Gropp et al. (1996)** — [A high-performance, portable implementation of the MPI message passing interface standard](https://doi.org/10.1016/0167-8191(96)00024-5) — *runtime*. *(metadata-verified; summary pending full read)*  
   `mpi` `runtime`
 - **Palermo et al. (1996)** — [Dynamic Data Partitioning for Distributed-Memory Multicomputers](https://doi.org/10.1006/jpdc.1996.0138) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   `paradigm` `redistribution`
 - **Ramaswamy et al. (1996)** — [Optimizations for Efficient Array Redistribution on Distributed Memory Multicomputers](https://doi.org/10.1006/jpdc.1996.0142) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   `paradigm` `redistribution`
+- **Chandra et al. (1997)** — [Data distribution support on distributed shared memory multiprocessors](https://doi.org/10.1145/258915.258945) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+  `dsm` `data-distribution`
 - **Benkner and Zima (1999)** — [Compiling High Performance Fortran for distributed-memory architectures](https://doi.org/10.1016/s0167-8191(99)00074-5) — *survey*. *(metadata-verified; summary pending full read)*  
   `survey` `hpf`
 
@@ -678,6 +710,8 @@ rationale in `docs/taxonomy.md`.
   `pgas` `chapel`
 - **Kennedy et al. (2007)** — [The rise and fall of High Performance Fortran](https://doi.org/10.1145/1238844.1238851) — *experience*. *(metadata-verified; summary pending full read)*  
   `hpf` `history`
+- **Shen et al. (2007)** — [Eliminating Redundant Communication of Code Generation for Distributed Memory Machines](https://doi.org/10.1109/snpd.2007.482) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+  `communication-generation` `redundancy-elimination`
 - **Baskaran et al. (2008)** — [Automatic data movement and computation mapping for multi-level parallel architectures with explicitly managed memories](https://doi.org/10.1145/1345206.1345210) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   `polyhedral` `explicit-memory`
 - **Bondhugula et al. (2008)** — [A practical automatic polyhedral parallelizer and locality optimizer](https://doi.org/10.1145/1375581.1375595) — *full-system*. *(metadata-verified; summary pending full read)*  
@@ -694,6 +728,8 @@ rationale in `docs/taxonomy.md`.
   `task-region` `legion`
 - **Bondhugula (2013)** — [Compiling affine loop nests for distributed-memory parallel architectures](https://doi.org/10.1145/2503210.2503289) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   `polyhedral` `automatic-mpi`
+- **Dathathri (2014)** — Compiling for a Dataflow Runtime on Distributed-Memory Parallel Architectures — *full-system*. *(metadata-verified; summary pending full read)*  
+  `polyhedral` `runtime` `thesis`
 - **Kruse (2014)** — [Introducing Molly: Distributed Memory Parallelization with LLVM](https://arxiv.org/abs/1409.2088) — *full-system*.  
   `polyhedral` `llvm` `automatic-mpi`
 - **Ravishankar et al. (2015)** — [Distributed memory code generation for mixed Irregular/Regular computations](https://doi.org/10.1145/2688500.2688515) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
@@ -801,6 +837,8 @@ rationale in `docs/taxonomy.md`.
   `paradigm` `automatic-distribution`
 - **Ancourt et al. (1995)** — [A Linear Algebra Framework for Static High Performance Fortran Code Distribution](https://doi.org/10.1155/1997/195689) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   `hpf` `polyhedral`
+- **Su et al. (1995)** — [Advanced compilation techniques in the PARADIGM compiler for distributed-memory multicomputers](https://doi.org/10.1145/224538.224650) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+  `paradigm` `automatic-distribution`
 - **Palermo et al. (1996)** — [Dynamic Data Partitioning for Distributed-Memory Multicomputers](https://doi.org/10.1006/jpdc.1996.0138) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   `paradigm` `redistribution`
 - **Numrich and Reid (1998)** — [Co-array Fortran for parallel programming](https://doi.org/10.1145/289918.289920) — *language*. *(metadata-verified; summary pending full read)*  
@@ -863,8 +901,12 @@ rationale in `docs/taxonomy.md`.
   `hpf` `production-compiler`
 - **Ancourt et al. (1995)** — [A Linear Algebra Framework for Static High Performance Fortran Code Distribution](https://doi.org/10.1155/1997/195689) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   `hpf` `polyhedral`
+- **Su et al. (1995)** — [Advanced compilation techniques in the PARADIGM compiler for distributed-memory multicomputers](https://doi.org/10.1145/224538.224650) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+  `paradigm` `automatic-distribution`
 - **Tang and Xue (2000)** — [Generating efficient tiled code for distributed memory machines](https://doi.org/10.1016/s0167-8191(00)00040-5) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   `tiling` `affine`
+- **Shen et al. (2007)** — [Eliminating Redundant Communication of Code Generation for Distributed Memory Machines](https://doi.org/10.1109/snpd.2007.482) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+  `communication-generation` `redundancy-elimination`
 - **Bondhugula (2011)** — [Automatic Distributed-Memory Parallelization and Code Generation using the Polyhedral Framework](https://www.csa.iisc.ac.in/~udayb/publications/uday11distmem-tr.pdf) — *compiler-technique*.  
   `polyhedral` `automatic-mpi`
 - **Bondhugula (2013)** — [Compiling affine loop nests for distributed-memory parallel architectures](https://doi.org/10.1145/2503210.2503289) — *compiler-technique*. *(metadata-verified; summary pending full read)*  

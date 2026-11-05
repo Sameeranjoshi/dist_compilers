@@ -15,7 +15,8 @@ Checks (all are hard failures unless noted):
   * a paper with paper_type 'survey' must say so in its summary (guard against
     mislabelled technique papers -- see docs/methodology.md);
   * URL fields start with https:// and are not on a disallowed host list;
-  * every paper must have at least one of doi / arxiv / official_url.
+  * every paper must have at least one of doi / arxiv / official_url, or a
+    'supplied PDF' metadata source (owner-provided copy with no public record).
 Exit status 1 on any error.
 """
 import json
@@ -101,8 +102,9 @@ def main():
             e = eras[p["era"]]
             if not (e["start"] <= p["year"] <= e["end"]):
                 warnings.append(f"{pid}: year {p['year']} outside {p['era']} range {e['start']}-{e['end']} (allowed, but justify in notes)")
-        if not (p.get("doi") or p.get("arxiv") or p.get("official_url")):
-            errors.append(f"{pid}: needs at least one of doi / arxiv / official_url")
+        supplied = any("supplied pdf" in (m or "").lower() for m in (p.get("metadata_sources") or []))
+        if not (p.get("doi") or p.get("arxiv") or p.get("official_url") or supplied):
+            errors.append(f"{pid}: needs at least one of doi / arxiv / official_url, or a supplied-PDF metadata source")
         for field in ("official_url", "pdf_url", "artifact_url", "source_code_url"):
             u = p.get(field)
             if u and any(h in u.lower() for h in DISALLOWED_HOSTS):
