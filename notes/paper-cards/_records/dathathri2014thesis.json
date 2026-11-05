@@ -1,0 +1,26 @@
+{
+ "id": "dathathri2014thesis",
+ "summary": "The thesis proposes a polyhedral source-to-source framework that generates low-volume data movement for affine loop nests on clusters and heterogeneous nodes. It also generates a dynamically scheduled dataflow runtime whose task functions are evaluated per node without building the task graph in memory.",
+ "why_read": "It covers both halves of compiler-driven distributed execution, communication volume reduction and dataflow scheduling, in one worked system.",
+ "main_contribution": "Flow-out partitioning, a compile-time partitioning of flow dependences that sends each data partition only to its receivers, together with a compiler-generated dataflow runtime interface.",
+ "main_limitation": "Minimal volume is claimed only for most dependence patterns, and placement and data tiling are left out of scope.",
+ "evaluation_method": "Communication volume and execution time on a 32-node InfiniBand cluster, a multi-GPU heterogeneous node and a shared-memory multicore, compared with FO, FOIFI, OMPD, UPC, auto-static and Intel CnC.",
+ "benchmarks": ["floyd-warshall", "lu", "adi", "fdtd-2d", "heat-2d", "heat-3d", "cholesky"],
+ "optimization_objectives": ["communication-volume", "overlap", "load-balance", "message-count"],
+ "data_decomposition": ["replicated"],
+ "computation_mapping": ["iteration-space-partitioning", "loop-to-processor", "task-placement"],
+ "communication_generation": ["communication-sets", "compiler-p2p", "broadcast-multicast", "message-vectorization", "overlapped"],
+ "compiler_runtime_boundary": ["runtime-inspector", "adaptive"],
+ "target_hardware": ["cpu-cluster", "hierarchical-heterogeneous"],
+ "ir_representation": ["dependence-graph", "polyhedral-sets", "runtime-schedule"],
+ "compiler_architecture": ["source-to-source", "polyhedral", "runtime-plan-generator"],
+ "states_relationship_to": ["Baskaran et al. 2008", "Baskaran et al. 2009", "Bondhugula 2013", "Amarasinghe and Lam 1993", "Adve and Mellor-Crummey 1998", "Chavarria-Miranda and Mellor-Crummey 2005", "Classen and Griebl 2006", "Kwon et al. 2012", "Kim et al. 2010", "Leung et al. 2010", "Song and Dongarra 2012", "DAGuE", "DPLASMA", "Parameterized Task Graph", "Intel CnC", "StarPU", "SWARM", "OCR", "CGCM", "DyManD", "AMM", "Reddy and Bondhugula 2014"],
+ "evidence": [
+  {"source": "full text", "section": "Title page; Abstract"},
+  {"source": "full text", "section": "Sec. 1-3"},
+  {"source": "full text", "section": "Sec. 3.6"},
+  {"source": "full text", "section": "Sec. 4.1-4.4"},
+  {"source": "full text", "section": "Sec. 5-6"}
+ ],
+ "notes": "No catalog record for this id is in the local abstracts file, so title, author and year were checked against the title page only."
+}

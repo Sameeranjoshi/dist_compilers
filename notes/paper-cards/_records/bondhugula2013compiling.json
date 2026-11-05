@@ -1,0 +1,26 @@
+{
+ "id": "bondhugula2013compiling",
+ "summary": "The paper presents a source-level polyhedral framework that turns sequential affine loop nests into MPI code without any programmer-supplied data distribution. Per-tile flow-out and write-out sets are computed at compile time, and run-time helper functions find the receiving processes, so each needed element is sent only to the processes that read it.",
+ "why_read": "It is a concrete, end-to-end account of how a polyhedral compiler can generate correct MPI communication code for arbitrary affine loop nests.",
+ "main_contribution": "Parametric communication code generation for affine loop nests, valid for any process count and any affine computation partition.",
+ "main_limitation": "Every process holds all data, and communication volume is not optimal when parts of one flow-out set have different receivers.",
+ "evaluation_method": "Strong scaling on a 32-node InfiniBand cluster, compared with sequential code, Pluto-sequential code, hand-written MPI, a naive all-gather variant and pghpf.",
+ "benchmarks": ["strmm", "trmm", "dsyr2k", "covcol", "seidel", "jac-2d", "fdtd-2d", "2d-heat", "3d-heat", "lu", "floyd-warshall"],
+ "optimization_objectives": ["communication-volume", "message-count"],
+ "data_decomposition": ["replicated"],
+ "computation_mapping": ["iteration-space-partitioning", "loop-to-processor"],
+ "communication_generation": ["communication-sets", "compiler-p2p", "broadcast-multicast", "message-vectorization", "scatter-gather"],
+ "compiler_runtime_boundary": ["runtime-inspector"],
+ "target_hardware": ["cpu-cluster"],
+ "ir_representation": ["dependence-graph", "polyhedral-sets"],
+ "compiler_architecture": ["source-to-source", "polyhedral"],
+ "states_relationship_to": ["Amarasinghe and Lam 1993", "Adve and Mellor-Crummey 1998", "Classen and Griebl 2006", "dHPF", "Dathathri et al. 2013", "Pluto", "Baskaran et al. 2009", "Kim et al. 2010", "R-STREAM", "Kwon et al. 2012", "Griebl 2004", "Baskaran et al. 2008"],
+ "evidence": [
+  {"source": "full text", "section": "Title page; Abstract"},
+  {"source": "full text", "section": "Sec. 1, 3, 4"},
+  {"source": "full text", "section": "Sec. 5.1-5.6"},
+  {"source": "full text", "section": "Sec. 6, Table 2"},
+  {"source": "full text", "section": "Sec. 7"}
+ ],
+ "notes": ""
+}

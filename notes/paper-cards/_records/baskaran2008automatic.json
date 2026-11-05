@@ -1,0 +1,43 @@
+{
+ "id": "baskaran2008automatic",
+ "summary": "The paper automatically allocates scratchpad buffers for the data accessed by a block of computation and generates code that moves data between global and local memory. It also applies multi-level tiling, with tile sizes chosen by a cost model, to spread work across GPU multiprocessors and their inner SIMD units.",
+ "why_read": "It shows how a compiler can manage explicitly managed memories and map polyhedral loop nests onto a two-level parallel machine, a useful precursor for polyhedral code generation on distributed memory.",
+ "main_contribution": "An automatic framework for scratchpad buffer allocation and data-movement code generation, combined with multi-level tiling and a tile-size search for a GPU.",
+ "main_limitation": "Copy-in and copy-out sets are not yet reduced using dependence information, and the evaluation covers two kernels on one GPU.",
+ "evaluation_method": "Measured execution time on a GeForce 8800 GTX against GPU-only global memory and a CPU",
+ "benchmarks": ["Mpeg4 motion estimation kernel", "1-D Jacobi kernel"],
+ "optimization_objectives": ["local-memory-fit", "memory-bandwidth", "synchronization"],
+ "data_decomposition": ["tiled-hierarchical"],
+ "computation_mapping": ["iteration-space-partitioning", "hierarchical-mapping"],
+ "communication_generation": [],
+ "compiler_runtime_boundary": ["fully-static"],
+ "target_hardware": ["hierarchical-heterogeneous"],
+ "ir_representation": ["polyhedral-sets"],
+ "compiler_architecture": ["polyhedral", "library-backed"],
+ "states_relationship_to": [
+  "Bondhugula et al. 2007 affine transformation framework [7]",
+  "Kim et al. multi-level tiling [26]",
+  "Krishnamoorthy et al. stencil parallelization [27]",
+  "Fatahalian et al. Sequoia [13]",
+  "Schreiber and Cronquist [38]",
+  "Kandemir et al. scratchpad management [25]",
+  "Anantharaman and Pande [1]",
+  "Eisenbeis et al. [12]",
+  "Clauss [9]",
+  "Pugh [35]"
+ ],
+ "evidence": [
+  {"source": "full text", "section": "Abstract"},
+  {"source": "full text", "section": "Sec. 1"},
+  {"source": "full text", "section": "Sec. 2"},
+  {"source": "full text", "section": "Sec. 3.1"},
+  {"source": "full text", "section": "Sec. 3.1.1"},
+  {"source": "full text", "section": "Sec. 3.1.3"},
+  {"source": "full text", "section": "Sec. 3.1.4"},
+  {"source": "full text", "section": "Sec. 4.1"},
+  {"source": "full text", "section": "Sec. 4.3"},
+  {"source": "full text", "section": "Sec. 6"},
+  {"source": "full text", "section": "Sec. 7"}
+ ],
+ "notes": ""
+}

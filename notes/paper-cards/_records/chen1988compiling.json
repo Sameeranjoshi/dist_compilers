@@ -1,0 +1,20 @@
+{
+ "id": "chen1988compiling",
+ "summary": "Crystal is a functional language based on mathematical notation and the lambda calculus, in which programs are data fields over index domains with communication metrics. The compiler reshapes them with morphisms, and the paper reports compiled C for two matrix multiplications and LU decomposition on iPSC/1 and NCUBE hypercubes.",
+ "why_read": "An early example of a functional source language whose compiler derives partitioning and communication from a formal model.",
+ "main_contribution": "A morphism-based optimization framework (partition, contraction, space-time realization, fan-in and fan-out reduction) that generates hypercube C code.",
+ "main_limitation": "The evaluation covers three kernels at a few fixed sizes on two hypercubes, and the run-time environment is described without reported measurements.",
+ "evaluation_method": "Measured speedup and timings of compiler-generated C on iPSC/1 (32 nodes) and NCUBE (128 nodes), with an analytic performance model.",
+ "benchmarks": ["block-partitioned matrix multiplication", "pipelined matrix multiplication", "pipelined LU decomposition"],
+ "optimization_objectives": ["local-memory-fit", "load-balance", "communication-volume", "message-count", "latency"],
+ "data_decomposition": ["block-1d", "block-nd"],
+ "computation_mapping": ["iteration-space-partitioning", "spatial-placement"],
+ "communication_generation": ["compiler-p2p", "broadcast-multicast", "reduction-allreduce", "communication-pipelining"],
+ "compiler_runtime_boundary": ["fully-static", "adaptive"],
+ "target_hardware": ["hypercube-mpp"],
+ "ir_representation": ["graph-ir", "dependence-graph"],
+ "compiler_architecture": ["source-to-source", "compiler-runtime-codesign"],
+ "states_relationship_to": ["Chen 1986a", "Chen 1986b", "Choo and Chen 1988", "Allen and Kennedy 1985", "Cytron 1986", "Fisher et al. 1984", "Loveman 1977", "Padua and Wolfe 1986", "Backus 1978", "Treleaven et al.", "Hudak 1986", "Chen and Jacquemin 1988", "Chen and Young 1986"],
+ "evidence": [{"source": "full text", "section": "Sec. 1"}, {"source": "full text", "section": "Sec. 2.3-2.4"}, {"source": "full text", "section": "Sec. 4.5"}, {"source": "full text", "section": "Sec. 5.1, 5.3"}, {"source": "full text", "section": "Sec. 6.2-6.3, Tables 2-4"}],
+ "notes": ""
+}

@@ -1,0 +1,20 @@
+{
+ "id": "chen2003upc",
+ "summary": "The Berkeley UPC compiler translates UPC into C that calls a runtime layer built on GASNet, and the authors tune pointer representation and local-access handling. Measured on a Quadrics-connected AlphaServer cluster, it is competitive with HP's commercial UPC compiler, faster in some cases and slower in others.",
+ "why_read": "It is the reference description of a portable UPC compiler and of the cost model behind its shared-pointer and affinity handling.",
+ "main_contribution": "A portable UPC-to-C compiler design with packed and phaseless pointer-to-shared representations and a GASNet runtime, evaluated against a commercial compiler.",
+ "main_limitation": "The comparison is against one commercial compiler on one cluster at one thread per node, and the communication optimizations are hand-applied upper bounds rather than compiler output.",
+ "evaluation_method": "Micro-benchmarks for pointer and affinity costs plus synthetic and NAS application kernels, timed against HP UPC on the same machine.",
+ "benchmarks": ["vector add", "gups pair", "scale", "EP", "IS", "CG", "NPBCG", "MG"],
+ "optimization_objectives": ["latency", "message-count", "overlap", "local-memory-fit"],
+ "data_decomposition": ["block-cyclic", "cyclic"],
+ "computation_mapping": ["owner-computes", "loop-to-processor"],
+ "communication_generation": ["programmer-explicit", "compiler-p2p", "communication-pipelining", "overlapped"],
+ "compiler_runtime_boundary": ["load-time"],
+ "target_hardware": ["cpu-cluster", "pgas-target"],
+ "ir_representation": [],
+ "compiler_architecture": ["source-to-source", "library-backed"],
+ "states_relationship_to": ["UPC", "Titanium", "Co-Array Fortran (Numwich and Reid 1998)", "OpenMP", "MPI", "GASNet (Bonachea 2002)", "HP UPC", "El-Ghazawi and Cantonnet 2002", "Krishnamurthy and Yelick 1996", "Chakrabarti et al. 1996", "Zhu and Hendren 1999", "Lee and Padua 2001", "Liblit and Aiken 2000", "Luk and Mowry 1996", "Bell et al. 2003", "NAS Parallel Benchmarks"],
+ "evidence": [{"source": "full text", "section": "Sec. 1-2"}, {"source": "full text", "section": "Sec. 2.1, Fig. 4"}, {"source": "full text", "section": "Sec. 3, Table 1"}, {"source": "full text", "section": "Sec. 4"}, {"source": "full text", "section": "Sec. 5, Figs. 5-18, Table 2"}],
+ "notes": ""
+}

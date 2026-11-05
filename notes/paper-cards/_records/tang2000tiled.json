@@ -1,0 +1,26 @@
+{
+ "id": "tang2000tiled",
+ "summary": "The paper gives compiler techniques that generate SPMD message-passing code for rectangularly tiled, skewed iteration spaces. Tiles are assigned to processors first, data follow by the computer-owns rule, and communication is aggregated per tile.",
+ "why_read": "It is an early, detailed treatment of compiling tiled loop nests for distributed memory, including local address translation and memory reduction.",
+ "main_contribution": "A computation-first code generation scheme for tiled iteration spaces, with message-passing code for arbitrary and rectangular spaces and two memory optimizations.",
+ "main_limitation": "The method needs rectangular tiling after skewing, and the evaluation covers a single stencil kernel on 1990s hardware.",
+ "evaluation_method": "Measured speedup on a Fujitsu AP1000 for skewed SOR, with ablations of tile size, processor layout, validity-test cost and memory optimizations.",
+ "benchmarks": ["SOR (five-point, skewed and expanded)"],
+ "optimization_objectives": ["load-balance", "message-count", "overlap", "local-memory-fit"],
+ "data_decomposition": ["block-cyclic", "halo-overlap"],
+ "computation_mapping": ["iteration-space-partitioning", "loop-to-processor"],
+ "communication_generation": ["communication-sets", "compiler-p2p", "message-vectorization", "halo-exchange", "overlapped"],
+ "compiler_runtime_boundary": ["fully-static"],
+ "target_hardware": ["dm-multicomputer"],
+ "ir_representation": ["polyhedral-sets"],
+ "compiler_architecture": ["polyhedral"],
+ "states_relationship_to": ["Fortran D", "Vienna Fortran", "HPF", "Tang and Zigman 1994", "Chatterjee et al. 1993", "Gerndt 1990", "Omega Calculator", "Ramanujam and Sadayappan 1992", "Schreiber and Dongarra 1990", "Irigoin and Triolet 1988", "Xue 1997", "Chen and Xue 1998"],
+ "evidence": [
+  {"source": "full text", "section": "Title page; Abstract"},
+  {"source": "full text", "section": "Sec. 1-4"},
+  {"source": "full text", "section": "Sec. 5-8"},
+  {"source": "full text", "section": "Sec. 9, Fig. 13"},
+  {"source": "full text", "section": "Sec. 10-11"}
+ ],
+ "notes": ""
+}
