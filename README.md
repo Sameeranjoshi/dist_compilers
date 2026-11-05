@@ -29,10 +29,10 @@ been read beyond their bibliographic record say so.
 | systems | 28 |
 | metadata-verified against Crossref/arXiv | 95 |
 | status `verified` (primary source read) | 4 |
-| status `read` | 48 |
-| status `screened` / `discovered` | 53 |
+| status `read` | 49 |
+| status `screened` / `discovered` | 52 |
 | tier core / bridge / foundation / adjacent | 73 / 14 / 12 / 6 |
-| paper cards | 52 |
+| paper cards | 53 |
 <!-- END:status -->
 
 Status meanings: `discovered` = metadata verified against Crossref/arXiv
@@ -214,8 +214,8 @@ rationale in `docs/taxonomy.md`.
 - **Banerjee et al. (1995)** — [The Paradigm compiler for distributed-memory multicomputers](https://doi.org/10.1109/2.467577) — *full-system*.  
   It is a short 1995 overview of one research compiler that brings together most of the regular, irregular and task-parallel techniques of the period in a single framework.  
   `paradigm` `automatic-distribution`
-- **Lee (1995)** — [Techniques for compiling programs on distributed memory multicomputers](https://doi.org/10.1016/0167-8191(95)00052-6) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
-  Representative mid-1990s technique paper; also the example used in the methodology for why titles can mislead about paper type.  
+- **Lee (1995)** — [Techniques for compiling programs on distributed memory multicomputers](https://doi.org/10.1016/0167-8191(95)00052-6) — *compiler-technique*.  
+  It shows how a compiler can choose data layouts per loop nest and replace broadcasts with pipelining, a compact example of cost-driven data distribution.  
   `communication-generation`
 - **Su et al. (1995)** — [Advanced compilation techniques in the PARADIGM compiler for distributed-memory multicomputers](https://doi.org/10.1145/224538.224650) — *compiler-technique*.  
   It shows how one compiler of the mid-1990s handled symbolic block-cyclic distributions by offloading the symbolic algebra to an external package.  
@@ -673,7 +673,7 @@ rationale in `docs/taxonomy.md`.
   `hpf` `production-compiler`
 - **Hwang et al. (1995)** — [Runtime and language support for compiling adaptive irregular programs on distributed‐memory machines](https://doi.org/10.1002/spe.4380250603) — *runtime*.  
   `irregular` `chaos`
-- **Lee (1995)** — [Techniques for compiling programs on distributed memory multicomputers](https://doi.org/10.1016/0167-8191(95)00052-6) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+- **Lee (1995)** — [Techniques for compiling programs on distributed memory multicomputers](https://doi.org/10.1016/0167-8191(95)00052-6) — *compiler-technique*.  
   `communication-generation`
 - **Ponnusamy et al. (1995)** — [Runtime support and compilation methods for user-specified irregular data distributions](https://doi.org/10.1109/71.406958) — *runtime*.  
   `irregular` `chaos` `mapping-array`

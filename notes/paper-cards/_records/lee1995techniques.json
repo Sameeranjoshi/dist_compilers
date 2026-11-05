@@ -1,0 +1,25 @@
+{
+ "id": "lee1995techniques",
+ "summary": "This paper presents compiler techniques for Do-loop programs on distributed-memory multicomputers, including a generalized distribution function, a dynamic-programming choice of data layouts across consecutive loops, and pipelining of data guided by dependence vectors. It evaluates two linear-system kernels on a 32-node nCUBE-2 and reports that the dynamic layout and the pipelined version run faster than their alternatives.",
+ "why_read": "It shows how a compiler can choose data layouts per loop nest and replace broadcasts with pipelining, a compact example of cost-driven data distribution.",
+ "main_contribution": "A dynamic-programming method that chooses data distributions across consecutive loops, combined with dependence-vector-based pipelining of broadcast-like communication.",
+ "main_limitation": "The method is restricted to constant data-dependence vectors, one- and two-dimensional arrays and a two-dimensional abstract grid.",
+ "evaluation_method": "Run times on a 32-node nCUBE-2 comparing dynamic with static layouts for Jacobi iteration and pipelined with broadcast versions for Gauss elimination.",
+ "benchmarks": ["Jacobi iteration for linear systems", "Gauss elimination for linear systems"],
+ "optimization_objectives": ["communication-volume", "load-balance"],
+ "data_decomposition": ["block-1d", "block-nd", "cyclic", "block-cyclic", "replicated"],
+ "computation_mapping": ["owner-computes", "loop-to-processor"],
+ "communication_generation": ["compiler-p2p", "broadcast-multicast", "scatter-gather", "reduction-allreduce", "communication-pipelining"],
+ "compiler_runtime_boundary": ["fully-static"],
+ "target_hardware": ["hypercube-mpp", "dm-multicomputer"],
+ "ir_representation": ["dependence-graph"],
+ "compiler_architecture": ["dependence-based", "library-backed"],
+ "states_relationship_to": ["Li and Chen", "Gupta and Banerjee", "Callahan and Kennedy", "Fortran D", "Koelbel and Mehrotra", "Crystal", "SUPERB", "PARADIGM", "Vienna Fortran", "ASPAR", "ParaScope", "AL", "Ramanujam and Sadayappan", "Gong, Gupta and Melhem", "Hudak and Abraham", "Zima and Chapman", "Rogers and Pingali", "Wolf and Lam"],
+ "evidence": [
+  {"source": "full text", "section": "1"},
+  {"source": "full text", "section": "2.1, 2.2"},
+  {"source": "full text", "section": "3, 4"},
+  {"source": "full text", "section": "5, 6"}
+ ],
+ "notes": "No conflict with the catalog id for title, first author or year (title page: Techniques for compiling programs on distributed memory multicomputers; Pei-Zong Lee; 1995)."
+}

@@ -53,7 +53,7 @@
 | gupta1995hpf | 1995 | An HPF compiler for the IBM SP2 | full-system | core | read | no | paywalled |
 | harris1995dechpf | 1995 | Compiling High Performance Fortran for Distributed-Memory Systems | full-system | core | read | no | open |
 | hwang1995chaos | 1995 | Runtime and language support for compiling adaptive irregular programs on distributed‐memory machines | runtime | core | read | no | paywalled |
-| lee1995techniques | 1995 | Techniques for compiling programs on distributed memory multicomputers | compiler-technique | core | screened | no | paywalled |
+| lee1995techniques | 1995 | Techniques for compiling programs on distributed memory multicomputers | compiler-technique | core | read | no | paywalled |
 | ponnusamy1995runtime | 1995 | Runtime support and compilation methods for user-specified irregular data distributions | runtime | core | read | no | paywalled |
 | su1995advanced | 1995 | Advanced compilation techniques in the PARADIGM compiler for distributed-memory multicomputers | compiler-technique | core | read | no | paywalled |
 | bik1996automatic | 1996 | Automatic Data Structure Selection and Transformation for Sparse Matrix Computations | compiler-technique | adjacent | screened | no | paywalled |
