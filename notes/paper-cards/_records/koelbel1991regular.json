@@ -1,0 +1,31 @@
+{
+ "id": "koelbel1991regular",
+ "summary": "Koelbel derives closed-form formulas for the send, receive and iteration sets of forall loops whose arrays are block or cyclic distributed and whose subscripts are linear in the loop index. Applied to cyclic reduction in the Kali compiler, the generated code is reported to run with an average overhead of 2.2 percent against a hand-coded version on an iPSC/860 with cyclic distributions.",
+ "why_read": "It is a short, precise account of how a compiler can derive message sets at compile time for simple distributed-array loops.",
+ "main_contribution": "Closed-form expressions for send, receive and local/nonlocal iteration sets of forall loops with linear subscripts over block and cyclic arrays.",
+ "main_limitation": "The closed forms cover linear subscripts with positive coefficients on block and cyclic arrays, and the evaluation is a single cyclic reduction kernel on one compiler with a hand-coded baseline from the same author.",
+ "evaluation_method": "Execution time against processor count compared with hand-coded C, reported as efficiency and overhead percentages, plus a locality-check overhead measurement.",
+ "benchmarks": ["Cyclic reduction (tridiagonal solver), N = 10000 to 40000, 1 to 32 processors, iPSC/860"],
+ "optimization_objectives": ["overlap"],
+ "data_decomposition": ["block-1d", "cyclic"],
+ "computation_mapping": ["owner-computes"],
+ "communication_generation": ["communication-sets", "overlapped"],
+ "compiler_runtime_boundary": ["fully-static"],
+ "target_hardware": ["dm-multicomputer"],
+ "ir_representation": ["distribution-functions", "source-annotations"],
+ "compiler_architecture": ["dsl-compiler"],
+ "states_relationship_to": [
+  "Kali (Koelbel, Mehrotra and Van Rosendale 1990)",
+  "Balasundaram, Fox, Kennedy and Kremer 1990 (loop-level communication choice)",
+  "Koelbel 1990 thesis (compiling programs for nonshared memory machines)"
+ ],
+ "evidence": [
+  {"source": "full text", "section": "Sec. 2.1-2.5"},
+  {"source": "full text", "section": "Sec. 3.1"},
+  {"source": "full text", "section": "Sec. 3.2"},
+  {"source": "full text", "section": "Sec. 3.3"},
+  {"source": "full text", "section": "Sec. 4"},
+  {"source": "full text", "section": "Sec. 5; Figs. 5, 6, 8"}
+ ],
+ "notes": ""
+}

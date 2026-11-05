@@ -1,0 +1,25 @@
+{
+ "id": "zima1993compiling",
+ "summary": "This invited survey reviews how Fortran programs with user-specified data distributions can be compiled into SPMD message-passing code for distributed-memory machines. It presents a four-phase translation strategy, overlap-based and aggregate communication optimizations, and inspector-executor techniques for irregular accesses, and then surveys the systems that implement them.",
+ "why_read": "It is a compact early account of how distribution-based compilers turn a global-address Fortran program into message-passing code.",
+ "main_contribution": "A structured description of the phases, communication primitives and optimizations for compiling distribution-annotated Fortran to message passing, together with a survey of contemporary systems.",
+ "main_limitation": "The paper reports no experiments of its own and states that parallelizing compilers often need user assistance.",
+ "evaluation_method": "none",
+ "benchmarks": [],
+ "optimization_objectives": ["load-balance", "communication-volume", "message-count", "local-memory-fit", "productivity"],
+ "data_decomposition": ["block-1d", "block-nd", "uneven-block", "cyclic", "block-cyclic", "replicated", "dynamic-distribution", "mapping-array"],
+ "computation_mapping": ["owner-computes", "iteration-space-partitioning", "loop-to-processor"],
+ "communication_generation": ["compiler-p2p", "message-vectorization", "halo-exchange", "inspector-executor", "communication-sets", "broadcast-multicast", "reduction-allreduce"],
+ "compiler_runtime_boundary": ["static-with-directives", "runtime-inspector"],
+ "target_hardware": ["dm-multicomputer", "hypercube-mpp"],
+ "ir_representation": ["source-annotations", "dependence-graph"],
+ "compiler_architecture": ["source-to-source", "dependence-based"],
+ "states_relationship_to": ["Vienna Fortran", "Fortran D", "SUPERB", "Kali", "Crystal", "Dino", "Dataparallel C", "MIMDizer", "Oxygen", "Hypertasking", "Aspar", "Parti routines", "Li and Chen", "Gerndt", "Id Nouveau", "High Performance Fortran Forum"],
+ "evidence": [
+  {"source": "full text", "section": "III"},
+  {"source": "full text", "section": "IV-B, IV-C"},
+  {"source": "full text", "section": "V-B, VI-B"},
+  {"source": "full text", "section": "VII, VIII"}
+ ],
+ "notes": ""
+}

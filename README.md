@@ -29,10 +29,10 @@ been read beyond their bibliographic record say so.
 | systems | 28 |
 | metadata-verified against Crossref/arXiv | 95 |
 | status `verified` (primary source read) | 4 |
-| status `read` | 36 |
-| status `screened` / `discovered` | 65 |
+| status `read` | 39 |
+| status `screened` / `discovered` | 62 |
 | tier core / bridge / foundation / adjacent | 73 / 14 / 12 / 6 |
-| paper cards | 41 |
+| paper cards | 44 |
 <!-- END:status -->
 
 Status meanings: `discovered` = metadata verified against Crossref/arXiv
@@ -57,7 +57,7 @@ away from it.  Links go to the DOI, arXiv or the official open copy.
 **Foundational map**
 
 1. [Compiling for distributed-memory systems](https://doi.org/10.1109/5.214550) — Zima and Chapman, 1993.  
-   *Learn:* The 1993 state of the art in one place: what a distributed-memory compiler had to do for data distribution, work distribution and communication before HPF compilers existed.
+   *Learn:* It is a compact early account of how distribution-based compilers turn a global-address Fortran program into message-passing code.
 2. [Compiling High Performance Fortran for distributed-memory architectures](https://doi.org/10.1016/s0167-8191(99)00074-5) — Benkner and Zima, 1999.  
    *Learn:* An end-of-decade overview of HPF compilation; read it after the 1993 overview to see what matured and what did not.
 
@@ -193,8 +193,8 @@ rationale in `docs/taxonomy.md`.
 - **Ramanujam and Sadayappan (1991)** — [Compile-time techniques for data distribution in distributed memory machines](https://doi.org/10.1109/71.97903) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   Automatic distribution selection from dependences, the companion problem to alignment.  
   `automatic-distribution`
-- **Koelbel (1991)** — [Compile-time generation of regular communications patterns](https://doi.org/10.1145/125826.125890) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
-  Closed-form communication generation for regular references, the opposite pole from inspector-executor.  
+- **Koelbel (1991)** — [Compile-time generation of regular communications patterns](https://doi.org/10.1145/125826.125890) — *compiler-technique*.  
+  It is a short, precise account of how a compiler can derive message sets at compile time for simple distributed-array loops.  
   `communication-generation` `kali`
 - **Chapman et al. (1992)** — [Programming in Vienna Fortran](https://doi.org/10.1155/1992/258136) — *language*.  
   Learn how a data-distribution language exposes FORALL placement (explicit processor, owner of a datum, or compiler-chosen) and reductions on top of declarative distributions, and what a 1992 compiler actually implemented.  
@@ -223,8 +223,8 @@ rationale in `docs/taxonomy.md`.
 - **Palermo et al. (1996)** — [Dynamic Data Partitioning for Distributed-Memory Multicomputers](https://doi.org/10.1006/jpdc.1996.0138) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   Phase-wise distribution selection, the 1990s form of what ML compilers now call cross-stage resharding.  
   `paradigm` `redistribution`
-- **Ramaswamy et al. (1996)** — [Optimizations for Efficient Array Redistribution on Distributed Memory Multicomputers](https://doi.org/10.1006/jpdc.1996.0142) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
-  The redistribution problem in its HPF form.  
+- **Ramaswamy et al. (1996)** — [Optimizations for Efficient Array Redistribution on Distributed Memory Multicomputers](https://doi.org/10.1006/jpdc.1996.0142) — *compiler-technique*.  
+  It explains concretely how a runtime library can compute which elements move between arbitrary processor subsets for regular distributions.  
   `paradigm` `redistribution`
 - **Chandra et al. (1997)** — [Data distribution support on distributed shared memory multiprocessors](https://doi.org/10.1145/258915.258945) — *compiler-technique*.  
   It shows how a production compiler can offer data placement on shared-memory machines where OS page granularity is too coarse for some distributions.  
@@ -526,8 +526,8 @@ rationale in `docs/taxonomy.md`.
 
 ### Surveys and taxonomies
 
-- **Zima and Chapman (1993)** — [Compiling for distributed-memory systems](https://doi.org/10.1109/5.214550) — *survey*. *(metadata-verified; summary pending full read)*  
-  The 1993 state of the art in one place: what a distributed-memory compiler had to do for data distribution, work distribution and communication before HPF compilers existed.  
+- **Zima and Chapman (1993)** — [Compiling for distributed-memory systems](https://doi.org/10.1109/5.214550) — *survey*.  
+  It is a compact early account of how distribution-based compilers turn a global-address Fortran program into message-passing code.  
   `survey` `hpf-era`
 - **Benkner and Zima (1999)** — [Compiling High Performance Fortran for distributed-memory architectures](https://doi.org/10.1016/s0167-8191(99)00074-5) — *survey*. *(metadata-verified; summary pending full read)*  
   An end-of-decade overview of HPF compilation; read it after the 1993 overview to see what matured and what did not.  
@@ -613,7 +613,7 @@ rationale in `docs/taxonomy.md`.
   `global-arrays` `kali` `owner-computes`
 - **Koelbel and Mehrotra (1991)** — [Programming data parallel algorithms on distributed memory using Kali](https://doi.org/10.1145/109025.109122) — *language*. *(metadata-verified; summary pending full read)*  
   `global-arrays` `kali`
-- **Koelbel (1991)** — [Compile-time generation of regular communications patterns](https://doi.org/10.1145/125826.125890) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+- **Koelbel (1991)** — [Compile-time generation of regular communications patterns](https://doi.org/10.1145/125826.125890) — *compiler-technique*.  
   `communication-generation` `kali`
 - **Li and Chen (1991)** — [The data alignment phase in compiling programs for distributed-memory machines](https://doi.org/10.1016/0743-7315(91)90090-v) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   `alignment` `automatic-distribution`
@@ -653,7 +653,7 @@ rationale in `docs/taxonomy.md`.
   `irregular` `chaos`
 - **Su et al. (1993)** — [Automating Parallelism of Regular Computations for Distributed-Memory Multicomputers in the PARADIGM Compiler](https://doi.org/10.1109/icpp.1993.51) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   `paradigm` `automatic-distribution`
-- **Zima and Chapman (1993)** — [Compiling for distributed-memory systems](https://doi.org/10.1109/5.214550) — *survey*. *(metadata-verified; summary pending full read)*  
+- **Zima and Chapman (1993)** — [Compiling for distributed-memory systems](https://doi.org/10.1109/5.214550) — *survey*.  
   `survey` `hpf-era`
 - **Das et al. (1994)** — [Communication Optimizations for Irregular Scientific Computations on Distributed Memory Architectures](https://doi.org/10.1006/jpdc.1994.1104) — *runtime*. *(metadata-verified; summary pending full read)*  
   `irregular` `chaos`
@@ -685,7 +685,7 @@ rationale in `docs/taxonomy.md`.
   `mpi` `runtime`
 - **Palermo et al. (1996)** — [Dynamic Data Partitioning for Distributed-Memory Multicomputers](https://doi.org/10.1006/jpdc.1996.0138) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   `paradigm` `redistribution`
-- **Ramaswamy et al. (1996)** — [Optimizations for Efficient Array Redistribution on Distributed Memory Multicomputers](https://doi.org/10.1006/jpdc.1996.0142) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+- **Ramaswamy et al. (1996)** — [Optimizations for Efficient Array Redistribution on Distributed Memory Multicomputers](https://doi.org/10.1006/jpdc.1996.0142) — *compiler-technique*.  
   `paradigm` `redistribution`
 - **Chandra et al. (1997)** — [Data distribution support on distributed shared memory multiprocessors](https://doi.org/10.1145/258915.258945) — *compiler-technique*.  
   `dsm` `data-distribution`
@@ -882,7 +882,7 @@ rationale in `docs/taxonomy.md`.
   `superb` `halo`
 - **Koelbel and Mehrotra (1991)** — [Compiling global name-space parallel loops for distributed execution](https://doi.org/10.1109/71.97901) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   `global-arrays` `kali` `owner-computes`
-- **Koelbel (1991)** — [Compile-time generation of regular communications patterns](https://doi.org/10.1145/125826.125890) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+- **Koelbel (1991)** — [Compile-time generation of regular communications patterns](https://doi.org/10.1145/125826.125890) — *compiler-technique*.  
   `communication-generation` `kali`
 - **Hiranandani et al. (1991)** — [Compiler optimizations for Fortran D on MIMD distributed-memory machines](https://doi.org/10.1145/125826.125886) — *compiler-technique*.  
   `fortran-d` `communication-generation`
@@ -933,7 +933,7 @@ rationale in `docs/taxonomy.md`.
   `global-arrays` `vienna-fortran`
 - **Palermo et al. (1996)** — [Dynamic Data Partitioning for Distributed-Memory Multicomputers](https://doi.org/10.1006/jpdc.1996.0138) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   `paradigm` `redistribution`
-- **Ramaswamy et al. (1996)** — [Optimizations for Efficient Array Redistribution on Distributed Memory Multicomputers](https://doi.org/10.1006/jpdc.1996.0142) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+- **Ramaswamy et al. (1996)** — [Optimizations for Efficient Array Redistribution on Distributed Memory Multicomputers](https://doi.org/10.1006/jpdc.1996.0142) — *compiler-technique*.  
   `paradigm` `redistribution`
 
 ### Irregular ownership

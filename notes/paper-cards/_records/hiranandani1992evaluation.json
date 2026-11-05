@@ -14,7 +14,7 @@
  "target_hardware": ["dm-multicomputer"],
  "ir_representation": ["source-annotations", "dependence-graph"],
  "compiler_architecture": ["dependence-based"],
- "states_relationship_to": ["SUPERB", "Vienna Fortran", "Kali", "PARTI", "Id Nouveau", "Crystal", "ASPAR", "P3 C", "CM Fortran", "ParaScope", "DINO", "PARAFRASE-2", "Callahan and Kennedy", "Li and Chen", "Balasundaram", "Gerndt", "Rogers and Pingali", "Kennedy and McKinley", "Hiranandani, Kennedy and Tseng (1991)"],
+ "states_relationship_to": ["SUPERB", "Vienna Fortran", "Kali", "PARTI", "Id Nouveau", "Crystal", "ASPAR", "P3 C", "CM Fortran", "ParaScope", "DINO", "PARAFRASE-2", "Callahan and Kennedy", "Li and Chen", "Balasundaram", "Gerndt", "Rogers and Pingali", "Hiranandani, Kennedy and Tseng (1991)"],
  "evidence": [
   {"source": "full text", "section": "1-2"},
   {"source": "full text", "section": "3"},

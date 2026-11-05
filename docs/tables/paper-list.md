@@ -26,7 +26,7 @@
 | hiranandani1991fortrand | 1991 | Compiler optimizations for Fortran D on MIMD distributed-memory machines | compiler-technique | core | read | no | paywalled |
 | koelbel1991compiling | 1991 | Compiling global name-space parallel loops for distributed execution | compiler-technique | core | discovered | no | paywalled |
 | koelbel1991kali | 1991 | Programming data parallel algorithms on distributed memory using Kali | language | core | discovered | no | paywalled |
-| koelbel1991regular | 1991 | Compile-time generation of regular communications patterns | compiler-technique | core | screened | no | paywalled |
+| koelbel1991regular | 1991 | Compile-time generation of regular communications patterns | compiler-technique | core | read | no | paywalled |
 | li1991alignment | 1991 | The data alignment phase in compiling programs for distributed-memory machines | compiler-technique | core | discovered | no | paywalled |
 | ramanujam1991compiletime | 1991 | Compile-time techniques for data distribution in distributed memory machines | compiler-technique | core | discovered | no | paywalled |
 | saltz1991multiprocessor | 1991 | Multiprocessors and run‐time compilation | runtime | core | read | no | open |
@@ -43,7 +43,7 @@
 | loveman1993hpf | 1993 | High performance Fortran | language | core | screened | no | paywalled |
 | ponnusamy1993schedule | 1993 | Runtime compilation techniques for data partitioning and communication schedule reuse | runtime | core | discovered | no | paywalled |
 | su1993paradigm | 1993 | Automating Parallelism of Regular Computations for Distributed-Memory Multicomputers in the PARADIGM Compiler | compiler-technique | core | discovered | no | paywalled |
-| zima1993compiling | 1993 | Compiling for distributed-memory systems | survey | core | screened | no | paywalled |
+| zima1993compiling | 1993 | Compiling for distributed-memory systems | survey | core | read | no | paywalled |
 | das1994communication | 1994 | Communication Optimizations for Irregular Scientific Computations on Distributed Memory Architectures | runtime | core | discovered | no | paywalled |
 | mpiforum1994standard | 1994 | MPI: A Message-Passing Interface Standard (Version 1.0) | specification | core | screened | no | open |
 | rogers1994compiling | 1994 | Compiling for distributed memory architectures | full-system | core | screened | no | paywalled |
@@ -59,7 +59,7 @@
 | bik1996automatic | 1996 | Automatic Data Structure Selection and Transformation for Sparse Matrix Computations | compiler-technique | adjacent | screened | no | paywalled |
 | gropp1996mpich | 1996 | A high-performance, portable implementation of the MPI message passing interface standard | runtime | bridge | discovered | no | paywalled |
 | palermo1996dynamic | 1996 | Dynamic Data Partitioning for Distributed-Memory Multicomputers | compiler-technique | core | screened | no | paywalled |
-| ramaswamy1996redistribution | 1996 | Optimizations for Efficient Array Redistribution on Distributed Memory Multicomputers | compiler-technique | core | screened | no | paywalled |
+| ramaswamy1996redistribution | 1996 | Optimizations for Efficient Array Redistribution on Distributed Memory Multicomputers | compiler-technique | core | read | no | paywalled |
 | chandra1997datadist | 1997 | Data distribution support on distributed shared memory multiprocessors | compiler-technique | bridge | read | no | paywalled |
 | numrich1998coarray | 1998 | Co-array Fortran for parallel programming | language | bridge | read | no | paywalled |
 | yelick1998titanium | 1998 | Titanium: a high-performance Java dialect | language | bridge | discovered | no | paywalled |

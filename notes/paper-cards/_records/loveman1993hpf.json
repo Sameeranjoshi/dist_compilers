@@ -1,0 +1,28 @@
+{
+ "id": "loveman1993hpf",
+ "summary": "The article presents Fortran-90 as a base for parallel programming and describes the High Performance Fortran extensions, including data mapping directives, parallel statements and the extrinsic procedure interface. It also describes the HPF subset and lists capabilities left for later work, and it reports no experiments.",
+ "why_read": "It explains the HPF data mapping model and its design trade-offs in plain terms, for a reader new to data-parallel Fortran.",
+ "main_contribution": "A description of the HPF extensions to Fortran-90, with the rationale for its two-level alignment and distribution model.",
+ "main_limitation": "The article describes a language design without an implementation or measurements, and it lists irregular and user-defined distributions among the missing capabilities.",
+ "evaluation_method": "none",
+ "benchmarks": [],
+ "optimization_objectives": ["load-balance", "communication-volume", "productivity"],
+ "data_decomposition": ["replicated", "block-1d", "block-nd", "cyclic", "block-cyclic", "dynamic-distribution"],
+ "computation_mapping": ["data-parallelism"],
+ "communication_generation": ["programmer-explicit", "broadcast-multicast", "reduction-allreduce", "redistribution-resharding"],
+ "compiler_runtime_boundary": ["static-with-directives", "load-time"],
+ "target_hardware": ["simd-systolic-cm", "dm-multicomputer", "vector-array-foundation"],
+ "ir_representation": ["source-annotations", "device-mesh"],
+ "compiler_architecture": ["language-spec"],
+ "states_relationship_to": ["Fortran-77", "Fortran-8x", "MIL-STD-1753", "Ada", "Illiac IV Fortran", "Cray pointers", "Vienna Fortran", "Kali", "Fortran-D", "Fortran-90D", "MasPar", "Thinking Machines", "Callahan and Kennedy"],
+ "evidence": [
+  {"source": "full text", "section": "Introduction"},
+  {"source": "full text", "section": "Data distribution; Processors directive; Align and Distribute directives"},
+  {"source": "full text", "section": "Dynamic, Realign, and Redistribute; Template directive"},
+  {"source": "full text", "section": "Parallel statements; ForAll; Pure procedures; Independent"},
+  {"source": "full text", "section": "Intrinsic functions and library routines; Extrinsic procedures"},
+  {"source": "full text", "section": "Sequence and storage association; The HPF subset; Future work"},
+  {"source": "full text", "section": "Related works sidebar"}
+ ],
+ "notes": ""
+}
