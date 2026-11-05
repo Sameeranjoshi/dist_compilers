@@ -35,7 +35,7 @@ The authors state that compiled HPF programs carry inherent overheads that leave
 our observation: the benchmarks come from one machine and one compiler, so the reported speedups do not show how the optimizations behave on other platforms.
 
 ## Relationship to earlier / later work
-Stated by the paper: the communication analysis extends the methods of Gupta and Banerjee [9] (Section 2.2, p. 6), and the redundancy elimination is a simplified version of Gupta, Schonberg and Srinivasan [10] (Section 3, p. 9). SUPERB is described as the second generation of a Vienna compiler that pioneered message vectorization and overlap regions, but only for block distributions (Section 5, p. 15). The paper cites its reference [23] for SUPERB; that reference is Zima and Chapman, Proceedings of the IEEE, 1993 (reference list, p. 18). Fortran D needs a known processor count and partitions only one array dimension (Section 5, p. 15).
+Stated by the paper: the communication analysis extends the methods of Gupta and Banerjee [9] (Section 2.2, p. 7), and the redundancy elimination is a simplified version of Gupta, Schonberg and Srinivasan [10] (Section 3, p. 9). SUPERB is described as the second generation of a Vienna compiler that pioneered message vectorization and overlap regions, but only for block distributions (Section 5, p. 15). The paper cites its reference [23] for SUPERB; that reference is Zima and Chapman, Proceedings of the IEEE, 1993 (reference list, p. 18). Fortran D needs a known processor count and partitions only one array dimension (Section 5, p. 15).
 
 ## Sources used
 | claim | section / page |

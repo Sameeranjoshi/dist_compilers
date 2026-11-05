@@ -9,16 +9,16 @@
 The paper proposes a compiler that takes a sequential program and a data decomposition and specializes the code for each process, so that process decomposition follows data placement (Abstract, Sec. I, Sec. II).
 
 ## Input abstraction
-The source is an Id-like functional language with I-structures (Sec. III). The programmer gives mappings: wrapped rows or columns, blocks, an explicit process, an expression, or a same-as relation (Sec. III.A). Both sides of a full array assignment must share a mapping (Sec. III.A). The SIMPLE compiler handles only flat arrays (p. 294, note 7).
+The source is an Id-like functional language with I-structures (Sec. III). The programmer gives mappings: wrapped rows or columns, blocks, an explicit process, an expression, or a same-as relation (Sec. III.A). The SIMPLE compiler handles only flat arrays (p. 294, note 7).
 
 ## Target
-The compiler generates C for the Intel iPSC/2 (Sec. II). The machine model is one process per processor, with explicit send and receive (Sec. III.B).
+The compiler generates C for the Intel iPSC/2 (Sec. II).
 
 ## Data decomposition
 Each mapping supplies map, local and alloc functions (Sec. III.A). Wrapped (cyclic) and block mappings are the regular cases that support compile-time analysis, while irregular distributions are handled only by run-time resolution (Sec. III.A, Sec. IV).
 
 ## Computation mapping
-The owner of a left-hand side computes the right-hand side (Principle 2, Sec. IV). Under run-time resolution, conditionals and loops run on all processes (Principle 4, Sec. IV). Compile-time resolution restricts work to evaluator sets and iterations that have work (Sec. V). Reductions are assigned to the process that owns most right-hand-side references (Sec. X).
+The owner of a left-hand side computes the right-hand side (Principle 2, Sec. IV). Under run-time resolution, conditionals and loops run on all processes (Principle 4, Sec. IV). Compile-time resolution limits work to evaluator sets (Sec. V). Reductions are assigned to the process that owns most right-hand-side references (Sec. X).
 
 ## Communication generation
 Run-time resolution sends each value to each process that needs it (Sec. IV). Compile-time resolution places sends and receives at the reference after partial evaluation (Sec. V). Vectorization combines messages for read-only references outside conditionals whose communication falls in contiguous iterations (Sec. VIII). Pipelining moves sends to where values are ready, using mailboxes (Sec. IX). Accumulation combines partial results of commutative, associative operators (Sec. X).
@@ -27,18 +27,17 @@ Run-time resolution sends each value to each process that needs it (Sec. IV). Co
 Compile-time resolution performs ownership tests at compile time where the mappings allow it. Run-time resolution is the fallback for programs that cannot be analyzed (Abstract, Sec. II, Sec. V). Loops with wrapped mappings are summarized by periodic patterns rather than unrolled (Sec. V).
 
 ## Evaluation
-Table I gives Gauss-Seidel on a 128x128 grid on iPSC/2 for 4 to 32 processors (p. 287). The blocked variant takes 864 to 153 ms and handwritten code 647 to 117 ms, so blocked code runs at about 75 to 77 percent of handwritten speed (computed here from Table I). Run-time resolution takes about 23 s and compile-time resolution about 15 s at every processor count (Table I, Sec. V.A). For SIMPLE on a 64x64 grid, Table II gives 14.02 s on one processor and 0.805 s on 32 (p. 294). Speedup is compared with a modeled handwritten program, not a measured one (Sec. XI-A).
+Table I (p. 287): Gauss-Seidel, 128x128 grid, iPSC/2, 4 to 32 processors. The blocked variant takes 864 to 153 ms and handwritten code 647 to 117 ms, so blocked code runs at about 75 to 77 percent of handwritten speed (computed here from Table I). Run-time resolution takes about 23 s and compile-time resolution about 15 s at every processor count (Table I, Sec. V.A). For SIMPLE on a 64x64 grid, Table II gives 14.02 s on one processor and 0.805 s on 32 (p. 294). Speedup is compared with a modeled handwritten program, not a measured one (Sec. XI-A).
 
 ## Principal limitation
 The paper states that compile-time resolution "will not be helpful" for applications with complex data structures, such as sparse problems or irregular meshes, because their references may not be analyzable (Sec. XIII, p. 297). It also says the improvements are not enough to compete with handwritten code (Sec. XIII).
-our observation: The abstract claims 60 to 70 percent of handwritten efficiency, but Table I gives about 75 percent for Gauss-Seidel. The SIMPLE comparison rests on a model, and the text gives the run-time time as 24 s where Table I shows 23.4 s.
+our observation: The abstract claims 60 to 70 percent of handwritten efficiency, but Table I gives about 75 percent for Gauss-Seidel. The SIMPLE comparison uses a model, and the text's 24 s run-time figure differs from Table I's 23.4 s.
 
 ## Relationship to earlier / later work
 - Callahan and Kennedy [19], developed concurrently, use a similar run-time resolution with more aggressive optimizations (Sec. XII.A).
-- Superb [29] uses overlap areas and vectorization of communication, while the AL compiler of Tseng [32], [24] sends data as soon as it is available (Sec. XII.B, XII.D).
+- Superb [29] uses overlap areas; the AL compiler [24], [32] sends data as soon as available (Sec. XII.B, XII.D).
 - Kali [6], [30], [31] reuses saved communication patterns for hard-to-analyze forall loops, as does Saltz et al. [7] (Sec. XII.C).
 - Crystal [20], [34] matches program references to aggregate communication routines (Sec. XII.E).
-- Ramanujam and Sadayappan [26], [27] also explored pipelining (Sec. XII).
 - No later work is discussed.
 
 ## Sources used

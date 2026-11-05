@@ -1,0 +1,25 @@
+{
+ "id": "kennedy2007rise",
+ "summary": "This historical review traces High Performance Fortran from its precursors (Fortran D, Vienna Fortran and CM Fortran) through the HPF 1.0, 1.1 and 2.0 standards and the HPF/JA dialect. It analyzes why HPF lost most of its user base despite influencing later languages such as Chapel, Fortress and X10.",
+ "why_read": "It explains, from people who built the language, how distribution-based data-parallel compilation was expected to work and why it did not carry the field.",
+ "main_contribution": "An account of the design decisions, the standardization process and the reasons for HPF's limited adoption, with lessons for future data-parallel languages.",
+ "main_limitation": "The paper is a retrospective with no measurements of its own, and its causal analysis is interpretive.",
+ "evaluation_method": "none",
+ "benchmarks": [],
+ "optimization_objectives": ["performance-portability", "productivity", "load-balance"],
+ "data_decomposition": ["block-1d", "cyclic", "block-cyclic", "uneven-block", "mapping-array"],
+ "computation_mapping": ["owner-computes", "loop-to-processor", "data-parallelism"],
+ "communication_generation": ["compiler-p2p", "message-vectorization", "inspector-executor", "scatter-gather", "reduction-allreduce"],
+ "compiler_runtime_boundary": ["static-with-directives", "runtime-inspector"],
+ "target_hardware": ["dm-multicomputer"],
+ "ir_representation": ["source-annotations", "array-statements"],
+ "compiler_architecture": ["source-to-source", "library-backed", "language-spec"],
+ "states_relationship_to": ["Fortran D", "Vienna Fortran", "SUPERB", "CM Fortran", "HPF+", "HPF/JA", "OpenMP", "PCF Fortran", "Chapel", "Fortress", "X10", "MPI", "Pablo", "dHPF", "PGHPF", "Callahan and Kennedy 1988", "Gerndt 1989"],
+ "evidence": [
+  {"source": "full text", "section": "1, 2"},
+  {"source": "full text", "section": "3, 4"},
+  {"source": "full text", "section": "5, 6"},
+  {"source": "full text", "section": "7"}
+ ],
+ "notes": ""
+}

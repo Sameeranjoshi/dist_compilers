@@ -6,45 +6,43 @@
 **Card status:** full-read
 
 ## Problem
-Multicomputers are hard to program because data must be partitioned by hand, and the partitioning determines both communication and load balance (Sec. 1). The authors note that optimal storage patterns are NP-complete even for one- and two-dimensional arrays, citing Mace, and that component alignment is also NP-complete (Sec. 1). Earlier approaches were limited to single loop nests or required exhaustive enumeration of schemes (Sec. 1). The aim is a compiler strategy that chooses distributions for whole programs with regular, statically analyzable computation (Sec. 1, 3).
+Array distributions determine communication and load balance, and choosing them by hand is hard. The authors cite Mace for NP-completeness of optimal storage patterns, even for one- and two-dimensional arrays, and note that component alignment is NP-complete (Sec. 1). The aim is a strategy that chooses distributions for whole programs with statically analyzable regular computation (Sec. 1, 3).
 
 ## Input abstraction
-The inputs are Fortran-like programs whose references can be analyzed at compile time (Sec. 1, 7). Only arrays are partitioned; scalars and small arrays are replicated (Sec. 2). For each parallelizable loop the compiler records constraints: parallelization constraints on the left-hand-side array, and communication constraints relating the distributions of the arrays on the two sides (Sec. 3). Loop bounds and branch probabilities are assumed known or supplied by the user (Sec. 6, TRED2; Sec. 7). In the study, Parafrase-2 identified the parallel loops and the remaining steps were carried out by hand (Sec. 6, Methodology).
+Fortran-like programs whose references can be analyzed at compile time (Sec. 1, 7). Only arrays are partitioned; scalars and small arrays are replicated (Sec. 2). For each parallelizable loop the compiler records constraints: parallelization constraints on the left-hand-side array and communication constraints relating the two sides (Sec. 3). Loop bounds and branch probabilities are assumed known or user-supplied (Sec. 6, Sec. 7). Parafrase-2 found the parallel loops; other steps were done by hand (Sec. 6).
 
 ## Target
-The abstract target is a D-dimensional grid of processors, with the analysis restricted to two grid dimensions (Sec. 2). Costs are estimated for the Intel iPSC/2 hypercube with 16 processors, using a Transfer cost fitted to message length and per-operation times for floating-point work (Sec. 6, Methodology). Table 1 gives hypercube complexities for Transfer, Reduction, OneToManyMulticast and ManyToManyMulticast (p. 31).
+An abstract D-dimensional processor grid, with the analysis restricted to two dimensions (Sec. 2). Costs are estimated for a 16-processor Intel iPSC/2 hypercube (Sec. 6). Table 1 gives hypercube complexities for Transfer, Reduction and the two multicast primitives (p. 31).
 
 ## Data decomposition
-Each array dimension maps to one grid dimension and has its own distribution function of the form floor((i - offset) / block) mod N, which may be contiguous or cyclic, with a block size and an offset (Sec. 2). A dimension can be sequentialized (one processor along its grid dimension) or replicated along a grid dimension, written X (Sec. 2). Constraints decide between contiguous and cyclic distribution and set the relative block sizes of aligned dimensions (Sec. 5, step 3). Table 2 lists the resulting layouts: for tred2, cyclic by rows with sequential columns on 16 processors; for dgefa, cyclic by cyclic on 2 x 8 or 1 x 16 depending on n; and cyclic blocks of three for the 1029-element arrays in the Perfect programs (p. 31; Sec. 6).
+Each array dimension maps to a grid dimension with a distribution function floor((i - offset) / block) mod N, which is contiguous or cyclic; a dimension can be sequentialized or replicated along a grid dimension (Sec. 2). Constraints choose contiguous or cyclic distribution and the relative block sizes (Sec. 5, step 3). Table 2 lists the outcomes, such as cyclic by rows for tred2 and cyclic by cyclic or 1 x 16 for dgefa depending on n (p. 31).
 
 ## Computation mapping
-The paper follows the owner-computes rule, under which the processor that owns the assigned element performs the computation (Sec. 3). Parallelization constraints push for an even spread of the assigned elements, and cyclic distribution is favoured when the inner loop trip count depends on the outer index, since contiguous distribution then causes load imbalance (Sec. 3, Example 1; Sec. 5). No computation-partitioning method beyond owner-computes is described.
+Owner-computes (Sec. 3). Parallelization constraints favour an even spread of the assigned elements, and cyclic distribution is favoured when the inner trip count depends on the outer index (Sec. 3, Example 1; Sec. 5). No computation partitioning beyond owner-computes is described.
 
 ## Communication generation
-Communication is estimated, not generated. For each right-hand-side reference the compiler identifies aligned dimension pairs, classifies subscripts as constant, index or variable, determines the loops from which messages can be combined, and composes the communication terms for the statement (Sec. 4, steps 1-5). Each term is costed with one of the four primitives: Transfer, OneToManyMulticast, Reduction or ManyToManyMulticast (Sec. 4; Table 1). The parallel tred2 code used in the measurements was written by hand for the iPSC/2 (Sec. 6, TRED2).
+Communication is estimated, not generated. For each right-hand-side reference the compiler finds aligned dimension pairs, classifies subscripts as constant, index or variable, identifies the loops from which messages can be combined, and composes the cost terms (Sec. 4, steps 1-5). The tred2 code used for measurement was written by hand for the iPSC/2 (Sec. 6, TRED2).
 
 ## Compiler / runtime split
-The whole strategy runs at compile time. Constraints carry quality measures expressed as penalties or as execution-time functions, and Sec. 5 resolves conflicts in five steps: component alignment through a component affinity graph and the Li and Chen heuristic; sequentialization of dimensions that need no parallelism; choice of contiguous or cyclic distribution and block sizes; choice of processor counts by evaluating the execution-time expression; and replication decisions (Sec. 5). The communication primitives are assumed to be supplied by the operating system or run-time library (Sec. 4).
+The strategy runs entirely at compile time. Constraints carry penalty or execution-time quality measures, and Sec. 5 resolves conflicts in five steps: component alignment through a component affinity graph (Li and Chen heuristic), sequentialization, contiguous or cyclic choice with block sizes, processor counts by evaluating the execution-time expression, and replication (Sec. 5).
 
 ## Evaluation
-Five Fortran programs are analyzed: dgefa from Linpack, tred2 from Eispack, and trfd, mdg and flo52 from the Perfect Club (Sec. 6). Only tred2 is measured. Four versions run on the iPSC/2 for n = 256 and n = 512: the strategy's row-cyclic layout, a column-cyclic layout, a contiguous row layout, and a blocked grid layout (Sec. 6, Fig. 4). The authors report that the strategy's layout performs much better at n = 512, while column distribution is slightly better at n = 256 when fewer processors are used (Sec. 6). The other programs receive distribution decisions without timings (Sec. 6; Table 2).
+Five Fortran programs are analyzed: dgefa (Linpack), tred2 (Eispack), and trfd, mdg and flo52 (Perfect Club) (Sec. 6). Only tred2 is measured, in four layouts on an iPSC/2 for n = 256 and n = 512 (Fig. 4). The strategy's layout performs much better at n = 512, while column distribution is slightly better at n = 256 with fewer processors (Sec. 6). The other programs receive distribution decisions without timings (Table 2).
 
 ## Principal limitation
-As the paper states it: the strategy gives no optimality guarantee because the problem is NP-hard, the quality measures rest on simplifying assumptions, and loop bounds and branch probabilities must be supplied by the user, with profiling planned for the future (Sec. 7).
-our observation: Only one of the five programs was measured; the other four distributions come from hand simulation of the strategy (Sec. 6).
+As the paper states it: the strategy gives no optimality guarantee because the problem is NP-hard; its quality measures rest on simplifying assumptions; and loop bounds and branch probabilities must be supplied, with profiling planned for the future (Sec. 7).
+our observation: Only one of the five programs was measured; the other four are hand-simulated decisions (Sec. 6).
 
 ## Relationship to earlier / later work
-- The paper states that its component alignment step follows the Li and Chen heuristic (ref. 15), and that its communication costing builds on Li and Chen's synthesis of explicit communication from reference patterns (ref. 14) (Sec. 1, 4, 5).
-- Earlier partitioning work by Ramanujam and Sadayappan (ref. 18), Hudak and Abraham (ref. 11), Socha (ref. 21) and Balasundaram et al. (refs. 1, 2) is reviewed as restricted in applicability or as requiring exhaustive enumeration (Sec. 1, 4).
-- The owner-computes rule is credited to Fortran D (ref. 9). Fortran D, SUPERB (ref. 22), Kali (ref. 13), DINO (ref. 20), Crystal (ref. 5) and Id Nouveau (ref. 19) are listed as parallelizing compiler projects (Sec. 1, 3).
-- The authors cite their own earlier constraint-based paper (ref. 7) and their compile-time communication estimation report (ref. 8) (Sec. 3, 4).
-- The Transfer cost model is taken from Hsu and Banerjee (ref. 10) (Sec. 6).
-- Data reorganization between program segments, interprocedural analysis and profiling are named as future work, not as later systems (Sec. 7).
+- Component alignment follows the Li and Chen heuristic (ref. 15), and communication costing builds on their synthesis of explicit communication from reference patterns (ref. 14) (Sec. 1, 4, 5).
+- Ramanujam and Sadayappan (ref. 18), Hudak and Abraham (ref. 11), Socha (ref. 21) and Balasundaram et al. (refs. 1, 2) are reviewed as restricted in applicability or as enumerative (Sec. 1, 4).
+- Owner-computes is credited to Fortran D (ref. 9). Fortran D, SUPERB (ref. 22), Kali (ref. 13), DINO (ref. 20), Crystal (ref. 5) and Id Nouveau (ref. 19) are listed as parallelizing projects (Sec. 1, 3).
+- The authors cite their own constraint-based paper (ref. 7) and communication-estimation report (ref. 8). The Transfer cost model is taken from Hsu and Banerjee (ref. 10) (Sec. 3, 4, 6).
 
 ## Sources used
 | claim | section / page |
 |---|---|
-| NP-completeness; prior approaches | Sec. 1; pp. 1-4 |
+| NP-completeness; prior approaches | Sec. 1 |
 | Distribution functions, sequentialization, replication | Sec. 2 |
 | Constraint types and examples | Sec. 3 |
 | Communication primitives and estimation steps | Sec. 4; Table 1 (p. 31) |

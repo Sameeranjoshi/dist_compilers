@@ -29,10 +29,10 @@ been read beyond their bibliographic record say so.
 | systems | 28 |
 | metadata-verified against Crossref/arXiv | 95 |
 | status `verified` (primary source read) | 4 |
-| status `read` | 49 |
-| status `screened` / `discovered` | 52 |
+| status `read` | 50 |
+| status `screened` / `discovered` | 51 |
 | tier core / bridge / foundation / adjacent | 73 / 14 / 12 / 6 |
-| paper cards | 53 |
+| paper cards | 54 |
 <!-- END:status -->
 
 Status meanings: `discovered` = metadata verified against Crossref/arXiv
@@ -271,8 +271,8 @@ rationale in `docs/taxonomy.md`.
 - **Benkner and Zima (1999)** — [Compiling High Performance Fortran for distributed-memory architectures](https://doi.org/10.1016/s0167-8191(99)00074-5) — *survey*.  
   It is a compact overview of HPF compilation and runtime techniques, from layout descriptors to reuse of communication schedules for irregular loops.  
   `survey` `hpf`
-- **Kennedy et al. (2007)** — [The rise and fall of High Performance Fortran](https://doi.org/10.1145/1238844.1238851) — *experience*. *(metadata-verified; summary pending full read)*  
-  The participants' own account of why the most ambitious distributed-memory compiler project of the 1990s faded; essential context for the cross-era synthesis.  
+- **Kennedy et al. (2007)** — [The rise and fall of High Performance Fortran](https://doi.org/10.1145/1238844.1238851) — *experience*.  
+  It explains, from people who built the language, how distribution-based data-parallel compilation was expected to work and why it did not carry the field.  
   `hpf` `history`
 
 ### MPI and generated message passing
@@ -532,8 +532,8 @@ rationale in `docs/taxonomy.md`.
 - **Benkner and Zima (1999)** — [Compiling High Performance Fortran for distributed-memory architectures](https://doi.org/10.1016/s0167-8191(99)00074-5) — *survey*.  
   It is a compact overview of HPF compilation and runtime techniques, from layout descriptors to reuse of communication schedules for irregular loops.  
   `survey` `hpf`
-- **Kennedy et al. (2007)** — [The rise and fall of High Performance Fortran](https://doi.org/10.1145/1238844.1238851) — *experience*. *(metadata-verified; summary pending full read)*  
-  The participants' own account of why the most ambitious distributed-memory compiler project of the 1990s faded; essential context for the cross-era synthesis.  
+- **Kennedy et al. (2007)** — [The rise and fall of High Performance Fortran](https://doi.org/10.1145/1238844.1238851) — *experience*.  
+  It explains, from people who built the language, how distribution-based data-parallel compilation was expected to work and why it did not carry the field.  
   `hpf` `history`
 - **Unat et al. (2017)** — [Trends in Data Locality Abstractions for HPC Systems](https://doi.org/10.1109/tpds.2017.2703149) — *survey*. *(metadata-verified; summary pending full read)*  
   A locality-centred view of the same design space from the HPC side, complementary to this survey's compiler-centred view.  
@@ -711,7 +711,7 @@ rationale in `docs/taxonomy.md`.
   `hierarchical` `sequoia`
 - **Chamberlain et al. (2007)** — [Parallel Programmability and the Chapel Language](https://doi.org/10.1177/1094342007078442) — *language*.  
   `pgas` `chapel`
-- **Kennedy et al. (2007)** — [The rise and fall of High Performance Fortran](https://doi.org/10.1145/1238844.1238851) — *experience*. *(metadata-verified; summary pending full read)*  
+- **Kennedy et al. (2007)** — [The rise and fall of High Performance Fortran](https://doi.org/10.1145/1238844.1238851) — *experience*.  
   `hpf` `history`
 - **Shen et al. (2007)** — [Eliminating Redundant Communication of Code Generation for Distributed Memory Machines](https://doi.org/10.1109/snpd.2007.482) — *compiler-technique*.  
   `communication-generation` `redundancy-elimination`

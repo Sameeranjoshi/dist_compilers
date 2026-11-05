@@ -69,7 +69,7 @@
 | charles2005x10 | 2005 | X10: an object-oriented approach to non-uniform cluster computing | language | bridge | discovered | no | paywalled |
 | fatahalian2006sequoia | 2006 | Sequoia: Programming the Memory Hierarchy | language | core | read | no | paywalled |
 | chamberlain2007chapel | 2007 | Parallel Programmability and the Chapel Language | language | bridge | read | no | paywalled |
-| kennedy2007rise | 2007 | The rise and fall of High Performance Fortran | experience | core | screened | no | paywalled |
+| kennedy2007rise | 2007 | The rise and fall of High Performance Fortran | experience | core | read | no | paywalled |
 | shen2007eliminating | 2007 | Eliminating Redundant Communication of Code Generation for Distributed Memory Machines | compiler-technique | core | read | no | paywalled |
 | yelick2007titanium | 2007 | Parallel Languages and Compilers: Perspective From the Titanium Experience | language | bridge | read | no | paywalled |
 | baskaran2008automatic | 2008 | Automatic data movement and computation mapping for multi-level parallel architectures with explicitly managed memories | compiler-technique | core | read | no | paywalled |
