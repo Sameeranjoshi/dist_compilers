@@ -1,0 +1,25 @@
+{
+ "id": "su1995advanced",
+ "summary": "The paper extends PARADIGM's symbolic partitioning framework from block distributions to cyclic and block-cyclic distributions, delegating Fourier-Motzkin elimination and related symbolic manipulation to Mathematica. It derives loop bounds and communication sets for regularly distributed arrays and reports speedups for LU factorization and the POTENG kernel on an IBM SP-2.",
+ "why_read": "It shows how one compiler of the mid-1990s handled symbolic block-cyclic distributions by offloading the symbolic algebra to an external package.",
+ "main_contribution": "A uniform symbolic treatment of block, cyclic and block-cyclic distributions for loop-bound reduction and communication-set generation, implemented with an off-the-shelf algebra system.",
+ "main_limitation": "The authors state that communication generation was not fully integrated, so communication code was added by hand, and that global array references leave arrays unscaled as processors are added.",
+ "evaluation_method": "Measured speedups on an IBM SP-2 using MPIF for two programs, shown as plots up to 32 processors",
+ "benchmarks": ["LU factorization (1024 x 1024 arrays)", "POTENG from the MDG Perfect benchmark (N = 3000)"],
+ "optimization_objectives": ["load-balance", "communication-volume", "message-count"],
+ "data_decomposition": ["block-1d", "block-nd", "cyclic", "block-cyclic", "replicated"],
+ "computation_mapping": ["owner-computes", "iteration-space-partitioning"],
+ "communication_generation": ["compiler-p2p", "message-vectorization", "communication-sets"],
+ "compiler_runtime_boundary": ["fully-static"],
+ "target_hardware": ["dm-multicomputer"],
+ "ir_representation": ["dependence-graph", "polyhedral-sets"],
+ "compiler_architecture": ["source-to-source", "library-backed", "dependence-based"],
+ "states_relationship_to": ["Fortran D", "Fortran 90D", "SUIF compiler", "SUPERB compiler", "High Performance Fortran (HPF)", "Processor Tagged Descriptors (PTD)", "Parafrase-2", "Fourier-Motzkin elimination (Banerjee)", "Ancourt", "Gallivan et al.", "PILAR", "Gupta and Banerjee (automatic data partitioning)"],
+ "evidence": [
+  {"source": "full text", "section": "Abstract; Introduction"},
+  {"source": "full text", "section": "2.1-2.3 Mathematica tools"},
+  {"source": "full text", "section": "3.1-3.2 Computation partitioning and communication generation"},
+  {"source": "full text", "section": "4 Results; Figures 6-7"}
+ ],
+ "notes": ""
+}

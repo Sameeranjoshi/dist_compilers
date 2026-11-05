@@ -29,8 +29,8 @@ been read beyond their bibliographic record say so.
 | systems | 28 |
 | metadata-verified against Crossref/arXiv | 95 |
 | status `verified` (primary source read) | 4 |
-| status `read` | 44 |
-| status `screened` / `discovered` | 57 |
+| status `read` | 48 |
+| status `screened` / `discovered` | 53 |
 | tier core / bridge / foundation / adjacent | 73 / 14 / 12 / 6 |
 | paper cards | 52 |
 <!-- END:status -->
@@ -77,7 +77,7 @@ away from it.  Links go to the DOI, arXiv or the official open copy.
 7. [Compile-time techniques for data distribution in distributed memory machines](https://doi.org/10.1109/71.97903) — Ramanujam and Sadayappan, 1991.  
    *Learn:* Automatic distribution selection from dependences, the companion problem to alignment.
 8. [The Paradigm compiler for distributed-memory multicomputers](https://doi.org/10.1109/2.467577) — Banerjee et al., 1995.  
-   *Learn:* The most complete automatic (no-directive) distributed-memory compiler of the 1990s.
+   *Learn:* It is a short 1995 overview of one research compiler that brings together most of the regular, irregular and task-parallel techniques of the period in a single framework.
 
 **Irregular computation**
 
@@ -199,8 +199,8 @@ rationale in `docs/taxonomy.md`.
 - **Chapman et al. (1992)** — [Programming in Vienna Fortran](https://doi.org/10.1155/1992/258136) — *language*.  
   Learn how a data-distribution language exposes FORALL placement (explicit processor, owner of a datum, or compiler-chosen) and reductions on top of declarative distributions, and what a 1992 compiler actually implemented.  
   `global-arrays` `vienna-fortran`
-- **Gupta and Banerjee (1992)** — [Demonstration of automatic data partitioning techniques for parallelizing compilers on multicomputers](https://doi.org/10.1109/71.127259) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
-  Automatic partitioning with a cost model, the basis of PARADIGM's distribution selection.  
+- **Gupta and Banerjee (1992)** — [Demonstration of automatic data partitioning techniques for parallelizing compilers on multicomputers](https://doi.org/10.1109/71.127259) — *compiler-technique*.  
+  It is an early and clearly argued account of choosing array distributions by weighing constraints, and it shows why component alignment and processor-grid shape matter.  
   `automatic-distribution` `paradigm`
 - **Su et al. (1993)** — [Automating Parallelism of Regular Computations for Distributed-Memory Multicomputers in the PARADIGM Compiler](https://doi.org/10.1109/icpp.1993.51) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   PARADIGM's regular-computation path before the full-system paper.  
@@ -211,17 +211,17 @@ rationale in `docs/taxonomy.md`.
 - **Rogers and Pingali (1994)** — [Compiling for distributed memory architectures](https://doi.org/10.1109/71.277789) — *full-system*.  
   It is a clear early account of owner-driven process decomposition with a correct fallback, and of the message optimizations needed to make such generated code usable.  
   `communication-generation`
-- **Banerjee et al. (1995)** — [The Paradigm compiler for distributed-memory multicomputers](https://doi.org/10.1109/2.467577) — *full-system*. *(metadata-verified; summary pending full read)*  
-  The most complete automatic (no-directive) distributed-memory compiler of the 1990s.  
+- **Banerjee et al. (1995)** — [The Paradigm compiler for distributed-memory multicomputers](https://doi.org/10.1109/2.467577) — *full-system*.  
+  It is a short 1995 overview of one research compiler that brings together most of the regular, irregular and task-parallel techniques of the period in a single framework.  
   `paradigm` `automatic-distribution`
 - **Lee (1995)** — [Techniques for compiling programs on distributed memory multicomputers](https://doi.org/10.1016/0167-8191(95)00052-6) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   Representative mid-1990s technique paper; also the example used in the methodology for why titles can mislead about paper type.  
   `communication-generation`
-- **Su et al. (1995)** — [Advanced compilation techniques in the PARADIGM compiler for distributed-memory multicomputers](https://doi.org/10.1145/224538.224650) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
-  ICS '95 paper describing advanced techniques in the PARADIGM compiler (data and computation partitioning, communication optimisation and task/data parallelism) for distributed-memory multicomputers; the fuller companion to the 1995 Computer article.  
+- **Su et al. (1995)** — [Advanced compilation techniques in the PARADIGM compiler for distributed-memory multicomputers](https://doi.org/10.1145/224538.224650) — *compiler-technique*.  
+  It shows how one compiler of the mid-1990s handled symbolic block-cyclic distributions by offloading the symbolic algebra to an external package.  
   `paradigm` `automatic-distribution`
-- **Palermo et al. (1996)** — [Dynamic Data Partitioning for Distributed-Memory Multicomputers](https://doi.org/10.1006/jpdc.1996.0138) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
-  Phase-wise distribution selection, the 1990s form of what ML compilers now call cross-stage resharding.  
+- **Palermo et al. (1996)** — [Dynamic Data Partitioning for Distributed-Memory Multicomputers](https://doi.org/10.1006/jpdc.1996.0138) — *compiler-technique*.  
+  It explains when redistributing an array between program phases beats one static distribution, which is the core trade-off behind dynamic data layouts.  
   `paradigm` `redistribution`
 - **Ramaswamy et al. (1996)** — [Optimizations for Efficient Array Redistribution on Distributed Memory Multicomputers](https://doi.org/10.1006/jpdc.1996.0142) — *compiler-technique*.  
   It explains concretely how a runtime library can compute which elements move between arbitrary processor subsets for regular distributions.  
@@ -265,8 +265,8 @@ rationale in `docs/taxonomy.md`.
 - **Ancourt et al. (1995)** — [A Linear Algebra Framework for Static High Performance Fortran Code Distribution](https://doi.org/10.1155/1997/195689) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   The clearest link between HPF directives and the polyhedral formulation used two decades later.  
   `hpf` `polyhedral`
-- **Su et al. (1995)** — [Advanced compilation techniques in the PARADIGM compiler for distributed-memory multicomputers](https://doi.org/10.1145/224538.224650) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
-  ICS '95 paper describing advanced techniques in the PARADIGM compiler (data and computation partitioning, communication optimisation and task/data parallelism) for distributed-memory multicomputers; the fuller companion to the 1995 Computer article.  
+- **Su et al. (1995)** — [Advanced compilation techniques in the PARADIGM compiler for distributed-memory multicomputers](https://doi.org/10.1145/224538.224650) — *compiler-technique*.  
+  It shows how one compiler of the mid-1990s handled symbolic block-cyclic distributions by offloading the symbolic algebra to an external package.  
   `paradigm` `automatic-distribution`
 - **Benkner and Zima (1999)** — [Compiling High Performance Fortran for distributed-memory architectures](https://doi.org/10.1016/s0167-8191(99)00074-5) — *survey*.  
   It is a compact overview of HPF compilation and runtime techniques, from layout descriptors to reuse of communication schedules for irregular loops.  
@@ -505,11 +505,11 @@ rationale in `docs/taxonomy.md`.
 - **Ramanujam and Sadayappan (1991)** — [Compile-time techniques for data distribution in distributed memory machines](https://doi.org/10.1109/71.97903) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   Automatic distribution selection from dependences, the companion problem to alignment.  
   `automatic-distribution`
-- **Gupta and Banerjee (1992)** — [Demonstration of automatic data partitioning techniques for parallelizing compilers on multicomputers](https://doi.org/10.1109/71.127259) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
-  Automatic partitioning with a cost model, the basis of PARADIGM's distribution selection.  
+- **Gupta and Banerjee (1992)** — [Demonstration of automatic data partitioning techniques for parallelizing compilers on multicomputers](https://doi.org/10.1109/71.127259) — *compiler-technique*.  
+  It is an early and clearly argued account of choosing array distributions by weighing constraints, and it shows why component alignment and processor-grid shape matter.  
   `automatic-distribution` `paradigm`
-- **Banerjee et al. (1995)** — [The Paradigm compiler for distributed-memory multicomputers](https://doi.org/10.1109/2.467577) — *full-system*. *(metadata-verified; summary pending full read)*  
-  The most complete automatic (no-directive) distributed-memory compiler of the 1990s.  
+- **Banerjee et al. (1995)** — [The Paradigm compiler for distributed-memory multicomputers](https://doi.org/10.1109/2.467577) — *full-system*.  
+  It is a short 1995 overview of one research compiler that brings together most of the regular, irregular and task-parallel techniques of the period in a single framework.  
   `paradigm` `automatic-distribution`
 - **Jia et al. (2019)** — [Beyond Data and Model Parallelism for Deep Neural Networks](https://arxiv.org/abs/1807.05358) — *full-system*.  
   Learn how a profiled, incremental execution simulator can replace on-hardware measurement as the cost oracle for randomized search over per-operator parallelization configurations.  
@@ -623,7 +623,7 @@ rationale in `docs/taxonomy.md`.
   `irregular` `inspector-executor` `parti`
 - **Chapman et al. (1992)** — [Programming in Vienna Fortran](https://doi.org/10.1155/1992/258136) — *language*.  
   `global-arrays` `vienna-fortran`
-- **Gupta and Banerjee (1992)** — [Demonstration of automatic data partitioning techniques for parallelizing compilers on multicomputers](https://doi.org/10.1109/71.127259) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+- **Gupta and Banerjee (1992)** — [Demonstration of automatic data partitioning techniques for parallelizing compilers on multicomputers](https://doi.org/10.1109/71.127259) — *compiler-technique*.  
   `automatic-distribution` `paradigm`
 - **Hiranandani et al. (1992)** — [Compiling Fortran D for MIMD distributed-memory machines](https://doi.org/10.1145/135226.135230) — *full-system*. *(metadata-verified; summary pending full read)*  
   `fortran-d` `owner-computes`
@@ -665,7 +665,7 @@ rationale in `docs/taxonomy.md`.
   `communication-generation` `fx`
 - **Ancourt et al. (1995)** — [A Linear Algebra Framework for Static High Performance Fortran Code Distribution](https://doi.org/10.1155/1997/195689) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   `hpf` `polyhedral`
-- **Banerjee et al. (1995)** — [The Paradigm compiler for distributed-memory multicomputers](https://doi.org/10.1109/2.467577) — *full-system*. *(metadata-verified; summary pending full read)*  
+- **Banerjee et al. (1995)** — [The Paradigm compiler for distributed-memory multicomputers](https://doi.org/10.1109/2.467577) — *full-system*.  
   `paradigm` `automatic-distribution`
 - **Gupta et al. (1995)** — [An HPF compiler for the IBM SP2](https://doi.org/10.1145/224170.224422) — *full-system*.  
   `hpf` `production-compiler`
@@ -677,13 +677,13 @@ rationale in `docs/taxonomy.md`.
   `communication-generation`
 - **Ponnusamy et al. (1995)** — [Runtime support and compilation methods for user-specified irregular data distributions](https://doi.org/10.1109/71.406958) — *runtime*.  
   `irregular` `chaos` `mapping-array`
-- **Su et al. (1995)** — [Advanced compilation techniques in the PARADIGM compiler for distributed-memory multicomputers](https://doi.org/10.1145/224538.224650) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+- **Su et al. (1995)** — [Advanced compilation techniques in the PARADIGM compiler for distributed-memory multicomputers](https://doi.org/10.1145/224538.224650) — *compiler-technique*.  
   `paradigm` `automatic-distribution`
 - **Bik and Wijshoff (1996)** — [Automatic Data Structure Selection and Transformation for Sparse Matrix Computations](https://doi.org/10.1109/71.485501) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   `sparse` `restructuring-compiler`
 - **Gropp et al. (1996)** — [A high-performance, portable implementation of the MPI message passing interface standard](https://doi.org/10.1016/0167-8191(96)00024-5) — *runtime*. *(metadata-verified; summary pending full read)*  
   `mpi` `runtime`
-- **Palermo et al. (1996)** — [Dynamic Data Partitioning for Distributed-Memory Multicomputers](https://doi.org/10.1006/jpdc.1996.0138) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+- **Palermo et al. (1996)** — [Dynamic Data Partitioning for Distributed-Memory Multicomputers](https://doi.org/10.1006/jpdc.1996.0138) — *compiler-technique*.  
   `paradigm` `redistribution`
 - **Ramaswamy et al. (1996)** — [Optimizations for Efficient Array Redistribution on Distributed Memory Multicomputers](https://doi.org/10.1006/jpdc.1996.0142) — *compiler-technique*.  
   `paradigm` `redistribution`
@@ -826,7 +826,7 @@ rationale in `docs/taxonomy.md`.
   `automatic-distribution`
 - **Chapman et al. (1992)** — [Programming in Vienna Fortran](https://doi.org/10.1155/1992/258136) — *language*.  
   `global-arrays` `vienna-fortran`
-- **Gupta and Banerjee (1992)** — [Demonstration of automatic data partitioning techniques for parallelizing compilers on multicomputers](https://doi.org/10.1109/71.127259) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+- **Gupta and Banerjee (1992)** — [Demonstration of automatic data partitioning techniques for parallelizing compilers on multicomputers](https://doi.org/10.1109/71.127259) — *compiler-technique*.  
   `automatic-distribution` `paradigm`
 - **Hiranandani et al. (1992)** — [Compiling Fortran D for MIMD distributed-memory machines](https://doi.org/10.1145/135226.135230) — *full-system*. *(metadata-verified; summary pending full read)*  
   `fortran-d` `owner-computes`
@@ -838,13 +838,13 @@ rationale in `docs/taxonomy.md`.
   `paradigm` `automatic-distribution`
 - **Anderson and Lam (1993)** — [Global optimizations for parallelism and locality on scalable parallel machines](https://doi.org/10.1145/155090.155101) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   `automatic-distribution` `affine`
-- **Banerjee et al. (1995)** — [The Paradigm compiler for distributed-memory multicomputers](https://doi.org/10.1109/2.467577) — *full-system*. *(metadata-verified; summary pending full read)*  
+- **Banerjee et al. (1995)** — [The Paradigm compiler for distributed-memory multicomputers](https://doi.org/10.1109/2.467577) — *full-system*.  
   `paradigm` `automatic-distribution`
 - **Ancourt et al. (1995)** — [A Linear Algebra Framework for Static High Performance Fortran Code Distribution](https://doi.org/10.1155/1997/195689) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   `hpf` `polyhedral`
-- **Su et al. (1995)** — [Advanced compilation techniques in the PARADIGM compiler for distributed-memory multicomputers](https://doi.org/10.1145/224538.224650) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+- **Su et al. (1995)** — [Advanced compilation techniques in the PARADIGM compiler for distributed-memory multicomputers](https://doi.org/10.1145/224538.224650) — *compiler-technique*.  
   `paradigm` `automatic-distribution`
-- **Palermo et al. (1996)** — [Dynamic Data Partitioning for Distributed-Memory Multicomputers](https://doi.org/10.1006/jpdc.1996.0138) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+- **Palermo et al. (1996)** — [Dynamic Data Partitioning for Distributed-Memory Multicomputers](https://doi.org/10.1006/jpdc.1996.0138) — *compiler-technique*.  
   `paradigm` `redistribution`
 - **Numrich and Reid (1998)** — [Co-array Fortran for parallel programming](https://doi.org/10.1145/289918.289920) — *language*.  
   `pgas` `caf`
@@ -900,13 +900,13 @@ rationale in `docs/taxonomy.md`.
   `communication-generation` `fx`
 - **Das et al. (1994)** — [Communication Optimizations for Irregular Scientific Computations on Distributed Memory Architectures](https://doi.org/10.1006/jpdc.1994.1104) — *runtime*. *(metadata-verified; summary pending full read)*  
   `irregular` `chaos`
-- **Banerjee et al. (1995)** — [The Paradigm compiler for distributed-memory multicomputers](https://doi.org/10.1109/2.467577) — *full-system*. *(metadata-verified; summary pending full read)*  
+- **Banerjee et al. (1995)** — [The Paradigm compiler for distributed-memory multicomputers](https://doi.org/10.1109/2.467577) — *full-system*.  
   `paradigm` `automatic-distribution`
 - **Harris et al. (1995)** — [Compiling High Performance Fortran for Distributed-Memory Systems](https://ftp.math.utah.edu/pub/tex/bib/idx/dectechj/7/3/5_23.html) — *full-system*.  
   `hpf` `production-compiler`
 - **Ancourt et al. (1995)** — [A Linear Algebra Framework for Static High Performance Fortran Code Distribution](https://doi.org/10.1155/1997/195689) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   `hpf` `polyhedral`
-- **Su et al. (1995)** — [Advanced compilation techniques in the PARADIGM compiler for distributed-memory multicomputers](https://doi.org/10.1145/224538.224650) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+- **Su et al. (1995)** — [Advanced compilation techniques in the PARADIGM compiler for distributed-memory multicomputers](https://doi.org/10.1145/224538.224650) — *compiler-technique*.  
   `paradigm` `automatic-distribution`
 - **Tang and Xue (2000)** — [Generating efficient tiled code for distributed memory machines](https://doi.org/10.1016/s0167-8191(00)00040-5) — *compiler-technique*.  
   `tiling` `affine`
@@ -931,7 +931,7 @@ rationale in `docs/taxonomy.md`.
 
 - **Chapman et al. (1992)** — [Programming in Vienna Fortran](https://doi.org/10.1155/1992/258136) — *language*.  
   `global-arrays` `vienna-fortran`
-- **Palermo et al. (1996)** — [Dynamic Data Partitioning for Distributed-Memory Multicomputers](https://doi.org/10.1006/jpdc.1996.0138) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+- **Palermo et al. (1996)** — [Dynamic Data Partitioning for Distributed-Memory Multicomputers](https://doi.org/10.1006/jpdc.1996.0138) — *compiler-technique*.  
   `paradigm` `redistribution`
 - **Ramaswamy et al. (1996)** — [Optimizations for Efficient Array Redistribution on Distributed Memory Multicomputers](https://doi.org/10.1006/jpdc.1996.0142) — *compiler-technique*.  
   `paradigm` `redistribution`

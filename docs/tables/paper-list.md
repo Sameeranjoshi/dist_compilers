@@ -31,7 +31,7 @@
 | ramanujam1991compiletime | 1991 | Compile-time techniques for data distribution in distributed memory machines | compiler-technique | core | discovered | no | paywalled |
 | saltz1991multiprocessor | 1991 | Multiprocessors and run‐time compilation | runtime | core | read | no | open |
 | chapman1992vienna | 1992 | Programming in Vienna Fortran | language | core | read | no | open |
-| gupta1992automatic | 1992 | Demonstration of automatic data partitioning techniques for parallelizing compilers on multicomputers | compiler-technique | core | screened | no | paywalled |
+| gupta1992automatic | 1992 | Demonstration of automatic data partitioning techniques for parallelizing compilers on multicomputers | compiler-technique | core | read | no | paywalled |
 | hiranandani1992compiling | 1992 | Compiling Fortran D for MIMD distributed-memory machines | full-system | core | discovered | no | paywalled |
 | hiranandani1992evaluation | 1992 | Evaluation of compiler optimizations for Fortran D on MIMD distributed memory machines | experience | core | read | no | paywalled |
 | amarasinghe1993communication | 1993 | Communication optimization and code generation for distributed memory machines | compiler-technique | core | discovered | no | paywalled |
@@ -49,16 +49,16 @@
 | rogers1994compiling | 1994 | Compiling for distributed memory architectures | full-system | core | read | no | paywalled |
 | stichnoth1994generating | 1994 | Generating Communication for Array Statements: Design, Implementation, and Evaluation | compiler-technique | core | discovered | no | paywalled |
 | ancourt1997linear | 1995 | A Linear Algebra Framework for Static High Performance Fortran Code Distribution | compiler-technique | core | screened | no | paywalled |
-| banerjee1995paradigm | 1995 | The Paradigm compiler for distributed-memory multicomputers | full-system | core | screened | no | paywalled |
+| banerjee1995paradigm | 1995 | The Paradigm compiler for distributed-memory multicomputers | full-system | core | read | no | paywalled |
 | gupta1995hpf | 1995 | An HPF compiler for the IBM SP2 | full-system | core | read | no | paywalled |
 | harris1995dechpf | 1995 | Compiling High Performance Fortran for Distributed-Memory Systems | full-system | core | read | no | open |
 | hwang1995chaos | 1995 | Runtime and language support for compiling adaptive irregular programs on distributed‐memory machines | runtime | core | read | no | paywalled |
 | lee1995techniques | 1995 | Techniques for compiling programs on distributed memory multicomputers | compiler-technique | core | screened | no | paywalled |
 | ponnusamy1995runtime | 1995 | Runtime support and compilation methods for user-specified irregular data distributions | runtime | core | read | no | paywalled |
-| su1995advanced | 1995 | Advanced compilation techniques in the PARADIGM compiler for distributed-memory multicomputers | compiler-technique | core | screened | no | paywalled |
+| su1995advanced | 1995 | Advanced compilation techniques in the PARADIGM compiler for distributed-memory multicomputers | compiler-technique | core | read | no | paywalled |
 | bik1996automatic | 1996 | Automatic Data Structure Selection and Transformation for Sparse Matrix Computations | compiler-technique | adjacent | screened | no | paywalled |
 | gropp1996mpich | 1996 | A high-performance, portable implementation of the MPI message passing interface standard | runtime | bridge | discovered | no | paywalled |
-| palermo1996dynamic | 1996 | Dynamic Data Partitioning for Distributed-Memory Multicomputers | compiler-technique | core | screened | no | paywalled |
+| palermo1996dynamic | 1996 | Dynamic Data Partitioning for Distributed-Memory Multicomputers | compiler-technique | core | read | no | paywalled |
 | ramaswamy1996redistribution | 1996 | Optimizations for Efficient Array Redistribution on Distributed Memory Multicomputers | compiler-technique | core | read | no | paywalled |
 | chandra1997datadist | 1997 | Data distribution support on distributed shared memory multiprocessors | compiler-technique | bridge | read | no | paywalled |
 | numrich1998coarray | 1998 | Co-array Fortran for parallel programming | language | bridge | read | no | paywalled |

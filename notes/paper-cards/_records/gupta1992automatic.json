@@ -1,0 +1,25 @@
+{
+ "id": "gupta1992automatic",
+ "summary": "The paper proposes a constraint-based method in which a compiler records, for each parallelizable loop, constraints on array distributions weighted by estimated execution-time penalties, then combines them into one distribution per array. It demonstrates the method by hand on five Fortran programs and measures one of them, tred2, on a 16-processor iPSC/2.",
+ "why_read": "It is an early and clearly argued account of choosing array distributions by weighing constraints, and it shows why component alignment and processor-grid shape matter.",
+ "main_contribution": "A constraint-based strategy for choosing alignment, sequentialization, block-cyclic parameters, processor-grid shape and replication for whole regular programs.",
+ "main_limitation": "The authors state that the strategy is not guaranteed optimal because the problem is NP-hard, and that its quality measures rest on compile-time assumptions about loop bounds and branch probabilities.",
+ "evaluation_method": "Hand simulation of the strategy on five programs, with measured execution times for one program (tred2) on a 16-processor iPSC/2 hypercube",
+ "benchmarks": ["dgefa (Linpack)", "tred2 (Eispack)", "trfd (Perfect Club)", "mdg (Perfect Club)", "flo52 (Perfect Club)"],
+ "optimization_objectives": ["load-balance", "communication-volume", "message-count"],
+ "data_decomposition": ["block-1d", "block-nd", "cyclic", "block-cyclic", "replicated"],
+ "computation_mapping": ["owner-computes", "data-parallelism"],
+ "communication_generation": ["broadcast-multicast", "reduction-allreduce", "message-vectorization"],
+ "compiler_runtime_boundary": ["fully-static"],
+ "target_hardware": ["hypercube-mpp", "dm-multicomputer"],
+ "ir_representation": ["dependence-graph", "source-annotations"],
+ "compiler_architecture": ["dependence-based", "source-to-source"],
+ "states_relationship_to": ["Fortran D", "SUPERB", "Kali", "DINO", "Crystal", "Id Nouveau", "Ramanujam and Sadayappan", "Hudak and Abraham", "Socha", "Balasundaram et al.", "Li and Chen", "Callahan and Kennedy", "Mace", "Parafrase-2", "Hsu and Banerjee"],
+ "evidence": [
+  {"source": "full text", "section": "1 Introduction"},
+  {"source": "full text", "section": "3 Constraints on Data Distribution"},
+  {"source": "full text", "section": "5 Strategy for Data Partitioning"},
+  {"source": "full text", "section": "6 Study of Numeric Programs; Table 2; Figure 4"}
+ ],
+ "notes": ""
+}
