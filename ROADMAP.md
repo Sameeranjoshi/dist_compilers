@@ -8,7 +8,7 @@ Status of the project against the milestones in the original brief.
 | M2 Verified seed corpus | in progress | see `make validate` output and the status counts in README |
 | M3 Mental map (figures, reading paths) | done (first pass) | timeline, architecture, taxonomy, decomposition, rediscovery map; citation map awaits evidence |
 | M4 Historical anchor paper cards | in progress | cards exist for the anchors listed in `notes/paper-cards/`; several are still abstract-level |
-| M5 Paper draft | full draft (16 pages) | every section has card-backed prose; 21 TODO markers mark claims awaiting a card or close reading |
+| M5 Paper draft | full draft (18 pages) | six-era narrative (machines, idea, design space, lessons, remainder), mechanism sections, then-and-now table with evidence on both sides, HPF four-cause test, eight generalizations with refuting observations; 11 TODO markers |
 
 ## Next research tasks (ordered)
 

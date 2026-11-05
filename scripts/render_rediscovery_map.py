@@ -16,7 +16,7 @@ PAIRS = [
     ("Owner-computes rule\n(Kali, Fortran D)", "SPMD partition propagation\n(GSPMD, Shardy)", "koelbel1991compiling", "xu2021gspmd"),
     ("Communication-set generation\n(Koelbel; Chatterjee et al.)", "Collective insertion\n(XLA SPMD, PartIR)", "chatterjee1993generating", "alabed2025partir"),
     ("Array redistribution\n(HPF REDISTRIBUTE, PARADIGM)", "Resharding\n(GSPMD, Alpa cross-mesh)", "ramaswamy1996redistribution", "zheng2022alpa"),
-    ("Inspector-executor\n(PARTI, CHAOS)", "Dynamic sparse communication planning\n(SpDISTAL, MLIR sparse distribution)", "saltz1991runtime", "yadav2022spdistal"),
+    ("Inspector-executor\n(PARTI, CHAOS)", "Dynamic sparse communication planning\n(SpDISTAL, MLIR sparse distribution)", "saltz1990runtime", "yadav2022spdistal"),
     ("Global arrays\n(SUPERB, Vienna Fortran)", "Distributed tensor values\n(DISTAL, Legion/Regent regions)", "zima1988superb", "yadav2022distal"),
     ("PARTI import/export schedules", "Sparse tensor slice exchange\n(SpDISTAL)", "das1994communication", "yadav2022spdistal"),
     ("Hierarchical machine mappings\n(Sequoia, PARADIGM)", "Inter-/intra-operator parallelism\n(Alpa)", "fatahalian2006sequoia", "zheng2022alpa"),

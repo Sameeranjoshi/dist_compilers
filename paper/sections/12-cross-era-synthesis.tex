@@ -1,35 +1,107 @@
 \section{Cross-Era Synthesis}
 \label{sec:synthesis}
 
-The findings of Section~\ref{sec:history} and the mechanisms of Sections~\ref{sec:mapping}--\ref{sec:modern} support a short list of generalizations. Table~\ref{tab:generalizations} states each one with its evidence strength, the observation that would refute it, and what we would need to test it. The list is the contribution of this section; the paper's narrative in earlier sections is the evidence for it.
+Section~\ref{sec:history} told each era on its own terms. This section asks what repeats. It has four parts: the mechanism-level correspondences between the 1990s and the 2020s, with the evidence on both sides; the counted patterns across the 54 read papers; the four causes of HPF's decline applied to today's sharding compilers; and the generalizations we are prepared to state, each with its evidence strength and the observation that would refute it.
+
+\subsection{Then and now: the same mechanisms under new names}
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=0.9\textwidth]{rediscovery-map.pdf}
+  \caption{Concepts of 1988--2006 and their 2018--2025 descendants. Each edge names the catalog entries that document the older and the newer form. The pairing asserts functional correspondence, demonstrated in Table~\ref{tab:thennow}; it does not assert that the newer work cites the older one, and in several pairs it does not.}
+  \label{fig:rediscovery}
+\end{figure*}
 
 \begin{table*}[t]
 \centering
 \scriptsize
-\caption{Generalizations, their evidence strength in the read set, the observation that would refute each, and the test that would settle it. Strength is ``supported'' when the count in the cited table shows it with no counterexample among the papers read, ``suggested'' when the count is consistent but the sample in one era is below ten, and ``open'' when the claim is an inference we have not tested.}
+\caption{Then and now. Each row pairs a mechanism of the 1988--2000 systems with its form in the 2018--2025 systems, with the evidence from the paper cards and the respect in which the new form differs. The last column records whether the newer papers' texts cite the older line of work, per their cards: yes for all of them, partly for some, no for none, unchecked where the cards do not say.}
+\label{tab:thennow}
+\begin{tabular}{p{0.13\textwidth}p{0.27\textwidth}p{0.27\textwidth}p{0.18\textwidth}p{0.05\textwidth}}
+\toprule
+Mechanism & Then (1988--2000) & Now (2018--2025) & What changed & Cites older line? \\
+\midrule
+Processor arrangement & HPF PROCESSORS: a rectilinear arrangement onto which a template is distributed per dimension~\cite{loveman1993hpf}; Kali's processor array with a tilde-range resolved at run time~\cite{mehrotra1990kali}. & Mesh-TensorFlow's processor mesh with named dimensions~\cite{shazeer2018meshtf}; GSPMD's device mesh whose order is preserved in collectives so users can match the topology~\cite{xu2021gspmd}; Alpa's $N{\times}M$ mesh with restricted submesh shapes~\cite{zheng2022alpa}. & The arrangement is now also the unit of collectives and of cost; HPF's was only a naming of places. & no \\
+Alignment and distribution & Fortran~D aligns arrays to a decomposition, then distributes the decomposition; HPF's TEMPLATE occupies no storage and arrays align to it with offsets, collapse and replication~\cite{hiranandani1991fortrand,loveman1993hpf}. & Mesh-TensorFlow's layout is a partial map from tensor-dimension names to mesh-dimension names, and dimensions with no mapping are replicated~\cite{shazeer2018meshtf}; DISTAL's tensor distribution notation names tensor and machine dimensions, with fix and broadcast for unmatched machine dimensions~\cite{yadav2022distal}. & Alignment is by shared dimension name rather than by an explicit template; replication is the default for unmatched dimensions in both. & partly \\
+Owner-computes & Kali's doall on owner(A(i))~\cite{mehrotra1990kali}; Fortran~D's local iteration set from the left-hand side~\cite{hiranandani1991fortrand}; relaxed by DEC's compiler, which computes where operands are aligned when that moves less data~\cite{harris1995dechpf}, and by CHAOS's ``almost owner computes''~\cite{ponnusamy1995runtime}. & DISTAL: distributing output-indexing variables gives owner-computes, distributing reduction variables gives distributed reductions~\cite{yadav2022distal}; FlexFlow partitions output tensors, which is owner-computes~\cite{jia2019flexflow}; Mesh-TensorFlow argues owner-computes is communication-suboptimal for matrix multiply and uses replication instead~\cite{shazeer2018meshtf}; GSPMD and PartIR replace the rule with propagation~\cite{xu2021gspmd,alabed2025partir}. & The 1995 relaxation and the 2018 critique make the same point; the new systems make relaxation the default by propagating values rather than placing statements. & partly \\
+Communication from the layout & Kali's in and out sets per loop~\cite{mehrotra1990kali}; Koelbel's closed-form send and receive sets~\cite{koelbel1991regular}; DEC's split of expressions into communication-free regions with transfers materialised as assignments to temporaries~\cite{harris1995dechpf}. & Mesh-TensorFlow: an all-reduce over the mesh dimensions of reduced-out tensor dimensions, an all-to-all when two dimensions share a mesh dimension~\cite{shazeer2018meshtf}; GSPMD inserts collectives where shardings disagree~\cite{xu2021gspmd}; Kong et al.\ forbid mappings that would need point-to-point traffic~\cite{kong2023automatic}. & The unit of communication is the operator and the collective, not the element and the message; this is what makes a volume-only cost model sufficient. & partly \\
+Redistribution & HPF REDISTRIBUTE; Vienna Fortran's DISTRIBUTE statement with NOTRANSFER~\cite{chapman1991vienna}; Palermo et al.'s phase search charging for redistribution~\cite{palermo1996dynamic}; Ramaswamy et al.'s line-segment intersections~\cite{ramaswamy1996redistribution}. & GSPMD's resharding composed from all-gather, all-to-all and collective-permute~\cite{xu2021gspmd}; Alpa's tabulated resharding costs between sharding specs, and cross-mesh resharding as many-to-many multicast~\cite{zheng2022alpa}; PartIR's redistribute lowered to one all-gather and one all-slice~\cite{alabed2025partir}. & The 1996 work optimised the data movement of one redistribution; the 2022 work prices redistributions inside a global search and does not optimise each one. & no \\
+Inspector and executor & PARTI's preprocessor and schedule executer~\cite{saltz1990runtime}; CHAOS's reuse of inspector results under a modification counter~\cite{ponnusamy1995runtime}; Kali's cached inspector~\cite{mehrotra1990kali}. & SpDISTAL's derivation of sparse partitions at run time through image and preimage operations on Legion~\cite{yadav2022spdistal}; PartTensor's get-slice requests exchanged by all-to-all at run time~\cite{vaidya2025distributed}; Titanium's inspector-executor for a[b[i]]~\cite{yelick2007titanium}. & The schedule is now a runtime partition object rather than a message list, and reuse is the runtime's coherence rather than a counter. & no \\
+Halo and overlap & SUPERB and Vienna Fortran overlap areas~\cite{zima1993compiling,chapman1992vienna}; Fortran~D overlaps for contiguous nonlocal stencil data~\cite{hiranandani1992evaluation}; DEC's shadow edges~\cite{harris1995dechpf}. & GSPMD's halo exchange via collective-permute with maximum halo then trimming~\cite{xu2021gspmd}; the dmp dialect's declared halo swaps~\cite{bisbas2024shared}; chunked prefetches on the wafer~\cite{stawinoga2026mlir}. & Unchanged in concept; the only mechanism in the catalog present in every era. & unchecked \\
+Separation of mapping from program & Sequoia's per-machine mapping specification~\cite{fatahalian2006sequoia}; Chapel's distribution classes~\cite{chamberlain2007chapel}; Co-Array Fortran's stated separation of work from data distribution~\cite{numrich1998coarray}. & DISTAL's schedule separate from the tensor expression~\cite{yadav2022distal}; PartIR's schedule of tactics separate from the model~\cite{alabed2025partir}; Legion's mapper that cannot affect correctness~\cite{bauer2012legion}. & The separation is the same design; PartIR's authors cite DISTAL and Halide for it, and Legion's authors cite Sequoia. & yes \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\infer{Table~\ref{tab:thennow} shows that the correspondences are not loose analogies: seven of the eight mechanisms have the same structure on both sides. The citation column shows how uneven the memory is. Only the separation of mapping from program is cited by every newer system, through Sequoia, Legion and DISTAL to PartIR. For alignment, owner-computes and layout-derived communication, some newer papers cite the older line (DISTAL and Kong et al.\ do; Mesh-TensorFlow and GSPMD do not). For the processor arrangement, redistribution and the inspector, none of the newer papers' cards records a citation to the 1990s work.} \infer{The clearest single instance is DISTAL's scheduling rule: distributing an output-indexing variable gives owner-computes, distributing a reduction variable gives a distributed reduction. That is Fortran~D's local-iteration-set rule and its relaxation for reductions, stated in 2022 as two commands in a schedule.}
+
+\subsection{What changed between the two sides}
+\infer{Three differences recur in the right-hand column. First, the unit of reasoning moved from the array element and the loop statement to the tensor dimension and the operator. Second, the arrangement of places became the unit of cost: a mesh axis names a collective's participants and a bandwidth, where a processor arrangement named only positions. Third, the decision is taken by propagation over values rather than by a rule over statements. The program class made all three possible: a graph of a few large operators with static shapes admits per-operator rewrite rules, and homogeneous devices admit a cost in bytes per mesh axis. The 1990s compilers faced loops with arbitrary affine subscripts over machines with a startup cost two hundred times the byte cost~\cite{hiranandani1992evaluation}, and had to count messages.}
+
+\subsection{Patterns tested on the read set}
+The following patterns were tested against the 54 catalog papers whose full text was read, using the taxonomy tags of the catalog (Section~\ref{sec:taxonomy} describes the coding and its limits). The era samples are 9 to 15 papers, and a difference of two or three is not a finding.
+
+\paragraph{The runtime stage follows data-dependent ownership}
+Every read system that describes how irregular ownership is resolved has a run-time stage: an inspector, a run-time partitioner, a dynamic scheduler or a JIT. This holds for 17 papers across five eras, from PARTI and CHAOS~\cite{saltz1990runtime,ponnusamy1995runtime} through Legion~\cite{bauer2012legion} to SpDISTAL~\cite{yadav2022spdistal}. Vienna Fortran's INDIRECT mappings are excluded because the report says run-time techniques are needed but describes none~\cite{chapman1991vienna}. \infer{The defensible claim is that a run-time stage is needed when the owner of an element is data-dependent; where the map is fixed in the source, the compiler can emit the schedule statically~\cite{koelbel1991regular}.}
+
+\paragraph{The decision procedure moved from analytic to measured}
+Table~\ref{tab:decision} counts the procedure by era. The three analytic optimisers of the 1990s~\cite{gupta1992automatic,lee1995techniques,palermo1996dynamic} model the network; the search systems from 2019 score configurations by profiles or a simulator~\cite{jia2019flexflow,narayanan2019pipedream,zheng2022alpa}. \infer{Whether measurement replaced an unreliable network model, or the search space changed, the counts cannot say; the test that would settle it is a system that uses both on one workload, and no read paper makes it.}
+
+\input{tables/insights-decision}
+
+\paragraph{The objective moved from messages to memory and productivity}
+Message count is the most common recorded objective in Era~3 and nearly absent from the recent systems; local memory fit grows from one paper in Era~2 to eight in Era~6, and productivity from none to seven (Table~\ref{tab:objectives}). \infer{Section~\ref{sec:history} gave the machine reason for the 1990s objective; the 2020s objective follows from a device memory of 16 GB per core~\cite{xu2021gspmd} and from evaluations that measure utilisation rather than messages.}
+
+\input{tables/insights-objectives}
+
+\paragraph{The decomposition vocabulary changed}
+Block-cyclic appears in 6 of 11 Era~2 papers and 9 of 15 Era~3 papers, and in none after Era~4; mapping arrays follow the same course; model-state sharding and sparse-tensor partitions appear only from Era~5 (Table~\ref{tab:decomposition-vocab}). \infer{Benkner and Zima's recommendation to drop block-cyclic alignment from the language~\cite{benkner1999compiling} was, in effect, taken by the tensor systems, whose even block shardings need no cyclic address arithmetic.}
+
+\input{tables/insights-decomposition}
+
+\paragraph{Owner-computes gave way to propagation, but only for graphs}
+Owner-computes is recorded in 6 of 11 Era~2 papers and 11 of 15 Era~3 papers, falls to 2 of 9 in Era~5, and returns in 6 of 10 Era~6 papers, while propagation appears in 2 (Table~\ref{tab:owner}). \infer{The rule survives where the programmer writes the loop and the compiler places iterations; propagation is used where the program is a graph of operators. This is a claim about the programming model, not the era.}
+
+\input{tables/insights-owner}
+
+\paragraph{Pure element-level communication is disappearing}
+Systems whose communication is only element-level number 4 of 11 in Era~2 and 4 of 15 in Era~3, and fall to one in Era~5 and none in Era~6 (Table~\ref{tab:comm-family}). \infer{Element-level generation survives as the local set that feeds a collective rather than as the whole strategy.}
+
+\input{tables/insights-communication}
+
+\subsection{HPF's four causes, applied to today}
+\fact{Kennedy, Koelbel and Zima attribute HPF's decline to immature compilers combined with an impatient community, insufficient support for important features, inconsistent implementations, and the complex link between program and performance~\cite{kennedy2007rise}.} \infer{Each cause can be checked against the sharding compilers from their own cards.}
+\begin{itemize}[leftmargin=*,nosep]
+  \item \emph{Compiler maturity.} \infer{Different from HPF. GSPMD's paper reports it already in use for LaMDA and other production models~\cite{xu2021gspmd}; HPF's compilers followed its standard. The sharding compilers were built inside the frameworks they serve, which removes the gap that HPF's vendors had to close.}
+  \item \emph{Feature support.} \infer{Same risk, different features. HPF omitted irregular and user-defined distributions~\cite{loveman1993hpf}. GSPMD's pipelining supports only homogeneous stages~\cite{xu2021gspmd}; PartIR's propagation is blocked by reshapes and non-divisible shapes and MPMD is future work~\cite{alabed2025partir}; Alpa handles only static graphs on homogeneous nodes~\cite{zheng2022alpa}; and sparse tensors are served by separate systems~\cite{yadav2022spdistal,vaidya2025distributed}.}
+  \item \emph{Inconsistent implementations.} \infer{Present. GSPMD, PartIR and Alpa take different inputs and make different decisions on the same model; PartIR's authors state that matching its U-Net result in GSPMD took five hand-placed constraints per layer~\cite{alabed2025partir}. The OpenXLA project describes Shardy as combining the two~\cite{openxla2024shardy}, which is the consolidation HPF never had.}
+  \item \emph{Program-to-performance link.} \infer{The cause the new designs address most directly. PartIR is built around predictability: a schedule whose effect the user can inspect per tactic, and propagation without cost heuristics, because its authors judge automatic partitioners unpredictable~\cite{alabed2025partir}. GSPMD's own authors note that reported efficiency depends on the initial annotations, and the three attempts in their Table~1 show it~\cite{xu2021gspmd}. Alpa's 2393-second compile for one model is the search-cost form of the same link~\cite{zheng2022alpa}.}
+\end{itemize}
+\infer{On this evidence the sharding compilers have removed the first cause, share the second and third, and have made the fourth a design goal rather than a side effect. Whether that is enough is the question the next decade answers; the catalog records what would count as evidence.}
+
+\subsection{Generalizations}
+Table~\ref{tab:generalizations} states what we are prepared to claim. Strength is ``supported'' when the cited table or card set shows it with no counterexample among the read papers, ``suggested'' when the count is consistent but one era's sample is below ten, and ``open'' when the claim is an inference we have not tested.
+
+\begin{table*}[t]
+\centering
+\scriptsize
+\caption{Generalizations, their evidence strength in the read set, the observation that would refute each, and the test that would settle it.}
 \label{tab:generalizations}
 \begin{tabular}{p{0.04\textwidth}p{0.30\textwidth}p{0.10\textwidth}p{0.26\textwidth}p{0.20\textwidth}}
 \toprule
 ID & Generalization & Strength & Refuting observation & Test \\
 \midrule
-G1 & A runtime stage is present whenever the ownership of an element is data-dependent at run time. & supported (17 papers) & A read paper with data-dependent ownership and no run-time stage. & Read the open Vienna Fortran INDIRECT mechanism and any further mapping-array systems. \\
-G2 & The cost model moved from analytic (1990s) to profiled or simulated (2019 onward). & suggested & A 2019+ system with an analytic network model as the primary optimiser, or a 1990s system that profiles. & Read the Kali and CHAOS cost discussions in full; read further 2019+ systems. \\
-G3 & Message count was the leading objective of the 1990s and has largely given way to memory fit and productivity. & suggested & A recent system that optimises message count as its primary objective. & Re-code objectives on a second axis and compare with the stated goals of each paper. \\
-G4 & Block-cyclic and mapping-array decompositions disappear after about 2000, while model-state and sparse partitions appear. & suggested & A post-2005 read system that uses block-cyclic as its main decomposition. & Survey the 2000--2010 PGAS and HPCS papers, which are the least covered era. \\
-G5 & Owner-computes is replaced by partition propagation only where the program is a graph of operators. & open & A graph-based system that still uses owner-computes as its main mechanism. & Compare the statement-level rules of Kali and Fortran D with the graph rules of GSPMD on one shared workload. \\
-G6 & Element-level communication survives only inside collective systems. & suggested & A read system with element-level generation and no collective component in Era 5 or later. & Read the inspector and element-level systems of 2010 onward. \\
+G1 & A runtime stage is present whenever the ownership of an element is data-dependent at run time. & supported (17 papers) & A read paper with data-dependent ownership and no run-time stage. & Read the Vienna Fortran INDIRECT implementation and further mapping-array systems. \\
+G2 & The decomposition decision moved from analytic network models (1990s) to profiled or simulated program costs (2019 onward). & suggested & A 2019+ system with an analytic network model as its primary optimiser, or a 1990s system that profiles. & Read the Kali and CHAOS cost discussions in full; read further 2019+ systems. \\
+G3 & Message count was the leading objective of the 1990s and has given way to memory fit and productivity. & suggested & A recent system that optimises message count as its primary objective. & Second coding of objectives against each paper's stated goals. \\
+G4 & Block-cyclic and mapping-array decompositions disappear after about 2000; model-state and sparse partitions appear. & suggested & A post-2005 read system with block-cyclic as its main decomposition. & Survey the 2000--2010 PGAS and HPCS papers, the least covered era. \\
+G5 & Owner-computes is replaced by propagation only where the program is a graph of operators. & open & A graph-based system that uses owner-computes as its main mechanism. & Compare Kali and Fortran~D's statement rules with GSPMD's on one workload. \\
+G6 & Element-level communication survives only inside collective systems. & suggested & A read Era~5 or later system with element-level generation and no collective component. & Read the inspector and element-level systems of 2010 onward. \\
 G7 & Halo overlap is the one ownership feature present in every era. & supported (2--3 per era) & A read era with no halo-overlap system. & Extend the read set to Eras 0 and 1. \\
+G8 & Seven of eight 1990s mechanisms reappear with the same structure in the 2020s systems; in three of the eight no newer paper cites the older line, and in only one do all of them. & supported (Table~\ref{tab:thennow}) & A structural difference missed in the table, or a citation the cards did not record. & Second reader checks each row of Table~\ref{tab:thennow} against both cards and the papers' reference lists. \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
-\subsection{What the generalizations say together}
-\infer{G1 and G2 describe one trade-off from two sides. A run-time stage is needed when ownership is data-dependent, and the cost of choosing a decomposition is paid either by modelling the network or by measuring the program. The systems that avoid the run-time stage pay for it in analysis or in a model, and the systems that pay in measurement avoid the model. G5 and G6 describe the same movement at the level of communication: the unit of reasoning has moved from the statement and the element to the operator and the sharding.}
-
 \subsection{What the generalizations do not say}
-The read set contains no paper from Era~0 or Era~1, so nothing above is a claim about the foundations. The counts are over papers whose full text was read, and the catalog contains 51 further entries whose claims rest on bibliographic records alone. Several generalizations depend on the taxonomy's values, which were coded by one coder; a second coding is a precondition for calling any of them a finding.
-
-\subsection{The cross-era hypothesis about explicit MPI}
-\infer{We hypothesise that explicit MPI won in Eras~3--4 because its cost is transparent to the programmer, whereas high-level partitioning returned in Era~6 because operator graphs make propagation and cost modelling tractable (G2 and G5). The HPF retrospective is the principal evidence for the first half~\cite{kennedy2007rise}. The second half rests on the propagation designs~\cite{xu2021gspmd,alabed2025partir} and is not tested.}
-
-\todo{Test G2 and G5 on the Era~4 PGAS and HPCS papers, which are the least covered era in the read set.}
+The read set has no Era~0 or Era~1 paper, so none of this is a claim about the foundations. The counts are over 54 papers; 51 catalog entries rest on bibliographic records alone. The tags were assigned by one coder. The then-and-now rows are structural comparisons by one reader of two cards each. A second coding and a second reading are the preconditions for calling any row a finding.
