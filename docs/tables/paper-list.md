@@ -80,7 +80,7 @@
 | shazeer2018meshtf | 2018 | Mesh-TensorFlow: Deep Learning for Supercomputers | full-system | core | read | no | open |
 | baghdadi2019tiramisu | 2019 | Tiramisu: A Polyhedral Compiler for Expressing Fast and Portable Code | full-system | bridge | discovered | no | open |
 | jia2019flexflow | 2019 | Beyond Data and Model Parallelism for Deep Neural Networks | full-system | core | read | no | open |
-| narayanan2019pipedream | 2019 | PipeDream: generalized pipeline parallelism for DNN training | runtime | bridge | discovered | no | paywalled |
+| narayanan2019pipedream | 2019 | PipeDream: generalized pipeline parallelism for DNN training | runtime | bridge | read | no | open |
 | shoeybi2019megatron | 2019 | Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism | runtime | bridge | discovered | no | open |
 | wang2019tofu | 2019 | Supporting Very Large Models using Automatic Dataflow Graph Partitioning | full-system | core | discovered | no | open |
 | lepikhin2020gshard | 2020 | GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding | full-system | core | discovered | no | open |
@@ -92,7 +92,7 @@
 | yadav2022distal | 2022 | DISTAL: the distributed tensor algebra compiler | full-system | core | read | no | open |
 | yadav2022spdistal | 2022 | SpDISTAL: Compiling Distributed Sparse Tensor Computations | full-system | core | read | no | open |
 | zheng2022alpa | 2022 | Alpa: Automating Inter- and Intra-Operator Parallelism for Distributed Deep Learning | full-system | core | verified | yes | open |
-| kong2023automatic | 2023 | Automatic Generation of Distributed-Memory Mappings for Tensor Computations | compiler-technique | core | discovered | no | paywalled |
+| kong2023automatic | 2023 | Automatic Generation of Distributed-Memory Mappings for Tensor Computations | compiler-technique | core | read | no | open |
 | bisbas2024shared | 2024 | A shared compilation stack for distributed-memory parallelism in stencil DSLs | full-system | core | read | no | open |
 | openxla2024shardy | 2024 | Shardy: an MLIR-based tensor partitioning system (official documentation) | specification | core | screened | no | open |
 | thangamani2024polyhedral | 2024 | A Survey of General-purpose Polyhedral Compilers | survey | adjacent | screened | no | paywalled |
@@ -100,5 +100,5 @@
 | alabed2025partir | 2025 | PartIR: Composing SPMD Partitioning Strategies for Machine Learning | full-system | core | read | no | open |
 | hall2025scheduling | 2025 | Scheduling Language Chronology: Past, Present, and Future | survey | adjacent | screened | no | open |
 | mlir2025shard | 2025 | MLIR 'shard' Dialect (official documentation; formerly 'mesh') | specification | core | screened | no | open |
-| vaidya2025distributed | 2025 | Distributed Sparse Tensor Computations in MLIR | compiler-technique | core | discovered | no | paywalled |
+| vaidya2025distributed | 2025 | Distributed Sparse Tensor Computations in MLIR | compiler-technique | core | read | no | open |
 | stawinoga2026mlir | 2026 | An MLIR Lowering Pipeline for Stencils at Wafer-Scale | full-system | core | read | no | open |

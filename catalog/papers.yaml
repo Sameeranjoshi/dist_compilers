@@ -5779,19 +5779,21 @@ papers:
   arxiv: null
   official_url: https://doi.org/10.1145/3341301.3359646
   pdf_url: null
-  access_status: paywalled
+  access_status: open
   artifact_url: null
   source_code_url: null
   era: era5
   relevance_tier: bridge
-  status: discovered
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: '[metadata-level] SOSP ''19 paper on PipeDream, generalised pipeline parallelism for DNN training with
-    an automatic partitioning algorithm that balances stages using profiled costs; bridge entry because of its plan
-    generation.'
-  why_read: Automatic stage partitioning for pipelines from profiled costs.
+  summary: PipeDream splits a DNN into stages of consecutive layers, optionally replicates stages, and pipelines
+    minibatches through them under the static 1F1B-RR schedule with weight stashing. Its optimizer turns a single-GPU
+    profile of per-layer compute time, activation size and parameter size into a stage partition through a dynamic
+    program over a hierarchical bandwidth model, minimizing the time of the slowest stage.
+  why_read: It is the canonical example of profile-guided automatic pipeline partitioning, where choosing data versus
+    pipeline parallelism per layer group became a planning problem instead of a hand-written choice.
   problem: null
   input_abstraction:
   - computational-graph
@@ -5799,20 +5801,44 @@ papers:
   - multi-gpu-cluster
   memory_model: null
   programming_model: null
-  data_decomposition: []
+  data_decomposition:
+  - model-state-sharding
+  - replicated
   computation_mapping:
   - pipeline-parallelism
-  communication_generation: []
+  - data-parallelism
+  - hierarchical-mapping
+  communication_generation:
+  - overlapped
+  - reduction-allreduce
   compiler_runtime_boundary:
   - profile-guided
   compiler_architecture: []
-  ir_representation: []
-  optimization_objectives: []
+  ir_representation:
+  - graph-ir
+  - runtime-schedule
+  optimization_objectives:
+  - load-balance
+  - communication-volume
+  - overlap
+  - local-memory-fit
   maturity: []
-  evaluation_method: null
-  benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  evaluation_method: Time-to-target-accuracy and epoch-time speedups versus data parallelism on three GPU clusters
+    (up to 16 V100s), throughput comparisons against model, hybrid and GPipe-style pipelining, and microbenchmarks
+    of optimizer prediction accuracy, memory footprint and pipeline depth.
+  benchmarks:
+  - VGG-16 (ImageNet)
+  - ResNet-50 (ImageNet)
+  - AlexNet (synthetic data)
+  - GNMT-8 (WMT16 En-De)
+  - GNMT-16 (WMT16 En-De)
+  - AWD LM (Penn Treebank)
+  - S2VT (MSVD)
+  main_contribution: Pipeline-parallel training with automatic topology-aware partitioning (profiler plus DP partitioner),
+    1F1B-RR scheduling and weight stashing, reported up to 5.3x faster time-to-accuracy than data parallelism.
+  main_limitation: The partitioner assumes consecutive-layer stages in a linear order, level-structured topologies
+    with uniform bandwidth per level, and stable per-input compute times; default semantics introduce weight staleness
+    that optional vertical sync only partly addresses.
   predecessors: []
   successors: []
   related_versions: []
@@ -5826,11 +5852,17 @@ papers:
   technique_lists: []
   start_here: null
   evidence:
-  - source: Crossref metadata
-    section: bibliographic record
-    pages: 1-15
+  - source: full text
+    section: 'Sec. 3.1 Challenge 1: Work Partitioning (Profiler, Partitioning Algorithm)'
+  - source: full text
+    section: 'Sec. 3.2 Challenge 2: Work Scheduling'
+  - source: full text
+    section: Sec. 4 Implementation
+  - source: full text
+    section: Sec. 5.2 Comparison to Data Parallelism
   metadata_sources:
   - crossref
+  - full text read (paper card)
   notes: null
 - id: shoeybi2019megatron
   title: 'Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism'
@@ -6614,39 +6646,65 @@ papers:
   arxiv: null
   official_url: https://doi.org/10.1145/3581784.3607096
   pdf_url: null
-  access_status: paywalled
+  access_status: open
   artifact_url: null
   source_code_url: null
   era: era6
   relevance_tier: core
-  status: discovered
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: '[metadata-level] SC ''23 paper on automatic generation of distributed-memory mappings for tensor computations;
-    details to be confirmed.'
-  why_read: Automatic distribution selection for tensor computations, revisiting the 1991 problem with modern cost
-    models.
+  summary: DiMage encodes with 0/1 variables whether each iteration-space and data-space dimension of every operator
+    and tensor in a DAG is partitioned along a dimension of an N-dimensional processor grid, and uses the Z3 SMT
+    solver to minimize local work plus weighted communication volume under per-node memory capacity. The solution
+    fixes grid shape, block or replicated layouts, redundant computation and the all-gather/all-reduce collectives
+    over sub-communicators that are emitted in instance-specific MPI code calling MKL.
+  why_read: It is the clearest recent statement of deriving the distributed algorithm rather than merely implementing
+    it for tensor DAGs, benchmarked against CTF and Distributed-Memory Pluto.
   problem: null
   input_abstraction:
   - tensor-algebra
   target_hardware:
   - cpu-cluster
-  - multi-gpu-cluster
   memory_model: null
   programming_model: null
-  data_decomposition: []
-  computation_mapping: []
-  communication_generation: []
-  compiler_runtime_boundary: []
+  data_decomposition:
+  - block-nd
+  - replicated
+  computation_mapping:
+  - iteration-space-partitioning
+  - loop-to-processor
+  communication_generation:
+  - reduction-allreduce
+  - scatter-gather
+  compiler_runtime_boundary:
+  - fully-static
   compiler_architecture: []
-  ir_representation: []
-  optimization_objectives: []
+  ir_representation:
+  - polyhedral-sets
+  - dependence-graph
+  - device-mesh
+  optimization_objectives:
+  - communication-volume
+  - local-memory-fit
   maturity: []
-  evaluation_method: null
-  benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  evaluation_method: Total execution time and communication/computation breakdown versus CTF 1.5.5 and Pluto-Dist
+    on 2-64 Broadwell nodes with 1D and 2D grids, mean of five runs, plus three memory-capacity case studies of
+    the generated mappings.
+  benchmarks:
+  - 2mmC
+  - 2mmK
+  - 3mmC
+  - 3mmV
+  - 4mmC
+  - 4mmY
+  - mttkrp-proxy
+  main_contribution: A non-linear 0/1 formulation linking iteration, data and processor spaces with capacity and
+    communication constraints, optimized iteratively with Z3 and lowered to MPI code that uses one communicator
+    per (operator, tensor) communication vector.
+  main_limitation: Restricted to affine tensor DAGs with linear indexing, block distributions, homogeneous nodes
+    and collective-only communication; the cost model is volume-only and the text reports no numeric speedups.
   predecessors: []
   successors: []
   related_versions: []
@@ -6661,11 +6719,17 @@ papers:
   - data-distribution
   start_here: null
   evidence:
-  - source: Crossref metadata
-    section: bibliographic record
-    pages: 1-13
+  - source: full text
+    section: Sec. 4 Overview
+  - source: full text
+    section: Sec. 5.1 Communication Minimizing Mappings
+  - source: full text
+    section: Sec. 6 Distributed-Memory Code Generation
+  - source: full text
+    section: Sec. 7 Experimental Evaluation
   metadata_sources:
   - crossref
+  - full text read (paper card)
   notes: null
 - id: bisbas2024shared
   title: A shared compilation stack for distributed-memory parallelism in stencil DSLs
@@ -7080,19 +7144,22 @@ papers:
   arxiv: null
   official_url: https://doi.org/10.1145/3731599.3767484
   pdf_url: null
-  access_status: paywalled
+  access_status: open
   artifact_url: null
   source_code_url: null
   era: era6
   relevance_tier: core
-  status: discovered
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: '[metadata-level] LLVM-HPC 2025 (SC ''25 workshops) paper adding an MLIR dialect for distributed sparse
-    tensor computations that is lowered to MPI code, demonstrated on a graph attention network; details to be confirmed
-    from the primary source.'
-  why_read: Distributed sparse tensors expressed in MLIR, the newest point on the inspector-executor lineage.
+  summary: 'The part_tensor MLIR dialect gives distributed sparse tensors a global partitioned view: each process
+    owns one hyper-rectangular partition and obtains the slices it needs through blocking get/set/update-slice operations
+    that a runtime library implements with MPI all-to-all and all-to-allv. A GAT layer written this way is lowered
+    through sparse_tensor and LAPIS/Kokkos and scaled to 128 ranks on two OGB graphs, with sparsity masks that cut
+    communication on one dataset and add overhead on the other.'
+  why_read: It is the first MLIR-native path from sparse linalg operators to multi-node MPI code, and shows what
+    a distributed sparse dialect looks like when partition choice stays with the programmer.
   problem: null
   input_abstraction:
   - tensor-algebra
@@ -7102,19 +7169,35 @@ papers:
   programming_model: null
   data_decomposition:
   - sparse-tensor-partition
-  computation_mapping: []
-  communication_generation: []
-  compiler_runtime_boundary: []
+  - uneven-block
+  - application-defined
+  - block-1d
+  - replicated
+  computation_mapping:
+  - owner-computes
+  communication_generation:
+  - all-to-all
+  compiler_runtime_boundary:
+  - runtime-inspector
   compiler_architecture:
   - mlir-based
   ir_representation:
   - mlir-dialect
-  optimization_objectives: []
+  - multi-level-ir
+  optimization_objectives:
+  - productivity
+  - communication-volume
+  - load-balance
   maturity: []
-  evaluation_method: null
-  benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  evaluation_method: Strong-scaling speedup curves on 1-4 nodes (up to 128 MPI ranks), slowest-rank time, best of
+    four runs, with and without sparsity masks; no absolute times and no external baseline.
+  benchmarks:
+  - GAT layer on OGB ogbn-arxiv
+  - GAT layer on OGB ogbn-products
+  main_contribution: The PartTensor dialect (partitioned sparse types, get/set/update-slice and sparsity-mask operations),
+    a conversion pass to runtime-library calls, and an MPI runtime, so an unchanged local sparse operator runs distributed.
+  main_limitation: Partition choice, slice specifications and mask use are manual; communication is blocking with
+    no overlap or cost model; the evaluation is one application with relative speedups and no external baseline.
   predecessors: []
   successors: []
   related_versions: []
@@ -7130,13 +7213,22 @@ papers:
   - irregular-ownership
   start_here: null
   evidence:
-  - source: Crossref metadata
-    section: bibliographic record
-    pages: 1088-1095
+  - source: full text
+    section: Sec. 3.1.1 Tensor Partitions
+  - source: full text
+    section: Sec. 3.1.2 Reading Tensor Slices
+  - source: full text
+    section: Sec. 3.2.2 PartTensor runtime library
+  - source: full text
+    section: Sec. 5 Experimental Evaluation
   metadata_sources:
   - crossref
+  - full text read (paper card)
   notes: Workshop page lists authors Vaidya, Singh, Mantri (Utah), Eydenberg, Kelley, Rajamanickam (Sandia), Rountev
-    (Ohio State), Sadayappan (Utah). No arXiv version located.
+    (Ohio State), Sadayappan (Utah). No arXiv version located. PartTensor is the name of the dialect (namespace
+    part_tensor), the conversion pass and the runtime library in the text. The Crossref venue is used; the PDF prints
+    'SC Workshops '25' and does not name LLVM-HPC. Neither the PDF text nor the card prints numeric speedups; results
+    are in figures.
 - id: rocki2020cerebras
   title: Fast Stencil-Code Computation on a Wafer-Scale Processor
   authors:

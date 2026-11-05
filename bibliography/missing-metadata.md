@@ -5,7 +5,7 @@ in the first pass.  Each line says what is missing and what would resolve it.
 
 | item | status | what is needed |
 |---|---|---|
-| PartTensor (seed list, 2020–2026) | not found | No publication titled "PartTensor" located on arXiv, Crossref or the web. Need the exact title/authors; the closest matches are PartIR (catalogued) and Automap (arXiv 2112.02958, not yet catalogued). |
+| PartTensor (seed list, 2020–2026) | resolved | PartTensor is the name of the MLIR dialect, conversion pass and runtime library in Vaidya et al. 2025 (`vaidya2025distributed`, supplied PDF). Automap (arXiv 2112.02958) remains uncatalogued. |
 | MLIR-AIR / Spensor spatial-tensor work | not searched | Locate primary publications or official documentation before cataloguing. |
 | Graphcore, SambaNova, Tenstorrent, Groq, TPU compiler publications | not searched | Only entries with primary technical publications or official compiler documentation will be added. |
 | HPF 2.0 specification (1997) | not catalogued | hpf.rice.edu unreachable from the build environment; need an official copy or a Fortran Forum DOI. |

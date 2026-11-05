@@ -29,10 +29,10 @@ been read beyond their bibliographic record say so.
 | systems | 28 |
 | metadata-verified against Crossref/arXiv | 90 |
 | status `verified` (primary source read) | 4 |
-| status `read` | 15 |
-| status `screened` / `discovered` | 79 |
+| status `read` | 18 |
+| status `screened` / `discovered` | 76 |
 | tier core / bridge / foundation / adjacent | 71 / 11 / 11 / 5 |
-| paper cards | 19 |
+| paper cards | 22 |
 <!-- END:status -->
 
 Status meanings: `discovered` = metadata verified against Crossref/arXiv
@@ -316,8 +316,8 @@ rationale in `docs/taxonomy.md`.
 - **Yadav et al. (2022)** — [SpDISTAL: Compiling Distributed Sparse Tensor Computations](https://doi.org/10.1109/sc41404.2022.00064) — *full-system*.  
   Learn how sparse ownership and communication sets can be expressed as partitions derived from index structures (image/preimage) instead of explicit messages, with load balance controlled by non-zero versus universe partitioning.  
   `tensor-compilers` `sparse` `distal`
-- **Vaidya et al. (2025)** — [Distributed Sparse Tensor Computations in MLIR](https://doi.org/10.1145/3731599.3767484) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
-  Distributed sparse tensors expressed in MLIR, the newest point on the inspector-executor lineage.  
+- **Vaidya et al. (2025)** — [Distributed Sparse Tensor Computations in MLIR](https://doi.org/10.1145/3731599.3767484) — *compiler-technique*.  
+  It is the first MLIR-native path from sparse linalg operators to multi-node MPI code, and shows what a distributed sparse dialect looks like when partition choice stays with the programmer.  
   `mlir` `sparse` `tensor-compilers`
 
 ### PGAS and language systems
@@ -406,8 +406,8 @@ rationale in `docs/taxonomy.md`.
 - **Jia et al. (2019)** — [Beyond Data and Model Parallelism for Deep Neural Networks](https://arxiv.org/abs/1807.05358) — *full-system*.  
   Learn how a profiled, incremental execution simulator can replace on-hardware measurement as the cost oracle for randomized search over per-operator parallelization configurations.  
   `ml-compilers` `auto-parallel`
-- **Narayanan et al. (2019)** — [PipeDream: generalized pipeline parallelism for DNN training](https://doi.org/10.1145/3341301.3359646) — *runtime*. *(metadata-verified; summary pending full read)*  
-  Automatic stage partitioning for pipelines from profiled costs.  
+- **Narayanan et al. (2019)** — [PipeDream: generalized pipeline parallelism for DNN training](https://doi.org/10.1145/3341301.3359646) — *runtime*.  
+  It is the canonical example of profile-guided automatic pipeline partitioning, where choosing data versus pipeline parallelism per layer group became a planning problem instead of a hand-written choice.  
   `ml-systems` `pipeline`
 - **Shoeybi et al. (2019)** — [Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism](https://arxiv.org/abs/1909.08053) — *runtime*. *(metadata-verified; summary pending full read)*  
   The hand-written tensor-parallel baseline that automatic partitioners compare against.  
@@ -433,8 +433,8 @@ rationale in `docs/taxonomy.md`.
 - **Yadav et al. (2022)** — [SpDISTAL: Compiling Distributed Sparse Tensor Computations](https://doi.org/10.1109/sc41404.2022.00064) — *full-system*.  
   Learn how sparse ownership and communication sets can be expressed as partitions derived from index structures (image/preimage) instead of explicit messages, with load balance controlled by non-zero versus universe partitioning.  
   `tensor-compilers` `sparse` `distal`
-- **Kong et al. (2023)** — [Automatic Generation of Distributed-Memory Mappings for Tensor Computations](https://doi.org/10.1145/3581784.3607096) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
-  Automatic distribution selection for tensor computations, revisiting the 1991 problem with modern cost models.  
+- **Kong et al. (2023)** — [Automatic Generation of Distributed-Memory Mappings for Tensor Computations](https://doi.org/10.1145/3581784.3607096) — *compiler-technique*.  
+  It is the clearest recent statement of deriving the distributed algorithm rather than merely implementing it for tensor DAGs, benchmarked against CTF and Distributed-Memory Pluto.  
   `tensor-compilers` `automatic-distribution`
 - **Project (2024)** — [Shardy: an MLIR-based tensor partitioning system (official documentation)](https://openxla.org/shardy) — *specification*. *(metadata-verified; summary pending full read)*  
   The current production sharding IR in the XLA ecosystem; read the dialect reference after GSPMD and PartIR.  
@@ -445,8 +445,8 @@ rationale in `docs/taxonomy.md`.
 - **community (2025)** — [MLIR 'shard' Dialect (official documentation; formerly 'mesh')](https://mlir.llvm.org/docs/Dialects/Shard/) — *specification*. *(metadata-verified; summary pending full read)*  
   The upstream MLIR representation of grids, shardings and collectives; the closest thing today to a shared ownership IR.  
   `mlir` `mesh-sharding`
-- **Vaidya et al. (2025)** — [Distributed Sparse Tensor Computations in MLIR](https://doi.org/10.1145/3731599.3767484) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
-  Distributed sparse tensors expressed in MLIR, the newest point on the inspector-executor lineage.  
+- **Vaidya et al. (2025)** — [Distributed Sparse Tensor Computations in MLIR](https://doi.org/10.1145/3731599.3767484) — *compiler-technique*.  
+  It is the first MLIR-native path from sparse linalg operators to multi-node MPI code, and shows what a distributed sparse dialect looks like when partition choice stays with the programmer.  
   `mlir` `sparse` `tensor-compilers`
 
 ### Spatial / wafer-scale compilers
@@ -487,14 +487,14 @@ rationale in `docs/taxonomy.md`.
 - **Jia et al. (2019)** — [Beyond Data and Model Parallelism for Deep Neural Networks](https://arxiv.org/abs/1807.05358) — *full-system*.  
   Learn how a profiled, incremental execution simulator can replace on-hardware measurement as the cost oracle for randomized search over per-operator parallelization configurations.  
   `ml-compilers` `auto-parallel`
-- **Narayanan et al. (2019)** — [PipeDream: generalized pipeline parallelism for DNN training](https://doi.org/10.1145/3341301.3359646) — *runtime*. *(metadata-verified; summary pending full read)*  
-  Automatic stage partitioning for pipelines from profiled costs.  
+- **Narayanan et al. (2019)** — [PipeDream: generalized pipeline parallelism for DNN training](https://doi.org/10.1145/3341301.3359646) — *runtime*.  
+  It is the canonical example of profile-guided automatic pipeline partitioning, where choosing data versus pipeline parallelism per layer group became a planning problem instead of a hand-written choice.  
   `ml-systems` `pipeline`
 - **Zheng et al. (2022)** — [Alpa: Automating Inter- and Intra-Operator Parallelism for Distributed Deep Learning](https://arxiv.org/abs/2201.12023) — *full-system*.  
   Learn the inter-/intra-operator hierarchy and how an ILP plus DP, backed by profiling and GSPMD-based compilation, can automatically derive combined data/operator/pipeline plans.  
   `ml-compilers` `auto-parallel` `mesh-sharding`
-- **Kong et al. (2023)** — [Automatic Generation of Distributed-Memory Mappings for Tensor Computations](https://doi.org/10.1145/3581784.3607096) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
-  Automatic distribution selection for tensor computations, revisiting the 1991 problem with modern cost models.  
+- **Kong et al. (2023)** — [Automatic Generation of Distributed-Memory Mappings for Tensor Computations](https://doi.org/10.1145/3581784.3607096) — *compiler-technique*.  
+  It is the clearest recent statement of deriving the distributed algorithm rather than merely implementing it for tensor DAGs, benchmarked against CTF and Distributed-Memory Pluto.  
   `tensor-compilers` `automatic-distribution`
 
 ### Surveys and taxonomies
@@ -712,7 +712,7 @@ rationale in `docs/taxonomy.md`.
   `polyhedral` `scheduling-languages`
 - **Jia et al. (2019)** — [Beyond Data and Model Parallelism for Deep Neural Networks](https://arxiv.org/abs/1807.05358) — *full-system*.  
   `ml-compilers` `auto-parallel`
-- **Narayanan et al. (2019)** — [PipeDream: generalized pipeline parallelism for DNN training](https://doi.org/10.1145/3341301.3359646) — *runtime*. *(metadata-verified; summary pending full read)*  
+- **Narayanan et al. (2019)** — [PipeDream: generalized pipeline parallelism for DNN training](https://doi.org/10.1145/3341301.3359646) — *runtime*.  
   `ml-systems` `pipeline`
 - **Shoeybi et al. (2019)** — [Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism](https://arxiv.org/abs/1909.08053) — *runtime*. *(metadata-verified; summary pending full read)*  
   `ml-systems` `tensor-parallel`
@@ -742,7 +742,7 @@ rationale in `docs/taxonomy.md`.
   `tensor-compilers` `sparse` `distal`
 - **Zheng et al. (2022)** — [Alpa: Automating Inter- and Intra-Operator Parallelism for Distributed Deep Learning](https://arxiv.org/abs/2201.12023) — *full-system*.  
   `ml-compilers` `auto-parallel` `mesh-sharding`
-- **Kong et al. (2023)** — [Automatic Generation of Distributed-Memory Mappings for Tensor Computations](https://doi.org/10.1145/3581784.3607096) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+- **Kong et al. (2023)** — [Automatic Generation of Distributed-Memory Mappings for Tensor Computations](https://doi.org/10.1145/3581784.3607096) — *compiler-technique*.  
   `tensor-compilers` `automatic-distribution`
 - **Bisbas et al. (2024)** — [A shared compilation stack for distributed-memory parallelism in stencil DSLs](https://doi.org/10.1145/3620666.3651344) — *full-system*.  
   `mlir` `stencil` `automatic-mpi`
@@ -758,7 +758,7 @@ rationale in `docs/taxonomy.md`.
   `survey` `scheduling-languages`
 - **community (2025)** — [MLIR 'shard' Dialect (official documentation; formerly 'mesh')](https://mlir.llvm.org/docs/Dialects/Shard/) — *specification*. *(metadata-verified; summary pending full read)*  
   `mlir` `mesh-sharding`
-- **Vaidya et al. (2025)** — [Distributed Sparse Tensor Computations in MLIR](https://doi.org/10.1145/3731599.3767484) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+- **Vaidya et al. (2025)** — [Distributed Sparse Tensor Computations in MLIR](https://doi.org/10.1145/3731599.3767484) — *compiler-technique*.  
   `mlir` `sparse` `tensor-compilers`
 - **Stawinoga et al. (2026)** — [An MLIR Lowering Pipeline for Stencils at Wafer-Scale](https://doi.org/10.1145/3779212.3790124) — *full-system*.  
   `wafer-scale` `mlir` `stencil`
@@ -813,7 +813,7 @@ rationale in `docs/taxonomy.md`.
   `tensor-compilers` `distal`
 - **Yadav et al. (2022)** — [SpDISTAL: Compiling Distributed Sparse Tensor Computations](https://doi.org/10.1109/sc41404.2022.00064) — *full-system*.  
   `tensor-compilers` `sparse` `distal`
-- **Kong et al. (2023)** — [Automatic Generation of Distributed-Memory Mappings for Tensor Computations](https://doi.org/10.1145/3581784.3607096) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+- **Kong et al. (2023)** — [Automatic Generation of Distributed-Memory Mappings for Tensor Computations](https://doi.org/10.1145/3581784.3607096) — *compiler-technique*.  
   `tensor-compilers` `automatic-distribution`
 
 ### Owner-computes
@@ -907,7 +907,7 @@ rationale in `docs/taxonomy.md`.
   `polyhedral` `irregular` `inspector-executor`
 - **Yadav et al. (2022)** — [SpDISTAL: Compiling Distributed Sparse Tensor Computations](https://doi.org/10.1109/sc41404.2022.00064) — *full-system*.  
   `tensor-compilers` `sparse` `distal`
-- **Vaidya et al. (2025)** — [Distributed Sparse Tensor Computations in MLIR](https://doi.org/10.1145/3731599.3767484) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+- **Vaidya et al. (2025)** — [Distributed Sparse Tensor Computations in MLIR](https://doi.org/10.1145/3731599.3767484) — *compiler-technique*.  
   `mlir` `sparse` `tensor-compilers`
 
 ### Automatic MPI / message-passing generation

@@ -100,3 +100,14 @@ The 25-query set in `docs/methodology.md` has **not** yet been executed
 against ACM DL / IEEE Xplore / DBLP; hit counts will be logged here when it
 is.  An explicit prior-survey search is also pending (required before any
 "first survey" claim).
+
+### Uploaded PDFs (2026-11-05)
+
+- Supplied by the repository owner and read in full: Vaidya et al. 2025
+  (`vaidya2025distributed`; resolves the PartTensor name), Kong et al. 2023
+  (`kong2023automatic`), and Narayanan et al. 2019 PipeDream
+  (`narayanan2019pipedream`).  Cards written, catalog entries set to `read`.
+- Supplied and identified as Talaashrafi, Doerfert and Moreno Maza 2022,
+  "A Pipeline Pattern Detection Technique in Polly" (DOI 10.1145/3547276.3548445).
+  Screened and excluded: it is a shared-memory Polly technique and mentions
+  distributed memory only in related work.
