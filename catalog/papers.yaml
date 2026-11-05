@@ -115,7 +115,8 @@ papers:
     Dataparallel C; MIMDizer; Oxygen; Hypertasking; Aspar; Parti routines; Li and Chen; Gerndt; Id Nouveau; High
     Performance Fortran Forum. Discusses: Vienna Fortran; Fortran D; SUPERB; Kali; Crystal; Dino; Dataparallel C;
     MIMDizer; Oxygen; Hypertasking; Aspar; Parti routines; Li and Chen; Gerndt; Id Nouveau; High Performance Fortran
-    Forum.'
+    Forum. Discusses: Vienna Fortran; Fortran D; SUPERB; Kali; Crystal; Dino; Dataparallel C; MIMDizer; Oxygen;
+    Hypertasking; Aspar; Parti routines; Li and Chen; Gerndt; Id Nouveau; High Performance Fortran Forum.'
 - id: benkner1999compiling
   title: Compiling High Performance Fortran for distributed-memory architectures
   authors:
@@ -250,7 +251,9 @@ papers:
     HPF+; OpenMP; Opus. Discusses: SUPERB; Kali; CM Fortran; Fortran D; Vienna Fortran; VFCS; VFC; PARTI; CHAOS;
     Pandore; Data Parallel C; Crystal; Booster; Adapt; Id Nouveau; Dino; Oxygen; ASPAR; MIMDizer; CRAFT; PARADIGM;
     Adaptor; PILAR; Ponnusamy et al.; Chatterjee et al.; von Hanxleden and Kennedy (Give-N-Take); HPF+; OpenMP;
-    Opus.'
+    Opus. Discusses: SUPERB; Kali; CM Fortran; Fortran D; Vienna Fortran; VFCS; VFC; PARTI; CHAOS; Pandore; Data
+    Parallel C; Crystal; Booster; Adapt; Id Nouveau; Dino; Oxygen; ASPAR; MIMDizer; CRAFT; PARADIGM; Adaptor; PILAR;
+    Ponnusamy et al.; Chatterjee et al.; von Hanxleden and Kennedy (Give-N-Take); HPF+; OpenMP; Opus.'
 - id: unat2017trends
   title: Trends in Data Locality Abstractions for HPC Systems
   authors:
@@ -640,7 +643,8 @@ papers:
   notes: 'Discusses: Fortran D; Vienna Fortran; SUPERB; CM Fortran; HPF+; HPF/JA; OpenMP; PCF Fortran; Chapel; Fortress;
     X10; MPI; Pablo; dHPF; PGHPF; Callahan and Kennedy 1988; Gerndt 1989. Discusses: Fortran D; Vienna Fortran;
     SUPERB; CM Fortran; HPF+; HPF/JA; OpenMP; PCF Fortran; Chapel; Fortress; X10; MPI; Pablo; dHPF; PGHPF; Callahan
-    and Kennedy 1988; Gerndt 1989.'
+    and Kennedy 1988; Gerndt 1989. Discusses: Fortran D; Vienna Fortran; SUPERB; CM Fortran; HPF+; HPF/JA; OpenMP;
+    PCF Fortran; Chapel; Fortress; X10; MPI; Pablo; dHPF; PGHPF; Callahan and Kennedy 1988; Gerndt 1989.'
 - id: backus1957fortran
   title: The FORTRAN automatic coding system
   authors:
@@ -1537,7 +1541,9 @@ papers:
     Wolfe 1986; Backus 1978; Treleaven et al.; Hudak 1986; Chen and Jacquemin 1988; Chen and Young 1986. Discusses:
     Chen 1986a; Chen 1986b; Choo and Chen 1988; Allen and Kennedy 1985; Cytron 1986; Fisher et al. 1984; Loveman
     1977; Padua and Wolfe 1986; Backus 1978; Treleaven et al.; Hudak 1986; Chen and Jacquemin 1988; Chen and Young
-    1986.'
+    1986. Discusses: Chen 1986a; Chen 1986b; Choo and Chen 1988; Allen and Kennedy 1985; Cytron 1986; Fisher et
+    al. 1984; Loveman 1977; Padua and Wolfe 1986; Backus 1978; Treleaven et al.; Hudak 1986; Chen and Jacquemin
+    1988; Chen and Young 1986.'
 - id: gerndt1990updating
   title: Updating distributed variables in local computations
   authors:
@@ -2489,7 +2495,9 @@ papers:
     Kali; DINO; Crystal; Id Nouveau; Ramanujam and Sadayappan; Hudak and Abraham; Socha; Balasundaram et al.; Li
     and Chen; Callahan and Kennedy; Mace; Parafrase-2; Hsu and Banerjee. Discusses: Fortran D; SUPERB; Kali; DINO;
     Crystal; Id Nouveau; Ramanujam and Sadayappan; Hudak and Abraham; Socha; Balasundaram et al.; Li and Chen; Callahan
-    and Kennedy; Mace; Parafrase-2; Hsu and Banerjee.'
+    and Kennedy; Mace; Parafrase-2; Hsu and Banerjee. Discusses: Fortran D; SUPERB; Kali; DINO; Crystal; Id Nouveau;
+    Ramanujam and Sadayappan; Hudak and Abraham; Socha; Balasundaram et al.; Li and Chen; Callahan and Kennedy;
+    Mace; Parafrase-2; Hsu and Banerjee.'
 - id: koelbel1991regular
   title: Compile-time generation of regular communications patterns
   authors:
@@ -2591,7 +2599,8 @@ papers:
     Fox, Kennedy and Kremer 1990 (loop-level communication choice); Koelbel 1990 thesis (compiling programs for
     nonshared memory machines). Discusses: Kali (Koelbel, Mehrotra and Van Rosendale 1990); Balasundaram, Fox, Kennedy
     and Kremer 1990 (loop-level communication choice); Koelbel 1990 thesis (compiling programs for nonshared memory
-    machines).'
+    machines). Discusses: Kali (Koelbel, Mehrotra and Van Rosendale 1990); Balasundaram, Fox, Kennedy and Kremer
+    1990 (loop-level communication choice); Koelbel 1990 thesis (compiling programs for nonshared memory machines).'
 - id: hiranandani1991fortrand
   title: Compiler optimizations for Fortran D on MIMD distributed-memory machines
   authors:
@@ -2716,7 +2725,9 @@ papers:
     Id Nouveau; Crystal; ASPAR; Kali; PARTI; ARF; AL; CM Fortran; DINO; MIMDizer; Pandore; Paragon; SPOT; Li and
     Chen; Balasundaram. Discusses: SUPERB; ParaScope; Id Nouveau; Crystal; ASPAR; Kali; PARTI; ARF; AL; CM Fortran;
     DINO; MIMDizer; Pandore; Paragon; SPOT; Li and Chen; Balasundaram. Discusses: SUPERB; ParaScope; Id Nouveau;
-    Crystal; ASPAR; Kali; PARTI; ARF; AL; CM Fortran; DINO; MIMDizer; Pandore; Paragon; SPOT; Li and Chen; Balasundaram.'
+    Crystal; ASPAR; Kali; PARTI; ARF; AL; CM Fortran; DINO; MIMDizer; Pandore; Paragon; SPOT; Li and Chen; Balasundaram.
+    Discusses: SUPERB; ParaScope; Id Nouveau; Crystal; ASPAR; Kali; PARTI; ARF; AL; CM Fortran; DINO; MIMDizer;
+    Pandore; Paragon; SPOT; Li and Chen; Balasundaram.'
 - id: hiranandani1992compiling
   title: Compiling Fortran D for MIMD distributed-memory machines
   authors:
@@ -2919,7 +2930,9 @@ papers:
     DINO; PARAFRASE-2; Callahan and Kennedy; Li and Chen; Balasundaram; Gerndt; Rogers and Pingali; Hiranandani,
     Kennedy and Tseng (1991). Discusses: SUPERB; Vienna Fortran; Kali; PARTI; Id Nouveau; Crystal; ASPAR; P3 C;
     CM Fortran; ParaScope; DINO; PARAFRASE-2; Callahan and Kennedy; Li and Chen; Balasundaram; Gerndt; Rogers and
-    Pingali; Hiranandani, Kennedy and Tseng (1991).'
+    Pingali; Hiranandani, Kennedy and Tseng (1991). Discusses: SUPERB; Vienna Fortran; Kali; PARTI; Id Nouveau;
+    Crystal; ASPAR; P3 C; CM Fortran; ParaScope; DINO; PARAFRASE-2; Callahan and Kennedy; Li and Chen; Balasundaram;
+    Gerndt; Rogers and Pingali; Hiranandani, Kennedy and Tseng (1991).'
 - id: das1991irregular
   title: 'Distributed memory compiler methods for irregular problems: data copy reuse and runtime partitioning'
   authors:
@@ -3130,7 +3143,8 @@ papers:
     Fortran-77; Fortran-8x; MIL-STD-1753; Ada; Illiac IV Fortran; Cray pointers; Vienna Fortran; Kali; Fortran-D;
     Fortran-90D; MasPar; Thinking Machines; Callahan and Kennedy. Discusses: Fortran-77; Fortran-8x; MIL-STD-1753;
     Ada; Illiac IV Fortran; Cray pointers; Vienna Fortran; Kali; Fortran-D; Fortran-90D; MasPar; Thinking Machines;
-    Callahan and Kennedy.'
+    Callahan and Kennedy. Discusses: Fortran-77; Fortran-8x; MIL-STD-1753; Ada; Illiac IV Fortran; Cray pointers;
+    Vienna Fortran; Kali; Fortran-D; Fortran-90D; MasPar; Thinking Machines; Callahan and Kennedy.'
 - id: hpfforum1993spec
   title: High Performance Fortran language specification
   authors:
@@ -3593,7 +3607,8 @@ papers:
   notes: 'Discusses: Fortran D; SUPERB compiler; High-Performance Fortran (HPF); Chaos/Parti; Parafrase-2. Discusses:
     Fortran D; SUPERB compiler; High-Performance Fortran (HPF); Chaos/Parti; Parafrase-2. Discusses: Fortran D;
     SUPERB compiler; High-Performance Fortran (HPF); Chaos/Parti; Parafrase-2. Discusses: Fortran D; SUPERB compiler;
-    High-Performance Fortran (HPF); Chaos/Parti; Parafrase-2.'
+    High-Performance Fortran (HPF); Chaos/Parti; Parafrase-2. Discusses: Fortran D; SUPERB compiler; High-Performance
+    Fortran (HPF); Chaos/Parti; Parafrase-2.'
 - id: chatterjee1993generating
   title: Generating local addresses and communication sets for data-parallel programs
   authors:
@@ -3725,7 +3740,14 @@ papers:
     Performance Fortran and Fortran D (language specifications). No conflict with the catalog id: title, first author
     and 1993 year match the PDF. Version note: this PDF is the 1993 PPoPP paper, while the reference list of the
     supplied Ramaswamy, Simons and Banerjee 1996 paper cites the same title as J. Parallel Distrib. Comput. 26 (1995)
-    72-84; the catalog may need to point to the journal version if that is the intended record.'
+    72-84; the catalog may need to point to the journal version if that is the intended record. Discusses: Koelbel
+    and Mehrotra 1991 (block or cyclic with unit stride); Koelbel 1991 (compile-time generation of regular communication
+    patterns); MacDonald et al. 1992 (Cray MPP Fortran addressing); Dongarra, van de Geijn and Walker 1992 (cyclic(k)
+    for dense linear algebra); Mirchandaney et al. 1988 (inspector-executor analogy); Bailey 1992 (unfavorable cache
+    strides); High Performance Fortran and Fortran D (language specifications). No conflict with the catalog id:
+    title, first author and 1993 year match the PDF. Version note: this PDF is the 1993 PPoPP paper, while the reference
+    list of the supplied Ramaswamy, Simons and Banerjee 1996 paper cites the same title as J. Parallel Distrib.
+    Comput. 26 (1995) 72-84; the catalog may need to point to the journal version if that is the intended record.'
 - id: rogers1994compiling
   title: Compiling for distributed memory architectures
   authors:
@@ -3856,7 +3878,13 @@ papers:
     compiler for Warp); Chen, Choo and Li 1989 (Crystal); Hatcher and Quinn 1991 (C* compiler); Rosing, Schnabel
     and Weaver 1990 (Dino); Koelbel, Mehrotra and Van Rosendale 1990 (Kali); Saltz, Crowley, Mirchandaney and Berryman
     1990 (run-time scheduling of loops); Ramanujam and Sadayappan 1990 (pipelining and tiling); Lee, Lin and Snyder
-    1991 (SIMPLE portability study); Ekanadham and Arvind 1987 (Id version of SIMPLE).'
+    1991 (SIMPLE portability study); Ekanadham and Arvind 1987 (Id version of SIMPLE). Discusses: Callahan and Kennedy
+    1988 (compiling for distributed memory multiprocessors); Hiranandani, Kennedy and Tseng 1991 (FORTRAN D compiler);
+    Zima, Bast and Gerndt 1988 (Superb); Tseng 1990 (AL compiler for Warp); Chen, Choo and Li 1989 (Crystal); Hatcher
+    and Quinn 1991 (C* compiler); Rosing, Schnabel and Weaver 1990 (Dino); Koelbel, Mehrotra and Van Rosendale 1990
+    (Kali); Saltz, Crowley, Mirchandaney and Berryman 1990 (run-time scheduling of loops); Ramanujam and Sadayappan
+    1990 (pipelining and tiling); Lee, Lin and Snyder 1991 (SIMPLE portability study); Ekanadham and Arvind 1987
+    (Id version of SIMPLE).'
 - id: stichnoth1994generating
   title: 'Generating Communication for Array Statements: Design, Implementation, and Evaluation'
   authors:
@@ -4327,7 +4355,10 @@ papers:
     value-based decompositions; Williams DIME; Baden particle programming environment; Jade; DINO; CODE; Chen (Yale)
     irregular loop work; Das, Saltz and von Hanxleden slicing analysis; Ponnusamy et al. 1992 runtime mapping scheme;
     Ponnusamy et al. 1993 Supercomputing paper; Ponnusamy et al. 1995 HPF irregular distributions; Simon spectral
-    partitioner.'
+    partitioner. Discusses: PARTI; Kali; ARF; Fortran D; Vienna Fortran; HPF; pC++; von Hanxleden value-based decompositions;
+    Williams DIME; Baden particle programming environment; Jade; DINO; CODE; Chen (Yale) irregular loop work; Das,
+    Saltz and von Hanxleden slicing analysis; Ponnusamy et al. 1992 runtime mapping scheme; Ponnusamy et al. 1993
+    Supercomputing paper; Ponnusamy et al. 1995 HPF irregular distributions; Simon spectral partitioner.'
 - id: hwang1995chaos
   title: Runtime and language support for compiling adaptive irregular programs on distributed‐memory machines
   authors:
@@ -4463,7 +4494,12 @@ papers:
     Fortran D; HPF; Vienna Fortran; pC++; Syracuse Fortran 90D/HPF compiler; DIME (Williams); Baden particle programming
     environment; Jade; DINO; CODE; Chen (Yale) work; Mirchandaney et al. 1988 runtime support; Saltz, Berryman and
     Wu 1991; Das et al. 1994 communication optimizations; Ponnusamy et al. technical report (later TPDS paper);
-    Ponnusamy et al. CS-TR-3268 (irregular distributions in Fortran 90D/HPF); Brooks et al. CHARMM; Wilmoth DSMC.'
+    Ponnusamy et al. CS-TR-3268 (irregular distributions in Fortran 90D/HPF); Brooks et al. CHARMM; Wilmoth DSMC.
+    Discusses: PARTI; Kali; ARF; Fortran D; HPF; Vienna Fortran; pC++; Syracuse Fortran 90D/HPF compiler; DIME (Williams);
+    Baden particle programming environment; Jade; DINO; CODE; Chen (Yale) work; Mirchandaney et al. 1988 runtime
+    support; Saltz, Berryman and Wu 1991; Das et al. 1994 communication optimizations; Ponnusamy et al. technical
+    report (later TPDS paper); Ponnusamy et al. CS-TR-3268 (irregular distributions in Fortran 90D/HPF); Brooks
+    et al. CHARMM; Wilmoth DSMC.'
 - id: bik1993sparse
   title: Compilation techniques for sparse matrix computations
   authors:
@@ -4629,6 +4665,10 @@ papers:
     Crystal; SUPERB; PARADIGM; Vienna Fortran; ASPAR; ParaScope; AL; Ramanujam and Sadayappan; Gong, Gupta and Melhem;
     Hudak and Abraham; Zima and Chapman; Rogers and Pingali; Wolf and Lam. No conflict with the catalog id for title,
     first author or year (title page: Techniques for compiling programs on distributed memory multicomputers; Pei-Zong
+    Lee; 1995). Discusses: Li and Chen; Gupta and Banerjee; Callahan and Kennedy; Fortran D; Koelbel and Mehrotra;
+    Crystal; SUPERB; PARADIGM; Vienna Fortran; ASPAR; ParaScope; AL; Ramanujam and Sadayappan; Gong, Gupta and Melhem;
+    Hudak and Abraham; Zima and Chapman; Rogers and Pingali; Wolf and Lam. No conflict with the catalog id for title,
+    first author or year (title page: Techniques for compiling programs on distributed memory multicomputers; Pei-Zong
     Lee; 1995).'
 - id: palermo1996dynamic
   title: Dynamic Data Partitioning for Distributed-Memory Multicomputers
@@ -4735,7 +4775,11 @@ papers:
     Ramaswamy and Banerjee (redistribution routines); Parafrase-2; Fortran D. Discusses: Anderson and Lam; Bixby,
     Kennedy and Kremer; Kremer; Kennedy and Kremer; Garcia et al.; Hudak and Abraham; Sheffler et al.; Chapman,
     Fahringer and Zima; Chatterjee et al.; Gupta and Banerjee (PARADIGM static partitioner); Palermo and Banerjee
-    (earlier dynamic selection); Ramaswamy and Banerjee (redistribution routines); Parafrase-2; Fortran D.'
+    (earlier dynamic selection); Ramaswamy and Banerjee (redistribution routines); Parafrase-2; Fortran D. Discusses:
+    Anderson and Lam; Bixby, Kennedy and Kremer; Kremer; Kennedy and Kremer; Garcia et al.; Hudak and Abraham; Sheffler
+    et al.; Chapman, Fahringer and Zima; Chatterjee et al.; Gupta and Banerjee (PARADIGM static partitioner); Palermo
+    and Banerjee (earlier dynamic selection); Ramaswamy and Banerjee (redistribution routines); Parafrase-2; Fortran
+    D.'
 - id: ramaswamy1996redistribution
   title: Optimizations for Efficient Array Redistribution on Distributed Memory Multicomputers
   authors:
@@ -4844,6 +4888,10 @@ papers:
     1995 (earlier redistribution work); PARADIGM compiler (Banerjee et al. 1995). Discusses: Agrawal, Sussman and
     Saltz 1993 (runtime redistribution schedules); Wakatani and Wolfe 1994 (strip-mining redistribution); Dongarra
     et al. 1995 (ScaLAPACK redistribution using PVM); Thakur, Choudhary and Fox 1994 (HPF array redistribution);
+    Coelho and Ancourt 1995 (HPF remappings); Chatterjee et al. (local address generation for block-cyclic accesses);
+    Ramaswamy and Banerjee 1995 (earlier redistribution work); PARADIGM compiler (Banerjee et al. 1995). Discusses:
+    Agrawal, Sussman and Saltz 1993 (runtime redistribution schedules); Wakatani and Wolfe 1994 (strip-mining redistribution);
+    Dongarra et al. 1995 (ScaLAPACK redistribution using PVM); Thakur, Choudhary and Fox 1994 (HPF array redistribution);
     Coelho and Ancourt 1995 (HPF remappings); Chatterjee et al. (local address generation for block-cyclic accesses);
     Ramaswamy and Banerjee 1995 (earlier redistribution work); PARADIGM compiler (Banerjee et al. 1995). Discusses:
     Agrawal, Sussman and Saltz 1993 (runtime redistribution schedules); Wakatani and Wolfe 1994 (strip-mining redistribution);
@@ -5091,7 +5139,10 @@ papers:
     the paper''s own 1995 references. No DOI in the PDF. Discusses: Fortran D; SUPERB; Fortran 90D; PARADIGM; ADAPTOR;
     SUIF; Kali; Id Nouveau; Crystal; xHPF; PGHPF; Gupta and Banerjee; Gupta, Schonberg and Srinivasan. No conflict
     with the catalog id for title, first author or year. The title page prints no venue or year; 1995 is consistent
-    with the paper''s own 1995 references. No DOI in the PDF.'
+    with the paper''s own 1995 references. No DOI in the PDF. Discusses: Fortran D; SUPERB; Fortran 90D; PARADIGM;
+    ADAPTOR; SUIF; Kali; Id Nouveau; Crystal; xHPF; PGHPF; Gupta and Banerjee; Gupta, Schonberg and Srinivasan.
+    No conflict with the catalog id for title, first author or year. The title page prints no venue or year; 1995
+    is consistent with the paper''s own 1995 references. No DOI in the PDF.'
 - id: ancourt1997linear
   title: A Linear Algebra Framework for Static High Performance Fortran Code Distribution
   authors:
@@ -5270,7 +5321,10 @@ papers:
     Fortran; HPF; Tang and Zigman 1994; Chatterjee et al. 1993; Gerndt 1990; Omega Calculator; Ramanujam and Sadayappan
     1992; Schreiber and Dongarra 1990; Irigoin and Triolet 1988; Xue 1997; Chen and Xue 1998. Discusses: Fortran
     D; Vienna Fortran; HPF; Tang and Zigman 1994; Chatterjee et al. 1993; Gerndt 1990; Omega Calculator; Ramanujam
-    and Sadayappan 1992; Schreiber and Dongarra 1990; Irigoin and Triolet 1988; Xue 1997; Chen and Xue 1998.'
+    and Sadayappan 1992; Schreiber and Dongarra 1990; Irigoin and Triolet 1988; Xue 1997; Chen and Xue 1998. Discusses:
+    Fortran D; Vienna Fortran; HPF; Tang and Zigman 1994; Chatterjee et al. 1993; Gerndt 1990; Omega Calculator;
+    Ramanujam and Sadayappan 1992; Schreiber and Dongarra 1990; Irigoin and Triolet 1988; Xue 1997; Chen and Xue
+    1998.'
 - id: numrich1998coarray
   title: Co-array Fortran for parallel programming
   authors:
@@ -5380,7 +5434,10 @@ papers:
     Discusses: HPF; CRAFT; OpenMP; MPI; SHMEM; BSP (Valiant 1990; Hill et al. 1997); F-- (Numrich 1997; Numrich
     and Steidel 1997); Cray Fortran 90 compiler; Sawdey et al. 1995; Numrich, Reid and Kim 1998. The PDF prints
     no venue or year. The 1998 date is consistent with the catalog id and with the reference in chen2003upc, which
-    gives it as RAL-TR-1998-060.'
+    gives it as RAL-TR-1998-060. Discusses: HPF; CRAFT; OpenMP; MPI; SHMEM; BSP (Valiant 1990; Hill et al. 1997);
+    F-- (Numrich 1997; Numrich and Steidel 1997); Cray Fortran 90 compiler; Sawdey et al. 1995; Numrich, Reid and
+    Kim 1998. The PDF prints no venue or year. The 1998 date is consistent with the catalog id and with the reference
+    in chen2003upc, which gives it as RAL-TR-1998-060.'
 - id: chen2003upc
   title: A performance analysis of the Berkeley UPC compiler
   authors:
@@ -5487,6 +5544,9 @@ papers:
   - supplied PDF (owner-provided, not redistributed)
   notes: 'Discusses: UPC; Titanium; Co-Array Fortran (Numwich and Reid 1998); OpenMP; MPI; GASNet (Bonachea 2002);
     HP UPC; El-Ghazawi and Cantonnet 2002; Krishnamurthy and Yelick 1996; Chakrabarti et al. 1996; Zhu and Hendren
+    1999; Lee and Padua 2001; Liblit and Aiken 2000; Luk and Mowry 1996; Bell et al. 2003; NAS Parallel Benchmarks.
+    Discusses: UPC; Titanium; Co-Array Fortran (Numwich and Reid 1998); OpenMP; MPI; GASNet (Bonachea 2002); HP
+    UPC; El-Ghazawi and Cantonnet 2002; Krishnamurthy and Yelick 1996; Chakrabarti et al. 1996; Zhu and Hendren
     1999; Lee and Padua 2001; Liblit and Aiken 2000; Luk and Mowry 1996; Bell et al. 2003; NAS Parallel Benchmarks.
     Discusses: UPC; Titanium; Co-Array Fortran (Numwich and Reid 1998); OpenMP; MPI; GASNet (Bonachea 2002); HP
     UPC; El-Ghazawi and Cantonnet 2002; Krishnamurthy and Yelick 1996; Chakrabarti et al. 1996; Zhu and Hendren
@@ -5747,7 +5807,8 @@ papers:
     SHMEM; ARMCI; GASNet; Co-array Fortran; UPC; Titanium; Babel; Diaconescu and Zima 2007. Discusses: ZPL; HPF;
     Vienna Fortran; OpenMP; Cilk; MPI; PVM; SHMEM; ARMCI; GASNet; Co-array Fortran; UPC; Titanium; Babel; Diaconescu
     and Zima 2007. Discusses: ZPL; HPF; Vienna Fortran; OpenMP; Cilk; MPI; PVM; SHMEM; ARMCI; GASNet; Co-array Fortran;
-    UPC; Titanium; Babel; Diaconescu and Zima 2007.'
+    UPC; Titanium; Babel; Diaconescu and Zima 2007. Discusses: ZPL; HPF; Vienna Fortran; OpenMP; Cilk; MPI; PVM;
+    SHMEM; ARMCI; GASNet; Co-array Fortran; UPC; Titanium; Babel; Diaconescu and Zima 2007.'
 - id: fatahalian2006sequoia
   title: 'Sequoia: Programming the Memory Hierarchy'
   authors:
@@ -5914,7 +5975,12 @@ papers:
     [Charles et al. 2005]; Chapel [Callahan et al. 2004]; Fortress [Allen et al. 2005]; UPC [Carlson et al. 1999];
     Titanium [Yelick et al. 1998]; Co-Array Fortran [Numrich and Reid 1998]; ZPL [Deitz et al. 2004]; Chameleon
     [Alverson and Notkin 1993]; CHORES [Eager and Jahorjan 1993]; Lim et al. 2001; Whaley et al. 2001 (ATLAS); Kennedy
-    et al. 2001 (telescoping languages).'
+    et al. 2001 (telescoping languages). Discusses: Alpern et al. 1995, space-limited procedures; Alpern et al.
+    1993, parallel memory hierarchy model; Hierarchically tiled arrays (Bikshandi et al. 2006); Brook (Buck et al.
+    2004); Cilk [Blumofe et al. 1995]; X10 [Charles et al. 2005]; Chapel [Callahan et al. 2004]; Fortress [Allen
+    et al. 2005]; UPC [Carlson et al. 1999]; Titanium [Yelick et al. 1998]; Co-Array Fortran [Numrich and Reid 1998];
+    ZPL [Deitz et al. 2004]; Chameleon [Alverson and Notkin 1993]; CHORES [Eager and Jahorjan 1993]; Lim et al.
+    2001; Whaley et al. 2001 (ATLAS); Kennedy et al. 2001 (telescoping languages).'
 - id: baskaran2008automatic
   title: Automatic data movement and computation mapping for multi-level parallel architectures with explicitly
     managed memories
@@ -6022,6 +6088,9 @@ papers:
     Krishnamoorthy et al. stencil parallelization [27]; Fatahalian et al. Sequoia [13]; Schreiber and Cronquist
     [38]; Kandemir et al. scratchpad management [25]; Anantharaman and Pande [1]; Eisenbeis et al. [12]; Clauss
     [9]; Pugh [35]. Discusses: Bondhugula et al. 2007 affine transformation framework [7]; Kim et al. multi-level
+    tiling [26]; Krishnamoorthy et al. stencil parallelization [27]; Fatahalian et al. Sequoia [13]; Schreiber and
+    Cronquist [38]; Kandemir et al. scratchpad management [25]; Anantharaman and Pande [1]; Eisenbeis et al. [12];
+    Clauss [9]; Pugh [35]. Discusses: Bondhugula et al. 2007 affine transformation framework [7]; Kim et al. multi-level
     tiling [26]; Krishnamoorthy et al. stencil parallelization [27]; Fatahalian et al. Sequoia [13]; Schreiber and
     Cronquist [38]; Kandemir et al. scratchpad management [25]; Anantharaman and Pande [1]; Eisenbeis et al. [12];
     Clauss [9]; Pugh [35]. Discusses: Bondhugula et al. 2007 affine transformation framework [7]; Kim et al. multi-level
@@ -6331,6 +6400,8 @@ papers:
     and Griebl 2006; dHPF; Dathathri et al. 2013; Pluto; Baskaran et al. 2009; Kim et al. 2010; R-STREAM; Kwon et
     al. 2012; Griebl 2004; Baskaran et al. 2008. Discusses: Amarasinghe and Lam 1993; Adve and Mellor-Crummey 1998;
     Classen and Griebl 2006; dHPF; Dathathri et al. 2013; Pluto; Baskaran et al. 2009; Kim et al. 2010; R-STREAM;
+    Kwon et al. 2012; Griebl 2004; Baskaran et al. 2008. Discusses: Amarasinghe and Lam 1993; Adve and Mellor-Crummey
+    1998; Classen and Griebl 2006; dHPF; Dathathri et al. 2013; Pluto; Baskaran et al. 2009; Kim et al. 2010; R-STREAM;
     Kwon et al. 2012; Griebl 2004; Baskaran et al. 2008. Discusses: Amarasinghe and Lam 1993; Adve and Mellor-Crummey
     1998; Classen and Griebl 2006; dHPF; Dathathri et al. 2013; Pluto; Baskaran et al. 2009; Kim et al. 2010; R-STREAM;
     Kwon et al. 2012; Griebl 2004; Baskaran et al. 2008. Discusses: Amarasinghe and Lam 1993; Adve and Mellor-Crummey
@@ -6789,7 +6860,10 @@ papers:
     assemblies [20]; Galois [21]; Cilk [5]; UPC [3]; Titanium [25]; PARSEC fluidanimate [8]; BoxLib [9]; Gay and
     Aiken, regions [27]. Discusses: Sequoia (Fatahalian et al. 2006) [1]; Bauer et al. 2011, Sequoia for irregular
     parallelism [10]; SSMP (Perez et al. 2010) [11]; Chapel [12, 13]; X10 [15-18]; DPJ [19]; Object assemblies [20];
-    Galois [21]; Cilk [5]; UPC [3]; Titanium [25]; PARSEC fluidanimate [8]; BoxLib [9]; Gay and Aiken, regions [27].'
+    Galois [21]; Cilk [5]; UPC [3]; Titanium [25]; PARSEC fluidanimate [8]; BoxLib [9]; Gay and Aiken, regions [27].
+    Discusses: Sequoia (Fatahalian et al. 2006) [1]; Bauer et al. 2011, Sequoia for irregular parallelism [10];
+    SSMP (Perez et al. 2010) [11]; Chapel [12, 13]; X10 [15-18]; DPJ [19]; Object assemblies [20]; Galois [21];
+    Cilk [5]; UPC [3]; Titanium [25]; PARSEC fluidanimate [8]; BoxLib [9]; Gay and Aiken, regions [27].'
 - id: slaughter2015regent
   title: 'Regent: a high-productivity programming language for HPC with logical regions'
   authors:
@@ -6927,7 +7001,11 @@ papers:
     [33]; Sequoia (Fatahalian et al. 2006) [22]; Sequoia compiler (Ren et al. 2008) [29]; Bauer et al. 2014, structure
     slicing [10]; Bauer thesis, simultaneous coherence [7]; DPJ [11, 12]; Jade [30]; Swift/T [5, 34]; Charm++ [27];
     Uintah [19]; StarPU [6]; OCR [4]; UPC [14, 2]; Titanium [35]; Chapel [16, 15]; X10 [18, 17, 25]; HPX [26]; Terra
-    [20]; PENNANT [23]; MiniAero [3]; Kokkos [21].'
+    [20]; PENNANT [23]; MiniAero [3]; Kokkos [21]. Discusses: Legion (Bauer et al. 2012) [9]; Treichler et al. 2013,
+    static type system for Legion [33]; Sequoia (Fatahalian et al. 2006) [22]; Sequoia compiler (Ren et al. 2008)
+    [29]; Bauer et al. 2014, structure slicing [10]; Bauer thesis, simultaneous coherence [7]; DPJ [11, 12]; Jade
+    [30]; Swift/T [5, 34]; Charm++ [27]; Uintah [19]; StarPU [6]; OCR [4]; UPC [14, 2]; Titanium [35]; Chapel [16,
+    15]; X10 [18, 17, 25]; HPX [26]; Terra [20]; PENNANT [23]; MiniAero [3]; Kokkos [21].'
 - id: shazeer2018meshtf
   title: 'Mesh-TensorFlow: Deep Learning for Supercomputers'
   authors:
@@ -9278,7 +9356,10 @@ papers:
     and Kremer (KeK95); Sheffler et al. (SSP+95); Verghese et al. (VDG+96); Koelbel et al. HPF handbook (KLS+94).
     Discusses: HPF; HPF-2.0; Fortran D; Vienna Fortran; Anderson, Amarasinghe and Lam (AAL95); Anderson and Lam
     (AnL93); Hiranandani et al. (HKM+93); Gupta and Banerjee (GuB92); Kennedy and Kremer (KeK95); Sheffler et al.
-    (SSP+95); Verghese et al. (VDG+96); Koelbel et al. HPF handbook (KLS+94).'
+    (SSP+95); Verghese et al. (VDG+96); Koelbel et al. HPF handbook (KLS+94). Discusses: HPF; HPF-2.0; Fortran D;
+    Vienna Fortran; Anderson, Amarasinghe and Lam (AAL95); Anderson and Lam (AnL93); Hiranandani et al. (HKM+93);
+    Gupta and Banerjee (GuB92); Kennedy and Kremer (KeK95); Sheffler et al. (SSP+95); Verghese et al. (VDG+96);
+    Koelbel et al. HPF handbook (KLS+94).'
 - id: shen2007eliminating
   title: Eliminating Redundant Communication of Code Generation for Distributed Memory Machines
   authors:
@@ -9387,7 +9468,10 @@ papers:
     Shan Shan Wang array data-flow analysis; Ferner (revisiting communication code generation); Ya Nan Shen (automatic
     code generation of data decomposition); Xue Rong Gong (MPI code generation). Discusses: Amarasinghe and Lam
     (PLDI 1993); Feautrier array expansion; Shan Shan Wang array data-flow analysis; Ferner (revisiting communication
-    code generation); Ya Nan Shen (automatic code generation of data decomposition); Xue Rong Gong (MPI code generation).'
+    code generation); Ya Nan Shen (automatic code generation of data decomposition); Xue Rong Gong (MPI code generation).
+    Discusses: Amarasinghe and Lam (PLDI 1993); Feautrier array expansion; Shan Shan Wang array data-flow analysis;
+    Ferner (revisiting communication code generation); Ya Nan Shen (automatic code generation of data decomposition);
+    Xue Rong Gong (MPI code generation).'
 - id: su1995advanced
   title: Advanced compilation techniques in the PARADIGM compiler for distributed-memory multicomputers
   authors:
@@ -9499,7 +9583,9 @@ papers:
     Fourier-Motzkin elimination (Banerjee); Ancourt; Gallivan et al.; PILAR; Gupta and Banerjee (automatic data
     partitioning). Discusses: Fortran D; Fortran 90D; SUIF compiler; SUPERB compiler; High Performance Fortran (HPF);
     Processor Tagged Descriptors (PTD); Parafrase-2; Fourier-Motzkin elimination (Banerjee); Ancourt; Gallivan et
-    al.; PILAR; Gupta and Banerjee (automatic data partitioning).'
+    al.; PILAR; Gupta and Banerjee (automatic data partitioning). Discusses: Fortran D; Fortran 90D; SUIF compiler;
+    SUPERB compiler; High Performance Fortran (HPF); Processor Tagged Descriptors (PTD); Parafrase-2; Fourier-Motzkin
+    elimination (Banerjee); Ancourt; Gallivan et al.; PILAR; Gupta and Banerjee (automatic data partitioning).'
 - id: dathathri2014thesis
   title: Compiling for a Dataflow Runtime on Distributed-Memory Parallel Architectures
   authors:
@@ -9638,7 +9724,12 @@ papers:
     Mellor-Crummey 2005; Classen and Griebl 2006; Kwon et al. 2012; Kim et al. 2010; Leung et al. 2010; Song and
     Dongarra 2012; DAGuE; DPLASMA; Parameterized Task Graph; Intel CnC; StarPU; SWARM; OCR; CGCM; DyManD; AMM; Reddy
     and Bondhugula 2014. No catalog record for this id is in the local abstracts file, so title, author and year
-    were checked against the title page only.'
+    were checked against the title page only. Discusses: Baskaran et al. 2008; Baskaran et al. 2009; Bondhugula
+    2013; Amarasinghe and Lam 1993; Adve and Mellor-Crummey 1998; Chavarria-Miranda and Mellor-Crummey 2005; Classen
+    and Griebl 2006; Kwon et al. 2012; Kim et al. 2010; Leung et al. 2010; Song and Dongarra 2012; DAGuE; DPLASMA;
+    Parameterized Task Graph; Intel CnC; StarPU; SWARM; OCR; CGCM; DyManD; AMM; Reddy and Bondhugula 2014. No catalog
+    record for this id is in the local abstracts file, so title, author and year were checked against the title
+    page only.'
 - id: yelick2007titanium
   title: 'Parallel Languages and Compilers: Perspective From the Titanium Experience'
   authors:
@@ -9755,6 +9846,12 @@ papers:
     ARMCI; Chombo; FFTW; GASNet; Aiken and Gay 1998; Gay and Aiken 2001; Liblit and Aiken 2000; Su and Yelick 2005;
     Kamil and Yelick 2005; Chen et al. 2003; Yelick et al. 1998; Bonachea and Duell 2003; Boehm-Demers-Weiser collector.
     Supplied PDF is the 2007 IJHPCA article ''Parallel Languages and Compilers: Perspective From the Titanium Experience''
+    (DOI 10.1177/1094342007078449). The 1998 Concurrency paper ''Titanium: a high-performance Java dialect'' is
+    the catalog entry yelick1998titanium and was not supplied. Discusses: Split-C; CC++; AC; FIDIL; HPF; ZPL; NESL;
+    pC++; HPJava; Charm++; OpenMP; UPC; Co-Array Fortran; MPI; MPI-2 one-sided interface; SHMEM; ARMCI; Chombo;
+    FFTW; GASNet; Aiken and Gay 1998; Gay and Aiken 2001; Liblit and Aiken 2000; Su and Yelick 2005; Kamil and Yelick
+    2005; Chen et al. 2003; Yelick et al. 1998; Bonachea and Duell 2003; Boehm-Demers-Weiser collector. Supplied
+    PDF is the 2007 IJHPCA article ''Parallel Languages and Compilers: Perspective From the Titanium Experience''
     (DOI 10.1177/1094342007078449). The 1998 Concurrency paper ''Titanium: a high-performance Java dialect'' is
     the catalog entry yelick1998titanium and was not supplied. Discusses: Split-C; CC++; AC; FIDIL; HPF; ZPL; NESL;
     pC++; HPJava; Charm++; OpenMP; UPC; Co-Array Fortran; MPI; MPI-2 one-sided interface; SHMEM; ARMCI; Chombo;
