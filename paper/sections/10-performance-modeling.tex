@@ -1,6 +1,19 @@
 \section{Performance Modeling and Optimization Objectives}
 \label{sec:performance}
 
-\fact{Chen, Choo, and Li compiled by optimising an explicit performance model~\cite{chen1988compiling}; Ramanujam and Sadayappan and Gupta and Banerjee chose distributions from compile-time cost estimates~\cite{ramanujam1991compiletime,gupta1992automatic}; PARADIGM used a cost model for distribution selection~\cite{banerjee1995paradigm}.} \fact{Alpa formulates intra-operator parallelism as an integer linear program and inter-operator parallelism as dynamic programming over a profiled cost model~\cite{zheng2022alpa}; FlexFlow uses a simulator-guided search~\cite{jia2019flexflow}.}
+Cost models appear in the catalog in three forms: analytic models of a compiler's choices, profiles that feed a partitioner, and search over configurations scored by a simulator or a solver.
 
-\emph{Synthesis.} \ours{Axis~H records objectives: communication volume and message count dominate Eras~2--3, memory capacity and overlap dominate Era~6.} \todo{Tabulate the objective of each core system with evidence pointers.}
+\subsection{Analytic models}
+\todo{State what the performance-optimisation approach of \cite{chen1988compiling} measures, from the paper's text; the card records the Crystal language but not yet its cost model.} \fact{Gupta and Banerjee weight distribution constraints by estimated execution-time penalties, and note that the combined problem is NP-hard and that their estimates rest on compile-time assumptions about loop bounds and branch probabilities~\cite{gupta1992automatic}.} \fact{Palermo et al.\ describe their static pipeline cost model as conservative~\cite{palermo1996dynamic}.} \fact{Kong et al.\ minimise local work plus a weighted communication volume under per-node memory capacity; their cost model is volume-only, without latency or bandwidth terms, and the paper reports no numeric speedups in its text~\cite{kong2023automatic}.}
+
+\subsection{Profiles and simulators}
+\fact{PipeDream's optimiser uses a single-GPU profile of per-layer compute time, activation size and parameter size, and a dynamic program over a hierarchical bandwidth model that minimises the time of the slowest stage~\cite{narayanan2019pipedream}.} \fact{FlexFlow's simulator profiles each operator once and re-simulates incrementally during a Markov-chain search over per-operator configurations; the authors state that the simulator assumes operator times are predictable and independent of input data~\cite{jia2019flexflow}.}
+
+\subsection{Search and hierarchical optimisation}
+\fact{Alpa solves intra-operator parallelism with an integer program over enumerated algorithms with resharding costs, and inter-operator parallelism with dynamic programming over profiled stage costs~\cite{zheng2022alpa}.} \fact{PartIR's automatic tactic uses an analytical simulator and Monte Carlo tree search, and the propagation itself uses no cost heuristics~\cite{alabed2025partir}.}
+
+\subsection{Objectives}
+\ours{Table-free summary of axis~H as the catalog records it. Communication volume is the objective of the analytic and search systems above~\cite{kong2023automatic,jia2019flexflow}; load balance and pipeline stage time dominate the training planners~\cite{narayanan2019pipedream,zheng2022alpa}; local memory fit is the constraint in~\cite{kong2023automatic} and the motivation for model-state sharding in~\cite{rajbhandari2020zero}; and productivity is the claimed benefit of the declarative systems~\cite{shazeer2018meshtf,alabed2025partir}.} \todo{Tabulate the objective of each core system with evidence pointers once all cards are merged; the catalog currently carries the tags but not the comparison.}
+
+\subsection{Synthesis}
+\infer{Analytic models were abandoned for automatic distribution in the 1990s, and the modern systems that search do so over operator-level choices, where profiling is cheap. \todo{Test this against the records of Gupta and Banerjee and Palermo et al.\ before stating it as a finding.}}
