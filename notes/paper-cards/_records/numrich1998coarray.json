@@ -6,15 +6,61 @@
  "main_limitation": "The paper gives no measured performance, and it leaves synchronization correctness and the runtime design to the programmer and implementer.",
  "evaluation_method": "none",
  "benchmarks": [],
- "optimization_objectives": ["productivity", "latency"],
- "data_decomposition": ["application-defined"],
- "computation_mapping": ["loop-to-processor"],
- "communication_generation": ["programmer-explicit", "compiler-p2p", "halo-exchange", "reduction-allreduce", "redistribution-resharding"],
- "compiler_runtime_boundary": ["load-time"],
- "target_hardware": ["dm-multicomputer", "pgas-target"],
+ "optimization_objectives": [
+  "productivity",
+  "latency"
+ ],
+ "data_decomposition": [],
+ "computation_mapping": [
+  "loop-to-processor"
+ ],
+ "communication_generation": [
+  "programmer-explicit",
+  "compiler-p2p",
+  "halo-exchange",
+  "reduction-allreduce",
+  "redistribution-resharding"
+ ],
+ "compiler_runtime_boundary": [
+  "load-time"
+ ],
+ "target_hardware": [
+  "dm-multicomputer",
+  "pgas-target"
+ ],
  "ir_representation": [],
- "compiler_architecture": ["language-spec"],
- "states_relationship_to": ["HPF", "CRAFT", "OpenMP", "MPI", "SHMEM", "BSP (Valiant 1990; Hill et al. 1997)", "F-- (Numrich 1997; Numrich and Steidel 1997)", "Cray Fortran 90 compiler", "Sawdey et al. 1995", "Numrich, Reid and Kim 1998"],
- "evidence": [{"source": "full text", "section": "Sec. 1"}, {"source": "full text", "section": "Sec. 2-4"}, {"source": "full text", "section": "Sec. 3.2-3.8"}, {"source": "full text", "section": "Sec. 5"}],
- "notes": "The PDF prints no venue or year. The 1998 date is consistent with the catalog id and with the reference in chen2003upc, which gives it as RAL-TR-1998-060."
+ "compiler_architecture": [
+  "language-spec"
+ ],
+ "states_relationship_to": [
+  "HPF",
+  "CRAFT",
+  "OpenMP",
+  "MPI",
+  "SHMEM",
+  "BSP (Valiant 1990; Hill et al. 1997)",
+  "F-- (Numrich 1997; Numrich and Steidel 1997)",
+  "Cray Fortran 90 compiler",
+  "Sawdey et al. 1995",
+  "Numrich, Reid and Kim 1998"
+ ],
+ "evidence": [
+  {
+   "source": "full text",
+   "section": "Sec. 1"
+  },
+  {
+   "source": "full text",
+   "section": "Sec. 2-4"
+  },
+  {
+   "source": "full text",
+   "section": "Sec. 3.2-3.8"
+  },
+  {
+   "source": "full text",
+   "section": "Sec. 5"
+  }
+ ],
+ "notes": "The PDF prints no venue or year. The 1998 date is consistent with the catalog id and with the reference in chen2003upc, which gives it as RAL-TR-1998-060. Coding aligned with the reviewed catalog (commit d6ffcc1): no taxonomy value fits a per-image declaration with no map object."
 }

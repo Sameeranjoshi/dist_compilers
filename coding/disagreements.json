@@ -2069,6 +2069,171 @@
    ]
   }
  },
+ "diaconescu2005reusable": {
+  "data_decomposition": {
+   "first": [
+    "application-defined",
+    "block-1d",
+    "block-nd",
+    "cyclic"
+   ],
+   "second": [
+    "application-defined",
+    "block-nd",
+    "cyclic"
+   ]
+  },
+  "computation_mapping": {
+   "first": [
+    "data-parallelism",
+    "iteration-space-partitioning",
+    "task-placement"
+   ],
+   "second": [
+    "owner-computes",
+    "task-placement"
+   ]
+  },
+  "compiler_runtime_boundary": {
+   "first": [],
+   "second": [
+    "load-time"
+   ]
+  },
+  "optimization_objectives": {
+   "first": [
+    "load-balance",
+    "productivity"
+   ],
+   "second": [
+    "productivity"
+   ]
+  }
+ },
+ "diaconescu2006userdefined": {
+  "data_decomposition": {
+   "first": [
+    "application-defined",
+    "block-1d",
+    "cyclic",
+    "replicated"
+   ],
+   "second": [
+    "application-defined",
+    "cyclic",
+    "replicated"
+   ]
+  },
+  "computation_mapping": {
+   "first": [
+    "iteration-space-partitioning",
+    "task-placement"
+   ],
+   "second": [
+    "owner-computes",
+    "task-placement"
+   ]
+  },
+  "communication_generation": {
+   "first": [],
+   "second": [
+    "compiler-p2p"
+   ]
+  },
+  "compiler_runtime_boundary": {
+   "first": [],
+   "second": [
+    "load-time"
+   ]
+  },
+  "optimization_objectives": {
+   "first": [
+    "latency",
+    "productivity"
+   ],
+   "second": [
+    "communication-volume",
+    "latency",
+    "productivity"
+   ]
+  }
+ },
+ "su2010irregular": {
+  "data_decomposition": {
+   "first": [
+    "block-1d",
+    "block-nd",
+    "dynamic-distribution",
+    "graph-partition",
+    "replicated",
+    "uneven-block"
+   ],
+   "second": [
+    "application-defined",
+    "block-1d",
+    "graph-partition",
+    "uneven-block"
+   ]
+  },
+  "computation_mapping": {
+   "first": [
+    "iteration-space-partitioning",
+    "owner-computes",
+    "task-placement"
+   ],
+   "second": [
+    "owner-computes",
+    "task-placement"
+   ]
+  },
+  "communication_generation": {
+   "first": [
+    "compiler-p2p",
+    "import-export-schedule",
+    "inspector-executor",
+    "message-vectorization",
+    "overlapped"
+   ],
+   "second": [
+    "communication-sets",
+    "compiler-p2p",
+    "import-export-schedule",
+    "inspector-executor",
+    "message-vectorization"
+   ]
+  },
+  "compiler_runtime_boundary": {
+   "first": [
+    "adaptive",
+    "runtime-inspector"
+   ],
+   "second": [
+    "analytic-optimization",
+    "autotuned",
+    "runtime-inspector"
+   ]
+  },
+  "optimization_objectives": {
+   "first": [
+    "communication-volume",
+    "latency",
+    "load-balance",
+    "local-memory-fit",
+    "memory-bandwidth",
+    "message-count",
+    "overlap",
+    "performance-portability",
+    "productivity",
+    "synchronization"
+   ],
+   "second": [
+    "latency",
+    "message-count",
+    "productivity",
+    "synchronization"
+   ]
+  }
+ },
  "gupta1992automatic": {
   "computation_mapping": {
    "first": [
@@ -2155,6 +2320,18 @@
    ],
    "second": [
     "performance-portability"
+   ]
+  }
+ },
+ "bondhugula2008pluto": {
+  "computation_mapping": {
+   "first": [
+    "iteration-space-partitioning",
+    "loop-to-processor",
+    "pipeline-parallelism"
+   ],
+   "second": [
+    "iteration-space-partitioning"
    ]
   }
  },

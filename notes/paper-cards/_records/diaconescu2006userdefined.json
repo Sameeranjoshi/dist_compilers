@@ -1,0 +1,30 @@
+{
+ "id": "diaconescu2006userdefined",
+ "summary": "The paper presents a design for user-defined data distributions as first-class objects in Chapel, built from domains, index sets, a global mapping from indices to locales and an optional locale-internal layout. It illustrates the design with cyclic and block classes and a sparse case, and states that the implementation is underway, with no performance results yet.",
+ "why_read": "It shows how a high-level parallel language can let programmers write distribution policies as ordinary code while the compiler generates the local and remote accesses.",
+ "main_contribution": "A user-defined distribution facility for Chapel, with formal definitions of global mapping and layout and a base-class interface for distribution writers.",
+ "main_limitation": "The paper states that performance results are not yet available and that alignments, full halo specification and efficient dynamic distribution management are not covered.",
+ "evaluation_method": "none",
+ "benchmarks": [],
+ "optimization_objectives": ["latency", "productivity"],
+ "data_decomposition": ["block-1d", "cyclic", "replicated", "application-defined"],
+ "computation_mapping": ["iteration-space-partitioning", "task-placement"],
+ "communication_generation": [],
+ "compiler_runtime_boundary": [],
+ "target_hardware": ["dm-multicomputer"],
+ "ir_representation": ["distribution-functions"],
+ "compiler_architecture": ["language-spec"],
+ "states_relationship_to": ["IVTRAN [22]", "Kali [21]", "Fortran D [14]", "Vienna Fortran [5, 18]", "Connection Machine Fortran [1]", "High Performance Fortran [15]", "Kelp [13]", "dHPF generalized multipartitioning [9]", "CoArray Fortran [10]", "Unified Parallel C [17]", "Titanium [24]", "X10 [12, 23]", "Fortress [11]", "High Performance Java [20]", "parallel MATLAB [7]", "ICC++ [6]", "pC++ [2]", "Charm++ [19]", "ZPL regions [4]"],
+ "evidence": [
+  {"source": "full text", "section": "Abstract"},
+  {"source": "full text", "section": "1"},
+  {"source": "full text", "section": "2"},
+  {"source": "full text", "section": "3.1"},
+  {"source": "full text", "section": "3.2"},
+  {"source": "full text", "section": "3.4"},
+  {"source": "full text", "section": "4"},
+  {"source": "full text", "section": "4.1.2"},
+  {"source": "full text", "section": "5"}
+ ],
+ "notes": "Title, venue and year match the PDF (venue and year from the running header and copyright line). The first author is printed as 'Roxana E Diaconescu' with no period after the middle initial, which is not a substantive difference. The catalog venue reads 'SMC-IT 2006'; the PDF reads 'SMC-IT'06'."
+}

@@ -1,0 +1,107 @@
+{
+ "id": "bondhugula2008pluto",
+ "summary": "PLuTo is a source-to-source polyhedral framework that finds statement-wise affine transformations with an integer linear program and a bounding cost function, so that rectangular tiling is legal in the transformed space. It emits OpenMP C code with tiled and, where needed, pipelined parallel loops, and reports speedups on six kernels measured on one quad-core shared-memory machine.",
+ "why_read": "It shows end to end how a polyhedral tool chooses tiling hyperplanes for locality and multicore parallelism, and it is a shared-memory reference point for this survey.",
+ "main_contribution": "An integer-linear-programming framework with a bounding cost function that finds affine transformations whose hyperplanes allow legal tiling, plus code generation for tiled and pipelined parallel loops over multiple statements.",
+ "main_limitation": "The paper states that tile sizes were not optimized by any extensive search or model, and its scope is local and shared-memory parallel execution.",
+ "evaluation_method": "Measured speedups, GFLOPS and run times on one quad-core shared-memory machine against icc and gcc, plus comparisons with Lim-Lam and Griebl transformations forced through the same code generator.",
+ "benchmarks": [
+  "1-d imperfectly nested Jacobi stencil",
+  "2-d FDTD electromagnetic kernel",
+  "LU decomposition",
+  "matrix-vector transpose (MVT)",
+  "3-D Gauss-Seidel SOR",
+  "Advect3d weather kernel"
+ ],
+ "optimization_objectives": [
+  "local-memory-fit",
+  "communication-volume",
+  "synchronization"
+ ],
+ "data_decomposition": [],
+ "computation_mapping": [
+  "iteration-space-partitioning",
+  "loop-to-processor",
+  "pipeline-parallelism"
+ ],
+ "communication_generation": [],
+ "compiler_runtime_boundary": [
+  "analytic-optimization"
+ ],
+ "target_hardware": [],
+ "ir_representation": [
+  "polyhedral-sets",
+  "dependence-graph"
+ ],
+ "compiler_architecture": [
+  "source-to-source",
+  "polyhedral",
+  "dependence-based",
+  "library-backed"
+ ],
+ "states_relationship_to": [
+  "Feautrier scheduling [18, 19]",
+  "Griebl space and time tiling [22]",
+  "Lim and Lam affine partitioning [33, 34, 35]",
+  "Ahmed et al. [2]",
+  "Irigoin and Triolet [26]",
+  "Ancourt and Irigoin [4]",
+  "CLooG [6, 12]",
+  "Quilleré et al. [45] and Kelly et al. [29]",
+  "Goumas et al. [21]",
+  "Renganarayana et al. [47] and Kim et al. [30]",
+  "Cohen et al. [13] and Girbal et al. [20] (URUK/WRAP-IT)",
+  "Pouchet et al. [41, 42]",
+  "Qasem and Kennedy [44]",
+  "Norris et al. [37]",
+  "LooPo [36]",
+  "Ramanujam and Sadayappan [46]",
+  "Kamil et al. [27]",
+  "ATLAS (Whaley et al. [54])",
+  "Bondhugula et al. [8] (companion report)",
+  "Vasilache [51]"
+ ],
+ "evidence": [
+  {
+   "source": "full text",
+   "section": "Sec. 1, p. 2 (scope: local and shared-memory parallel execution)"
+  },
+  {
+   "source": "full text",
+   "section": "Sec. 3.2, p. 3 (bounding cost function; communication volume)"
+  },
+  {
+   "source": "full text",
+   "section": "Sec. 3.2, p. 4 (synchronization-free hyperplanes ordered first)"
+  },
+  {
+   "source": "full text",
+   "section": "Sec. 4, p. 4 (OpenMP tool; LooPo front end; PipLib and CLooG)"
+  },
+  {
+   "source": "full text",
+   "section": "Sec. 5.4, pp. 6-7 and Algorithm 3, p. 7 (pipelined parallel code, barrier)"
+  },
+  {
+   "source": "full text",
+   "section": "Sec. 6, p. 8 (experimental setup, baselines, tile sizes)"
+  },
+  {
+   "source": "full text",
+   "section": "Sec. 6.1, p. 9 (Jacobi speedups; cache-miss figure)"
+  },
+  {
+   "source": "full text",
+   "section": "Sec. 6.7, p. 12 (tile sizes not searched; reported speedups)"
+  },
+  {
+   "source": "full text",
+   "section": "Sec. 7, p. 13 (earlier tile-shape studies; fully model-driven)"
+  },
+  {
+   "source": "full text",
+   "section": "References, p. 14 (title of reference [22])"
+  }
+ ],
+ "notes": "Title differs. Catalog: 'A Practical Automatic Polyhedral Parallelizer and Locality Optimizer'. Title page: 'PLuTo: A Practical and Fully Automatic Polyhedral Program Optimization System'. First author matches (Uday Bondhugula). Year 2008 matches the page footers dated 2008/3/31, but no year is printed on the title page. Author list differs: the catalog lists Bondhugula, Hartono, Ramanujam and Sadayappan, while the title page lists Bondhugula, Ramanujam and Sadayappan with no Hartono. Venue: the catalog gives PLDI 2008, but the PDF is in report form (it calls itself this report), prints no venue, and its only PLDI'08 mention is reference [41], which is a different paper. Correction: the card instruction list omitted analytic-optimization, so the card coded fully-static and static-with-directives. The text describes an integer linear program over a bounding cost function and no programmer annotations, which is the analytic-optimization definition."
+}

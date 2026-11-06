@@ -5,21 +5,74 @@
  "main_contribution": "A phase-decomposition and shortest-path method that selects dynamic data distributions and redistribution points for regular programs.",
  "main_limitation": "The authors state that the static pipeline cost model is conservative, that cut windows are resolved by taking the earliest cut, and that interprocedural analysis is not yet implemented.",
  "evaluation_method": "Compile-time cost estimates for selection, with measured Paragon and CM-5 runs of the generated MPI code",
- "benchmarks": ["ADI2D (2-D alternating direction implicit, 512 x 512)", "Shallow water weather prediction benchmark"],
- "optimization_objectives": ["communication-volume", "message-count"],
- "data_decomposition": ["block-1d", "block-nd", "dynamic-distribution"],
- "computation_mapping": ["data-parallelism", "pipeline-parallelism"],
- "communication_generation": ["redistribution-resharding", "communication-pipelining"],
- "compiler_runtime_boundary": ["fully-static"],
- "target_hardware": ["dm-multicomputer"],
- "ir_representation": ["dependence-graph", "graph-ir"],
- "compiler_architecture": ["dependence-based", "source-to-source"],
- "states_relationship_to": ["Anderson and Lam", "Bixby, Kennedy and Kremer", "Kremer", "Kennedy and Kremer", "Garcia et al.", "Hudak and Abraham", "Sheffler et al.", "Chapman, Fahringer and Zima", "Chatterjee et al.", "Gupta and Banerjee (PARADIGM static partitioner)", "Palermo and Banerjee (earlier dynamic selection)", "Ramaswamy and Banerjee (redistribution routines)", "Parafrase-2", "Fortran D"],
- "evidence": [
-  {"source": "full text", "section": "1 Introduction; 2 Motivation"},
-  {"source": "full text", "section": "3 Related work"},
-  {"source": "full text", "section": "4.1-4.2 Phase decomposition and phase transition selection"},
-  {"source": "full text", "section": "6.1-6.2 Evaluation; Tables II-III; Figures 12-14"}
+ "benchmarks": [
+  "ADI2D (2-D alternating direction implicit, 512 x 512)",
+  "Shallow water weather prediction benchmark"
  ],
- "notes": ""
+ "optimization_objectives": [
+  "communication-volume",
+  "message-count"
+ ],
+ "data_decomposition": [
+  "block-1d",
+  "block-nd",
+  "dynamic-distribution"
+ ],
+ "computation_mapping": [
+  "data-parallelism",
+  "pipeline-parallelism"
+ ],
+ "communication_generation": [
+  "redistribution-resharding",
+  "communication-pipelining"
+ ],
+ "compiler_runtime_boundary": [
+  "analytic-optimization"
+ ],
+ "target_hardware": [
+  "dm-multicomputer"
+ ],
+ "ir_representation": [
+  "dependence-graph",
+  "graph-ir"
+ ],
+ "compiler_architecture": [
+  "dependence-based",
+  "source-to-source"
+ ],
+ "states_relationship_to": [
+  "Anderson and Lam",
+  "Bixby, Kennedy and Kremer",
+  "Kremer",
+  "Kennedy and Kremer",
+  "Garcia et al.",
+  "Hudak and Abraham",
+  "Sheffler et al.",
+  "Chapman, Fahringer and Zima",
+  "Chatterjee et al.",
+  "Gupta and Banerjee (PARADIGM static partitioner)",
+  "Palermo and Banerjee (earlier dynamic selection)",
+  "Ramaswamy and Banerjee (redistribution routines)",
+  "Parafrase-2",
+  "Fortran D"
+ ],
+ "evidence": [
+  {
+   "source": "full text",
+   "section": "1 Introduction; 2 Motivation"
+  },
+  {
+   "source": "full text",
+   "section": "3 Related work"
+  },
+  {
+   "source": "full text",
+   "section": "4.1-4.2 Phase decomposition and phase transition selection"
+  },
+  {
+   "source": "full text",
+   "section": "6.1-6.2 Evaluation; Tables II-III; Figures 12-14"
+  }
+ ],
+ "notes": "Coding aligned with the reviewed catalog (commit d6ffcc1): cost-model decision procedure, recorded as analytic-optimization."
 }

@@ -3,8 +3,8 @@
 
 Inputs:
   catalog/papers.yaml              first coding: the tag fields of read papers
-  coding/second_coder_A.json       second coder, papers 1-27 (see docs/HANDOFF.md)
-  coding/second_coder_B.json       second coder, papers 28-54
+  coding/second_coder_*.json       second coding, one file per batch; every read paper
+                                   must appear in exactly one batch
 Outputs:
   docs/coding/agreement.md         per-axis and per-value agreement, disagreement list
   coding/disagreements.json        every disagreement, for adjudication
@@ -12,7 +12,7 @@ Outputs:
 Agreement is computed over the 54 read papers. For each axis: exact-set agreement
 (papers whose two tag sets are identical) and, per value, Cohen's kappa on present/absent.
 """
-import json, os
+import glob, json, os
 import yaml
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,8 +23,12 @@ AXES = ["data_decomposition", "computation_mapping", "communication_generation",
 papers = yaml.safe_load(open("catalog/papers.yaml", encoding="utf-8"))["papers"]
 read = {p["id"]: p for p in papers if p["status"] in ("read", "verified")}
 second = {}
-for f in ("coding/second_coder_A.json", "coding/second_coder_B.json"):
-    second.update(json.load(open(f, encoding="utf-8")))
+for f in sorted(glob.glob("coding/second_coder_*.json")):
+    batch = json.load(open(f, encoding="utf-8"))
+    overlap = set(batch) & set(second)
+    if overlap:
+        raise SystemExit(f"{f}: papers coded twice: {sorted(overlap)}")
+    second.update(batch)
 missing = sorted(set(read) - set(second))
 if missing:
     raise SystemExit(f"no second coding for: {missing}")

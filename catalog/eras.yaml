@@ -1,4 +1,7 @@
 # Historical eras used as ONE dimension of the survey (see docs/taxonomy.md).
+# Era membership follows publication year and these date ranges. Where a programming
+# model spans two eras, the paper belongs to the era of its year; the era text says
+# where a model began earlier or matured later.
 # Date ranges are provisional and must be revised as evidence accumulates; the
 # `boundary_evidence` field records which dated events justify the boundaries.
 version: 0.1
@@ -12,7 +15,7 @@ eras:
     decomposition_representation: "None for distribution; dependence graphs and loop-level analysis for vectorization"
     generated_communication: "None (shared or centralised memory)"
     limitation: "No notion of data placement as a compiler problem; machines had a single address space or SIMD broadcast control"
-    boundary_evidence: "FORTRAN I (1957); ILLIAC IV (1968 design paper); Lamport hyperplane (1974); CRAY-1 (1978); dependence-graph optimizations (Kuck et al. 1981 sits at the boundary)"
+    boundary_evidence: "FORTRAN I (1957); ILLIAC IV (1968 design paper); Lamport hyperplane (1974); CRAY-1 (1978)"
   - id: era1
     name: "Emergence of distributed-memory compilation"
     start: 1980
@@ -22,7 +25,7 @@ eras:
     decomposition_representation: "Programmer-managed; first compiler proposals for placement"
     generated_communication: "Hand-written sends/receives"
     limitation: "Programming by hand was error-prone; portability across machines was poor"
-    boundary_evidence: "Cosmic Cube (1985); first distributed-memory compilation papers appear 1988"
+    boundary_evidence: "Dependence graphs (Kuck et al. 1981); Cosmic Cube (1985); first distributed-memory compilation papers appear 1988"
   - id: era2
     name: "Global arrays and data decomposition"
     start: 1988
@@ -38,11 +41,11 @@ eras:
     start: 1993
     end: 2000
     machine_driver: "MPPs (CM-5, Paragon, SP2, T3D/T3E) and early clusters"
-    programming_abstraction: "HPF directives; MPI library calls; irregular extensions"
+    programming_abstraction: "HPF directives; MPI library calls; irregular extensions; early PGAS proposals (Co-array Fortran, Titanium) at the end of the era"
     decomposition_representation: "HPF ALIGN/DISTRIBUTE with BLOCK, CYCLIC(k), templates and processor arrangements; INDIRECT/mapping arrays in HPF-2 and research systems"
     generated_communication: "Communication sets, local address generation, redistribution, collectives; PARTI/CHAOS schedules for irregular code"
     limitation: "HPF compilers were slow to mature and performance was unpredictable; explicit MPI became the dominant practice"
-    boundary_evidence: "HPF 1.0 (1993); MPI 1.0 (1994); PARADIGM journal paper (1995); Benkner/Zima HPF overview (1999)"
+    boundary_evidence: "HPF 1.0 (1993); MPI 1.0 (1994); PARADIGM journal paper (1995); Co-array Fortran and Titanium first published (1998); Benkner/Zima HPF overview (1999)"
   - id: era4
     name: "MPI dominance and alternative programming models"
     start: 2000
@@ -52,7 +55,7 @@ eras:
     decomposition_representation: "Language-level distributions and locales/places; hierarchical task trees"
     generated_communication: "One-sided communication, compiler-scheduled bulk transfers for memory hierarchies"
     limitation: "Adoption of new languages remained limited; automatic distribution rarely used in production"
-    boundary_evidence: "Co-array Fortran (1998); UPC/Titanium compilers; Sequoia (2006); X10 (2005); Chapel (2007); Pluto (2008)"
+    boundary_evidence: "UPC/Titanium compilers; X10 (2005); Sequoia (2006); Chapel (2007); Pluto (2008)"
   - id: era5
     name: "Compiler/runtime co-design and accelerators"
     start: 2010

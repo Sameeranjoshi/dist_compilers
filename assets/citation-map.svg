@@ -16,7 +16,7 @@
 <polyline fill="none" stroke="#4a5a7a" points="214,-42 214,-36 "/>
 <polyline fill="none" stroke="#4a5a7a" points="220,-36 214,-36 "/>
 <text text-anchor="middle" x="110" y="-32.6" font-family="Helvetica,sans-Serif" font-size="8.00">Citation / influence map withheld:</text>
-<text text-anchor="middle" x="110" y="-23.6" font-family="Helvetica,sans-Serif" font-size="8.00">8 sourced edges in the catalog, 25 required.</text>
+<text text-anchor="middle" x="110" y="-23.6" font-family="Helvetica,sans-Serif" font-size="8.00">9 sourced edges in the catalog, 25 required.</text>
 <text text-anchor="middle" x="110" y="-14.6" font-family="Helvetica,sans-Serif" font-size="8.00">Edges are only drawn from predecessor/successor</text>
 <text text-anchor="middle" x="110" y="-5.6" font-family="Helvetica,sans-Serif" font-size="8.00">relations stated in the papers themselves.</text>
 </g>

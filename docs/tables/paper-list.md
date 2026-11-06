@@ -67,13 +67,16 @@
 | tang2000tiled | 2000 | Generating efficient tiled code for distributed memory machines | compiler-technique | core | read | no | paywalled |
 | chen2003upc | 2003 | A performance analysis of the Berkeley UPC compiler | full-system | bridge | read | no | paywalled |
 | charles2005x10 | 2005 | X10: an object-oriented approach to non-uniform cluster computing | language | bridge | discovered | no | paywalled |
+| diaconescu2005reusable | 2005 | Reusable and Extensible High Level Data Distributions | language | bridge | read | no | open |
+| diaconescu2006userdefined | 2006 | User-Defined Data Distributions in High-Level Programming Languages | language | bridge | read | no | open |
 | fatahalian2006sequoia | 2006 | Sequoia: Programming the Memory Hierarchy | language | core | read | no | paywalled |
 | chamberlain2007chapel | 2007 | Parallel Programmability and the Chapel Language | language | bridge | read | no | paywalled |
 | kennedy2007rise | 2007 | The rise and fall of High Performance Fortran | experience | core | read | no | paywalled |
 | shen2007eliminating | 2007 | Eliminating Redundant Communication of Code Generation for Distributed Memory Machines | compiler-technique | core | read | no | paywalled |
 | yelick2007titanium | 2007 | Parallel Languages and Compilers: Perspective From the Titanium Experience | language | bridge | read | no | paywalled |
 | baskaran2008automatic | 2008 | Automatic data movement and computation mapping for multi-level parallel architectures with explicitly managed memories | compiler-technique | core | read | no | paywalled |
-| bondhugula2008pluto | 2008 | A practical automatic polyhedral parallelizer and locality optimizer | full-system | foundation | screened | no | paywalled |
+| bondhugula2008pluto | 2008 | A practical automatic polyhedral parallelizer and locality optimizer | full-system | foundation | read | no | paywalled |
+| su2010irregular | 2010 | Optimizing Irregular Data Accesses for Cluster and Multicore Architectures | compiler-technique | bridge | read | no | open |
 | bondhugula2011automatic | 2011 | Automatic Distributed-Memory Parallelization and Code Generation using the Polyhedral Framework | compiler-technique | core | read | no | open |
 | bauer2012legion | 2012 | Legion: Expressing locality and independence with logical regions | runtime | core | read | no | paywalled |
 | bondhugula2013compiling | 2013 | Compiling affine loop nests for distributed-memory parallel architectures | compiler-technique | core | read | no | paywalled |

@@ -74,7 +74,6 @@ axes:
       - {id: owner-computes, name: "Owner-computes", def: "Statement executed by the owner of the left-hand-side element."}
       - {id: restricted-owner-computes, name: "Restricted owner-computes", def: "Owner-computes relaxed for selected statements or operands."}
       - {id: partition-propagation, name: "Partition propagation", def: "Partitions of unannotated values inferred from annotated ones through the program graph, so no single statement owner fixes the mapping."}
-      - {id: partition-propagation, name: "Partition propagation", def: "Partitions of unannotated values inferred from annotated ones through the program graph, so no single statement's owner decides the mapping."}
       - {id: iteration-space-partitioning, name: "Iteration-space partitioning", def: "Loop iterations partitioned independently of data ownership."}
       - {id: loop-to-processor, name: "Loop-to-processor mapping", def: "Explicit affine map from iterations to processors."}
       - {id: task-placement, name: "Task placement", def: "Discrete tasks assigned to places by scheduler or mapper."}

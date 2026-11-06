@@ -25,14 +25,14 @@ been read beyond their bibliographic record say so.
 <!-- BEGIN:status -->
 | metric | value |
 |---|---|
-| papers in catalog | 105 |
+| papers in catalog | 108 |
 | systems | 28 |
 | metadata-verified against Crossref/arXiv | 95 |
 | status `verified` (primary source read) | 4 |
-| status `read` | 50 |
-| status `screened` / `discovered` | 51 |
-| tier core / bridge / foundation / adjacent | 73 / 14 / 12 / 6 |
-| paper cards | 54 |
+| status `read` | 54 |
+| status `screened` / `discovered` | 50 |
+| tier core / bridge / foundation / adjacent | 73 / 17 / 12 / 6 |
+| paper cards | 58 |
 <!-- END:status -->
 
 Status meanings: `discovered` = metadata verified against Crossref/arXiv
@@ -376,8 +376,8 @@ rationale in `docs/taxonomy.md`.
 - **Baskaran et al. (2008)** — [Automatic data movement and computation mapping for multi-level parallel architectures with explicitly managed memories](https://doi.org/10.1145/1345206.1345210) — *compiler-technique*.  
   It shows how a compiler can manage explicitly managed memories and map polyhedral loop nests onto a two-level parallel machine, a useful precursor for polyhedral code generation on distributed memory.  
   `polyhedral` `explicit-memory`
-- **Bondhugula et al. (2008)** — [A practical automatic polyhedral parallelizer and locality optimizer](https://doi.org/10.1145/1375581.1375595) — *full-system*. *(metadata-verified; summary pending full read)*  
-  The polyhedral transformation framework that the 2011-2016 distributed-memory code generators plug into.  
+- **Bondhugula et al. (2008)** — [A practical automatic polyhedral parallelizer and locality optimizer](https://doi.org/10.1145/1375581.1375595) — *full-system*.  
+  It shows end to end how a polyhedral tool chooses tiling hyperplanes for locality and multicore parallelism, and it is a shared-memory reference point for this survey.  
   `polyhedral` `pluto`
 - **Bondhugula (2011)** — [Automatic Distributed-Memory Parallelization and Code Generation using the Polyhedral Framework](https://www.csa.iisc.ac.in/~udayb/publications/uday11distmem-tr.pdf) — *compiler-technique*.  
   Learn the flow-out/write-out set formulation of communication from exact dependences and how symbolic process counts are handled by generating runtime helper functions rather than virtual processors.  
@@ -569,14 +569,14 @@ rationale in `docs/taxonomy.md`.
   `foundations` `dataflow`
 - **Russell (1978)** — [The CRAY-1 computer system](https://doi.org/10.1145/359327.359336) — *hardware*. *(metadata-verified; summary pending full read)*  
   `foundations` `hardware`
-- **Kuck et al. (1981)** — [Dependence graphs and compiler optimizations](https://doi.org/10.1145/567532.567555) — *foundational*. *(metadata-verified; summary pending full read)*  
-  `foundations` `dependence`
 
 ### Era 1: Emergence of distributed-memory compilation (1980–1987)
 
 *Machine driver:* Multicomputers and hypercubes (Cosmic Cube, iPSC, nCUBE), systolic arrays, Connection Machine.  
 *Limitation that motivated the next era:* Programming by hand was error-prone; portability across machines was poor.
 
+- **Kuck et al. (1981)** — [Dependence graphs and compiler optimizations](https://doi.org/10.1145/567532.567555) — *foundational*. *(metadata-verified; summary pending full read)*  
+  `foundations` `dependence`
 - **Kung (1982)** — [Why systolic architectures?](https://doi.org/10.1109/mc.1982.1653825) — *hardware*. *(metadata-verified; summary pending full read)*  
   `foundations` `hardware` `systolic`
 - **Seitz (1985)** — [The cosmic cube](https://doi.org/10.1145/2465.2467) — *hardware*. *(metadata-verified; summary pending full read)*  
@@ -689,6 +689,10 @@ rationale in `docs/taxonomy.md`.
   `paradigm` `redistribution`
 - **Chandra et al. (1997)** — [Data distribution support on distributed shared memory multiprocessors](https://doi.org/10.1145/258915.258945) — *compiler-technique*.  
   `dsm` `data-distribution`
+- **Numrich and Reid (1998)** — [Co-array Fortran for parallel programming](https://doi.org/10.1145/289918.289920) — *language*.  
+  `pgas` `caf`
+- **Yelick et al. (1998)** — [Titanium: a high-performance Java dialect](https://doi.org/10.1002/(sici)1096-9128(199809/11)10:11/13<825::aid-cpe383>3.0.co;2-h) — *language*. *(metadata-verified; summary pending full read)*  
+  `pgas` `titanium`
 - **Benkner and Zima (1999)** — [Compiling High Performance Fortran for distributed-memory architectures](https://doi.org/10.1016/s0167-8191(99)00074-5) — *survey*.  
   `survey` `hpf`
 
@@ -697,16 +701,14 @@ rationale in `docs/taxonomy.md`.
 *Machine driver:* Commodity clusters, early multicore nodes, Cell/BE and explicitly managed memories.  
 *Limitation that motivated the next era:* Adoption of new languages remained limited; automatic distribution rarely used in production.
 
-- **Numrich and Reid (1998)** — [Co-array Fortran for parallel programming](https://doi.org/10.1145/289918.289920) — *language*.  
-  `pgas` `caf`
-- **Yelick et al. (1998)** — [Titanium: a high-performance Java dialect](https://doi.org/10.1002/(sici)1096-9128(199809/11)10:11/13<825::aid-cpe383>3.0.co;2-h) — *language*. *(metadata-verified; summary pending full read)*  
-  `pgas` `titanium`
 - **Tang and Xue (2000)** — [Generating efficient tiled code for distributed memory machines](https://doi.org/10.1016/s0167-8191(00)00040-5) — *compiler-technique*.  
   `tiling` `affine`
 - **Chen et al. (2003)** — [A performance analysis of the Berkeley UPC compiler](https://doi.org/10.1145/782814.782825) — *full-system*.  
   `pgas` `upc`
 - **Charles et al. (2005)** — [X10: an object-oriented approach to non-uniform cluster computing](https://doi.org/10.1145/1094811.1094852) — *language*. *(metadata-verified; summary pending full read)*  
   `pgas` `x10`
+- **Diaconescu et al. (2005)** — [Reusable and Extensible High Level Data Distributions](https://resolver.caltech.edu/CaltechCACR:2005.103) — *language*.
+- **Diaconescu and Zima (2006)** — [User-Defined Data Distributions in High-Level Programming Languages](https://resolver.caltech.edu/CaltechAUTHORS:20110223-160141512) — *language*.
 - **Fatahalian et al. (2006)** — [Sequoia: Programming the Memory Hierarchy](https://doi.org/10.1109/sc.2006.55) — *language*.  
   `hierarchical` `sequoia`
 - **Chamberlain et al. (2007)** — [Parallel Programmability and the Chapel Language](https://doi.org/10.1177/1094342007078442) — *language*.  
@@ -719,8 +721,9 @@ rationale in `docs/taxonomy.md`.
   `pgas` `titanium`
 - **Baskaran et al. (2008)** — [Automatic data movement and computation mapping for multi-level parallel architectures with explicitly managed memories](https://doi.org/10.1145/1345206.1345210) — *compiler-technique*.  
   `polyhedral` `explicit-memory`
-- **Bondhugula et al. (2008)** — [A practical automatic polyhedral parallelizer and locality optimizer](https://doi.org/10.1145/1375581.1375595) — *full-system*. *(metadata-verified; summary pending full read)*  
+- **Bondhugula et al. (2008)** — [A practical automatic polyhedral parallelizer and locality optimizer](https://doi.org/10.1145/1375581.1375595) — *full-system*.  
   `polyhedral` `pluto`
+- **Su (2010)** — [Optimizing Irregular Data Accesses for Cluster and Multicore Architectures](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2010/EECS-2010-170.html) — *compiler-technique*.
 
 ### Era 5: Compiler/runtime co-design and accelerators (2010–2019)
 

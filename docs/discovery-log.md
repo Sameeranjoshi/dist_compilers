@@ -111,3 +111,46 @@ is.  An explicit prior-survey search is also pending (required before any
   "A Pipeline Pattern Detection Technique in Polly" (DOI 10.1145/3547276.3548445).
   Screened and excluded: it is a shared-memory Polly technique and mentions
   distributed memory only in related work.
+
+### Era 4 collection (2026-11-06)
+
+Era 4 (2000 to 2010) was the thinnest read era. This round added read papers
+from official open copies, and corrected the era of three entries whose
+publication years fell outside their recorded era.
+
+Read in full, cards written, catalog status `read`:
+
+- `diaconescu2005reusable`: Caltech CACR repository, record CaltechCACR:2005.103
+  (Workshop on Patterns in High Performance Computing, 2005).
+- `diaconescu2006userdefined`: Caltech repository record CaltechAUTHORS:20110223-160141512
+  (IEEE SMC-IT 2006). This record was not found by the earlier Era 4 search. It
+  surfaced in a web search for the 2005 paper.
+- `su2010irregular`: UC Berkeley EECS technical report UCB/EECS-2010-170, a PhD
+  dissertation of 111 pages, official URL www2.eecs.berkeley.edu.
+- `bondhugula2008pluto`: supplied PDF. The file is the 2008 report titled
+  "PLuTo: A Practical and Fully Automatic Polyhedral Program Optimization System",
+  not the PLDI 2008 paper whose title the catalog carried. Version handling is in
+  the naming and version pass.
+
+Checked and not retrieved:
+
+- UPC Language Specifications V1.2 (eScholarship, qt1w43d8f1). The server returned
+  a bot-check response (HTTP 202, empty body) on two attempts. A third attempt with
+  a changed user-agent string was refused as circumvention, so it was not pursued.
+  Not carded; it is a language specification in any case.
+- Strout 2003, Bikshandi 2006, X10 2005, Nieplocha 2006, Su and Yelick 2005: no
+  official open copy found in the earlier searches.
+- Chapel language specification 0.7 (2007): not found. chapel-lang.org hosts the
+  later versions only (0.775 and 0.780).
+- Diaconescu and Zima 2007 (Vienna eprint): the eprint server returned HTTP 503
+  and then a connection reset. Not retrieved.
+
+Era membership: the catalog assigned `kuck1981dependence` to Era 0, and
+`numrich1998coarray` and `yelick1998titanium` (both 1998) to Era 4. Era membership
+follows publication year and the date ranges in `catalog/eras.yaml`, so these
+moved to Era 1, Era 3 and Era 3. The era text in `catalog/eras.yaml` now says so.
+
+Metadata repair: `scripts/merge_card_records.py` appended each record's notes on
+every run, so 32 catalog entries had repeated notes at HEAD. Notes are now rebuilt once
+from the base text and the records, and the merge adds notes only when the text
+is absent.

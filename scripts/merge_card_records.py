@@ -16,6 +16,13 @@ FIELDS = ("summary", "why_read", "main_contribution", "main_limitation", "evalua
           "compiler_runtime_boundary", "target_hardware", "ir_representation", "compiler_architecture")
 doc = yaml.safe_load(open("catalog/papers.yaml", encoding="utf-8"))
 P = {p["id"]: p for p in doc["papers"]}
+def add_note(p, text):
+    """Append text to the entry's notes once; repeated merges must not duplicate it."""
+    current = p.get("notes") or ""
+    if text and text not in current:
+        p["notes"] = (current + " " + text).strip()
+
+
 merged, skipped = [], []
 for path in sorted(glob.glob("notes/paper-cards/_records/*.json")):
     rec = json.load(open(path, encoding="utf-8"))
@@ -29,9 +36,9 @@ for path in sorted(glob.glob("notes/paper-cards/_records/*.json")):
     if rec.get("evidence"):
         p["evidence"] = rec["evidence"]
     if rec.get("states_relationship_to"):
-        p["notes"] = ((p.get("notes") or "") + " Discusses: " + "; ".join(rec["states_relationship_to"]) + ".").strip()
+        add_note(p, "Discusses: " + "; ".join(rec["states_relationship_to"]) + ".")
     if rec.get("notes"):
-        p["notes"] = ((p.get("notes") or "") + " " + rec["notes"]).strip()
+        add_note(p, rec["notes"])
     p["status"] = "read"
     p["metadata_sources"] = sorted(set((p.get("metadata_sources") or []) + ["full text read (paper card)"]))
     merged.append(pid)

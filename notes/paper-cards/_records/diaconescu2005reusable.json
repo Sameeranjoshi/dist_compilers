@@ -1,0 +1,32 @@
+{
+ "id": "diaconescu2005reusable",
+ "summary": "The paper presents a reusable design for data distributions built from domains, index sets, data collections and extensible distribution classes that map each index to a unit of locality and a local layout. It outlines how the Chapel language realizes this design, but it reports no empirical evaluation.",
+ "why_read": "It gives a newcomer a compact, language-independent vocabulary for user-defined data distributions and shows how one language expresses them.",
+ "main_contribution": "A reusable, extensible design pattern for data distributions, with an outline of its realization in Chapel.",
+ "main_limitation": "The paper states that full user freedom in specifying distributions raises the burden of ensuring good run-time performance, and that efficiency evaluation is still in progress.",
+ "evaluation_method": "none",
+ "benchmarks": [],
+ "optimization_objectives": ["load-balance", "productivity"],
+ "data_decomposition": ["block-1d", "block-nd", "cyclic", "application-defined"],
+ "computation_mapping": ["data-parallelism", "iteration-space-partitioning", "task-placement"],
+ "communication_generation": [],
+ "compiler_runtime_boundary": [],
+ "target_hardware": ["cpu-cluster", "dm-multicomputer"],
+ "ir_representation": ["distribution-functions"],
+ "compiler_architecture": ["language-spec"],
+ "states_relationship_to": ["Chapel / Cascade High Productivity Language [4]", "Design patterns, Gamma et al. [10]", "HPF [14, 15]", "HPF-2 [16]", "Fortran D [9, 17]", "Vienna Fortran [5]", "IVTRAN [22]", "Kali [21]", "BLAZE", "SUPERB [24]", "Coarray Fortran", "UPC", "Titanium", "ZPL dimensional distributions [7]", "ICC++ [6]", "pC++ [3]", "Mentat [12]", "HPC++ [11]", "Charm++ [19]", "Hawk [13]", "ORCA [2, 1]", "EPEE [18, 23]", "Sato et al. [23]", "CO2P3S [20]", "distributed recursive sets [8]"],
+ "evidence": [
+  {"source": "full text", "section": "Abstract"},
+  {"source": "full text", "section": "1"},
+  {"source": "full text", "section": "2.2"},
+  {"source": "full text", "section": "2.5"},
+  {"source": "full text", "section": "2.6"},
+  {"source": "full text", "section": "2.7"},
+  {"source": "full text", "section": "3"},
+  {"source": "full text", "section": "3.2"},
+  {"source": "full text", "section": "4.1"},
+  {"source": "full text", "section": "4.2"},
+  {"source": "full text", "section": "5"}
+ ],
+ "notes": "Title, first author (Roxana E. Diaconescu) and author list match the title page. Not confirmed from the PDF text layer: the venue (Workshop on Patterns in High Performance Computing) and the year 2005. The PDF creation date is 2005-05-12 and the reference list ends at 2004."
+}

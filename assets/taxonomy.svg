@@ -64,30 +64,32 @@
 <!-- compilation_time -->
 <g id="node6" class="node">
 <title>compilation_time</title>
-<polygon fill="#e3ecf7" stroke="transparent" points="177,-176 177,-191 326,-191 326,-176 177,-176"/>
-<polygon fill="none" stroke="black" points="177,-176 177,-191 326,-191 326,-176 177,-176"/>
-<text text-anchor="start" x="180" y="-182.6" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="8.00">F. Compiler / runtime boundary</text>
-<polygon fill="none" stroke="black" points="177,-161 177,-176 326,-176 326,-161 177,-161"/>
-<text text-anchor="start" x="180" y="-166.6" font-family="Helvetica,sans-Serif" font-size="8.00">Fully static</text>
-<polygon fill="none" stroke="black" points="177,-146 177,-161 326,-161 326,-146 177,-146"/>
-<text text-anchor="start" x="180" y="-151.6" font-family="Helvetica,sans-Serif" font-size="8.00">Compile&#45;time with user [...]</text>
-<polygon fill="none" stroke="black" points="177,-131 177,-146 326,-146 326,-131 177,-131"/>
-<text text-anchor="start" x="180" y="-136.6" font-family="Helvetica,sans-Serif" font-size="8.00">Profile&#45;guided</text>
-<polygon fill="none" stroke="black" points="177,-116 177,-131 326,-131 326,-116 177,-116"/>
-<text text-anchor="start" x="180" y="-121.6" font-family="Helvetica,sans-Serif" font-size="8.00">Autotuned</text>
-<polygon fill="none" stroke="black" points="177,-101 177,-116 326,-116 326,-101 177,-101"/>
-<text text-anchor="start" x="180" y="-106.6" font-family="Helvetica,sans-Serif" font-size="8.00">Load&#45;time</text>
-<polygon fill="none" stroke="black" points="177,-86 177,-101 326,-101 326,-86 177,-86"/>
-<text text-anchor="start" x="180" y="-91.6" font-family="Helvetica,sans-Serif" font-size="8.00">JIT</text>
-<polygon fill="none" stroke="black" points="177,-71 177,-86 326,-86 326,-71 177,-71"/>
-<text text-anchor="start" x="180" y="-76.6" font-family="Helvetica,sans-Serif" font-size="8.00">Runtime inspector</text>
-<polygon fill="none" stroke="black" points="177,-56 177,-71 326,-71 326,-56 177,-56"/>
-<text text-anchor="start" x="180" y="-61.6" font-family="Helvetica,sans-Serif" font-size="8.00">Adaptive / dynamic [...]</text>
+<polygon fill="#e3ecf7" stroke="transparent" points="177,-184 177,-199 326,-199 326,-184 177,-184"/>
+<polygon fill="none" stroke="black" points="177,-184 177,-199 326,-199 326,-184 177,-184"/>
+<text text-anchor="start" x="180" y="-190.6" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="8.00">F. Compiler / runtime boundary</text>
+<polygon fill="none" stroke="black" points="177,-169 177,-184 326,-184 326,-169 177,-169"/>
+<text text-anchor="start" x="180" y="-174.6" font-family="Helvetica,sans-Serif" font-size="8.00">Fully static</text>
+<polygon fill="none" stroke="black" points="177,-154 177,-169 326,-169 326,-154 177,-154"/>
+<text text-anchor="start" x="180" y="-159.6" font-family="Helvetica,sans-Serif" font-size="8.00">Compile&#45;time with user [...]</text>
+<polygon fill="none" stroke="black" points="177,-139 177,-154 326,-154 326,-139 177,-139"/>
+<text text-anchor="start" x="180" y="-144.6" font-family="Helvetica,sans-Serif" font-size="8.00">Profile&#45;guided</text>
+<polygon fill="none" stroke="black" points="177,-124 177,-139 326,-139 326,-124 177,-124"/>
+<text text-anchor="start" x="180" y="-129.6" font-family="Helvetica,sans-Serif" font-size="8.00">Autotuned</text>
+<polygon fill="none" stroke="black" points="177,-109 177,-124 326,-124 326,-109 177,-109"/>
+<text text-anchor="start" x="180" y="-114.6" font-family="Helvetica,sans-Serif" font-size="8.00">Load&#45;time</text>
+<polygon fill="none" stroke="black" points="177,-94 177,-109 326,-109 326,-94 177,-94"/>
+<text text-anchor="start" x="180" y="-99.6" font-family="Helvetica,sans-Serif" font-size="8.00">JIT</text>
+<polygon fill="none" stroke="black" points="177,-79 177,-94 326,-94 326,-79 177,-79"/>
+<text text-anchor="start" x="180" y="-84.6" font-family="Helvetica,sans-Serif" font-size="8.00">Runtime inspector</text>
+<polygon fill="none" stroke="black" points="177,-64 177,-79 326,-79 326,-64 177,-64"/>
+<text text-anchor="start" x="180" y="-69.6" font-family="Helvetica,sans-Serif" font-size="8.00">Analytic optimization</text>
+<polygon fill="none" stroke="black" points="177,-49 177,-64 326,-64 326,-49 177,-49"/>
+<text text-anchor="start" x="180" y="-54.6" font-family="Helvetica,sans-Serif" font-size="8.00">Adaptive / dynamic [...]</text>
 </g>
 <!-- center&#45;&gt;compilation_time -->
 <g id="edge5" class="edge">
 <title>center&#45;&gt;compilation_time</title>
-<path fill="none" stroke="#4a5a7a" d="M251,-272.92C251,-254.26 251,-223.98 251,-195.65"/>
+<path fill="none" stroke="#4a5a7a" d="M251,-272.92C251,-255.94 251,-229.34 251,-203.35"/>
 </g>
 <!-- target_memory_model -->
 <g id="node7" class="node">
@@ -206,38 +208,40 @@
 <!-- computation_mapping -->
 <g id="node4" class="node">
 <title>computation_mapping</title>
-<polygon fill="#e3ecf7" stroke="transparent" points="346,-542 346,-557 470,-557 470,-542 346,-542"/>
-<polygon fill="none" stroke="black" points="346,-542 346,-557 470,-557 470,-542 346,-542"/>
-<text text-anchor="start" x="350.5" y="-548.6" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="8.00">D. Computation mapping</text>
-<polygon fill="none" stroke="black" points="346,-527 346,-542 470,-542 470,-527 346,-527"/>
-<text text-anchor="start" x="349" y="-532.6" font-family="Helvetica,sans-Serif" font-size="8.00">Owner&#45;computes</text>
-<polygon fill="none" stroke="black" points="346,-512 346,-527 470,-527 470,-512 346,-512"/>
-<text text-anchor="start" x="349" y="-517.6" font-family="Helvetica,sans-Serif" font-size="8.00">Restricted owner&#45;computes</text>
-<polygon fill="none" stroke="black" points="346,-497 346,-512 470,-512 470,-497 346,-497"/>
-<text text-anchor="start" x="349" y="-502.6" font-family="Helvetica,sans-Serif" font-size="8.00">Iteration&#45;space partitioning</text>
-<polygon fill="none" stroke="black" points="346,-482 346,-497 470,-497 470,-482 346,-482"/>
-<text text-anchor="start" x="349" y="-487.6" font-family="Helvetica,sans-Serif" font-size="8.00">Loop&#45;to&#45;processor mapping</text>
-<polygon fill="none" stroke="black" points="346,-467 346,-482 470,-482 470,-467 346,-467"/>
-<text text-anchor="start" x="349" y="-472.6" font-family="Helvetica,sans-Serif" font-size="8.00">Task placement</text>
-<polygon fill="none" stroke="black" points="346,-452 346,-467 470,-467 470,-452 346,-452"/>
-<text text-anchor="start" x="349" y="-457.6" font-family="Helvetica,sans-Serif" font-size="8.00">Region placement</text>
-<polygon fill="none" stroke="black" points="346,-437 346,-452 470,-452 470,-437 346,-437"/>
-<text text-anchor="start" x="349" y="-442.6" font-family="Helvetica,sans-Serif" font-size="8.00">Data parallelism</text>
-<polygon fill="none" stroke="black" points="346,-422 346,-437 470,-437 470,-422 346,-422"/>
-<text text-anchor="start" x="349" y="-427.6" font-family="Helvetica,sans-Serif" font-size="8.00">Operator / tensor parallelism</text>
-<polygon fill="none" stroke="black" points="346,-407 346,-422 470,-422 470,-407 346,-407"/>
-<text text-anchor="start" x="349" y="-412.6" font-family="Helvetica,sans-Serif" font-size="8.00">Pipeline parallelism</text>
-<polygon fill="none" stroke="black" points="346,-392 346,-407 470,-407 470,-392 346,-392"/>
-<text text-anchor="start" x="349" y="-397.6" font-family="Helvetica,sans-Serif" font-size="8.00">Expert parallelism</text>
-<polygon fill="none" stroke="black" points="346,-377 346,-392 470,-392 470,-377 346,-377"/>
-<text text-anchor="start" x="349" y="-382.6" font-family="Helvetica,sans-Serif" font-size="8.00">Spatial placement</text>
-<polygon fill="none" stroke="black" points="346,-362 346,-377 470,-377 470,-362 346,-362"/>
-<text text-anchor="start" x="349" y="-367.6" font-family="Helvetica,sans-Serif" font-size="8.00">Hierarchical mapping</text>
+<polygon fill="#e3ecf7" stroke="transparent" points="346,-550 346,-565 470,-565 470,-550 346,-550"/>
+<polygon fill="none" stroke="black" points="346,-550 346,-565 470,-565 470,-550 346,-550"/>
+<text text-anchor="start" x="350.5" y="-556.6" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="8.00">D. Computation mapping</text>
+<polygon fill="none" stroke="black" points="346,-535 346,-550 470,-550 470,-535 346,-535"/>
+<text text-anchor="start" x="349" y="-540.6" font-family="Helvetica,sans-Serif" font-size="8.00">Owner&#45;computes</text>
+<polygon fill="none" stroke="black" points="346,-520 346,-535 470,-535 470,-520 346,-520"/>
+<text text-anchor="start" x="349" y="-525.6" font-family="Helvetica,sans-Serif" font-size="8.00">Restricted owner&#45;computes</text>
+<polygon fill="none" stroke="black" points="346,-505 346,-520 470,-520 470,-505 346,-505"/>
+<text text-anchor="start" x="349" y="-510.6" font-family="Helvetica,sans-Serif" font-size="8.00">Partition propagation</text>
+<polygon fill="none" stroke="black" points="346,-490 346,-505 470,-505 470,-490 346,-490"/>
+<text text-anchor="start" x="349" y="-495.6" font-family="Helvetica,sans-Serif" font-size="8.00">Iteration&#45;space partitioning</text>
+<polygon fill="none" stroke="black" points="346,-475 346,-490 470,-490 470,-475 346,-475"/>
+<text text-anchor="start" x="349" y="-480.6" font-family="Helvetica,sans-Serif" font-size="8.00">Loop&#45;to&#45;processor mapping</text>
+<polygon fill="none" stroke="black" points="346,-460 346,-475 470,-475 470,-460 346,-460"/>
+<text text-anchor="start" x="349" y="-465.6" font-family="Helvetica,sans-Serif" font-size="8.00">Task placement</text>
+<polygon fill="none" stroke="black" points="346,-445 346,-460 470,-460 470,-445 346,-445"/>
+<text text-anchor="start" x="349" y="-450.6" font-family="Helvetica,sans-Serif" font-size="8.00">Region placement</text>
+<polygon fill="none" stroke="black" points="346,-430 346,-445 470,-445 470,-430 346,-430"/>
+<text text-anchor="start" x="349" y="-435.6" font-family="Helvetica,sans-Serif" font-size="8.00">Data parallelism</text>
+<polygon fill="none" stroke="black" points="346,-415 346,-430 470,-430 470,-415 346,-415"/>
+<text text-anchor="start" x="349" y="-420.6" font-family="Helvetica,sans-Serif" font-size="8.00">Operator / tensor parallelism</text>
+<polygon fill="none" stroke="black" points="346,-400 346,-415 470,-415 470,-400 346,-400"/>
+<text text-anchor="start" x="349" y="-405.6" font-family="Helvetica,sans-Serif" font-size="8.00">Pipeline parallelism</text>
+<polygon fill="none" stroke="black" points="346,-385 346,-400 470,-400 470,-385 346,-385"/>
+<text text-anchor="start" x="349" y="-390.6" font-family="Helvetica,sans-Serif" font-size="8.00">Expert parallelism</text>
+<polygon fill="none" stroke="black" points="346,-370 346,-385 470,-385 470,-370 346,-370"/>
+<text text-anchor="start" x="349" y="-375.6" font-family="Helvetica,sans-Serif" font-size="8.00">Spatial placement</text>
+<polygon fill="none" stroke="black" points="346,-355 346,-370 470,-370 470,-355 346,-355"/>
+<text text-anchor="start" x="349" y="-360.6" font-family="Helvetica,sans-Serif" font-size="8.00">Hierarchical mapping</text>
 </g>
 <!-- computation_mapping&#45;&gt;center -->
 <g id="edge3" class="edge">
 <title>computation_mapping&#45;&gt;center</title>
-<path fill="none" stroke="#4a5a7a" d="M349.53,-358.27C343.09,-350.32 336.23,-342.76 329,-336 318.5,-326.18 305.33,-317.82 292.82,-311.15"/>
+<path fill="none" stroke="#4a5a7a" d="M343.21,-350.76C338.65,-345.55 333.91,-340.59 329,-336 318.5,-326.18 305.33,-317.82 292.82,-311.15"/>
 </g>
 </g>
 </svg>
