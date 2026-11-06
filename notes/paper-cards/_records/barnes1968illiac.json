@@ -1,0 +1,60 @@
+{
+ "id": "barnes1968illiac",
+ "summary": "The paper describes the structure of ILLIAC IV, an array computer of 256 processing elements organized as four 64-element arrays, each with its own control unit, together with its routing, memory and host arrangements. It presents design targets, reliability estimates and instruction lists, but no measured results and no compiler design.",
+ "why_read": "It describes an array computer with per-element memories and nearest-neighbour routing, which is the hardware context needed to read array-machine software and compiler papers.",
+ "main_contribution": "A system-level description of ILLIAC IV, covering SIMD control, per-PE memories, routing, multiarray configurations and the B6500 host.",
+ "main_limitation": "The figures are design targets and estimates, and the paper defers the logical layout, the software and any compiler to other papers.",
+ "evaluation_method": "design estimates only; no measured benchmark",
+ "benchmarks": [],
+ "optimization_objectives": [
+  "overlap",
+  "topology-hops"
+ ],
+ "data_decomposition": [],
+ "computation_mapping": [
+  "data-parallelism"
+ ],
+ "communication_generation": [
+  "programmer-explicit",
+  "broadcast-multicast"
+ ],
+ "compiler_runtime_boundary": [],
+ "target_hardware": [
+  "vector-array-foundation",
+  "simd-systolic-cm"
+ ],
+ "ir_representation": [],
+ "compiler_architecture": [],
+ "states_relationship_to": [
+  "SOLOMON computer [1]",
+  "Unger 1958 [2]",
+  "Holland 1959 [3]",
+  "Murtha 1966 [4]",
+  "Kuck, ILLIAC IV software and application programming [5]",
+  "earlier Westinghouse parallel computer effort (Acknowledgment)",
+  "Burroughs B6500 (host computer)"
+ ],
+ "evidence": [
+  {
+   "source": "full text",
+   "section": "Abstract and Section 1, pp. 746-747"
+  },
+  {
+   "source": "full text",
+   "section": "Section 2, Summary of the ILLIAC IV, pp. 747-748"
+  },
+  {
+   "source": "full text",
+   "section": "Section 3, ILLIAC IV Structure, pp. 748-753"
+  },
+  {
+   "source": "full text",
+   "section": "Section 4, Reliability and Maintenance, p. 753"
+  },
+  {
+   "source": "full text",
+   "section": "Appendix I and References, pp. 754-757"
+  }
+ ],
+ "notes": "Catalog paper_type 'hardware' is in the taxonomy and is used in the card header. The card and this record use 'full-system' as the nearest value, because the paper describes a complete machine; the lead should reconcile the catalog or the taxonomy. Title, first author and year match the PDF."
+}

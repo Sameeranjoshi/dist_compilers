@@ -4,17 +4,17 @@
 
 | id | year | title | type | tier | status | verified | access |
 |---|---|---|---|---|---|---|---|
-| backus1957fortran | 1957 | The FORTRAN automatic coding system | foundational | foundation | screened | no | paywalled |
-| barnes1968illiac | 1968 | The ILLIAC IV Computer | hardware | foundation | screened | no | paywalled |
-| lamport1974parallel | 1974 | The parallel execution of DO loops | foundational | foundation | screened | no | paywalled |
+| backus1957fortran | 1957 | The FORTRAN automatic coding system | foundational | foundation | read | no | paywalled |
+| barnes1968illiac | 1968 | The ILLIAC IV Computer | hardware | foundation | read | no | paywalled |
+| lamport1974parallel | 1974 | The parallel execution of DO loops | foundational | foundation | read | no | paywalled |
 | dennis1975preliminary | 1975 | A preliminary architecture for a basic data-flow processor | hardware | foundation | discovered | no | paywalled |
-| misunas1977workshop | 1977 | Report on the Workshop on Data Flow Computer and Program Organization | foundational | foundation | screened | no | paywalled |
-| russell1978cray1 | 1978 | The CRAY-1 computer system | hardware | foundation | screened | no | paywalled |
-| kuck1981dependence | 1981 | Dependence graphs and compiler optimizations | foundational | foundation | screened | no | paywalled |
-| kung1982systolic | 1982 | Why systolic architectures? | hardware | foundation | screened | no | paywalled |
-| seitz1985cosmic | 1985 | The cosmic cube | hardware | foundation | screened | no | paywalled |
-| hillis1986data | 1986 | Data parallel algorithms | foundational | foundation | screened | no | paywalled |
-| allen1987automatic | 1987 | Automatic translation of FORTRAN programs to vector form | foundational | foundation | screened | no | paywalled |
+| misunas1977workshop | 1977 | Report on the Workshop on Data Flow Computer and Program Organization | foundational | foundation | read | no | paywalled |
+| russell1978cray1 | 1978 | The CRAY-1 computer system | hardware | foundation | read | no | paywalled |
+| kuck1981dependence | 1981 | Dependence graphs and compiler optimizations | foundational | foundation | read | no | paywalled |
+| kung1982systolic | 1982 | Why systolic architectures? | hardware | foundation | read | no | paywalled |
+| seitz1985cosmic | 1985 | The cosmic cube | hardware | foundation | read | no | paywalled |
+| hillis1986data | 1986 | Data parallel algorithms | foundational | foundation | read | no | paywalled |
+| allen1987automatic | 1987 | Automatic translation of FORTRAN programs to vector form | foundational | foundation | read | no | paywalled |
 | callahan1988compiling | 1988 | Compiling programs for distributed-memory multiprocessors | compiler-technique | core | discovered | no | paywalled |
 | chen1988compiling | 1988 | Compiling parallel programs by optimizing performance | compiler-technique | core | read | no | paywalled |
 | zima1988superb | 1988 | SUPERB: A tool for semi-automatic MIMD/SIMD parallelization | full-system | core | discovered | no | paywalled |
@@ -56,7 +56,7 @@
 | lee1995techniques | 1995 | Techniques for compiling programs on distributed memory multicomputers | compiler-technique | core | read | no | paywalled |
 | ponnusamy1995runtime | 1995 | Runtime support and compilation methods for user-specified irregular data distributions | runtime | core | read | no | paywalled |
 | su1995advanced | 1995 | Advanced compilation techniques in the PARADIGM compiler for distributed-memory multicomputers | compiler-technique | core | read | no | paywalled |
-| bik1996automatic | 1996 | Automatic Data Structure Selection and Transformation for Sparse Matrix Computations | compiler-technique | adjacent | screened | no | paywalled |
+| bik1996automatic | 1996 | Automatic Data Structure Selection and Transformation for Sparse Matrix Computations | compiler-technique | adjacent | read | no | paywalled |
 | gropp1996mpich | 1996 | A high-performance, portable implementation of the MPI message passing interface standard | runtime | bridge | discovered | no | paywalled |
 | palermo1996dynamic | 1996 | Dynamic Data Partitioning for Distributed-Memory Multicomputers | compiler-technique | core | read | no | paywalled |
 | ramaswamy1996redistribution | 1996 | Optimizations for Efficient Array Redistribution on Distributed Memory Multicomputers | compiler-technique | core | read | no | paywalled |
@@ -85,7 +85,7 @@
 | ravishankar2015mixed | 2015 | Distributed memory code generation for mixed Irregular/Regular computations | compiler-technique | core | discovered | no | paywalled |
 | slaughter2015regent | 2015 | Regent: a high-productivity programming language for HPC with logical regions | language | core | read | no | paywalled |
 | dathathri2016compiling | 2016 | Compiling Affine Loop Nests for a Dynamic Scheduling Runtime on Shared and Distributed Memory | compiler-technique | core | screened | no | paywalled |
-| unat2017trends | 2017 | Trends in Data Locality Abstractions for HPC Systems | survey | adjacent | screened | no | paywalled |
+| unat2017trends | 2017 | Trends in Data Locality Abstractions for HPC Systems | survey | adjacent | read | no | paywalled |
 | huang2019gpipe | 2018 | GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism | runtime | bridge | discovered | no | open |
 | shazeer2018meshtf | 2018 | Mesh-TensorFlow: Deep Learning for Supercomputers | full-system | core | read | no | open |
 | baghdadi2019tiramisu | 2019 | Tiramisu: A Polyhedral Compiler for Expressing Fast and Portable Code | full-system | bridge | discovered | no | open |
@@ -105,7 +105,7 @@
 | kong2023automatic | 2023 | Automatic Generation of Distributed-Memory Mappings for Tensor Computations | compiler-technique | core | read | no | open |
 | bisbas2024shared | 2024 | A shared compilation stack for distributed-memory parallelism in stencil DSLs | full-system | core | read | no | open |
 | openxla2024shardy | 2024 | Shardy: an MLIR-based tensor partitioning system (official documentation) | specification | core | screened | no | open |
-| thangamani2024polyhedral | 2024 | A Survey of General-purpose Polyhedral Compilers | survey | adjacent | screened | no | paywalled |
+| thangamani2024polyhedral | 2024 | A Survey of General-purpose Polyhedral Compilers | survey | adjacent | read | no | paywalled |
 | tramm2024cerebras | 2024 | Efficient algorithms for Monte Carlo particle transport on AI accelerator hardware | experience | adjacent | discovered | no | open |
 | alabed2025partir | 2025 | PartIR: Composing SPMD Partitioning Strategies for Machine Learning | full-system | core | read | no | open |
 | hall2025scheduling | 2025 | Scheduling Language Chronology: Past, Present, and Future | survey | adjacent | screened | no | open |

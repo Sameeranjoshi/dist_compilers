@@ -1,0 +1,31 @@
+{
+ "id": "unat2017trends",
+ "summary": "This survey distills a series of workshops on data-locality abstractions into a layered view of libraries, languages, runtimes and system-scale tools. Its distributed-memory content is qualitative: it classifies libraries by scale and languages by local-versus-global object visibility, and it calls for common abstractions across these layers.",
+ "why_read": "It gives a newcomer shared terminology for layout, decomposition and placement, and a map of how locality abstractions for distributed-memory systems fit across the software stack.",
+ "main_contribution": "A common terminology and a layered survey of data-locality abstractions, closing with recommendations for interoperable abstractions and runtime interfaces.",
+ "main_limitation": "The authors state that they do not claim to have solved or covered every aspect of the challenge, and their library comparison is a deliberately simple sketch.",
+ "evaluation_method": "none",
+ "benchmarks": [],
+ "optimization_objectives": ["communication-volume", "memory-bandwidth", "energy", "load-balance", "topology-hops", "productivity", "performance-portability"],
+ "data_decomposition": ["tiled-hierarchical"],
+ "computation_mapping": ["task-placement", "loop-to-processor", "region-placement", "data-parallelism", "hierarchical-mapping", "owner-computes"],
+ "communication_generation": ["programmer-explicit"],
+ "compiler_runtime_boundary": ["static-with-directives", "profile-guided", "autotuned", "adaptive", "jit"],
+ "target_hardware": ["cpu-cluster", "dm-multicomputer", "pgas-target", "hierarchical-heterogeneous"],
+ "ir_representation": ["polyhedral-sets"],
+ "compiler_architecture": ["polyhedral", "library-backed", "dsl-compiler"],
+ "states_relationship_to": ["Kokkos", "TiDA", "GridTools", "hStreams", "DASH", "Loci", "Chapel", "X10", "Hierarchical Place Trees", "UPC", "Co-Array Fortran", "Titanium", "HPF", "ZPL", "Julia", "Phalanx", "UPC++", "BoxLib", "MPI", "OpenMP", "OpenACC", "OmpSs", "Nanos++", "Open Community Runtime (OCR)", "RStream", "Legion", "HTA", "RAJA", "Perilla", "Qthread", "Cilk", "Charm++", "NAMD", "Uintah", "CUDA", "OpenCL", "hwloc", "Netloc", "Scalasca", "OVIS", "SLURM"],
+ "evidence": [
+  {"source": "full text", "section": "Sec. 1, pp. 3007-3008"},
+  {"source": "full text", "section": "Sec. 2, pp. 3008-3009"},
+  {"source": "full text", "section": "Sec. 3, pp. 3009-3010"},
+  {"source": "full text", "section": "Sec. 3.2 and Table 1, pp. 3010-3011"},
+  {"source": "full text", "section": "Sec. 4.1.1-4.1.2, pp. 3011-3012"},
+  {"source": "full text", "section": "Sec. 4.2, pp. 3012-3013"},
+  {"source": "full text", "section": "Sec. 5.1-5.2, pp. 3013-3014"},
+  {"source": "full text", "section": "Sec. 6, pp. 3014-3015"},
+  {"source": "full text", "section": "Sec. 7.2-7.3, pp. 3016-3017"},
+  {"source": "full text", "section": "Sec. 8, p. 3017"}
+ ],
+ "notes": ""
+}

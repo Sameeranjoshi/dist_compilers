@@ -1,0 +1,86 @@
+{
+ "id": "kung1982systolic",
+ "summary": "The paper argues that special-purpose systems can avoid I/O limits when each data item fetched from memory is reused as it moves through a pipeline of simple processing cells. It illustrates the idea with a family of convolution array designs that differ in which operands stay in cells and which are broadcast, fanned in or streamed, and compares them by I/O needs, cell utilization and wiring.",
+ "why_read": "It is the foundational statement of systolic architecture and explains why regular cell-to-cell data flow cuts memory traffic for compute-bound problems.",
+ "main_contribution": "A design principle for systolic arrays, shown through a family of convolution designs that compare which operands stay in cells and which move.",
+ "main_limitation": "The designs are worked out by hand for regular compute-bound problems, and the paper states that their automatic design is still an open question.",
+ "evaluation_method": "analytic argument and qualitative comparison of designs; no experiments",
+ "benchmarks": [],
+ "optimization_objectives": [
+  "memory-bandwidth",
+  "communication-volume",
+  "local-memory-fit",
+  "latency",
+  "overlap",
+  "synchronization",
+  "load-balance",
+  "productivity"
+ ],
+ "data_decomposition": [
+  "application-defined",
+  "replicated"
+ ],
+ "computation_mapping": [
+  "spatial-placement",
+  "pipeline-parallelism",
+  "data-parallelism"
+ ],
+ "communication_generation": [
+  "programmer-explicit",
+  "broadcast-multicast",
+  "reduction-allreduce",
+  "communication-pipelining",
+  "overlapped"
+ ],
+ "compiler_runtime_boundary": [
+  "fully-static",
+  "analytic-optimization"
+ ],
+ "target_hardware": [
+  "simd-systolic-cm",
+  "spatial-accelerator"
+ ],
+ "ir_representation": [
+  "none"
+ ],
+ "compiler_architecture": [],
+ "states_relationship_to": [
+  "pattern-matching chip (ref. 1)",
+  "Kung, special-purpose devices for signal and image processing (ref. 3)",
+  "Kung and Lehman, systolic arrays for relational database operations (ref. 4)",
+  "Kung and Leiserson, systolic arrays for VLSI (ref. 5)",
+  "Kung and Song, systolic 2-D convolution chip (ref. 6)",
+  "ESL systolic processor (refs. 8, 10)",
+  "Guibas et al. (ref. 26)",
+  "Weiser and Davis, wavefront notation tool (ref. 27)",
+  "Bojanczyk et al. (ref. 28)",
+  "Gentleman and Kung (ref. 29)",
+  "Leiserson and Saxe (ref. 42)",
+  "Lyon, two's complement pipeline multipliers (ref. 22)",
+  "TRW multiplier-accumulator application booklet (ref. 21)",
+  "I/O bounds for FFT, sorting and matrix multiplication (refs. 14, 15)"
+ ],
+ "evidence": [
+  {
+   "source": "full text",
+   "section": "Title page; p. 37 (introduction, key architectural issues)"
+  },
+  {
+   "source": "full text",
+   "section": "pp. 38-39 (I/O balance, Figure 1, systolic principle, Figure 2)"
+  },
+  {
+   "source": "full text",
+   "section": "pp. 40-42 (convolution designs B1, B2, F, R1, R2, W1, W2; Figures 3-9)"
+  },
+  {
+   "source": "full text",
+   "section": "pp. 43-44 (cell criteria, Figures 10-12)"
+  },
+  {
+   "source": "full text",
+   "section": "p. 45 (applications, automatic design, research directions); p. 46 (references)"
+  }
+ ],
+ "notes": "Title: catalog reads 'Why systolic architectures?' with lowercase words; the title page prints 'Why Systolic Architectures?' (capitalization only). First author: catalog lists 'Kung'; the title page prints 'H. T. Kung' (surname matches). Year: catalog 1982 matches the January 1982 issue. Catalog paper_type 'hardware' is kept, and the card header uses it. Catalog summary says neighbor-only communication, but the paper also describes broadcast and fan-in designs (pp. 40-41). The PDF metadata title is a download string and was not used."
+}

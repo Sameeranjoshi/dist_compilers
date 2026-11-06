@@ -1,0 +1,28 @@
+{
+ "id": "bik1996automatic",
+ "summary": "The paper proposes delaying the choice of sparse storage until compile time, so that a compiler can select and transform the data structures of matrices annotated as sparse in dense source code. It reports preliminary timings for LU factorisation, a tridiagonal solver and sparse loop nests on an HP-UX 9000/720 machine and one Cray CPU.",
+ "why_read": "Read it as an example of compile-time sparse data-structure selection, noting that its only distributed-memory content is one sentence in the introduction.",
+ "main_contribution": "A compile-time method that encapsulates sparsity guards and expands access patterns, then selects and transforms sparse storage while resolving conflicts between access patterns.",
+ "main_limitation": "Conflicts between access patterns cannot in general be resolved, and the experiments are preliminary timings on one HP-UX 9000/720 machine and one Cray CPU.",
+ "evaluation_method": "preliminary timings on one HP-UX 9000/720 machine and one Cray CPU, plus code comparisons with a hand-coded tridiagonal solver and SPARK",
+ "benchmarks": ["LU factorisation of D(n,5) matrices (n = 200 to 500)", "tridiagonal solver (generated vs hand-coded)", "four Harwell-Boeing matrices in Table 4 (row, column and reshaped variants)", "SPARK hand-coded row and column codes (qualitative)"],
+ "optimization_objectives": ["productivity"],
+ "data_decomposition": [],
+ "computation_mapping": [],
+ "communication_generation": [],
+ "compiler_runtime_boundary": ["static-with-directives"],
+ "target_hardware": ["vector-array-foundation"],
+ "ir_representation": ["source-annotations", "dependence-graph"],
+ "compiler_architecture": ["source-to-source", "dependence-based", "library-backed"],
+ "states_relationship_to": ["run-time pre-evaluation of execution sets (ref. 33)", "run-time reordering of execution sets (refs. 35, 36)", "SPARK (ref. 34)", "Sparse BLAS (ref. 18)", "procedure cloning (ref. 16)", "unimodular transformation framework (refs. 4, 5, 29, 40)", "MT1 prototype restructuring compiler (refs. 6, 15)", "Harwell-Boeing collection (ref. 23)", "hand-coded tridiagonal solver (ref. 30)"],
+ "evidence": [
+  {"source": "full text", "section": "Sec. 1, pp. 109-110"},
+  {"source": "full text", "section": "Sec. 2-3, pp. 110-113"},
+  {"source": "full text", "section": "Sec. 4, pp. 112-117"},
+  {"source": "full text", "section": "Sec. 5, pp. 117-120"},
+  {"source": "full text", "section": "Sec. 6, pp. 120-122"},
+  {"source": "full text", "section": "Sec. 7, pp. 122-125"},
+  {"source": "full text", "section": "Sec. 8, p. 125"}
+ ],
+ "notes": ""
+}

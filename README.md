@@ -29,10 +29,10 @@ been read beyond their bibliographic record say so.
 | systems | 28 |
 | metadata-verified against Crossref/arXiv | 95 |
 | status `verified` (primary source read) | 4 |
-| status `read` | 54 |
-| status `screened` / `discovered` | 50 |
+| status `read` | 67 |
+| status `screened` / `discovered` | 37 |
 | tier core / bridge / foundation / adjacent | 73 / 17 / 12 / 6 |
-| paper cards | 58 |
+| paper cards | 71 |
 <!-- END:status -->
 
 Status meanings: `discovered` = metadata verified against Crossref/arXiv
@@ -127,38 +127,38 @@ rationale in `docs/taxonomy.md`.
 <!-- BEGIN:categories -->
 ### Foundations (pre-1980 compiler, dependence, vector/array/dataflow machines)
 
-- **Backus et al. (1957)** — [The FORTRAN automatic coding system](https://doi.org/10.1145/1455567.1455599) — *foundational*. *(metadata-verified; summary pending full read)*  
-  Where the compiler bargain starts: a higher-level program in exchange for compiler-made low-level decisions.  
+- **Backus et al. (1957)** — [The FORTRAN automatic coding system](https://doi.org/10.1145/1455567.1455599) — *foundational*.  
+  It is an early, detailed account of a translator for an algebraic language with loops and arrays, useful as background for the compiler papers in this survey.  
   `foundations`
-- **Barnes et al. (1968)** — [The ILLIAC IV Computer](https://doi.org/10.1109/tc.1968.229158) — *hardware*. *(metadata-verified; summary pending full read)*  
-  The canonical array processor; cited to anchor the SIMD/array lane of the timeline.  
+- **Barnes et al. (1968)** — [The ILLIAC IV Computer](https://doi.org/10.1109/tc.1968.229158) — *hardware*.  
+  It describes an array computer with per-element memories and nearest-neighbour routing, which is the hardware context needed to read array-machine software and compiler papers.  
   `foundations` `hardware`
-- **Lamport (1974)** — [The parallel execution of DO loops](https://doi.org/10.1145/360827.360844) — *foundational*. *(metadata-verified; summary pending full read)*  
-  The iteration-space view of loops that every later partitioner, polyhedral or otherwise, relies on.  
+- **Lamport (1974)** — [The parallel execution of DO loops](https://doi.org/10.1145/360827.360844) — *foundational*.  
+  It shows how a compiler can rewrite a loop nest so that its iterations run in parallel while the order of references to the same array element is preserved.  
   `foundations` `dependence`
 - **Dennis and Misunas (1975)** — [A preliminary architecture for a basic data-flow processor](https://doi.org/10.1145/642089.642111) — *hardware*. *(metadata-verified; summary pending full read)*  
   Dataflow execution with explicit token movement, an ancestor of spatial dataflow accelerators.  
   `foundations` `hardware` `dataflow`
-- **Misunas (1977)** — Report on the Workshop on Data Flow Computer and Program Organization — *foundational*. *(metadata-verified; summary pending full read)*  
-  MIT technical memorandum reporting a 1977 workshop on dataflow computer architecture and program organisation; included as a foundations source for dataflow machine concepts.  
+- **Misunas (1977)** — Report on the Workshop on Data Flow Computer and Program Organization — *foundational*.  
+  It is an early record of data-flow machine proposals, showing how instructions and tasks were assigned to processors and how results moved between modules.  
   `foundations` `dataflow`
-- **Russell (1978)** — [The CRAY-1 computer system](https://doi.org/10.1145/359327.359336) — *hardware*. *(metadata-verified; summary pending full read)*  
-  The canonical pipelined vector machine of the foundations era.  
+- **Russell (1978)** — [The CRAY-1 computer system](https://doi.org/10.1145/359327.359336) — *hardware*.  
+  It is a readable primary account of a 1970s vector machine and the vectorizing compiler built for it, useful as a single-processor baseline.  
   `foundations` `hardware`
-- **Kuck et al. (1981)** — [Dependence graphs and compiler optimizations](https://doi.org/10.1145/567532.567555) — *foundational*. *(metadata-verified; summary pending full read)*  
-  Dependence graphs are the representation Era-2 distributed-memory compilers inherited unchanged.  
+- **Kuck et al. (1981)** — [Dependence graphs and compiler optimizations](https://doi.org/10.1145/567532.567555) — *foundational*.  
+  It is the survey's reference for the dependence graph as a compiler representation, and it states the arc-removal and graph-abstraction steps in one place.  
   `foundations` `dependence`
-- **Kung (1982)** — [Why systolic architectures?](https://doi.org/10.1109/mc.1982.1653825) — *hardware*. *(metadata-verified; summary pending full read)*  
-  Systolic arrays are the closest architectural ancestor of today's wafer-scale and spatial compilation targets.  
+- **Kung (1982)** — [Why systolic architectures?](https://doi.org/10.1109/mc.1982.1653825) — *hardware*.  
+  It is the foundational statement of systolic architecture and explains why regular cell-to-cell data flow cuts memory traffic for compute-bound problems.  
   `foundations` `hardware` `systolic`
-- **Seitz (1985)** — [The cosmic cube](https://doi.org/10.1145/2465.2467) — *hardware*. *(metadata-verified; summary pending full read)*  
-  The machine that made distributed memory the programmer's, and soon the compiler's, problem.  
+- **Seitz (1985)** — [The cosmic cube](https://doi.org/10.1145/2465.2467) — *hardware*.  
+  It is a primary source for how a 1980s message-passing machine exposed processes, channels and placement to programmers, and for what the authors expected compilers to add.  
   `foundations` `hardware` `hypercube`
-- **Hillis and Steele (1986)** — [Data parallel algorithms](https://doi.org/10.1145/7902.7903) — *foundational*. *(metadata-verified; summary pending full read)*  
-  The data-parallel programming model that HPF's array statements and today's SPMD tensor programs both descend from.  
+- **Hillis and Steele (1986)** — [Data parallel algorithms](https://doi.org/10.1145/7902.7903) — *foundational*.  
+  It is the clearest early statement of the data parallel style, showing how a programmer reasons with one processor per element and general communication.  
   `foundations` `data-parallel`
-- **Allen and Kennedy (1987)** — [Automatic translation of FORTRAN programs to vector form](https://doi.org/10.1145/29873.29875) — *foundational*. *(metadata-verified; summary pending full read)*  
-  The dependence-based vectoriser from which the Rice Fortran D work grew.  
+- **Allen and Kennedy (1987)** — [Automatic translation of FORTRAN programs to vector form](https://doi.org/10.1145/29873.29875) — *foundational*.  
+  Read it for the dependence test and loop transformations that decide which FORTRAN loops can become vector statements.  
   `foundations` `vectorization`
 
 ### Global arrays and pre-HPF systems
@@ -325,8 +325,8 @@ rationale in `docs/taxonomy.md`.
 - **Hwang et al. (1995)** — [Runtime and language support for compiling adaptive irregular programs on distributed‐memory machines](https://doi.org/10.1002/spe.4380250603) — *runtime*.  
   It shows concretely how adaptive irregular codes, such as molecular dynamics and particle simulation, are handled by reusing or rebuilding communication schedules.  
   `irregular` `chaos`
-- **Bik and Wijshoff (1996)** — [Automatic Data Structure Selection and Transformation for Sparse Matrix Computations](https://doi.org/10.1109/71.485501) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
-  TPDS paper on delaying sparse data-structure selection to compile time so that a restructuring compiler can combine loop optimisation with storage choice for sparse matrices; single-node, included as context for sparse-compilation lineage.  
+- **Bik and Wijshoff (1996)** — [Automatic Data Structure Selection and Transformation for Sparse Matrix Computations](https://doi.org/10.1109/71.485501) — *compiler-technique*.  
+  Read it as an example of compile-time sparse data-structure selection, noting that its only distributed-memory content is one sentence in the introduction.  
   `sparse` `restructuring-compiler`
 - **Ravishankar et al. (2015)** — [Distributed memory code generation for mixed Irregular/Regular computations](https://doi.org/10.1145/2688500.2688515) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   Where polyhedral code generation and inspector-executor meet.  
@@ -400,8 +400,8 @@ rationale in `docs/taxonomy.md`.
 - **Baghdadi et al. (2019)** — [Tiramisu: A Polyhedral Compiler for Expressing Fast and Portable Code](https://doi.org/10.1109/cgo.2019.8661197) — *full-system*. *(metadata-verified; summary pending full read)*  
   A scheduling-language compiler whose schedule can place computations on distributed nodes.  
   `polyhedral` `scheduling-languages`
-- **Thangamani et al. (2024)** — [A Survey of General-purpose Polyhedral Compilers](https://doi.org/10.1145/3674735) — *survey*. *(metadata-verified; summary pending full read)*  
-  Background for the polyhedral representation on which Bondhugula's and Molly's distributed-memory code generation rests.  
+- **Thangamani et al. (2024)** — [A Survey of General-purpose Polyhedral Compilers](https://doi.org/10.1145/3674735) — *survey*.  
+  A newcomer gets a current list of general-purpose polyhedral compilers and a reproducible single-node benchmark of how they behave, which is useful background for loop-optimization work.  
   `survey` `polyhedral`
 
 ### Task / region compiler systems
@@ -535,14 +535,14 @@ rationale in `docs/taxonomy.md`.
 - **Kennedy et al. (2007)** — [The rise and fall of High Performance Fortran](https://doi.org/10.1145/1238844.1238851) — *experience*.  
   It explains, from people who built the language, how distribution-based data-parallel compilation was expected to work and why it did not carry the field.  
   `hpf` `history`
-- **Unat et al. (2017)** — [Trends in Data Locality Abstractions for HPC Systems](https://doi.org/10.1109/tpds.2017.2703149) — *survey*. *(metadata-verified; summary pending full read)*  
-  A locality-centred view of the same design space from the HPC side, complementary to this survey's compiler-centred view.  
+- **Unat et al. (2017)** — [Trends in Data Locality Abstractions for HPC Systems](https://doi.org/10.1109/tpds.2017.2703149) — *survey*.  
+  It gives a newcomer shared terminology for layout, decomposition and placement, and a map of how locality abstractions for distributed-memory systems fit across the software stack.  
   `survey` `locality`
 - **Li et al. (2021)** — [The Deep Learning Compiler: A Comprehensive Survey](https://doi.org/10.1109/tpds.2020.3030548) — *survey*. *(metadata-verified; summary pending full read)*  
   The common-architecture figure of this survey is modelled on the one here; read it to see how DL compilers are usually decomposed.  
   `survey` `ml-compilers`
-- **Thangamani et al. (2024)** — [A Survey of General-purpose Polyhedral Compilers](https://doi.org/10.1145/3674735) — *survey*. *(metadata-verified; summary pending full read)*  
-  Background for the polyhedral representation on which Bondhugula's and Molly's distributed-memory code generation rests.  
+- **Thangamani et al. (2024)** — [A Survey of General-purpose Polyhedral Compilers](https://doi.org/10.1145/3674735) — *survey*.  
+  A newcomer gets a current list of general-purpose polyhedral compilers and a reproducible single-node benchmark of how they behave, which is useful background for loop-optimization work.  
   `survey` `polyhedral`
 - **Hall et al. (2025)** — [Scheduling Language Chronology: Past, Present, and Future](https://doi.org/10.1145/3743135) — *survey*. *(metadata-verified; summary pending full read)*  
   Explains the schedule-as-separate-program idea that DISTAL and PartIR reuse for distribution decisions.  
@@ -557,17 +557,17 @@ rationale in `docs/taxonomy.md`.
 *Machine driver:* Stored-program machines, FORTRAN, pipelined vector processors, lock-step array processors, dataflow and systolic proposals.  
 *Limitation that motivated the next era:* No notion of data placement as a compiler problem; machines had a single address space or SIMD broadcast control.
 
-- **Backus et al. (1957)** — [The FORTRAN automatic coding system](https://doi.org/10.1145/1455567.1455599) — *foundational*. *(metadata-verified; summary pending full read)*  
+- **Backus et al. (1957)** — [The FORTRAN automatic coding system](https://doi.org/10.1145/1455567.1455599) — *foundational*.  
   `foundations`
-- **Barnes et al. (1968)** — [The ILLIAC IV Computer](https://doi.org/10.1109/tc.1968.229158) — *hardware*. *(metadata-verified; summary pending full read)*  
+- **Barnes et al. (1968)** — [The ILLIAC IV Computer](https://doi.org/10.1109/tc.1968.229158) — *hardware*.  
   `foundations` `hardware`
-- **Lamport (1974)** — [The parallel execution of DO loops](https://doi.org/10.1145/360827.360844) — *foundational*. *(metadata-verified; summary pending full read)*  
+- **Lamport (1974)** — [The parallel execution of DO loops](https://doi.org/10.1145/360827.360844) — *foundational*.  
   `foundations` `dependence`
 - **Dennis and Misunas (1975)** — [A preliminary architecture for a basic data-flow processor](https://doi.org/10.1145/642089.642111) — *hardware*. *(metadata-verified; summary pending full read)*  
   `foundations` `hardware` `dataflow`
-- **Misunas (1977)** — Report on the Workshop on Data Flow Computer and Program Organization — *foundational*. *(metadata-verified; summary pending full read)*  
+- **Misunas (1977)** — Report on the Workshop on Data Flow Computer and Program Organization — *foundational*.  
   `foundations` `dataflow`
-- **Russell (1978)** — [The CRAY-1 computer system](https://doi.org/10.1145/359327.359336) — *hardware*. *(metadata-verified; summary pending full read)*  
+- **Russell (1978)** — [The CRAY-1 computer system](https://doi.org/10.1145/359327.359336) — *hardware*.  
   `foundations` `hardware`
 
 ### Era 1: Emergence of distributed-memory compilation (1980–1987)
@@ -575,15 +575,15 @@ rationale in `docs/taxonomy.md`.
 *Machine driver:* Multicomputers and hypercubes (Cosmic Cube, iPSC, nCUBE), systolic arrays, Connection Machine.  
 *Limitation that motivated the next era:* Programming by hand was error-prone; portability across machines was poor.
 
-- **Kuck et al. (1981)** — [Dependence graphs and compiler optimizations](https://doi.org/10.1145/567532.567555) — *foundational*. *(metadata-verified; summary pending full read)*  
+- **Kuck et al. (1981)** — [Dependence graphs and compiler optimizations](https://doi.org/10.1145/567532.567555) — *foundational*.  
   `foundations` `dependence`
-- **Kung (1982)** — [Why systolic architectures?](https://doi.org/10.1109/mc.1982.1653825) — *hardware*. *(metadata-verified; summary pending full read)*  
+- **Kung (1982)** — [Why systolic architectures?](https://doi.org/10.1109/mc.1982.1653825) — *hardware*.  
   `foundations` `hardware` `systolic`
-- **Seitz (1985)** — [The cosmic cube](https://doi.org/10.1145/2465.2467) — *hardware*. *(metadata-verified; summary pending full read)*  
+- **Seitz (1985)** — [The cosmic cube](https://doi.org/10.1145/2465.2467) — *hardware*.  
   `foundations` `hardware` `hypercube`
-- **Hillis and Steele (1986)** — [Data parallel algorithms](https://doi.org/10.1145/7902.7903) — *foundational*. *(metadata-verified; summary pending full read)*  
+- **Hillis and Steele (1986)** — [Data parallel algorithms](https://doi.org/10.1145/7902.7903) — *foundational*.  
   `foundations` `data-parallel`
-- **Allen and Kennedy (1987)** — [Automatic translation of FORTRAN programs to vector form](https://doi.org/10.1145/29873.29875) — *foundational*. *(metadata-verified; summary pending full read)*  
+- **Allen and Kennedy (1987)** — [Automatic translation of FORTRAN programs to vector form](https://doi.org/10.1145/29873.29875) — *foundational*.  
   `foundations` `vectorization`
 
 ### Era 2: Global arrays and data decomposition (1988–1992)
@@ -679,7 +679,7 @@ rationale in `docs/taxonomy.md`.
   `irregular` `chaos` `mapping-array`
 - **Su et al. (1995)** — [Advanced compilation techniques in the PARADIGM compiler for distributed-memory multicomputers](https://doi.org/10.1145/224538.224650) — *compiler-technique*.  
   `paradigm` `automatic-distribution`
-- **Bik and Wijshoff (1996)** — [Automatic Data Structure Selection and Transformation for Sparse Matrix Computations](https://doi.org/10.1109/71.485501) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
+- **Bik and Wijshoff (1996)** — [Automatic Data Structure Selection and Transformation for Sparse Matrix Computations](https://doi.org/10.1109/71.485501) — *compiler-technique*.  
   `sparse` `restructuring-compiler`
 - **Gropp et al. (1996)** — [A high-performance, portable implementation of the MPI message passing interface standard](https://doi.org/10.1016/0167-8191(96)00024-5) — *runtime*. *(metadata-verified; summary pending full read)*  
   `mpi` `runtime`
@@ -746,7 +746,7 @@ rationale in `docs/taxonomy.md`.
   `task-region` `regent`
 - **Dathathri et al. (2016)** — [Compiling Affine Loop Nests for a Dynamic Scheduling Runtime on Shared and Distributed Memory](https://doi.org/10.1145/2948975) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   `polyhedral` `runtime`
-- **Unat et al. (2017)** — [Trends in Data Locality Abstractions for HPC Systems](https://doi.org/10.1109/tpds.2017.2703149) — *survey*. *(metadata-verified; summary pending full read)*  
+- **Unat et al. (2017)** — [Trends in Data Locality Abstractions for HPC Systems](https://doi.org/10.1109/tpds.2017.2703149) — *survey*.  
   `survey` `locality`
 - **Huang et al. (2018)** — [GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism](https://arxiv.org/abs/1811.06965) — *runtime*. *(metadata-verified; summary pending full read)*  
   `ml-systems` `pipeline`
@@ -792,7 +792,7 @@ rationale in `docs/taxonomy.md`.
   `mlir` `stencil` `automatic-mpi`
 - **Project (2024)** — [Shardy: an MLIR-based tensor partitioning system (official documentation)](https://openxla.org/shardy) — *specification*. *(metadata-verified; summary pending full read)*  
   `ml-compilers` `mlir` `mesh-sharding`
-- **Thangamani et al. (2024)** — [A Survey of General-purpose Polyhedral Compilers](https://doi.org/10.1145/3674735) — *survey*. *(metadata-verified; summary pending full read)*  
+- **Thangamani et al. (2024)** — [A Survey of General-purpose Polyhedral Compilers](https://doi.org/10.1145/3674735) — *survey*.  
   `survey` `polyhedral`
 - **Tramm et al. (2024)** — [Efficient algorithms for Monte Carlo particle transport on AI accelerator hardware](https://doi.org/10.1016/j.cpc.2023.109072) — *experience*. *(metadata-verified; summary pending full read)*  
   `wafer-scale`

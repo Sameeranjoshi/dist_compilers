@@ -1,0 +1,90 @@
+{
+ "id": "seitz1985cosmic",
+ "summary": "The Cosmic Cube is an experimental 64-node machine whose nodes are linked as a binary 6-cube and communicate only by messages. The paper describes its kernel, its process model, a concurrent N-body formulation, and application performance relative to a VAX 11/780.",
+ "why_read": "It is a primary source for how a 1980s message-passing machine exposed processes, channels and placement to programmers, and for what the authors expected compilers to add.",
+ "main_contribution": "A message-passing multicomputer design and process programming model, demonstrated on a working 64-node hardware implementation.",
+ "main_limitation": "The authors state that the approach is limited to applications with highly concurrent formulations, and that most deficiencies lie in the representation and compilation of process code.",
+ "evaluation_method": "Application runs and a speedup model with a measured overhead parameter, compared with a VAX 11/780.",
+ "benchmarks": [
+  "N-body ring formulation, 7 bodies on 4 nodes (speedup model, p. 28)",
+  "Application set with measured overhead values from 0.025 to 0.500 (p. 31)",
+  "Lattice Monte Carlo program run for 2500 accumulated hours (p. 31)",
+  "Single node versus VAX 11/780 timing (p. 31)"
+ ],
+ "optimization_objectives": [
+  "load-balance",
+  "latency",
+  "topology-hops",
+  "overlap"
+ ],
+ "data_decomposition": [
+  "application-defined"
+ ],
+ "computation_mapping": [
+  "task-placement"
+ ],
+ "communication_generation": [
+  "programmer-explicit",
+  "overlapped"
+ ],
+ "compiler_runtime_boundary": [
+  "load-time"
+ ],
+ "target_hardware": [
+  "dm-multicomputer",
+  "hypercube-mpp"
+ ],
+ "ir_representation": [
+  "none"
+ ],
+ "compiler_architecture": [
+  "library-backed"
+ ],
+ "states_relationship_to": [
+  "Browning and Locanthi Caltech research (1978-1980)",
+  "Lang's program modeling and simulations (1980-1982)",
+  "Sullivan and Brashkow homogeneous machine (1977)",
+  "Hoare's communicating sequential processes",
+  "Hewitt's actor paradigm",
+  "Martin's processing surface experiments",
+  "Kung's systolic algorithms",
+  "Omega and banyan networks",
+  "Ware's speedup model",
+  "Manchester prototype dataflow computer (same issue)",
+  "Patterson's RISC article (same issue)",
+  "Intel 8086 and 8087",
+  "VAX 11/780",
+  "Mosaic single-chip node (same group)"
+ ],
+ "evidence": [
+  {
+   "source": "full text",
+   "section": "The message-passing architecture (pp. 22-23)"
+  },
+  {
+   "source": "full text",
+   "section": "Process programming and process distribution (pp. 23-24)"
+  },
+  {
+   "source": "full text",
+   "section": "Concurrency approach and concurrent formulations (pp. 25-26)"
+  },
+  {
+   "source": "full text",
+   "section": "Cosmic Cube hardware (pp. 28-29)"
+  },
+  {
+   "source": "full text",
+   "section": "Cosmic Cube software (pp. 30-31)"
+  },
+  {
+   "source": "full text",
+   "section": "Applications and benchmarks; future perfect cubes (pp. 31-32)"
+  },
+  {
+   "source": "full text",
+   "section": "Appendix: history and acknowledgments (p. 33)"
+  }
+ ],
+ "notes": "Title printed in capitals ('THE COSMIC CUBE'); the catalog differs only in case. First author Charles L. Seitz and year 1985 match the title page (January 1985). PDF metadata dates the file 1984; the printed year was used.Catalog paper_type 'hardware' is in the taxonomy and is used in the card header. Lead to reconcile. The running head of p. 22 reads 'Number 2' in the text layer while other pages read 'Number 1'; the card uses Number 1. Some OCR errors in numbers and figure labels (for example the power figure on p. 28) were not relied on."
+}

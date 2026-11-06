@@ -1,0 +1,70 @@
+{
+ "id": "russell1978cray1",
+ "summary": "The paper describes the CRAY-1 vector computer, including its registers, interleaved memory, chained functional units and cooling. It also explains how the optimizing Fortran compiler vectorizes innermost DO loops and reports timings for simple loops and library routines.",
+ "why_read": "It is a readable primary account of a 1970s vector machine and the vectorizing compiler built for it, useful as a single-processor baseline.",
+ "main_contribution": "A description of the CRAY-1 architecture and its vectorizing Fortran compiler, with loop timing data.",
+ "main_limitation": "The paper reports that most early compiled Fortran loops ran slower than hand-coded machine code, and it covers one processor only.",
+ "evaluation_method": "Cited independent benchmark studies plus vendor timings of simple DO loops and library routines, in clock periods per result.",
+ "benchmarks": [
+  "Table III: 16 simple DO loops at N = 1 to 1000",
+  "Fig. 7: scalar and vector library routine timings",
+  "Independent matrix benchmark studies cited as refs 3 and 4"
+ ],
+ "optimization_objectives": [
+  "memory-bandwidth",
+  "latency",
+  "productivity"
+ ],
+ "data_decomposition": [],
+ "computation_mapping": [
+  "data-parallelism"
+ ],
+ "communication_generation": [],
+ "compiler_runtime_boundary": [
+  "fully-static"
+ ],
+ "target_hardware": [
+  "vector-array-foundation"
+ ],
+ "ir_representation": [
+  "none"
+ ],
+ "compiler_architecture": [],
+ "states_relationship_to": [
+  "CDC 1604, 6600 and 7600",
+  "CDC STAR 100",
+  "Texas Instruments ASC",
+  "ILLIAC IV",
+  "IBM 360/195 data forwarding (ref 6)",
+  "IBM System/360 Model 91",
+  "Auerbach CRAY-1 comparison (ref 2)",
+  "Keller LASL evaluation (ref 1)"
+ ],
+ "evidence": [
+  {
+   "source": "full text",
+   "section": "Introduction (pp. 63-64)"
+  },
+  {
+   "source": "full text",
+   "section": "Architecture and Main Memory Speed (pp. 64-65)"
+  },
+  {
+   "source": "full text",
+   "section": "Functional Units, Registers and Chaining (pp. 67-69)"
+  },
+  {
+   "source": "full text",
+   "section": "Evolution of the CRAY-1 and Table III (pp. 70-71)"
+  },
+  {
+   "source": "full text",
+   "section": "Software and Front-End Computer Interface (p. 71)"
+  },
+  {
+   "source": "full text",
+   "section": "Summary (p. 72)"
+  }
+ ],
+ "notes": "Title printed as 'The CRAY-1 Computer System'; the catalog has lowercase 'computer system' (case only). First author Richard M. Russell and year 1978 match the title page. PDF metadata dates the file 1977; the printed year (January 1978) was used.Catalog paper_type 'hardware' is in the taxonomy and is used in the card header. Lead to reconcile. Page 1 carries closing text and references of an unrelated article (it discusses DEC's '10' systems), which was excluded. The text gives 12 I/O channels (pp. 64, 71) but Table I gives 24 (p. 65)."
+}

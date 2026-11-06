@@ -192,6 +192,82 @@
    ]
   }
  },
+ "kung1982systolic": {
+  "data_decomposition": {
+   "first": [
+    "application-defined",
+    "replicated"
+   ],
+   "second": [
+    "application-defined"
+   ]
+  },
+  "computation_mapping": {
+   "first": [
+    "data-parallelism",
+    "pipeline-parallelism",
+    "spatial-placement"
+   ],
+   "second": [
+    "spatial-placement"
+   ]
+  },
+  "communication_generation": {
+   "first": [
+    "broadcast-multicast",
+    "communication-pipelining",
+    "overlapped",
+    "programmer-explicit",
+    "reduction-allreduce"
+   ],
+   "second": [
+    "broadcast-multicast",
+    "programmer-explicit"
+   ]
+  },
+  "compiler_runtime_boundary": {
+   "first": [
+    "analytic-optimization",
+    "fully-static"
+   ],
+   "second": []
+  },
+  "optimization_objectives": {
+   "first": [
+    "communication-volume",
+    "latency",
+    "load-balance",
+    "local-memory-fit",
+    "memory-bandwidth",
+    "overlap",
+    "productivity",
+    "synchronization"
+   ],
+   "second": [
+    "memory-bandwidth"
+   ]
+  }
+ },
+ "hillis1986data": {
+  "data_decomposition": {
+   "first": [
+    "application-defined",
+    "dynamic-distribution"
+   ],
+   "second": [
+    "application-defined"
+   ]
+  },
+  "optimization_objectives": {
+   "first": [
+    "latency",
+    "productivity"
+   ],
+   "second": [
+    "productivity"
+   ]
+  }
+ },
  "chen1988compiling": {
   "data_decomposition": {
    "first": [
@@ -2011,6 +2087,39 @@
    ]
   }
  },
+ "misunas1977workshop": {
+  "data_decomposition": {
+   "first": [
+    "application-defined"
+   ],
+   "second": []
+  },
+  "computation_mapping": {
+   "first": [
+    "hierarchical-mapping",
+    "spatial-placement",
+    "task-placement"
+   ],
+   "second": [
+    "spatial-placement",
+    "task-placement"
+   ]
+  },
+  "compiler_runtime_boundary": {
+   "first": [],
+   "second": [
+    "adaptive"
+   ]
+  },
+  "optimization_objectives": {
+   "first": [
+    "energy",
+    "latency",
+    "productivity"
+   ],
+   "second": []
+  }
+ },
  "yelick2007titanium": {
   "data_decomposition": {
    "first": [
@@ -2232,6 +2341,171 @@
     "productivity",
     "synchronization"
    ]
+  }
+ },
+ "unat2017trends": {
+  "computation_mapping": {
+   "first": [
+    "data-parallelism",
+    "hierarchical-mapping",
+    "loop-to-processor",
+    "owner-computes",
+    "region-placement",
+    "task-placement"
+   ],
+   "second": [
+    "task-placement"
+   ]
+  },
+  "communication_generation": {
+   "first": [
+    "programmer-explicit"
+   ],
+   "second": [
+    "compiler-p2p",
+    "programmer-explicit"
+   ]
+  },
+  "compiler_runtime_boundary": {
+   "first": [
+    "adaptive",
+    "autotuned",
+    "jit",
+    "profile-guided",
+    "static-with-directives"
+   ],
+   "second": []
+  },
+  "optimization_objectives": {
+   "first": [
+    "communication-volume",
+    "energy",
+    "load-balance",
+    "memory-bandwidth",
+    "performance-portability",
+    "productivity",
+    "topology-hops"
+   ],
+   "second": []
+  }
+ },
+ "thangamani2024polyhedral": {
+  "computation_mapping": {
+   "first": [
+    "iteration-space-partitioning",
+    "loop-to-processor"
+   ],
+   "second": [
+    "iteration-space-partitioning",
+    "task-placement"
+   ]
+  },
+  "compiler_runtime_boundary": {
+   "first": [
+    "adaptive",
+    "fully-static",
+    "jit",
+    "profile-guided",
+    "static-with-directives"
+   ],
+   "second": [
+    "adaptive",
+    "analytic-optimization",
+    "jit",
+    "profile-guided"
+   ]
+  },
+  "optimization_objectives": {
+   "first": [
+    "load-balance",
+    "local-memory-fit",
+    "synchronization"
+   ],
+   "second": [
+    "local-memory-fit"
+   ]
+  }
+ },
+ "lamport1974parallel": {
+  "computation_mapping": {
+   "first": [
+    "data-parallelism",
+    "iteration-space-partitioning",
+    "loop-to-processor"
+   ],
+   "second": [
+    "iteration-space-partitioning"
+   ]
+  },
+  "communication_generation": {
+   "first": [
+    "reduction-allreduce"
+   ],
+   "second": []
+  },
+  "compiler_runtime_boundary": {
+   "first": [
+    "analytic-optimization",
+    "fully-static"
+   ],
+   "second": [
+    "analytic-optimization"
+   ]
+  },
+  "optimization_objectives": {
+   "first": [
+    "communication-volume",
+    "latency"
+   ],
+   "second": [
+    "latency"
+   ]
+  }
+ },
+ "allen1987automatic": {
+  "computation_mapping": {
+   "first": [
+    "data-parallelism"
+   ],
+   "second": []
+  }
+ },
+ "barnes1968illiac": {
+  "computation_mapping": {
+   "first": [
+    "data-parallelism"
+   ],
+   "second": []
+  },
+  "communication_generation": {
+   "first": [
+    "broadcast-multicast",
+    "programmer-explicit"
+   ],
+   "second": []
+  },
+  "optimization_objectives": {
+   "first": [
+    "overlap",
+    "topology-hops"
+   ],
+   "second": []
+  }
+ },
+ "russell1978cray1": {
+  "computation_mapping": {
+   "first": [
+    "data-parallelism"
+   ],
+   "second": []
+  },
+  "optimization_objectives": {
+   "first": [
+    "latency",
+    "memory-bandwidth",
+    "productivity"
+   ],
+   "second": []
   }
  },
  "gupta1992automatic": {
@@ -2565,6 +2839,37 @@
    ]
   }
  },
+ "seitz1985cosmic": {
+  "communication_generation": {
+   "first": [
+    "overlapped",
+    "programmer-explicit"
+   ],
+   "second": [
+    "programmer-explicit"
+   ]
+  },
+  "compiler_runtime_boundary": {
+   "first": [
+    "load-time"
+   ],
+   "second": [
+    "adaptive"
+   ]
+  },
+  "optimization_objectives": {
+   "first": [
+    "latency",
+    "load-balance",
+    "overlap",
+    "topology-hops"
+   ],
+   "second": [
+    "load-balance",
+    "topology-hops"
+   ]
+  }
+ },
  "koelbel1991regular": {
   "communication_generation": {
    "first": [
@@ -2646,6 +2951,29 @@
    "second": [
     "productivity",
     "search-cost"
+   ]
+  }
+ },
+ "bik1996automatic": {
+  "compiler_runtime_boundary": {
+   "first": [
+    "static-with-directives"
+   ],
+   "second": [
+    "adaptive",
+    "static-with-directives"
+   ]
+  }
+ },
+ "backus1957fortran": {
+  "optimization_objectives": {
+   "first": [
+    "latency",
+    "productivity"
+   ],
+   "second": [
+    "memory-bandwidth",
+    "productivity"
    ]
   }
  },

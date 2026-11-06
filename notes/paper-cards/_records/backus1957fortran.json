@@ -1,0 +1,26 @@
+{
+ "id": "backus1957fortran",
+ "summary": "The paper describes the FORTRAN language for the IBM 704 and the six-section translator that turns its statements, DO loops and subscripted variables into machine code. It reports one case history and rough ratios of output instructions and coding time to source statements, and it has no parallel or distributed target.",
+ "why_read": "It is an early, detailed account of a translator for an algebraic language with loops and arrays, useful as background for the compiler papers in this survey.",
+ "main_contribution": "A description of the FORTRAN language and its translator for the IBM 704, including index-register handling for DO-controlled subscripts and flow-based register assignment.",
+ "main_limitation": "The evidence is one case history and rough ratios, the paper omits many language features, and it has no parallel or distributed target.",
+ "evaluation_method": "case history plus aggregate instruction-count and coding-time ratios; no controlled benchmark",
+ "benchmarks": ["one case-history job (p. 188)", "problems listed in the Conclusion (pp. 196-197)"],
+ "optimization_objectives": ["productivity", "latency"],
+ "data_decomposition": [],
+ "computation_mapping": [],
+ "communication_generation": [],
+ "compiler_runtime_boundary": ["static-with-directives"],
+ "target_hardware": [],
+ "ir_representation": ["graph-ir", "multi-level-ir"],
+ "compiler_architecture": ["language-spec"],
+ "states_relationship_to": ["SHARE symbolic language (Section 6, p. 191)"],
+ "evidence": [
+  {"source": "full text", "section": "Introduction, p. 188"},
+  {"source": "full text", "section": "The FORTRAN Language, pp. 189-191"},
+  {"source": "full text", "section": "General Organization of the System, pp. 191-192"},
+  {"source": "full text", "section": "Translator Sections 1-5, pp. 192-196"},
+  {"source": "full text", "section": "Conclusion, pp. 196-198"}
+ ],
+ "notes": "Title capitalization differs: the PDF prints 'The FORTRAN Automatic Coding System' and the catalog has 'The FORTRAN automatic coding system'. First author (J. W. Backus) and year (1957) match."
+}

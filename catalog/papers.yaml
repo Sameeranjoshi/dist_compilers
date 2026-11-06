@@ -266,32 +266,64 @@ papers:
   source_code_url: null
   era: era5
   relevance_tier: adjacent
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: '[metadata-level] IEEE TPDS survey of data-locality abstractions for HPC (libraries, languages, compilers,
-    runtimes); included as a bridge survey between HPF-era distribution and modern locality models.'
-  why_read: A locality-centred view of the same design space from the HPC side, complementary to this survey's compiler-centred
-    view.
+  summary: 'This survey distills a series of workshops on data-locality abstractions into a layered view of libraries,
+    languages, runtimes and system-scale tools. Its distributed-memory content is qualitative: it classifies libraries
+    by scale and languages by local-versus-global object visibility, and it calls for common abstractions across
+    these layers.'
+  why_read: It gives a newcomer shared terminology for layout, decomposition and placement, and a map of how locality
+    abstractions for distributed-memory systems fit across the software stack.
   problem: null
   input_abstraction: []
-  target_hardware: []
+  target_hardware:
+  - cpu-cluster
+  - dm-multicomputer
+  - pgas-target
+  - hierarchical-heterogeneous
   memory_model: null
   programming_model: null
-  data_decomposition: []
-  computation_mapping: []
-  communication_generation: []
-  compiler_runtime_boundary: []
-  compiler_architecture: []
-  ir_representation: []
-  optimization_objectives: []
+  data_decomposition:
+  - tiled-hierarchical
+  computation_mapping:
+  - task-placement
+  - loop-to-processor
+  - region-placement
+  - data-parallelism
+  - hierarchical-mapping
+  - owner-computes
+  communication_generation:
+  - programmer-explicit
+  compiler_runtime_boundary:
+  - static-with-directives
+  - profile-guided
+  - autotuned
+  - adaptive
+  - jit
+  compiler_architecture:
+  - polyhedral
+  - library-backed
+  - dsl-compiler
+  ir_representation:
+  - polyhedral-sets
+  optimization_objectives:
+  - communication-volume
+  - memory-bandwidth
+  - energy
+  - load-balance
+  - topology-hops
+  - productivity
+  - performance-portability
   maturity:
   - theory
-  evaluation_method: null
+  evaluation_method: none
   benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  main_contribution: A common terminology and a layered survey of data-locality abstractions, closing with recommendations
+    for interoperable abstractions and runtime interfaces.
+  main_limitation: The authors state that they do not claim to have solved or covered every aspect of the challenge,
+    and their library comparison is a deliberately simple sketch.
   predecessors: []
   successors: []
   related_versions: []
@@ -304,13 +336,34 @@ papers:
   technique_lists: []
   start_here: null
   evidence:
-  - source: Crossref metadata
-    section: bibliographic record
-    pages: 3007-3020
+  - source: full text
+    section: Sec. 1, pp. 3007-3008
+  - source: full text
+    section: Sec. 2, pp. 3008-3009
+  - source: full text
+    section: Sec. 3, pp. 3009-3010
+  - source: full text
+    section: Sec. 3.2 and Table 1, pp. 3010-3011
+  - source: full text
+    section: Sec. 4.1.1-4.1.2, pp. 3011-3012
+  - source: full text
+    section: Sec. 4.2, pp. 3012-3013
+  - source: full text
+    section: Sec. 5.1-5.2, pp. 3013-3014
+  - source: full text
+    section: Sec. 6, pp. 3014-3015
+  - source: full text
+    section: Sec. 7.2-7.3, pp. 3016-3017
+  - source: full text
+    section: Sec. 8, p. 3017
   metadata_sources:
   - crossref
+  - full text read (paper card)
   - supplied PDF (owner-provided, not redistributed)
-  notes: null
+  notes: 'Discusses: Kokkos; TiDA; GridTools; hStreams; DASH; Loci; Chapel; X10; Hierarchical Place Trees; UPC;
+    Co-Array Fortran; Titanium; HPF; ZPL; Julia; Phalanx; UPC++; BoxLib; MPI; OpenMP; OpenACC; OmpSs; Nanos++; Open
+    Community Runtime (OCR); RStream; Legion; HTA; RAJA; Perilla; Qthread; Cilk; Charm++; NAMD; Uintah; CUDA; OpenCL;
+    hwloc; Netloc; Scalasca; OVIS; SLURM.'
 - id: li2021dlcompiler
   title: 'The Deep Learning Compiler: A Comprehensive Survey'
   authors:
@@ -472,33 +525,61 @@ papers:
   source_code_url: null
   era: era6
   relevance_tier: adjacent
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: TACO survey of general-purpose polyhedral compilers (Pluto, PPCG, Polly, isl-based tools) covering their
-    analyses, transformations and code generators; used here for the polyhedral background of the distributed-memory
-    code generators of Era 5.
-  why_read: Background for the polyhedral representation on which Bondhugula's and Molly's distributed-memory code
-    generation rests.
+  summary: This survey lists and describes general-purpose polyhedral compilers as of 2024 and compares eight of
+    them on PolyBench/C for correctness and performance. Its measured targets are one shared-memory CPU node and
+    one GPU, so it gives no treatment of distributed-memory targets, message passing, data placement or communication
+    generation.
+  why_read: A newcomer gets a current list of general-purpose polyhedral compilers and a reproducible single-node
+    benchmark of how they behave, which is useful background for loop-optimization work.
   problem: null
   input_abstraction: []
-  target_hardware: []
+  target_hardware:
+  - simd-systolic-cm
+  - hierarchical-heterogeneous
+  - spatial-accelerator
   memory_model: null
   programming_model: null
   data_decomposition: []
-  computation_mapping: []
+  computation_mapping:
+  - loop-to-processor
+  - iteration-space-partitioning
   communication_generation: []
-  compiler_runtime_boundary: []
-  compiler_architecture: []
-  ir_representation: []
-  optimization_objectives: []
+  compiler_runtime_boundary:
+  - fully-static
+  - static-with-directives
+  - profile-guided
+  - adaptive
+  - jit
+  compiler_architecture:
+  - source-to-source
+  - interactive-restructuring
+  - polyhedral
+  - llvm-based
+  - mlir-based
+  - multi-level-ir
+  - dsl-compiler
+  - library-backed
+  ir_representation:
+  - polyhedral-sets
+  - mlir-dialect
+  - multi-level-ir
+  optimization_objectives:
+  - local-memory-fit
+  - load-balance
+  - synchronization
   maturity:
   - theory
-  evaluation_method: null
-  benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  evaluation_method: benchmarking on PolyBench/C with perf counters, on one CPU node and one GPU
+  benchmarks:
+  - PolyBench/C
+  main_contribution: A catalog and classification of polyhedral compilers, with a robustness and performance comparison
+    of eight tools on PolyBench/C.
+  main_limitation: The authors note that PolyBench/C is outdated, lacks machine-learning affine patterns and uses
+    dataset sizes too small for current HPC nodes.
   predecessors: []
   successors: []
   related_versions: []
@@ -512,13 +593,34 @@ papers:
   technique_lists: []
   start_here: null
   evidence:
-  - source: abstract (Crossref)
-    section: abstract
-    pages: null
+  - source: full text
+    section: Abstract and Sec. 1, pp. 72:1-72:2
+  - source: full text
+    section: Sec. 2.1-2.3, pp. 72:3-72:5
+  - source: full text
+    section: Sec. 3, pp. 72:5-72:6
+  - source: full text
+    section: Sec. 4.1, Table 1, pp. 72:6-72:7
+  - source: full text
+    section: Sec. 4.2-4.3, pp. 72:8-72:11
+  - source: full text
+    section: Sec. 4.4, Tables 2-3, pp. 72:11-72:16
+  - source: full text
+    section: Sec. 4.5-4.6, pp. 72:18-72:21
+  - source: full text
+    section: Sec. 5, pp. 72:21-72:22
+  - source: full text
+    section: Sec. 6-7, pp. 72:23-72:24
   metadata_sources:
   - crossref
+  - full text read (paper card)
   - supplied PDF (owner-provided, not redistributed)
-  notes: 2 identical or near-identical copies were supplied.
+  notes: '2 identical or near-identical copies were supplied. Discusses: Pluto; PoCC; ROSE; PolyOpt; PPCG; CHiLL;
+    TRACO; GRAPHITE; Polly; Polygeist; IBM XL; R-Stream; Qualcomm Polyhedral Mapper; Tensor Comprehensions; MindSpore;
+    AKG; Cerebras compiler; Tiramisu; PolyMage; APOLLO; PlaidML; Stripe; PolyBench/C; NAS Parallel Benchmarks; UTDSP;
+    Livermore Benchmarks; Cetus; isl; PolyLib; CLooG; PET; Candl; Clan; LetSee; POnOS; Feautrier scheduling; Schneck
+    1973; Mustafa 2022; Simbürger et al. 2013; Pfaffe et al. 2019; Fontaine et al. 2018; Verdoolaege et al. 2013
+    (PPCG); Bondhugula et al. 2008 (Pluto).'
 - id: kennedy2007rise
   title: The rise and fall of High Performance Fortran
   authors:
@@ -647,13 +749,15 @@ papers:
   source_code_url: null
   era: era0
   relevance_tier: foundation
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: '[metadata-level] Original description of the FORTRAN I automatic coding system; the foundation of optimising
-    compilation for scientific loops.'
-  why_read: 'Where the compiler bargain starts: a higher-level program in exchange for compiler-made low-level decisions.'
+  summary: The paper describes the FORTRAN language for the IBM 704 and the six-section translator that turns its
+    statements, DO loops and subscripted variables into machine code. It reports one case history and rough ratios
+    of output instructions and coding time to source statements, and it has no parallel or distributed target.
+  why_read: It is an early, detailed account of a translator for an algebraic language with loops and arrays, useful
+    as background for the compiler papers in this survey.
   problem: null
   input_abstraction: []
   target_hardware: []
@@ -662,17 +766,26 @@ papers:
   data_decomposition: []
   computation_mapping: []
   communication_generation: []
-  compiler_runtime_boundary: []
-  compiler_architecture: []
+  compiler_runtime_boundary:
+  - static-with-directives
+  compiler_architecture:
+  - language-spec
   ir_representation:
-  - none
-  optimization_objectives: []
+  - graph-ir
+  - multi-level-ir
+  optimization_objectives:
+  - productivity
+  - latency
   maturity:
   - production-compiler
-  evaluation_method: null
-  benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  evaluation_method: case history plus aggregate instruction-count and coding-time ratios; no controlled benchmark
+  benchmarks:
+  - one case-history job (p. 188)
+  - problems listed in the Conclusion (pp. 196-197)
+  main_contribution: A description of the FORTRAN language and its translator for the IBM 704, including index-register
+    handling for DO-controlled subscripts and flow-based register assignment.
+  main_limitation: The evidence is one case history and rough ratios, the paper omits many language features, and
+    it has no parallel or distributed target.
   predecessors: []
   successors: []
   related_versions: []
@@ -684,13 +797,23 @@ papers:
   technique_lists: []
   start_here: null
   evidence:
-  - source: Crossref metadata
-    section: bibliographic record
-    pages: 188-198
+  - source: full text
+    section: Introduction, p. 188
+  - source: full text
+    section: The FORTRAN Language, pp. 189-191
+  - source: full text
+    section: General Organization of the System, pp. 191-192
+  - source: full text
+    section: Translator Sections 1-5, pp. 192-196
+  - source: full text
+    section: Conclusion, pp. 196-198
   metadata_sources:
   - crossref
+  - full text read (paper card)
   - supplied PDF (owner-provided, not redistributed)
-  notes: null
+  notes: 'Discusses: SHARE symbolic language (Section 6, p. 191). Title capitalization differs: the PDF prints ''The
+    FORTRAN Automatic Coding System'' and the catalog has ''The FORTRAN automatic coding system''. First author
+    (J. W. Backus) and year (1957) match.'
 - id: lamport1974parallel
   title: The parallel execution of DO loops
   authors:
@@ -708,32 +831,51 @@ papers:
   source_code_url: null
   era: era0
   relevance_tier: foundation
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: '[metadata-level] The hyperplane method for executing nested DO loops in parallel by reindexing iteration
-    space along wavefronts; foundational for loop-level parallelisation.'
-  why_read: The iteration-space view of loops that every later partitioner, polyhedral or otherwise, relies on.
+  summary: 'The paper gives two ways to run the iterations of a DO loop nest concurrently: a hyperplane method for
+    asynchronous multiprocessors and array computers, and a coordinate method for synchronous single-instruction-stream
+    machines. It counts the sequential steps each method needs for example loops and reports only preliminary compiler
+    experience.'
+  why_read: It shows how a compiler can rewrite a loop nest so that its iterations run in parallel while the order
+    of references to the same array element is preserved.
   problem: null
   input_abstraction: []
-  target_hardware: []
+  target_hardware:
+  - vector-array-foundation
+  - simd-systolic-cm
   memory_model: null
   programming_model: null
   data_decomposition: []
-  computation_mapping: []
-  communication_generation: []
-  compiler_runtime_boundary: []
-  compiler_architecture: []
+  computation_mapping:
+  - iteration-space-partitioning
+  - loop-to-processor
+  - data-parallelism
+  communication_generation:
+  - reduction-allreduce
+  compiler_runtime_boundary:
+  - fully-static
+  - analytic-optimization
+  compiler_architecture:
+  - dependence-based
   ir_representation:
+  - polyhedral-sets
   - dependence-graph
-  optimization_objectives: []
+  optimization_objectives:
+  - latency
+  - communication-volume
   maturity:
   - theory
-  evaluation_method: null
-  benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  evaluation_method: analytic counts of sequential iterations for example loops; no measurements
+  benchmarks:
+  - relaxation loop nest, loop (1), pp. 83-84
+  - three-statement loop nest, loop (11), pp. 89-92
+  main_contribution: Two loop-rewriting methods, each with conditions that keep results unchanged, including a linear-mapping
+    construction for choosing the parallel planes.
+  main_limitation: The evaluation is analytic iteration counts and qualitative compiler experience with no measured
+    run times, and the general optimal mapping has no known practical method.
   predecessors: []
   successors: []
   related_versions: []
@@ -746,13 +888,25 @@ papers:
   technique_lists: []
   start_here: null
   evidence:
-  - source: Crossref metadata
-    section: bibliographic record
-    pages: 83-93
+  - source: full text
+    section: Abstract and Introduction, p. 83
+  - source: full text
+    section: I. The Hyperplane Method, pp. 84-88
+  - source: full text
+    section: II. The Coordinate Method, pp. 89-92
+  - source: full text
+    section: III. Practical Considerations, pp. 92-93
+  - source: full text
+    section: Conclusion and References, p. 93
   metadata_sources:
   - crossref
+  - full text read (paper card)
   - supplied PDF (owner-provided, not redistributed)
-  notes: null
+  notes: 'Discusses: ILLIAC IV; CDC STAR-100; TI ASC; McIntyre 1970 [1]; Ramamoorthy and Gonzalez 1969 [2]; Muroaka
+    1971 [3]; Mordell 1969 [4]; Karp, Miller and Winograd 1967 [5]; Warshall 1962 [6]; Lamport and Presberg 1971
+    [7]; Lamport 1973, coordinate method [8]. Title capitalization differs: the PDF prints ''The Parallel Execution
+    of DO Loops'' and the catalog has ''The parallel execution of DO loops''. First author (Leslie Lamport) and
+    year (1974) match.'
 - id: kuck1981dependence
   title: Dependence graphs and compiler optimizations
   authors:
@@ -774,32 +928,44 @@ papers:
   source_code_url: null
   era: era1
   relevance_tier: foundation
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: '[metadata-level] POPL paper establishing dependence graphs as the central representation for compiler
-    optimisation and parallelisation.'
-  why_read: Dependence graphs are the representation Era-2 distributed-memory compilers inherited unchanged.
+  summary: Kuck and colleagues define a dependence graph for a restricted FORTRAN-like language, with five arc kinds,
+    and describe transformations that remove arcs (renaming, expansion, node splitting and forward substitution)
+    or abstract the graph (loop distribution and loop fusion). They report implementation in the PARAFRASE system,
+    verification on about 1,000 test programs and use on several high-speed architectures, but no measured speedups
+    for the transformations.
+  why_read: It is the survey's reference for the dependence graph as a compiler representation, and it states the
+    arc-removal and graph-abstraction steps in one place.
   problem: null
   input_abstraction: []
-  target_hardware: []
+  target_hardware:
+  - vector-array-foundation
   memory_model: null
   programming_model: null
   data_decomposition: []
   computation_mapping: []
   communication_generation: []
-  compiler_runtime_boundary: []
-  compiler_architecture: []
+  compiler_runtime_boundary:
+  - fully-static
+  compiler_architecture:
+  - dependence-based
+  - source-to-source
   ir_representation:
   - dependence-graph
-  optimization_objectives: []
+  optimization_objectives:
+  - local-memory-fit
   maturity:
   - theory
-  evaluation_method: null
+  evaluation_method: implementation in PARAFRASE and a test set of about 1,000 programs, plus worked examples; no
+    measured speedups
   benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  main_contribution: It defines dependence graphs for a restricted FORTRAN-like language and presents arc-removing
+    and graph-abstracting transformations, including loop distribution for vector processors.
+  main_limitation: The paper states that a powerful renaming algorithm for structured variables and a good expansion
+    algorithm for arrays are open problems, and it treats unresolved dependences conservatively.
   predecessors: []
   successors: []
   related_versions: []
@@ -812,14 +978,35 @@ papers:
   technique_lists: []
   start_here: null
   evidence:
-  - source: Crossref metadata
-    section: bibliographic record
-    pages: 207-218
+  - source: full text
+    section: Title page; Abstract; 1.1-1.2
+  - source: full text
+    section: 2.1-2.2
+  - source: full text
+    section: 3.1-3.4
+  - source: full text
+    section: 4.1-4.2
+  - source: full text
+    section: '5'
   metadata_sources:
   - crossref
+  - full text read (paper card)
   - supplied PDF (owner-provided, not redistributed)
-  notes: Year 1981 sits at the Era 0/Era 1 boundary; classified as foundation. 3 identical or near-identical copies
-    were supplied.
+  notes: 'Year 1981 sits at the Era 0/Era 1 boundary; classified as foundation. 3 identical or near-identical copies
+    were supplied. Discusses: PARAFRASE; Burroughs BSP; CRAY-1; Burroughs FMP DO ALL [LuBa80]; Abu-Sufah, Kuck and
+    Lawrie [AbKL79]; Padua, Kuck and Lawrie [PaKL80]; Kuck, Kuhn, Leasure and Wolfe [KKLW80]; Kuck, Muraoka and
+    Chen [KuMC72]; Banerjee, Chen, Kuck and Towle [BCKT79]; Banerjee [Bane76, Bane79]; Banerjee, Gajski and Kuck
+    [BaGK80]; Graham and Wegman [GrWe76]; Tarjan''s depth-first algorithm [AhHU74]; Loveman [Love77]; Allen and
+    Cocke [AlCo72]; Dunlop and Knight [DuKu78]; Beatty [Beat74]; Day [DayW70]; Zelkowitz and Bail, SIMPL optimizer
+    [ZeBa74]; Cocke [Cock70]; Aho and Ullman [AhU173]; Bohm and Jacopini [BoJa66]; Ashcroft and Manna [AsMa75];
+    Baker [Bake78]; Parker [Park77]; Kuck [Kuck78]; Ackerman and Dennis [AcDe79]; Arvind, Gostelow and Plouffe [ArGP78].
+    Copies: the first listed copy (x_63e14ea8-folder3/folder3/kuck1981dependence (1).pdf) was read. Per the brief,
+    the three copies are byte-identical (SHA-256 prefix dc98b4ad6fee950c8dba); the other two were not opened, and
+    the copy read matches that prefix. Title, first author and year match the title page: the printed title is ''Dependence
+    Graphs and Compiler Optimizations'' (plural; the text layer drops the final S, checked on the page image), first
+    author D. J. Kuck, 1981. No conflict with the catalog record. The paper''s own date (1981) agrees with the catalog
+    year; the record format has no era field, so the Era 1 label was not checked. The venue is named only in the
+    PDF document properties, not in the body.'
 - id: allen1987automatic
   title: Automatic translation of FORTRAN programs to vector form
   authors:
@@ -838,13 +1025,16 @@ papers:
   source_code_url: null
   era: era1
   relevance_tier: foundation
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: '[metadata-level] TOPLAS paper describing the PFC vectoriser that translates FORTRAN loops into vector
-    form using dependence analysis.'
-  why_read: The dependence-based vectoriser from which the Rice Fortran D work grew.
+  summary: The paper sets out the dependence theory behind PFC, a translator that rewrites FORTRAN DO loops as FORTRAN
+    8x array statements. It gives a dependence test for linear subscripts, a code generator driven by the dependence
+    graph, and loop interchange, recurrence breaking, threshold and IF-conversion transformations that expose more
+    parallelism.
+  why_read: Read it for the dependence test and loop transformations that decide which FORTRAN loops can become
+    vector statements.
   problem: null
   input_abstraction: []
   target_hardware:
@@ -852,19 +1042,29 @@ papers:
   memory_model: null
   programming_model: null
   data_decomposition: []
-  computation_mapping: []
+  computation_mapping:
+  - data-parallelism
   communication_generation: []
-  compiler_runtime_boundary: []
-  compiler_architecture: []
+  compiler_runtime_boundary:
+  - fully-static
+  compiler_architecture:
+  - source-to-source
+  - dependence-based
   ir_representation:
   - dependence-graph
-  optimization_objectives: []
+  - array-statements
+  optimization_objectives:
+  - productivity
   maturity:
   - research-compiler
-  evaluation_method: null
-  benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  evaluation_method: proofs and worked examples, plus one translation-time comparison with PARAFRASE on a composite
+    set of Los Alamos kernels
+  benchmarks:
+  - composite set of Los Alamos kernels (translation CPU time only)
+  main_contribution: A dependence-based code generator, built on a carrier-level test for linear subscripts, that
+    emits array statements and adds loop interchange, recurrence breaking, thresholds and IF conversion.
+  main_limitation: Its dependence conditions are only necessary, so for linear subscripts the translator sometimes
+    assumes a dependence that does not exist, and unknown symbolic constants force the same conservative assumption.
   predecessors: []
   successors: []
   related_versions: []
@@ -877,13 +1077,31 @@ papers:
   technique_lists: []
   start_here: null
   evidence:
-  - source: Crossref metadata
-    section: bibliographic record
-    pages: 491-542
+  - source: full text
+    section: Sec. 1, pp. 491-493
+  - source: full text
+    section: Sec. 2, pp. 493-497
+  - source: full text
+    section: Sec. 3, pp. 497-500
+  - source: full text
+    section: Sec. 4.1-4.4, pp. 500-515
+  - source: full text
+    section: Sec. 5.2, pp. 515-520
+  - source: full text
+    section: Sec. 5.3-5.4, pp. 520-530
+  - source: full text
+    section: Sec. 6, pp. 530-533
+  - source: full text
+    section: Sec. 7, p. 533
   metadata_sources:
   - crossref
+  - full text read (paper card)
   - supplied PDF (owner-provided, not redistributed)
-  notes: null
+  notes: 'Discusses: PARAFRASE; Kuck et al. Illinois dependence work; Texas Instruments ASC compiler; Cray-1 FORTRAN
+    compiler; Massachusetts Computer Associates Vectorizer; VECTRAN; Banerjee dependence inequality; Wolfe (loop
+    interchange observation, scalar expansion); Allen, Kennedy, Porterfield and Warren (IF conversion); Allen 1983
+    dissertation. Title differs only in capitalisation (catalog: ''Automatic translation of FORTRAN programs to
+    vector form''). First author (Randy Allen) and year (1987) match the title page and journal line.'
 - id: barnes1968illiac
   title: The ILLIAC IV Computer
   authors:
@@ -906,31 +1124,42 @@ papers:
   source_code_url: null
   era: era0
   relevance_tier: foundation
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: '[metadata-level] Architecture paper for the ILLIAC IV array processor; included only to date the lock-step
-    array-processor target class.'
-  why_read: The canonical array processor; cited to anchor the SIMD/array lane of the timeline.
+  summary: The paper describes the structure of ILLIAC IV, an array computer of 256 processing elements organized
+    as four 64-element arrays, each with its own control unit, together with its routing, memory and host arrangements.
+    It presents design targets, reliability estimates and instruction lists, but no measured results and no compiler
+    design.
+  why_read: It describes an array computer with per-element memories and nearest-neighbour routing, which is the
+    hardware context needed to read array-machine software and compiler papers.
   problem: null
   input_abstraction: []
   target_hardware:
   - vector-array-foundation
+  - simd-systolic-cm
   memory_model: null
   programming_model: null
   data_decomposition: []
-  computation_mapping: []
-  communication_generation: []
+  computation_mapping:
+  - data-parallelism
+  communication_generation:
+  - programmer-explicit
+  - broadcast-multicast
   compiler_runtime_boundary: []
   compiler_architecture: []
   ir_representation: []
-  optimization_objectives: []
+  optimization_objectives:
+  - overlap
+  - topology-hops
   maturity: []
-  evaluation_method: null
+  evaluation_method: design estimates only; no measured benchmark
   benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  main_contribution: A system-level description of ILLIAC IV, covering SIMD control, per-PE memories, routing, multiarray
+    configurations and the B6500 host.
+  main_limitation: The figures are design targets and estimates, and the paper defers the logical layout, the software
+    and any compiler to other papers.
   predecessors: []
   successors: []
   related_versions: []
@@ -943,13 +1172,29 @@ papers:
   technique_lists: []
   start_here: null
   evidence:
-  - source: Crossref metadata
-    section: bibliographic record
-    pages: 746-757
+  - source: full text
+    section: Abstract and Section 1, pp. 746-747
+  - source: full text
+    section: Section 2, Summary of the ILLIAC IV, pp. 747-748
+  - source: full text
+    section: Section 3, ILLIAC IV Structure, pp. 748-753
+  - source: full text
+    section: Section 4, Reliability and Maintenance, p. 753
+  - source: full text
+    section: Appendix I and References, pp. 754-757
   metadata_sources:
   - crossref
+  - full text read (paper card)
   - supplied PDF (owner-provided, not redistributed)
-  notes: null
+  notes: 'Discusses: SOLOMON computer [1]; Unger 1958 [2]; Holland 1959 [3]; Murtha 1966 [4]; Kuck, ILLIAC IV software
+    and application programming [5]; earlier Westinghouse parallel computer effort (Acknowledgment); Burroughs B6500
+    (host computer). Catalog paper_type ''hardware'' is not one of the current taxonomy values (language, full-system,
+    compiler-technique, runtime, experience, foundational). The card and this record use ''full-system'' as the
+    nearest value, because the paper describes a complete machine; the lead should reconcile the catalog or the
+    taxonomy. Title, first author and year match the PDF. Catalog paper_type ''hardware'' is in the taxonomy and
+    is used in the card header. The card and this record use ''full-system'' as the nearest value, because the paper
+    describes a complete machine; the lead should reconcile the catalog or the taxonomy. Title, first author and
+    year match the PDF.'
 - id: russell1978cray1
   title: The CRAY-1 computer system
   authors:
@@ -967,13 +1212,15 @@ papers:
   source_code_url: null
   era: era0
   relevance_tier: foundation
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: '[metadata-level] Architecture paper for the CRAY-1 vector processor; included only to date the vector-machine
-    target class.'
-  why_read: The canonical pipelined vector machine of the foundations era.
+  summary: The paper describes the CRAY-1 vector computer, including its registers, interleaved memory, chained
+    functional units and cooling. It also explains how the optimizing Fortran compiler vectorizes innermost DO loops
+    and reports timings for simple loops and library routines.
+  why_read: It is a readable primary account of a 1970s vector machine and the vectorizing compiler built for it,
+    useful as a single-processor baseline.
   problem: null
   input_abstraction: []
   target_hardware:
@@ -981,17 +1228,29 @@ papers:
   memory_model: null
   programming_model: null
   data_decomposition: []
-  computation_mapping: []
+  computation_mapping:
+  - data-parallelism
   communication_generation: []
-  compiler_runtime_boundary: []
+  compiler_runtime_boundary:
+  - fully-static
   compiler_architecture: []
-  ir_representation: []
-  optimization_objectives: []
+  ir_representation:
+  - none
+  optimization_objectives:
+  - memory-bandwidth
+  - latency
+  - productivity
   maturity: []
-  evaluation_method: null
-  benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  evaluation_method: Cited independent benchmark studies plus vendor timings of simple DO loops and library routines,
+    in clock periods per result.
+  benchmarks:
+  - 'Table III: 16 simple DO loops at N = 1 to 1000'
+  - 'Fig. 7: scalar and vector library routine timings'
+  - Independent matrix benchmark studies cited as refs 3 and 4
+  main_contribution: A description of the CRAY-1 architecture and its vectorizing Fortran compiler, with loop timing
+    data.
+  main_limitation: The paper reports that most early compiled Fortran loops ran slower than hand-coded machine code,
+    and it covers one processor only.
   predecessors: []
   successors: []
   related_versions: []
@@ -1004,13 +1263,36 @@ papers:
   technique_lists: []
   start_here: null
   evidence:
-  - source: Crossref metadata
-    section: bibliographic record
-    pages: 63-72
+  - source: full text
+    section: Introduction (pp. 63-64)
+  - source: full text
+    section: Architecture and Main Memory Speed (pp. 64-65)
+  - source: full text
+    section: Functional Units, Registers and Chaining (pp. 67-69)
+  - source: full text
+    section: Evolution of the CRAY-1 and Table III (pp. 70-71)
+  - source: full text
+    section: Software and Front-End Computer Interface (p. 71)
+  - source: full text
+    section: Summary (p. 72)
   metadata_sources:
   - crossref
+  - full text read (paper card)
   - supplied PDF (owner-provided, not redistributed)
-  notes: null
+  notes: 'Discusses: CDC 1604, 6600 and 7600; CDC STAR 100; Texas Instruments ASC; ILLIAC IV; IBM 360/195 data forwarding
+    (ref 6); IBM System/360 Model 91; Auerbach CRAY-1 comparison (ref 2); Keller LASL evaluation (ref 1). Title
+    printed as ''The CRAY-1 Computer System''; the catalog has lowercase ''computer system'' (case only). First
+    author Richard M. Russell and year 1978 match the title page. PDF metadata dates the file 1977; the printed
+    year (January 1978) was used. Catalog paper_type ''hardware'' is not in the current taxonomy list, so the card
+    uses ''full-system'', the nearest allowed value, since the paper describes a complete machine with compiler
+    and operating system. Lead to reconcile. Page 1 carries closing text and references of an unrelated article
+    (it discusses DEC''s ''10'' systems), which was excluded. The text gives 12 I/O channels (pp. 64, 71) but Table
+    I gives 24 (p. 65). Title printed as ''The CRAY-1 Computer System''; the catalog has lowercase ''computer system''
+    (case only). First author Richard M. Russell and year 1978 match the title page. PDF metadata dates the file
+    1977; the printed year (January 1978) was used.Catalog paper_type ''hardware'' is in the taxonomy and is used
+    in the card header. Lead to reconcile. Page 1 carries closing text and references of an unrelated article (it
+    discusses DEC''s ''10'' systems), which was excluded. The text gives 12 I/O channels (pp. 64, 71) but Table
+    I gives 24 (p. 65).'
 - id: dennis1975preliminary
   title: A preliminary architecture for a basic data-flow processor
   authors:
@@ -1089,14 +1371,16 @@ papers:
   source_code_url: null
   era: era1
   relevance_tier: foundation
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: '[metadata-level] IEEE Computer article motivating systolic arrays: regular PE arrays with neighbour-only
-    communication; included to date the systolic/spatial target class.'
-  why_read: Systolic arrays are the closest architectural ancestor of today's wafer-scale and spatial compilation
-    targets.
+  summary: The paper argues that special-purpose systems can avoid I/O limits when each data item fetched from memory
+    is reused as it moves through a pipeline of simple processing cells. It illustrates the idea with a family of
+    convolution array designs that differ in which operands stay in cells and which are broadcast, fanned in or
+    streamed, and compares them by I/O needs, cell utilization and wiring.
+  why_read: It is the foundational statement of systolic architecture and explains why regular cell-to-cell data
+    flow cuts memory traffic for compute-bound problems.
   problem: null
   input_abstraction: []
   target_hardware:
@@ -1104,18 +1388,41 @@ papers:
   - spatial-accelerator
   memory_model: null
   programming_model: null
-  data_decomposition: []
-  computation_mapping: []
-  communication_generation: []
-  compiler_runtime_boundary: []
+  data_decomposition:
+  - application-defined
+  - replicated
+  computation_mapping:
+  - spatial-placement
+  - pipeline-parallelism
+  - data-parallelism
+  communication_generation:
+  - programmer-explicit
+  - broadcast-multicast
+  - reduction-allreduce
+  - communication-pipelining
+  - overlapped
+  compiler_runtime_boundary:
+  - fully-static
+  - analytic-optimization
   compiler_architecture: []
-  ir_representation: []
-  optimization_objectives: []
+  ir_representation:
+  - none
+  optimization_objectives:
+  - memory-bandwidth
+  - communication-volume
+  - local-memory-fit
+  - latency
+  - overlap
+  - synchronization
+  - load-balance
+  - productivity
   maturity: []
-  evaluation_method: null
+  evaluation_method: analytic argument and qualitative comparison of designs; no experiments
   benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  main_contribution: A design principle for systolic arrays, shown through a family of convolution designs that
+    compare which operands stay in cells and which move.
+  main_limitation: The designs are worked out by hand for regular compute-bound problems, and the paper states that
+    their automatic design is still an open question.
   predecessors: []
   successors: []
   related_versions: []
@@ -1129,13 +1436,32 @@ papers:
   technique_lists: []
   start_here: null
   evidence:
-  - source: Crossref metadata
-    section: bibliographic record
-    pages: 37-46
+  - source: full text
+    section: Title page; p. 37 (introduction, key architectural issues)
+  - source: full text
+    section: pp. 38-39 (I/O balance, Figure 1, systolic principle, Figure 2)
+  - source: full text
+    section: pp. 40-42 (convolution designs B1, B2, F, R1, R2, W1, W2; Figures 3-9)
+  - source: full text
+    section: pp. 43-44 (cell criteria, Figures 10-12)
+  - source: full text
+    section: p. 45 (applications, automatic design, research directions); p. 46 (references)
   metadata_sources:
   - crossref
+  - full text read (paper card)
   - supplied PDF (owner-provided, not redistributed)
-  notes: null
+  notes: 'Discusses: pattern-matching chip (ref. 1); Kung, special-purpose devices for signal and image processing
+    (ref. 3); Kung and Lehman, systolic arrays for relational database operations (ref. 4); Kung and Leiserson,
+    systolic arrays for VLSI (ref. 5); Kung and Song, systolic 2-D convolution chip (ref. 6); ESL systolic processor
+    (refs. 8, 10); Guibas et al. (ref. 26); Weiser and Davis, wavefront notation tool (ref. 27); Bojanczyk et al.
+    (ref. 28); Gentleman and Kung (ref. 29); Leiserson and Saxe (ref. 42); Lyon, two''s complement pipeline multipliers
+    (ref. 22); TRW multiplier-accumulator application booklet (ref. 21); I/O bounds for FFT, sorting and matrix
+    multiplication (refs. 14, 15). Title: catalog reads ''Why systolic architectures?'' with lowercase words; the
+    title page prints ''Why Systolic Architectures?'' (capitalization only). First author: catalog lists ''Kung'';
+    the title page prints ''H. T. Kung'' (surname matches). Year: catalog 1982 matches the January 1982 issue. Catalog
+    paper_type ''hardware'' is kept, and the card header uses it. Catalog summary says neighbor-only communication,
+    but the paper also describes broadcast and fan-in designs (pp. 40-41). The PDF metadata title is a download
+    string and was not used.'
 - id: seitz1985cosmic
   title: The cosmic cube
   authors:
@@ -1153,32 +1479,52 @@ papers:
   source_code_url: null
   era: era1
   relevance_tier: foundation
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: CACM description of the Cosmic Cube, a 64-node message-passing hypercube with private memories per node;
-    included to date the multicomputer target class that made data placement a compiler problem.
-  why_read: The machine that made distributed memory the programmer's, and soon the compiler's, problem.
+  summary: The Cosmic Cube is an experimental 64-node machine whose nodes are linked as a binary 6-cube and communicate
+    only by messages. The paper describes its kernel, its process model, a concurrent N-body formulation, and application
+    performance relative to a VAX 11/780.
+  why_read: It is a primary source for how a 1980s message-passing machine exposed processes, channels and placement
+    to programmers, and for what the authors expected compilers to add.
   problem: null
   input_abstraction: []
   target_hardware:
-  - hypercube-mpp
   - dm-multicomputer
+  - hypercube-mpp
   memory_model: null
   programming_model: null
-  data_decomposition: []
-  computation_mapping: []
-  communication_generation: []
-  compiler_runtime_boundary: []
-  compiler_architecture: []
-  ir_representation: []
-  optimization_objectives: []
+  data_decomposition:
+  - application-defined
+  computation_mapping:
+  - task-placement
+  communication_generation:
+  - programmer-explicit
+  - overlapped
+  compiler_runtime_boundary:
+  - load-time
+  compiler_architecture:
+  - library-backed
+  ir_representation:
+  - none
+  optimization_objectives:
+  - load-balance
+  - latency
+  - topology-hops
+  - overlap
   maturity: []
-  evaluation_method: null
-  benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  evaluation_method: Application runs and a speedup model with a measured overhead parameter, compared with a VAX
+    11/780.
+  benchmarks:
+  - N-body ring formulation, 7 bodies on 4 nodes (speedup model, p. 28)
+  - Application set with measured overhead values from 0.025 to 0.500 (p. 31)
+  - Lattice Monte Carlo program run for 2500 accumulated hours (p. 31)
+  - Single node versus VAX 11/780 timing (p. 31)
+  main_contribution: A message-passing multicomputer design and process programming model, demonstrated on a working
+    64-node hardware implementation.
+  main_limitation: The authors state that the approach is limited to applications with highly concurrent formulations,
+    and that most deficiencies lie in the representation and compilation of process code.
   predecessors: []
   successors: []
   related_versions: []
@@ -1192,13 +1538,40 @@ papers:
   technique_lists: []
   start_here: null
   evidence:
-  - source: abstract (Crossref)
-    section: abstract
-    pages: 22-33
+  - source: full text
+    section: The message-passing architecture (pp. 22-23)
+  - source: full text
+    section: Process programming and process distribution (pp. 23-24)
+  - source: full text
+    section: Concurrency approach and concurrent formulations (pp. 25-26)
+  - source: full text
+    section: Cosmic Cube hardware (pp. 28-29)
+  - source: full text
+    section: Cosmic Cube software (pp. 30-31)
+  - source: full text
+    section: Applications and benchmarks; future perfect cubes (pp. 31-32)
+  - source: full text
+    section: 'Appendix: history and acknowledgments (p. 33)'
   metadata_sources:
   - crossref
+  - full text read (paper card)
   - supplied PDF (owner-provided, not redistributed)
-  notes: null
+  notes: 'Discusses: Browning and Locanthi Caltech research (1978-1980); Lang''s program modeling and simulations
+    (1980-1982); Sullivan and Brashkow homogeneous machine (1977); Hoare''s communicating sequential processes;
+    Hewitt''s actor paradigm; Martin''s processing surface experiments; Kung''s systolic algorithms; Omega and banyan
+    networks; Ware''s speedup model; Manchester prototype dataflow computer (same issue); Patterson''s RISC article
+    (same issue); Intel 8086 and 8087; VAX 11/780; Mosaic single-chip node (same group). Title printed in capitals
+    (''THE COSMIC CUBE''); the catalog differs only in case. First author Charles L. Seitz and year 1985 match the
+    title page (January 1985). PDF metadata dates the file 1984; the printed year was used. Catalog paper_type ''hardware''
+    is not in the current taxonomy list, so the card uses ''full-system'', the nearest allowed value, since the
+    paper describes the whole machine with its kernel and process model. Lead to reconcile. The running head of
+    p. 22 reads ''Number 2'' in the text layer while other pages read ''Number 1''; the card uses Number 1. Some
+    OCR errors in numbers and figure labels (for example the power figure on p. 28) were not relied on. Title printed
+    in capitals (''THE COSMIC CUBE''); the catalog differs only in case. First author Charles L. Seitz and year
+    1985 match the title page (January 1985). PDF metadata dates the file 1984; the printed year was used.Catalog
+    paper_type ''hardware'' is in the taxonomy and is used in the card header. Lead to reconcile. The running head
+    of p. 22 reads ''Number 2'' in the text layer while other pages read ''Number 1''; the card uses Number 1. Some
+    OCR errors in numbers and figure labels (for example the power figure on p. 28) were not relied on.'
 - id: hillis1986data
   title: Data parallel algorithms
   authors:
@@ -1217,15 +1590,15 @@ papers:
   source_code_url: null
   era: era1
   relevance_tier: foundation
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: CACM article on data-parallel algorithms for the Connection Machine, in which one operation is applied
-    to all elements of a data set simultaneously; the data-parallel abstraction later adopted by Fortran 90/HPF
-    array statements.
-  why_read: The data-parallel programming model that HPF's array statements and today's SPMD tensor programs both
-    descend from.
+  summary: Hillis and Steele present data parallel algorithms for fine-grained SIMD machines with general communication,
+    using the Connection Machine as the example. The algorithms cover sums, prefix sums, counting, radix sort, parsing
+    and linked-list operations, and some of their run times are measured on a 65,536-processor machine.
+  why_read: It is the clearest early statement of the data parallel style, showing how a programmer reasons with
+    one processor per element and general communication.
   problem: null
   input_abstraction:
   - data-parallel-language
@@ -1233,18 +1606,34 @@ papers:
   - simd-systolic-cm
   memory_model: null
   programming_model: null
-  data_decomposition: []
-  computation_mapping: []
-  communication_generation: []
+  data_decomposition:
+  - application-defined
+  - dynamic-distribution
+  computation_mapping:
+  - owner-computes
+  - data-parallelism
+  communication_generation:
+  - programmer-explicit
+  - broadcast-multicast
+  - reduction-allreduce
   compiler_runtime_boundary: []
   compiler_architecture: []
-  ir_representation: []
-  optimization_objectives: []
+  ir_representation:
+  - none
+  optimization_objectives:
+  - latency
+  - productivity
   maturity: []
-  evaluation_method: null
-  benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  evaluation_method: Measured run times on a 65,536-processor Connection Machine for selected operations, plus asymptotic
+    analysis under a unit-cost model.
+  benchmarks:
+  - Sum of 65,536 elements (about 200 microseconds)
+  - Partial sums, count and enumerate on 65,536 elements (about 200 microseconds each)
+  - Radix sort versus Batcher sort on 65,536 32-bit keys (about 30 ms)
+  main_contribution: A set of data parallel algorithms and a programming model with one virtual processor per element
+    and general SEND communication, demonstrated on the Connection Machine.
+  main_limitation: The authors state that the model suits machines with thousands rather than tens of processors,
+    and most timings come from one 65,536-processor machine.
   predecessors: []
   successors: []
   related_versions: []
@@ -1257,13 +1646,26 @@ papers:
   technique_lists: []
   start_here: null
   evidence:
-  - source: abstract (Crossref)
-    section: abstract
-    pages: 1170-1183
+  - source: full text
+    section: Model of the Machine (pp. 1170-1172)
+  - source: full text
+    section: Sum, partial sums, counting and enumerating, radix sort (pp. 1172-1175)
+  - source: full text
+    section: Parsing a regular language and processor-cons (pp. 1175-1177)
+  - source: full text
+    section: Combinators and linked lists (pp. 1177-1180)
+  - source: full text
+    section: Region labeling and summary (pp. 1181-1182)
   metadata_sources:
   - crossref
+  - full text read (paper card)
   - supplied PDF (owner-provided, not redistributed)
-  notes: null
+  notes: 'Discusses: ILLIAC IV; Goodyear MPP; Non-Von; ICL DAP; Ultracomputer; APL; FP; Batcher''s bitonic sort;
+    Connection Machine Lisp; Fortran 8x proposal; Pan-Reif sparse matrix algorithm; Lim''s connected-component labeling
+    algorithms; Kung and Leiserson systolic arrays; Turner''s parallel combinator reduction; Blelloch''s unit-time
+    counting models. Title printed in capitals (''DATA PARALLEL ALGORITHMS''); the catalog differs only in case.
+    First author W. Daniel Hillis and year 1986 match the title page (December 1986, special issue, vol. 29 no.
+    12). PDF metadata dates the file 1985; the printed year was used. Catalog paper_type ''foundational'' kept.'
 - id: callahan1988compiling
   title: Compiling programs for distributed-memory multiprocessors
   authors:
@@ -8725,30 +9127,52 @@ papers:
   source_code_url: null
   era: era0
   relevance_tier: foundation
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: MIT technical memorandum reporting a 1977 workshop on dataflow computer architecture and program organisation;
-    included as a foundations source for dataflow machine concepts.
-  why_read: null
+  summary: 'Misunas''s report is an edited, summarized transcript of talks at a July 1977 MIT workshop on data-flow
+    computers and program organization. For this survey its relevant content is architectural: partitioned instruction
+    memories, packet communication between modules, and dynamic assignment of instructions or tasks to processors,
+    with almost nothing on compiler-generated communication.'
+  why_read: It is an early record of data-flow machine proposals, showing how instructions and tasks were assigned
+    to processors and how results moved between modules.
   problem: null
   input_abstraction: []
-  target_hardware: []
+  target_hardware:
+  - spatial-accelerator
   memory_model: null
   programming_model: null
-  data_decomposition: []
-  computation_mapping: []
+  data_decomposition:
+  - application-defined
+  computation_mapping:
+  - task-placement
+  - spatial-placement
+  - hierarchical-mapping
   communication_generation: []
   compiler_runtime_boundary: []
-  compiler_architecture: []
-  ir_representation: []
-  optimization_objectives: []
+  compiler_architecture:
+  - graph-compiler
+  ir_representation:
+  - dependence-graph
+  - graph-ir
+  optimization_objectives:
+  - latency
+  - energy
+  - productivity
   maturity: []
-  evaluation_method: null
-  benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  evaluation_method: simulators and analytic bounds reported in talks; no controlled comparison
+  benchmarks:
+  - fast Fourier transform
+  - global circulation model
+  - aircraft collision avoidance
+  - Coronet (LLL code)
+  - quicksort
+  - Gauss-Seidel linear equations
+  main_contribution: It records the status of several 1977 data-flow projects, covering machine organizations, languages,
+    simulators and performance analysis.
+  main_limitation: The report is a heavily edited summary of talks, and one speaker states that efficient Fortran-to-data-flow
+    translation would be very difficult.
   predecessors: []
   successors: []
   related_versions: []
@@ -8761,13 +9185,40 @@ papers:
   technique_lists: []
   start_here: null
   evidence:
-  - source: supplied PDF, first page and abstract read
-    section: title page
-    pages: null
+  - source: full text
+    section: Front matter (PDF p. 4)
+  - source: full text
+    section: Session 1 (pp. 4-13)
+  - source: full text
+    section: Session 2 (pp. 13-18)
+  - source: full text
+    section: Session 3 (pp. 19-23)
+  - source: full text
+    section: Session 4 (pp. 24-29)
+  - source: full text
+    section: Session 5 (pp. 29-32)
+  - source: full text
+    section: Session 6 (pp. 33-36)
+  - source: full text
+    section: Session 7 (pp. 37-40)
   metadata_sources:
+  - full text read (paper card)
   - supplied PDF
   - supplied PDF (owner-provided, not redistributed)
-  notes: No DOI or public record located; metadata taken from the PDF title page. Title as printed on the memo cover.
+  notes: 'No DOI or public record located; metadata taken from the PDF title page. Title as printed on the memo
+    cover. Discusses: Kosinski''s data flow language for operating systems; Tesler''s single-assignment paper; Guskov''s
+    1974 IFIP paper; Backus''s functional programming work; Dennis''s data flow base language; Irvine U-interpreter
+    machine (Arvind); MIT data flow machine; Burroughs recursive data-driven machine (Davis); LAU single-assignment
+    system (CERT Toulouse); CDC 7600; CDC STAR; Cray machines; IBM 360/95; PDP-10; Multics. Title, first author
+    and year match the catalog and the cover and title page: ''Report on the Workshop on Data Flow Computer and
+    Program Organization'', David P. Misunas, November 1977, MIT/LCS/TM-92 (the cover prints the title in capitals;
+    the front matter uses title case). The PDF has 53 pages, not the 54 stated in the brief. Individual talks are
+    by their speakers; Misunas compiled and edited the transcripts. The text layer is error-prone OCR, so claims
+    are paraphrased. Page citations are the report''s printed page numbers (PDF page minus 3), which match its table
+    of contents. Discusses: Kosinski''s data flow language for operating systems; Tesler''s single-assignment paper;
+    Guskov''s 1974 IFIP paper; Backus''s work (cited by Arvind); Dennis''s data flow base language; Irvine U-interpreter
+    machine (Arvind); MIT data flow machine; Burroughs recursive data-driven machine (Davis); LAU single-assignment
+    system (CERT Toulouse); CDC 7600; CDC STAR; Cray machines; IBM 360/95; PDP-10; Multics.'
 - id: bik1996automatic
   title: Automatic Data Structure Selection and Transformation for Sparse Matrix Computations
   authors:
@@ -8786,31 +9237,48 @@ papers:
   source_code_url: null
   era: era3
   relevance_tier: adjacent
-  status: screened
+  status: read
   verified: false
   verified_by: null
   verified_date: null
-  summary: TPDS paper on delaying sparse data-structure selection to compile time so that a restructuring compiler
-    can combine loop optimisation with storage choice for sparse matrices; single-node, included as context for
-    sparse-compilation lineage.
-  why_read: null
+  summary: The paper proposes delaying the choice of sparse storage until compile time, so that a compiler can select
+    and transform the data structures of matrices annotated as sparse in dense source code. It reports preliminary
+    timings for LU factorisation, a tridiagonal solver and sparse loop nests on an HP-UX 9000/720 machine and one
+    Cray CPU.
+  why_read: Read it as an example of compile-time sparse data-structure selection, noting that its only distributed-memory
+    content is one sentence in the introduction.
   problem: null
   input_abstraction: []
-  target_hardware: []
+  target_hardware:
+  - vector-array-foundation
   memory_model: null
   programming_model: null
   data_decomposition: []
   computation_mapping: []
   communication_generation: []
-  compiler_runtime_boundary: []
-  compiler_architecture: []
-  ir_representation: []
-  optimization_objectives: []
+  compiler_runtime_boundary:
+  - static-with-directives
+  compiler_architecture:
+  - source-to-source
+  - dependence-based
+  - library-backed
+  ir_representation:
+  - source-annotations
+  - dependence-graph
+  optimization_objectives:
+  - productivity
   maturity: []
-  evaluation_method: null
-  benchmarks: []
-  main_contribution: null
-  main_limitation: null
+  evaluation_method: preliminary timings on one HP-UX 9000/720 machine and one Cray CPU, plus code comparisons with
+    a hand-coded tridiagonal solver and SPARK
+  benchmarks:
+  - LU factorisation of D(n,5) matrices (n = 200 to 500)
+  - tridiagonal solver (generated vs hand-coded)
+  - four Harwell-Boeing matrices in Table 4 (row, column and reshaped variants)
+  - SPARK hand-coded row and column codes (qualitative)
+  main_contribution: A compile-time method that encapsulates sparsity guards and expands access patterns, then selects
+    and transforms sparse storage while resolving conflicts between access patterns.
+  main_limitation: Conflicts between access patterns cannot in general be resolved, and the experiments are preliminary
+    timings on one HP-UX 9000/720 machine and one Cray CPU.
   predecessors: []
   successors: []
   related_versions: []
@@ -8823,14 +9291,29 @@ papers:
   technique_lists: []
   start_here: null
   evidence:
-  - source: supplied PDF, first page and abstract read
-    section: title page
-    pages: null
+  - source: full text
+    section: Sec. 1, pp. 109-110
+  - source: full text
+    section: Sec. 2-3, pp. 110-113
+  - source: full text
+    section: Sec. 4, pp. 112-117
+  - source: full text
+    section: Sec. 5, pp. 117-120
+  - source: full text
+    section: Sec. 6, pp. 120-122
+  - source: full text
+    section: Sec. 7, pp. 122-125
+  - source: full text
+    section: Sec. 8, p. 125
   metadata_sources:
   - crossref
+  - full text read (paper card)
   - supplied PDF
   - supplied PDF (owner-provided, not redistributed)
-  notes: null
+  notes: 'Discusses: run-time pre-evaluation of execution sets (ref. 33); run-time reordering of execution sets
+    (refs. 35, 36); SPARK (ref. 34); Sparse BLAS (ref. 18); procedure cloning (ref. 16); unimodular transformation
+    framework (refs. 4, 5, 29, 40); MT1 prototype restructuring compiler (refs. 6, 15); Harwell-Boeing collection
+    (ref. 23); hand-coded tridiagonal solver (ref. 30).'
 - id: chandra1997datadist
   title: Data distribution support on distributed shared memory multiprocessors
   authors:

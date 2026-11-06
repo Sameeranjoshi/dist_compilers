@@ -6,8 +6,8 @@ Read first: `README.md`, `docs/methodology.md`, `docs/scope.md`, `docs/taxonomy.
 ## Where things stand (commit 878080a)
 
 - **Catalog** `catalog/papers.yaml`: 108 papers, 28 systems. `make validate` passes with 0 errors.
-  - 58 papers have full text read (status `read` or `verified`). Four are `verified`: Xu 2021 (GSPMD), Zheng 2022 (Alpa), Kennedy-era Mehrotra 1990 (Kali), Saltz 1990 (runtime).
-  - 50 are `screened` or `discovered`, i.e. bibliographic records only.
+  - 71 papers have full text read (status `read` or `verified`). Four are `verified`: Xu 2021 (GSPMD), Zheng 2022 (Alpa), Kennedy-era Mehrotra 1990 (Kali), Saltz 1990 (runtime).
+  - 37 are `screened` or `discovered`, i.e. bibliographic records only.
   - Every read paper has an independent second coding in `coding/second_coder_*.json` (A and B for the first 54, C for the four Era 4 papers added in the Era 4 round).
 - **Paper cards** `notes/paper-cards/*.md` (about 60) with structured records in `notes/paper-cards/_records/*.json`. Records are merged into the catalog with `scripts/merge_card_records.py`.
 - **Supplied PDFs** are not in the repository. `docs/supplied-papers.md` maps each file to its catalog id by SHA-256. The 58 files came from the owner's zips; 54 distinct papers.
@@ -24,8 +24,8 @@ Read first: `README.md`, `docs/methodology.md`, `docs/scope.md`, `docs/taxonomy.
 
 1. **Single-coder tags.** Every tag was assigned by one coder, so the counts behind G1 to G8 are not yet findings. Second independent coding of `data_decomposition`, `computation_mapping`, `communication_generation`, `compiler_runtime_boundary` and `optimization_objectives` for the 54 read papers is the precondition for calling any count a result.
 2. **Era 4 (2000 to 2010) has 12 read papers** after the Era 4 round (Diaconescu 2005 and 2006, Su 2010, Pluto 2008 added). Still the thinnest era. Not retrieved from official open sources: UPC Language Specifications 1.2 (eScholarship returned a bot-check page), Strout 2003, Bikshandi 2006, X10 2005, Nieplocha 2006, Su and Yelick 2005, Diaconescu and Zima 2007. Log in `docs/discovery-log.md`.
-3. **Foundations are not read.** Fourteen supplied papers have no card: `allen1987automatic`, `backus1957fortran`, `barnes1968illiac`, `bik1996automatic`, `bondhugula2008pluto`, `hillis1986data`, `kuck1981dependence`, `kung1982systolic`, `lamport1974parallel`, `misunas1977workshop`, `russell1978cray1`, `seitz1985cosmic`, `thangamani2024polyhedral`, `unat2017trends`. Era 0 and Era 1 claims in the paper rest on titles until these are read.
-4. **Kung 1982 PDF has no text layer.** Read it visually (page images) before any claim about systolic arrays.
+3. **Foundations are read (done in the point 3 round).** Thirteen foundation papers have cards and second codings: Backus, Lamport, Barnes, Russell, Seitz, Hillis, Kuck, Misunas, Allen and Kennedy, Bik, Unat (survey), Thangamani (survey) and Kung. See `docs/discovery-log.md`.
+4. **Kung 1982 was read from page images** (no text layer). The card is complete and its figure readings carry confidence labels; it cost about 255 thousand subagent tokens.
 5. **Naming and version conflicts to confirm.**
    - `chatterjee1993generating`: the supplied PDF is the 1993 PPoPP version; another paper cites a 1995 JPDC version. Decide which is the primary record and add the other as `related_versions`.
    - `rogers1994compiling`: the card notes Table I gives about 75% of hand-written speed, while the abstract says 60 to 70%. Confirm in the text.

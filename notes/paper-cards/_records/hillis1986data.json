@@ -1,0 +1,26 @@
+{
+ "id": "hillis1986data",
+ "summary": "Hillis and Steele present data parallel algorithms for fine-grained SIMD machines with general communication, using the Connection Machine as the example. The algorithms cover sums, prefix sums, counting, radix sort, parsing and linked-list operations, and some of their run times are measured on a 65,536-processor machine.",
+ "why_read": "It is the clearest early statement of the data parallel style, showing how a programmer reasons with one processor per element and general communication.",
+ "main_contribution": "A set of data parallel algorithms and a programming model with one virtual processor per element and general SEND communication, demonstrated on the Connection Machine.",
+ "main_limitation": "The authors state that the model suits machines with thousands rather than tens of processors, and most timings come from one 65,536-processor machine.",
+ "evaluation_method": "Measured run times on a 65,536-processor Connection Machine for selected operations, plus asymptotic analysis under a unit-cost model.",
+ "benchmarks": ["Sum of 65,536 elements (about 200 microseconds)", "Partial sums, count and enumerate on 65,536 elements (about 200 microseconds each)", "Radix sort versus Batcher sort on 65,536 32-bit keys (about 30 ms)"],
+ "optimization_objectives": ["latency", "productivity"],
+ "data_decomposition": ["application-defined", "dynamic-distribution"],
+ "computation_mapping": ["owner-computes", "data-parallelism"],
+ "communication_generation": ["programmer-explicit", "broadcast-multicast", "reduction-allreduce"],
+ "compiler_runtime_boundary": [],
+ "target_hardware": ["simd-systolic-cm"],
+ "ir_representation": ["none"],
+ "compiler_architecture": [],
+ "states_relationship_to": ["ILLIAC IV", "Goodyear MPP", "Non-Von", "ICL DAP", "Ultracomputer", "APL", "FP", "Batcher's bitonic sort", "Connection Machine Lisp", "Fortran 8x proposal", "Pan-Reif sparse matrix algorithm", "Lim's connected-component labeling algorithms", "Kung and Leiserson systolic arrays", "Turner's parallel combinator reduction", "Blelloch's unit-time counting models"],
+ "evidence": [
+  {"source": "full text", "section": "Model of the Machine (pp. 1170-1172)"},
+  {"source": "full text", "section": "Sum, partial sums, counting and enumerating, radix sort (pp. 1172-1175)"},
+  {"source": "full text", "section": "Parsing a regular language and processor-cons (pp. 1175-1177)"},
+  {"source": "full text", "section": "Combinators and linked lists (pp. 1177-1180)"},
+  {"source": "full text", "section": "Region labeling and summary (pp. 1181-1182)"}
+ ],
+ "notes": "Title printed in capitals ('DATA PARALLEL ALGORITHMS'); the catalog differs only in case. First author W. Daniel Hillis and year 1986 match the title page (December 1986, special issue, vol. 29 no. 12). PDF metadata dates the file 1985; the printed year was used. Catalog paper_type 'foundational' kept."
+}

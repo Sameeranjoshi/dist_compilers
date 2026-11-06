@@ -184,6 +184,25 @@ for fam in ("element", "collective", "both"):
         rows.append((name, count_by_era(name, lambda n, p, f=fam: elem_family(n, p) == f)))
     table(f"family = {fam}", rows)
 
+# ---- robustness: surveys excluded (surveys are coded from the systems they review) ----
+lines.append("## Robustness: surveys excluded")
+lines.append("")
+lines.append("Surveys are coded from the systems they review, so each survey contributes several tags. The checks below")
+lines.append("remove the survey entries (paper_type survey) and repeat the G1 population and the G2 falsifiers.")
+lines.append("")
+_full_read = read
+read = {k: v for k, v in _full_read.items() if v.get("paper_type") != "survey"}
+for scope in ("B",):
+    for name in ("first", "second", "intersection", "union"):
+        pop = g1_population(name, scope)
+        exc = g1_exceptions(name, scope)
+        lines.append(f"- G1 population B without surveys, {name}: {len(pop) - len(exc)} of {len(pop)} have a run-time stage; exceptions: {', '.join(exc) if exc else 'none'}")
+for name in ("first", "second", "intersection", "union"):
+    early = [pid for pid in read if read[pid]["year"] < 2019 and decision(name, pid) == "search"]
+    lines.append(f"- G2 without surveys, {name}: before 2019 search-based: {', '.join(early) if early else 'none'}")
+lines.append("")
+read = _full_read
+
 os.makedirs("docs/coding", exist_ok=True)
 open("docs/coding/sensitivity.md", "w", encoding="utf-8").write("\n".join(lines) + "\n")
 print("written docs/coding/sensitivity.md")

@@ -154,3 +154,28 @@ Metadata repair: `scripts/merge_card_records.py` appended each record's notes on
 every run, so 32 catalog entries had repeated notes at HEAD. Notes are now rebuilt once
 from the base text and the records, and the merge adds notes only when the text
 is absent.
+
+### Foundation cards (point 3)
+
+Thirteen foundation papers were carded from the owner's supplied PDFs, through the
+mapping in `scratchpad/zips/mapping_out.json`: Backus 1957, Lamport 1974, Barnes 1968,
+Russell 1978, Seitz 1985, Hillis 1986, Kuck et al. 1981, Misunas 1977, Allen and Kennedy
+1987, Bik 1996, Unat 2017 (survey), Thangamani 2024 (survey), Kung 1982.
+
+- `kung1982systolic` has no text layer. Its pages were read as images, one batch of
+  eleven pages, and the card marks which figure readings are high or medium confidence.
+  This cost about 255 thousand subagent tokens. It was kept rather than moved to a TODO,
+  because the card is complete and its readings are labelled.
+- The three `kuck1981dependence` files are byte-identical (SHA-256 prefix
+  dc98b4ad6fee950c8dba). The card uses the first listed.
+- `misunas1977workshop` is a 1977 MIT workshop report on data-flow programs. Its text
+  layer is complete but the first pages extract little text.
+- Paper types in the cards follow the catalog. Three machine papers (Barnes, Russell,
+  Seitz) and Kung are `hardware`; the two surveys are `survey`.
+- The card instruction list had omitted `analytic-optimization` and
+  `partition-propagation`. Those were restored from the taxonomy before the foundation
+  cards were written; the Pluto correction is recorded in `docs/coding/corrections.md`.
+- A second coding of the thirteen papers was made from the blind card texts by an
+  independent coder (`coding/second_coder_D.json`). The read set is now 71 papers.
+  Agreement and sensitivity are regenerated. Robustness without surveys is in
+  `docs/coding/sensitivity.md`.

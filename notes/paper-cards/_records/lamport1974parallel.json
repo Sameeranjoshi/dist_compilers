@@ -1,0 +1,26 @@
+{
+ "id": "lamport1974parallel",
+ "summary": "The paper gives two ways to run the iterations of a DO loop nest concurrently: a hyperplane method for asynchronous multiprocessors and array computers, and a coordinate method for synchronous single-instruction-stream machines. It counts the sequential steps each method needs for example loops and reports only preliminary compiler experience.",
+ "why_read": "It shows how a compiler can rewrite a loop nest so that its iterations run in parallel while the order of references to the same array element is preserved.",
+ "main_contribution": "Two loop-rewriting methods, each with conditions that keep results unchanged, including a linear-mapping construction for choosing the parallel planes.",
+ "main_limitation": "The evaluation is analytic iteration counts and qualitative compiler experience with no measured run times, and the general optimal mapping has no known practical method.",
+ "evaluation_method": "analytic counts of sequential iterations for example loops; no measurements",
+ "benchmarks": ["relaxation loop nest, loop (1), pp. 83-84", "three-statement loop nest, loop (11), pp. 89-92"],
+ "optimization_objectives": ["latency", "communication-volume"],
+ "data_decomposition": [],
+ "computation_mapping": ["iteration-space-partitioning", "loop-to-processor", "data-parallelism"],
+ "communication_generation": ["reduction-allreduce"],
+ "compiler_runtime_boundary": ["fully-static", "analytic-optimization"],
+ "target_hardware": ["vector-array-foundation", "simd-systolic-cm"],
+ "ir_representation": ["polyhedral-sets", "dependence-graph"],
+ "compiler_architecture": ["dependence-based"],
+ "states_relationship_to": ["ILLIAC IV", "CDC STAR-100", "TI ASC", "McIntyre 1970 [1]", "Ramamoorthy and Gonzalez 1969 [2]", "Muroaka 1971 [3]", "Mordell 1969 [4]", "Karp, Miller and Winograd 1967 [5]", "Warshall 1962 [6]", "Lamport and Presberg 1971 [7]", "Lamport 1973, coordinate method [8]"],
+ "evidence": [
+  {"source": "full text", "section": "Abstract and Introduction, p. 83"},
+  {"source": "full text", "section": "I. The Hyperplane Method, pp. 84-88"},
+  {"source": "full text", "section": "II. The Coordinate Method, pp. 89-92"},
+  {"source": "full text", "section": "III. Practical Considerations, pp. 92-93"},
+  {"source": "full text", "section": "Conclusion and References, p. 93"}
+ ],
+ "notes": "Title capitalization differs: the PDF prints 'The Parallel Execution of DO Loops' and the catalog has 'The parallel execution of DO loops'. First author (Leslie Lamport) and year (1974) match."
+}

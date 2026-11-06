@@ -1,0 +1,30 @@
+{
+ "id": "thangamani2024polyhedral",
+ "summary": "This survey lists and describes general-purpose polyhedral compilers as of 2024 and compares eight of them on PolyBench/C for correctness and performance. Its measured targets are one shared-memory CPU node and one GPU, so it gives no treatment of distributed-memory targets, message passing, data placement or communication generation.",
+ "why_read": "A newcomer gets a current list of general-purpose polyhedral compilers and a reproducible single-node benchmark of how they behave, which is useful background for loop-optimization work.",
+ "main_contribution": "A catalog and classification of polyhedral compilers, with a robustness and performance comparison of eight tools on PolyBench/C.",
+ "main_limitation": "The authors note that PolyBench/C is outdated, lacks machine-learning affine patterns and uses dataset sizes too small for current HPC nodes.",
+ "evaluation_method": "benchmarking on PolyBench/C with perf counters, on one CPU node and one GPU",
+ "benchmarks": ["PolyBench/C"],
+ "optimization_objectives": ["local-memory-fit", "load-balance", "synchronization"],
+ "data_decomposition": [],
+ "computation_mapping": ["loop-to-processor", "iteration-space-partitioning"],
+ "communication_generation": [],
+ "compiler_runtime_boundary": ["fully-static", "static-with-directives", "profile-guided", "adaptive", "jit"],
+ "target_hardware": ["simd-systolic-cm", "hierarchical-heterogeneous", "spatial-accelerator"],
+ "ir_representation": ["polyhedral-sets", "mlir-dialect", "multi-level-ir"],
+ "compiler_architecture": ["source-to-source", "interactive-restructuring", "polyhedral", "llvm-based", "mlir-based", "multi-level-ir", "dsl-compiler", "library-backed"],
+ "states_relationship_to": ["Pluto", "PoCC", "ROSE", "PolyOpt", "PPCG", "CHiLL", "TRACO", "GRAPHITE", "Polly", "Polygeist", "IBM XL", "R-Stream", "Qualcomm Polyhedral Mapper", "Tensor Comprehensions", "MindSpore", "AKG", "Cerebras compiler", "Tiramisu", "PolyMage", "APOLLO", "PlaidML", "Stripe", "PolyBench/C", "NAS Parallel Benchmarks", "UTDSP", "Livermore Benchmarks", "Cetus", "isl", "PolyLib", "CLooG", "PET", "Candl", "Clan", "LetSee", "POnOS", "Feautrier scheduling", "Schneck 1973", "Mustafa 2022", "Simbürger et al. 2013", "Pfaffe et al. 2019", "Fontaine et al. 2018", "Verdoolaege et al. 2013 (PPCG)", "Bondhugula et al. 2008 (Pluto)"],
+ "evidence": [
+  {"source": "full text", "section": "Abstract and Sec. 1, pp. 72:1-72:2"},
+  {"source": "full text", "section": "Sec. 2.1-2.3, pp. 72:3-72:5"},
+  {"source": "full text", "section": "Sec. 3, pp. 72:5-72:6"},
+  {"source": "full text", "section": "Sec. 4.1, Table 1, pp. 72:6-72:7"},
+  {"source": "full text", "section": "Sec. 4.2-4.3, pp. 72:8-72:11"},
+  {"source": "full text", "section": "Sec. 4.4, Tables 2-3, pp. 72:11-72:16"},
+  {"source": "full text", "section": "Sec. 4.5-4.6, pp. 72:18-72:21"},
+  {"source": "full text", "section": "Sec. 5, pp. 72:21-72:22"},
+  {"source": "full text", "section": "Sec. 6-7, pp. 72:23-72:24"}
+ ],
+ "notes": ""
+}

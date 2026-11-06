@@ -1,0 +1,29 @@
+{
+ "id": "allen1987automatic",
+ "summary": "The paper sets out the dependence theory behind PFC, a translator that rewrites FORTRAN DO loops as FORTRAN 8x array statements. It gives a dependence test for linear subscripts, a code generator driven by the dependence graph, and loop interchange, recurrence breaking, threshold and IF-conversion transformations that expose more parallelism.",
+ "why_read": "Read it for the dependence test and loop transformations that decide which FORTRAN loops can become vector statements.",
+ "main_contribution": "A dependence-based code generator, built on a carrier-level test for linear subscripts, that emits array statements and adds loop interchange, recurrence breaking, thresholds and IF conversion.",
+ "main_limitation": "Its dependence conditions are only necessary, so for linear subscripts the translator sometimes assumes a dependence that does not exist, and unknown symbolic constants force the same conservative assumption.",
+ "evaluation_method": "proofs and worked examples, plus one translation-time comparison with PARAFRASE on a composite set of Los Alamos kernels",
+ "benchmarks": ["composite set of Los Alamos kernels (translation CPU time only)"],
+ "optimization_objectives": ["productivity"],
+ "data_decomposition": [],
+ "computation_mapping": ["data-parallelism"],
+ "communication_generation": [],
+ "compiler_runtime_boundary": ["fully-static"],
+ "target_hardware": ["vector-array-foundation"],
+ "ir_representation": ["dependence-graph", "array-statements"],
+ "compiler_architecture": ["source-to-source", "dependence-based"],
+ "states_relationship_to": ["PARAFRASE", "Kuck et al. Illinois dependence work", "Texas Instruments ASC compiler", "Cray-1 FORTRAN compiler", "Massachusetts Computer Associates Vectorizer", "VECTRAN", "Banerjee dependence inequality", "Wolfe (loop interchange observation, scalar expansion)", "Allen, Kennedy, Porterfield and Warren (IF conversion)", "Allen 1983 dissertation"],
+ "evidence": [
+  {"source": "full text", "section": "Sec. 1, pp. 491-493"},
+  {"source": "full text", "section": "Sec. 2, pp. 493-497"},
+  {"source": "full text", "section": "Sec. 3, pp. 497-500"},
+  {"source": "full text", "section": "Sec. 4.1-4.4, pp. 500-515"},
+  {"source": "full text", "section": "Sec. 5.2, pp. 515-520"},
+  {"source": "full text", "section": "Sec. 5.3-5.4, pp. 520-530"},
+  {"source": "full text", "section": "Sec. 6, pp. 530-533"},
+  {"source": "full text", "section": "Sec. 7, p. 533"}
+ ],
+ "notes": "Title differs only in capitalisation (catalog: 'Automatic translation of FORTRAN programs to vector form'). First author (Randy Allen) and year (1987) match the title page and journal line."
+}
