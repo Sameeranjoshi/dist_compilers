@@ -210,3 +210,80 @@ Russell 1978, Seitz 1985, Hillis 1986, Kuck et al. 1981, Misunas 1977, Allen and
   three-quarters statement matches Table I.
 - The validator now allows one title to appear twice only when the two entries name each
   other in `related_versions`.
+
+### Query sweep against Crossref (point 5 round)
+
+The 25 phrases from `docs/methodology.md` were run against the Crossref bibliographic query endpoint, one request each, on 2026-11-06. The number is Crossref's `total-results` for each phrase. Crossref matches loosely, so these counts are not screened hits; they show how broad each phrase is. ACM DL, IEEE Xplore, DBLP and OpenAlex were not queried in this round.
+
+| hits (Crossref) | phrase |
+|---:|---|
+| 927,429 | distributed memory compiler |
+| 927,876 | compiler distributed-memory multicomputer |
+| 3,944,415 | data distribution compiler |
+| 3,251,669 | data decomposition compiler |
+| 2,185,972 | communication generation compiler message passing |
+| 1,308,019 | automatic message passing code generation |
+| 1,030,239 | automatic MPI generation |
+| 15,965 | Fortran D compiler |
+| 5,264,442 | High Performance Fortran compiler |
+| 2,587,866 | global array distributed memory compiler |
+| 19,881 | owner computes compiler |
+| 2,300,683 | communication set generation |
+| 233,812 | array redistribution compiler |
+| 922,839 | inspector executor distributed memory |
+| 635,629 | irregular distributed array compiler |
+| 937,029 | polyhedral distributed memory compiler |
+| 1,410,894 | multi GPU compiler partitioning |
+| 467,181 | distributed tensor compiler |
+| 9,996 | SPMD partitioner compiler |
+| 96,578 | mesh sharding compiler |
+| 540,149 | distributed sparse tensor compiler |
+| 918,577 | MLIR distributed memory |
+| 812,084 | wafer scale compiler |
+| 1,016,009 | spatial accelerator distributed compiler |
+| 8,605,513 | communication cost model data distribution compiler |
+
+### Prior-survey search (point 5 round)
+
+Two web searches were run on 2026-11-06: "survey of compilers for distributed memory machines data distribution overview" and "survey high performance Fortran HPF compilation techniques review distributed memory". Results named the overviews below. Each was checked in Crossref where a DOI exists.
+
+- Zima and Chapman, "Compiling for distributed-memory systems", Proceedings of the IEEE, 1993 (catalog, read).
+- Coelho, Germain and Pazat, "State of the art in compiling HPF", LNCS, 1996, DOI 10.1007/3-540-61736-1_45 (added; not read).
+- Perrott, Ayguadé, García and Torres, "High Performance Fortran Implementations: A Survey", Scientific Programming, 1997, DOI 10.1155/1997/875952 (added; not read).
+- Benkner and Zima, "Compiling High Performance Fortran for distributed-memory architectures", Parallel Computing, 1999 (catalog, read).
+- Crooks and Perrott, "Language constructs for data partitioning and distribution" (pre-HPF; not added; the record was not checked in Crossref).
+- Unat et al., "Trends in data locality abstractions for HPC systems", IEEE TPDS, 2017 (catalog, read).
+- Thangamani et al., "A survey of general-purpose polyhedral compilers", ACM TACO, 2024 (catalog, read).
+
+The searches found no survey that covers distributed-memory compilers from the 1950s to the present. The searches are not exhaustive; the claim in the paper is limited to what was searched.
+
+### TODO closures (point 5)
+
+- Section 01, first-survey claim: closed by the prior-survey search above. The
+  introduction now names the overviews found and says which ones have cards.
+- Section 02, query sweep: closed. The 25 phrases were run against Crossref only; the
+  counts are above. ACM DL, IEEE Xplore, DBLP and OpenAlex were not queried.
+- Section 03, foundations: closed. Each claim now cites its card (Backus, Lamport,
+  Kuck, Allen and Kennedy, Barnes, Russell, Misunas, Kung, Seitz, Hillis, Loveman). The
+  Dennis 1975 sentence, which had no card, was removed.
+- Section 06, Era 1: the early source-to-source placement systems were not added. The
+  paragraph states the gap instead, and the gap is listed in Section 13. The Era 1
+  records are now described correctly: two compilers and three machine or
+  programming-model papers.
+- Section 10, network terms: closed from the target sections of the cards for Gupta and
+  Banerjee (hypercube complexities, 16-processor iPSC/2), Palermo et al. (measured
+  startup and per-byte parameters, Paragon and CM-5) and Lee (hypercube embedding by Gray
+  codes, nCUBE-2).
+- Section 11: Tiramisu is not used for any claim, so it is not carded. The accelerator
+  vendors named in the brief are not catalogued and are not claimed. The Shardy and MLIR
+  shard material is documentation; claims that rest on it are labelled as documentation
+  claims, and carding it is open work. GPipe, Megatron-LM and ZeRO are catalogued, not
+  carded, and no claim depends on them. The Jacquelin et al. sentence was removed.
+- Section 13: each open problem now states its test status. Three were run, two partly,
+  and three not run or not settled. The overlap item was reworded: a tag pair does not
+  show that a reduction overlaps the computation that feeds it.
+- Section 06, HPF directives: the claim is cited to the Loveman and Kennedy cards only.
+  The uncarded HPF specification record was removed from that citation.
+
+Open work named by these closures: cards for Shardy and the MLIR shard dialect
+(documentation), GPipe, Megatron-LM, ZeRO, Tiramisu and Jacquelin et al. 2022.

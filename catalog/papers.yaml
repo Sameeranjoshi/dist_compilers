@@ -10332,3 +10332,117 @@ papers:
   metadata_sources:
   - crossref
   notes: Added in the naming and version pass. Not read.
+- id: perrott1997hpf
+  title: 'High Performance Fortran Implementations: A Survey'
+  authors:
+  - R. H. Perrott
+  - E. Ayguade
+  - J. Garcia
+  - J. Torres
+  year: 1997
+  venue: Scientific Programming 6(3), 243-248
+  venue_short: null
+  paper_type: survey
+  doi: 10.1155/1997/875952
+  arxiv: null
+  official_url: https://doi.org/10.1155/1997/875952
+  pdf_url: null
+  access_status: paywalled
+  artifact_url: null
+  source_code_url: null
+  era: era3
+  relevance_tier: adjacent
+  status: screened
+  verified: false
+  verified_by: null
+  verified_date: null
+  summary: 'Provisional: a 1997 survey of HPF implementations, from its title and record. Not read.'
+  why_read: null
+  problem: null
+  input_abstraction: []
+  target_hardware: []
+  memory_model: null
+  programming_model: null
+  data_decomposition: []
+  computation_mapping: []
+  communication_generation: []
+  compiler_runtime_boundary: []
+  compiler_architecture: []
+  ir_representation: []
+  optimization_objectives: []
+  maturity: []
+  evaluation_method: null
+  benchmarks: []
+  main_contribution: null
+  main_limitation: null
+  predecessors: []
+  successors: []
+  related_versions: []
+  systems: []
+  taxonomy_tags: []
+  readme_categories: []
+  technique_lists: []
+  start_here: null
+  evidence:
+  - source: bibliographic record (Crossref)
+    section: metadata
+  metadata_sources:
+  - crossref
+  notes: Found in the prior-survey search of the point 5 round. Not read.
+- id: coelho1996hpf
+  title: State of the art in compiling HPF
+  authors:
+  - Fabien Coelho
+  - Cécile Germain
+  - Jean-Louis Pazat
+  year: 1996
+  venue: The Data Parallel Programming Model, Lecture Notes in Computer Science
+  venue_short: null
+  paper_type: survey
+  doi: 10.1007/3-540-61736-1_45
+  arxiv: null
+  official_url: https://doi.org/10.1007/3-540-61736-1_45
+  pdf_url: null
+  access_status: paywalled
+  artifact_url: null
+  source_code_url: null
+  era: era3
+  relevance_tier: adjacent
+  status: screened
+  verified: false
+  verified_by: null
+  verified_date: null
+  summary: 'Provisional: a survey and review of the state of the art in compiling HPF, from its title and record.
+    Not read.'
+  why_read: null
+  problem: null
+  input_abstraction: []
+  target_hardware: []
+  memory_model: null
+  programming_model: null
+  data_decomposition: []
+  computation_mapping: []
+  communication_generation: []
+  compiler_runtime_boundary: []
+  compiler_architecture: []
+  ir_representation: []
+  optimization_objectives: []
+  maturity: []
+  evaluation_method: null
+  benchmarks: []
+  main_contribution: null
+  main_limitation: null
+  predecessors: []
+  successors: []
+  related_versions: []
+  systems: []
+  taxonomy_tags: []
+  readme_categories: []
+  technique_lists: []
+  start_here: null
+  evidence:
+  - source: bibliographic record (Crossref)
+    section: metadata
+  metadata_sources:
+  - crossref
+  notes: Found in the prior-survey search of the point 5 round. Not read.

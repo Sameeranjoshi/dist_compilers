@@ -28,12 +28,8 @@ Read first: `README.md`, `docs/methodology.md`, `docs/scope.md`, `docs/taxonomy.
 4. **Kung 1982 was read from page images** (no text layer). The card is complete and its figure readings carry confidence labels; it cost about 255 thousand subagent tokens.
 5. **Naming and version conflicts are resolved** (see `docs/discovery-log.md`, naming and version pass). The Chatterjee journal version and the PLuTo report and PLDI versions are catalogued as related entries. The Fortran D title variants and the Rogers SIMPLE reading are recorded.
 
-6. **Unread items the paper depends on.** These are the 11 TODOs. Examples:
-   - Vienna Fortran INDIRECT: the report says run-time techniques are needed but describes none. Read the VFCS paper on INDIRECT before using it as a counterexample to G1.
-   - Jacquelin et al. 2022: the machine and results are not confirmed.
-   - ZeRO (`rajbhandari2020zero`), Tiramisu (`baghdadi2019tiramisu`), Shardy and MLIR shard documentation: cards pending.
-   - Gerndt 1990 and Chen 1988 (Crystal): what the performance-optimisation approach actually measures.
-   - Kennedy 2007: confirm the attribution of HPF's decline by reading the full text.
+6. **Paper TODOs are closed except one.** The conclusion has a second-reader note for the then-and-now table. The claims that rested on uncarded sources were removed or labelled. Open work: cards for Shardy and the MLIR shard dialect (documentation), GPipe, Megatron-LM, ZeRO, Tiramisu and Jacquelin et al. 2022. See `docs/discovery-log.md`, TODO closures.
+
 7. **Then-and-now table needs a second reader.** Each row compares two cards. The "cites older line?" column was checked by one reader against cards, not reference lists. Check each citation claim against the newer paper's reference list.
 8. **Stawinoga 2026 DOI** `10.1145/3779212.3790124` resolves in Crossref to the ASPLOS 2026 paper with the catalog title. Confirmed.
 9. **Accelerator vendor compilers** (Graphcore, SambaNova, Tenstorrent, Groq) are named in the brief but not catalogued. Search only for primary publications or official documentation.

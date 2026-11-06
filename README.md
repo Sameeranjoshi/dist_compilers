@@ -25,13 +25,13 @@ been read beyond their bibliographic record say so.
 <!-- BEGIN:status -->
 | metric | value |
 |---|---|
-| papers in catalog | 110 |
+| papers in catalog | 112 |
 | systems | 28 |
-| metadata-verified against Crossref/arXiv | 96 |
+| metadata-verified against Crossref/arXiv | 98 |
 | status `verified` (primary source read) | 4 |
 | status `read` | 67 |
-| status `screened` / `discovered` | 39 |
-| tier core / bridge / foundation / adjacent | 74 / 17 / 13 / 6 |
+| status `screened` / `discovered` | 41 |
+| tier core / bridge / foundation / adjacent | 74 / 17 / 13 / 8 |
 | paper cards | 71 |
 <!-- END:status -->
 
@@ -682,6 +682,7 @@ rationale in `docs/taxonomy.md`.
   `paradigm` `automatic-distribution`
 - **Bik and Wijshoff (1996)** — [Automatic Data Structure Selection and Transformation for Sparse Matrix Computations](https://doi.org/10.1109/71.485501) — *compiler-technique*.  
   `sparse` `restructuring-compiler`
+- **Coelho et al. (1996)** — [State of the art in compiling HPF](https://doi.org/10.1007/3-540-61736-1_45) — *survey*. *(metadata-verified; summary pending full read)*
 - **Gropp et al. (1996)** — [A high-performance, portable implementation of the MPI message passing interface standard](https://doi.org/10.1016/0167-8191(96)00024-5) — *runtime*. *(metadata-verified; summary pending full read)*  
   `mpi` `runtime`
 - **Palermo et al. (1996)** — [Dynamic Data Partitioning for Distributed-Memory Multicomputers](https://doi.org/10.1006/jpdc.1996.0138) — *compiler-technique*.  
@@ -690,6 +691,7 @@ rationale in `docs/taxonomy.md`.
   `paradigm` `redistribution`
 - **Chandra et al. (1997)** — [Data distribution support on distributed shared memory multiprocessors](https://doi.org/10.1145/258915.258945) — *compiler-technique*.  
   `dsm` `data-distribution`
+- **Perrott et al. (1997)** — [High Performance Fortran Implementations: A Survey](https://doi.org/10.1155/1997/875952) — *survey*. *(metadata-verified; summary pending full read)*
 - **Numrich and Reid (1998)** — [Co-array Fortran for parallel programming](https://doi.org/10.1145/289918.289920) — *language*.  
   `pgas` `caf`
 - **Yelick et al. (1998)** — [Titanium: a high-performance Java dialect](https://doi.org/10.1002/(sici)1096-9128(199809/11)10:11/13<825::aid-cpe383>3.0.co;2-h) — *language*. *(metadata-verified; summary pending full read)*  

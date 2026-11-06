@@ -58,10 +58,12 @@
 | ponnusamy1995runtime | 1995 | Runtime support and compilation methods for user-specified irregular data distributions | runtime | core | read | no | paywalled |
 | su1995advanced | 1995 | Advanced compilation techniques in the PARADIGM compiler for distributed-memory multicomputers | compiler-technique | core | read | no | paywalled |
 | bik1996automatic | 1996 | Automatic Data Structure Selection and Transformation for Sparse Matrix Computations | compiler-technique | adjacent | read | no | paywalled |
+| coelho1996hpf | 1996 | State of the art in compiling HPF | survey | adjacent | screened | no | paywalled |
 | gropp1996mpich | 1996 | A high-performance, portable implementation of the MPI message passing interface standard | runtime | bridge | discovered | no | paywalled |
 | palermo1996dynamic | 1996 | Dynamic Data Partitioning for Distributed-Memory Multicomputers | compiler-technique | core | read | no | paywalled |
 | ramaswamy1996redistribution | 1996 | Optimizations for Efficient Array Redistribution on Distributed Memory Multicomputers | compiler-technique | core | read | no | paywalled |
 | chandra1997datadist | 1997 | Data distribution support on distributed shared memory multiprocessors | compiler-technique | bridge | read | no | paywalled |
+| perrott1997hpf | 1997 | High Performance Fortran Implementations: A Survey | survey | adjacent | screened | no | paywalled |
 | numrich1998coarray | 1998 | Co-array Fortran for parallel programming | language | bridge | read | no | paywalled |
 | yelick1998titanium | 1998 | Titanium: a high-performance Java dialect | language | bridge | discovered | no | paywalled |
 | benkner1999compiling | 1999 | Compiling High Performance Fortran for distributed-memory architectures | survey | core | read | no | paywalled |
