@@ -287,3 +287,37 @@ The searches found no survey that covers distributed-memory compilers from the 1
 
 Open work named by these closures: cards for Shardy and the MLIR shard dialect
 (documentation), GPipe, Megatron-LM, ZeRO, Tiramisu and Jacquelin et al. 2022.
+
+### Second reading of the then-and-now table (point 6)
+
+A fresh reader checked each row against the cards and against the reference lists in
+the inbox extractions. The reader used no catalog, coding or discovery material. The
+reader's report was returned in a message, because the harness did not allow the
+subagent to write it to the repository. The findings, in summary:
+
+- 21 of the claims in the table and 6 in the paragraph after it were not supported or
+  were contradicted. Every row needed a change.
+- Dates: Sequoia (2006), Chapel (2007) and Legion (2012) were in the Then or Now columns
+  outside their windows. Titanium (2007) was in the Now column of the inspector row.
+  Stawinoga (2026) fell outside the 2018--2025 header. The header is now 2018--2026.
+- Cites column: owner-computes was "partly" but no checked reference list cites the
+  works in that cell, so it is "no". The separation row was "yes", which no reference
+  list supports, so it is "no". Halo and overlap was "unchecked", and the three full
+  texts are present, so it is "no". Layout-derived communication and the inspector row
+  are "unchecked": Kong et al., Legion, Titanium, PartTensor and the Saltz 1990
+  Journal article are not in the evidence set.
+- Claims withdrawn or reworded: "HPF's was only a naming of places"; "replication is the
+  default for unmatched dimensions in both"; "GSPMD and PartIR replace the rule with
+  propagation" (they propagate sharding annotations); "the 1996 work optimised one
+  redistribution" (Palermo and Ramaswamy aggregate the data one redistribution moves);
+  "PARTI's preprocessor" (the Saltz card never names PARTI); "SUPERB overlap areas" (the
+  card attributes the overlap-based EXCH to Zima 1993, not to SUPERB); "stated in 2022 as
+  two commands" (DISTAL states one distribute command); "volume-only cost model is
+  sufficient" (no source says so).
+- The paragraph's "seven of the eight mechanisms have the same structure" was
+  contradicted by the table's own What changed column. It now says each mechanism recurs
+  and the design is unchanged in two rows.
+- The paragraph's "Table 2" is now a reference to the table label.
+
+Missing evidence that would change a cell: full texts of Kong et al., Legion, Titanium,
+PartTensor, and the 1990 Saltz Journal article; a SUPERB source for the overlap claim.

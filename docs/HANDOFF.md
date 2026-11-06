@@ -30,7 +30,8 @@ Read first: `README.md`, `docs/methodology.md`, `docs/scope.md`, `docs/taxonomy.
 
 6. **Paper TODOs are closed except one.** The conclusion has a second-reader note for the then-and-now table. The claims that rested on uncarded sources were removed or labelled. Open work: cards for Shardy and the MLIR shard dialect (documentation), GPipe, Megatron-LM, ZeRO, Tiramisu and Jacquelin et al. 2022. See `docs/discovery-log.md`, TODO closures.
 
-7. **Then-and-now table needs a second reader.** Each row compares two cards. The "cites older line?" column was checked by one reader against cards, not reference lists. Check each citation claim against the newer paper's reference list.
+7. **Then-and-now table has had a second reader** (`docs/discovery-log.md`, second reading). Its corrections are in the paper. The cells that stay unchecked need full texts of Kong et al. 2023, Legion, Titanium 2007, PartTensor and the 1990 Saltz Journal article.
+
 8. **Stawinoga 2026 DOI** `10.1145/3779212.3790124` resolves in Crossref to the ASPLOS 2026 paper with the catalog title. Confirmed.
 9. **Accelerator vendor compilers** (Graphcore, SambaNova, Tenstorrent, Groq) are named in the brief but not catalogued. Search only for primary publications or official documentation.
 10. **Outdated file.** `docs/historical-claims.md` predates the restructure. Its hypotheses H1 to H11 are superseded by Table `tab:generalizations`. Replace it or mark it superseded.
