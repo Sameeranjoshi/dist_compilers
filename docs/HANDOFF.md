@@ -5,9 +5,9 @@ Read first: `README.md`, `docs/methodology.md`, `docs/scope.md`, `docs/taxonomy.
 
 ## Where things stand (commit 878080a)
 
-- **Catalog** `catalog/papers.yaml`: 108 papers, 28 systems. `make validate` passes with 0 errors.
+- **Catalog** `catalog/papers.yaml`: 112 papers, 28 systems. `make validate` passes with 0 errors.
   - 71 papers have full text read (status `read` or `verified`). Four are `verified`: Xu 2021 (GSPMD), Zheng 2022 (Alpa), Kennedy-era Mehrotra 1990 (Kali), Saltz 1990 (runtime).
-  - 37 are `screened` or `discovered`, i.e. bibliographic records only.
+  - 41 are `screened` or `discovered`, i.e. bibliographic records only.
   - Every read paper has an independent second coding in `coding/second_coder_*.json` (A and B for the first 54, C for the four Era 4 papers added in the Era 4 round).
 - **Paper cards** `notes/paper-cards/*.md` (about 60) with structured records in `notes/paper-cards/_records/*.json`. Records are merged into the catalog with `scripts/merge_card_records.py`.
 - **Supplied PDFs** are not in the repository. `docs/supplied-papers.md` maps each file to its catalog id by SHA-256. The 58 files came from the owner's zips; 54 distinct papers.
