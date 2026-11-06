@@ -1,0 +1,218 @@
+{
+  "zima1993compiling": {
+    "data_decomposition": ["block-1d", "uneven-block", "cyclic", "replicated"],
+    "computation_mapping": ["owner-computes"],
+    "communication_generation": ["compiler-p2p", "message-vectorization", "broadcast-multicast", "reduction-allreduce", "inspector-executor", "halo-exchange"],
+    "compiler_runtime_boundary": ["static-with-directives", "runtime-inspector"],
+    "optimization_objectives": ["message-count", "productivity"],
+    "basis": "Data decomposition; Compiler / runtime split"
+  },
+  "benkner1999compiling": {
+    "data_decomposition": ["block-1d", "cyclic", "block-cyclic", "uneven-block", "mapping-array", "affine-owner-map", "dynamic-distribution"],
+    "computation_mapping": ["owner-computes"],
+    "communication_generation": ["communication-sets", "inspector-executor", "overlapped", "message-vectorization"],
+    "compiler_runtime_boundary": ["static-with-directives", "runtime-inspector", "load-time"],
+    "optimization_objectives": ["overlap", "message-count"],
+    "basis": "Compiler / runtime split; Communication generation"
+  },
+  "kennedy2007rise": {
+    "data_decomposition": ["block-1d", "cyclic", "block-cyclic", "uneven-block", "mapping-array", "affine-owner-map"],
+    "computation_mapping": ["owner-computes"],
+    "communication_generation": ["compiler-p2p", "inspector-executor", "message-vectorization"],
+    "compiler_runtime_boundary": ["static-with-directives", "runtime-inspector"],
+    "optimization_objectives": ["productivity"],
+    "basis": "Compiler / runtime split; Communication generation"
+  },
+  "chen1988compiling": {
+    "data_decomposition": ["block-nd", "affine-owner-map", "application-defined"],
+    "computation_mapping": ["loop-to-processor"],
+    "communication_generation": ["compiler-p2p", "reduction-allreduce", "broadcast-multicast"],
+    "compiler_runtime_boundary": ["analytic-optimization"],
+    "optimization_objectives": ["load-balance", "productivity"],
+    "basis": "Compiler / runtime split; Computation mapping"
+  },
+  "saltz1990runtime": {
+    "data_decomposition": ["block-1d", "mapping-array"],
+    "computation_mapping": ["iteration-space-partitioning"],
+    "communication_generation": ["import-export-schedule", "inspector-executor", "message-vectorization"],
+    "compiler_runtime_boundary": ["runtime-inspector"],
+    "optimization_objectives": ["message-count"],
+    "basis": "Compiler / runtime split; Communication generation"
+  },
+  "saltz1991multiprocessor": {
+    "data_decomposition": ["block-1d", "mapping-array"],
+    "computation_mapping": ["iteration-space-partitioning"],
+    "communication_generation": ["inspector-executor", "import-export-schedule"],
+    "compiler_runtime_boundary": ["static-with-directives", "runtime-inspector"],
+    "optimization_objectives": ["communication-volume"],
+    "basis": "Communication generation; Compiler / runtime split"
+  },
+  "mehrotra1990kali": {
+    "data_decomposition": ["block-1d", "cyclic", "block-cyclic", "application-defined", "dynamic-distribution", "replicated"],
+    "computation_mapping": ["owner-computes", "loop-to-processor"],
+    "communication_generation": ["communication-sets", "inspector-executor", "compiler-p2p", "redistribution-resharding", "all-to-all"],
+    "compiler_runtime_boundary": ["static-with-directives", "runtime-inspector", "load-time"],
+    "optimization_objectives": ["productivity"],
+    "basis": "Communication generation; Compiler / runtime split"
+  },
+  "chapman1991vienna": {
+    "data_decomposition": ["block-1d", "block-nd", "cyclic", "block-cyclic", "affine-owner-map", "mapping-array", "dynamic-distribution"],
+    "computation_mapping": [],
+    "communication_generation": ["compiler-p2p", "all-to-all", "redistribution-resharding", "inspector-executor"],
+    "compiler_runtime_boundary": ["static-with-directives", "load-time", "runtime-inspector"],
+    "optimization_objectives": ["productivity", "message-count"],
+    "basis": "Input abstraction; Computation mapping"
+  },
+  "chapman1992vienna": {
+    "data_decomposition": ["block-1d", "block-nd", "cyclic", "block-cyclic", "uneven-block", "affine-owner-map", "mapping-array", "application-defined", "dynamic-distribution", "replicated"],
+    "computation_mapping": ["owner-computes", "loop-to-processor"],
+    "communication_generation": ["compiler-p2p", "message-vectorization", "halo-exchange", "all-to-all", "inspector-executor", "redistribution-resharding"],
+    "compiler_runtime_boundary": ["static-with-directives", "load-time", "runtime-inspector"],
+    "optimization_objectives": ["productivity", "message-count"],
+    "basis": "Data decomposition; Communication generation"
+  },
+  "gupta1992automatic": {
+    "data_decomposition": ["block-1d", "cyclic", "block-cyclic", "block-nd", "replicated"],
+    "computation_mapping": ["owner-computes"],
+    "communication_generation": [],
+    "compiler_runtime_boundary": ["analytic-optimization"],
+    "optimization_objectives": ["load-balance", "communication-volume", "productivity"],
+    "basis": "Communication generation; Compiler / runtime split"
+  },
+  "koelbel1991regular": {
+    "data_decomposition": ["block-1d", "cyclic"],
+    "computation_mapping": ["owner-computes"],
+    "communication_generation": ["communication-sets", "overlapped", "compiler-p2p"],
+    "compiler_runtime_boundary": ["fully-static", "static-with-directives"],
+    "optimization_objectives": ["overlap", "productivity"],
+    "basis": "Compiler / runtime split; Communication generation"
+  },
+  "hiranandani1991fortrand": {
+    "data_decomposition": ["block-1d", "cyclic", "block-cyclic", "affine-owner-map", "dynamic-distribution", "mapping-array", "replicated"],
+    "computation_mapping": ["owner-computes"],
+    "communication_generation": ["communication-sets", "message-vectorization", "broadcast-multicast", "all-to-all", "reduction-allreduce", "communication-pipelining", "compiler-p2p"],
+    "compiler_runtime_boundary": ["static-with-directives", "runtime-inspector"],
+    "optimization_objectives": ["load-balance", "message-count", "productivity"],
+    "basis": "Compiler / runtime split; Communication generation"
+  },
+  "hiranandani1992evaluation": {
+    "data_decomposition": ["block-1d", "block-nd", "halo-overlap"],
+    "computation_mapping": ["owner-computes", "restricted-owner-computes"],
+    "communication_generation": ["message-vectorization", "communication-pipelining", "overlapped", "reduction-allreduce", "broadcast-multicast", "compiler-p2p"],
+    "compiler_runtime_boundary": ["static-with-directives", "runtime-inspector"],
+    "optimization_objectives": ["message-count", "overlap", "productivity"],
+    "basis": "Communication generation; Compiler / runtime split"
+  },
+  "das1991irregular": {
+    "data_decomposition": ["mapping-array", "graph-partition"],
+    "computation_mapping": ["restricted-owner-computes"],
+    "communication_generation": ["inspector-executor", "import-export-schedule"],
+    "compiler_runtime_boundary": ["static-with-directives", "runtime-inspector"],
+    "optimization_objectives": ["communication-volume"],
+    "basis": "Computation mapping; Communication generation"
+  },
+  "loveman1993hpf": {
+    "data_decomposition": ["block-1d", "cyclic", "block-nd", "affine-owner-map", "replicated", "dynamic-distribution"],
+    "computation_mapping": [],
+    "communication_generation": ["broadcast-multicast", "reduction-allreduce", "programmer-explicit"],
+    "compiler_runtime_boundary": ["static-with-directives", "load-time"],
+    "optimization_objectives": ["productivity", "performance-portability"],
+    "basis": "Data decomposition; Compiler / runtime split"
+  },
+  "banerjee1995paradigm": {
+    "data_decomposition": ["block-1d", "cyclic", "block-cyclic", "block-nd", "affine-owner-map"],
+    "computation_mapping": ["owner-computes", "task-placement"],
+    "communication_generation": ["message-vectorization", "inspector-executor", "communication-sets", "compiler-p2p", "overlapped"],
+    "compiler_runtime_boundary": ["analytic-optimization", "runtime-inspector"],
+    "optimization_objectives": ["productivity", "message-count", "overlap"],
+    "basis": "Compiler / runtime split; Data decomposition"
+  },
+  "chatterjee1993generating": {
+    "data_decomposition": ["block-1d", "cyclic", "block-cyclic", "affine-owner-map"],
+    "computation_mapping": [],
+    "communication_generation": ["communication-sets", "message-vectorization"],
+    "compiler_runtime_boundary": ["runtime-inspector"],
+    "optimization_objectives": ["productivity"],
+    "basis": "Compiler / runtime split; Communication generation"
+  },
+  "rogers1994compiling": {
+    "data_decomposition": ["block-1d", "cyclic", "application-defined"],
+    "computation_mapping": ["owner-computes", "restricted-owner-computes"],
+    "communication_generation": ["compiler-p2p", "message-vectorization", "overlapped", "reduction-allreduce"],
+    "compiler_runtime_boundary": ["static-with-directives", "runtime-inspector"],
+    "optimization_objectives": ["message-count", "overlap"],
+    "basis": "Compiler / runtime split; Computation mapping"
+  },
+  "ponnusamy1995runtime": {
+    "data_decomposition": ["block-1d", "mapping-array", "graph-partition"],
+    "computation_mapping": ["restricted-owner-computes"],
+    "communication_generation": ["inspector-executor", "import-export-schedule", "message-vectorization"],
+    "compiler_runtime_boundary": ["static-with-directives", "runtime-inspector"],
+    "optimization_objectives": ["communication-volume", "productivity"],
+    "basis": "Computation mapping; Compiler / runtime split"
+  },
+  "hwang1995chaos": {
+    "data_decomposition": ["mapping-array", "dynamic-distribution"],
+    "computation_mapping": ["owner-computes", "restricted-owner-computes"],
+    "communication_generation": ["inspector-executor", "import-export-schedule"],
+    "compiler_runtime_boundary": ["static-with-directives", "runtime-inspector", "adaptive"],
+    "optimization_objectives": ["communication-volume", "productivity"],
+    "basis": "Compiler / runtime split; Communication generation"
+  },
+  "lee1995techniques": {
+    "data_decomposition": ["block-1d", "cyclic", "block-cyclic", "block-nd", "affine-owner-map", "dynamic-distribution", "replicated"],
+    "computation_mapping": ["restricted-owner-computes", "loop-to-processor"],
+    "communication_generation": ["broadcast-multicast", "reduction-allreduce", "scatter-gather", "all-to-all", "communication-pipelining"],
+    "compiler_runtime_boundary": ["analytic-optimization"],
+    "optimization_objectives": ["communication-volume", "productivity"],
+    "basis": "Compiler / runtime split; Computation mapping"
+  },
+  "palermo1996dynamic": {
+    "data_decomposition": ["block-1d", "block-nd", "dynamic-distribution"],
+    "computation_mapping": [],
+    "communication_generation": ["redistribution-resharding", "all-to-all", "message-vectorization", "communication-pipelining", "compiler-p2p"],
+    "compiler_runtime_boundary": ["analytic-optimization"],
+    "optimization_objectives": ["communication-volume", "message-count"],
+    "basis": "Compiler / runtime split; Data decomposition"
+  },
+  "ramaswamy1996redistribution": {
+    "data_decomposition": ["block-1d", "cyclic", "block-cyclic", "replicated", "dynamic-distribution"],
+    "computation_mapping": [],
+    "communication_generation": ["redistribution-resharding", "communication-sets", "message-vectorization"],
+    "compiler_runtime_boundary": ["runtime-inspector"],
+    "optimization_objectives": ["message-count"],
+    "basis": "Compiler / runtime split; Communication generation"
+  },
+  "harris1995dechpf": {
+    "data_decomposition": ["block-1d", "cyclic", "block-nd", "affine-owner-map", "replicated"],
+    "computation_mapping": ["restricted-owner-computes"],
+    "communication_generation": ["compiler-p2p", "message-vectorization", "halo-exchange", "reduction-allreduce", "inspector-executor", "scatter-gather"],
+    "compiler_runtime_boundary": ["static-with-directives", "runtime-inspector"],
+    "optimization_objectives": ["communication-volume", "message-count", "productivity"],
+    "basis": "Computation mapping; Communication generation"
+  },
+  "gupta1995hpf": {
+    "data_decomposition": ["block-1d", "cyclic", "block-nd", "replicated"],
+    "computation_mapping": ["owner-computes", "restricted-owner-computes"],
+    "communication_generation": ["communication-sets", "message-vectorization", "broadcast-multicast", "reduction-allreduce", "halo-exchange", "communication-pipelining", "compiler-p2p"],
+    "compiler_runtime_boundary": ["fully-static", "static-with-directives", "load-time"],
+    "optimization_objectives": ["message-count", "communication-volume"],
+    "basis": "Compiler / runtime split; Communication generation"
+  },
+  "tang2000tiled": {
+    "data_decomposition": ["block-cyclic", "affine-owner-map"],
+    "computation_mapping": ["iteration-space-partitioning", "loop-to-processor"],
+    "communication_generation": ["compiler-p2p", "communication-sets", "message-vectorization"],
+    "compiler_runtime_boundary": ["fully-static"],
+    "optimization_objectives": ["load-balance", "overlap", "local-memory-fit"],
+    "basis": "Computation mapping; Compiler / runtime split"
+  },
+  "numrich1998coarray": {
+    "data_decomposition": ["application-defined"],
+    "computation_mapping": ["iteration-space-partitioning"],
+    "communication_generation": ["programmer-explicit", "compiler-p2p"],
+    "compiler_runtime_boundary": ["fully-static", "load-time"],
+    "optimization_objectives": ["productivity"],
+    "basis": "Data decomposition; Communication generation"
+  }
+}
