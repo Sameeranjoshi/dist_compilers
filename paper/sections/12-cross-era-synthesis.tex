@@ -39,35 +39,30 @@ Separation of mapping from program & Sequoia's per-machine mapping specification
 \infer{Three differences recur in the right-hand column. First, the unit of reasoning moved from the array element and the loop statement to the tensor dimension and the operator. Second, the arrangement of places became the unit of cost: a mesh axis names a collective's participants and a bandwidth, where a processor arrangement named only positions. Third, the decision is taken by propagation over values rather than by a rule over statements. The program class made all three possible: a graph of a few large operators with static shapes admits per-operator rewrite rules, and homogeneous devices admit a cost in bytes per mesh axis. The 1990s compilers faced loops with arbitrary affine subscripts over machines with a startup cost two hundred times the byte cost~\cite{hiranandani1992evaluation}, and had to count messages.}
 
 \subsection{Patterns tested on the read set}
-The following patterns were tested against the 54 catalog papers whose full text was read, using the taxonomy tags of the catalog (Section~\ref{sec:taxonomy} describes the coding and its limits). The era samples are 9 to 15 papers, and a difference of two or three is not a finding.
+Each of the 54 read papers was coded twice on five axes: data decomposition, computation mapping, communication, the compiler/runtime boundary and objectives. The first coding is the catalog's. The second was made by an independent coder who had not seen the first and worked only from the card text. Exact-set agreement is 26\% for data decomposition, 20\% for computation mapping, 20\% for communication, 52\% for the compiler/runtime boundary and 6\% for objectives. A pattern is reported here only when its direction holds under both codings and their intersection. Table~\ref{tab:sensitivity} gives the counts, and the repository gives the full agreement tables.
 
-\paragraph{The runtime stage follows data-dependent ownership}
-Every read system that describes how irregular ownership is resolved has a run-time stage: an inspector, a run-time partitioner, a dynamic scheduler or a JIT. This holds for 17 papers across five eras, from PARTI and CHAOS~\cite{saltz1990runtime,ponnusamy1995runtime} through Legion~\cite{bauer2012legion} to SpDISTAL~\cite{yadav2022spdistal}. Vienna Fortran's INDIRECT mappings are excluded because the report says run-time techniques are needed but describes none~\cite{chapman1991vienna}. \infer{The defensible claim is that a run-time stage is needed when the owner of an element is data-dependent; where the map is fixed in the source, the compiler can emit the schedule statically~\cite{koelbel1991regular}.}
+\input{tables/sensitivity}
 
-\paragraph{The decision procedure moved from analytic to measured}
-Table~\ref{tab:decision} counts the procedure by era. The three analytic optimisers of the 1990s~\cite{gupta1992automatic,lee1995techniques,palermo1996dynamic} model the network; the search systems from 2019 score configurations by profiles or a simulator~\cite{jia2019flexflow,narayanan2019pipedream,zheng2022alpa}. \infer{Whether measurement replaced an unreliable network model, or the search space changed, the counts cannot say; the test that would settle it is a system that uses both on one workload, and no read paper makes it.}
+\paragraph{Search-based decomposition appears only from 2019}
+Papers that choose a decomposition by profile or search are recorded in Era~5 (two papers under both codings) and Era~6 (one or two), and in none of Eras~2 to~4 under the second coding. The first coding places one such paper in Era~2, Fortran~D's evaluation, whose card states that the training-set cost estimate is planned future work~\cite{hiranandani1992evaluation}. We treat it as an exception. \infer{Search and profiling enter the decomposition only with the systems of 2019.}
 
-\input{tables/insights-decision}
+\paragraph{Message count led the 1990s and is nearly absent later}
+Message count is the most frequent recorded objective of Era~3 under both codings, with 11 and 9 papers. The margin is narrow: the next most frequent objective has 10 and 8. It falls to at most one paper in Era~6 under either coding. \infer{The 1990s evaluations counted messages because, on the machines they used, startup cost dominated (Section~\ref{sec:history}). The objective counts for the other eras are not stable enough to say more.}
 
-\paragraph{The objective moved from messages to memory and productivity}
-Message count is the most common recorded objective in Era~3 and nearly absent from the recent systems; local memory fit grows from one paper in Era~2 to eight in Era~6, and productivity from none to seven (Table~\ref{tab:objectives}). \infer{Section~\ref{sec:history} gave the machine reason for the 1990s objective; the 2020s objective follows from a device memory of 16 GB per core~\cite{xu2021gspmd} and from evaluations that measure utilisation rather than messages.}
+\paragraph{Explicit maps and their run-time stage}
+Where ownership is set by an explicit map (a mapping array, a graph partition or a sparse partition), the read papers that describe a run-time mechanism for resolving it have a run-time stage: 12 of 14 under the first coding and 11 of 12 under the second. The exceptions have specific causes. Vienna Fortran's report says that its INDIRECT references need run-time techniques from Kali and PARTI but describes none~\cite{chapman1991vienna,chapman1992vienna}. The second coder tagged Chapel's planned graph-partitioned distribution without a run-time stage~\cite{chamberlain2007chapel}. \infer{The pattern is suggestive rather than settled. The exceptions show that the boundary between a planned distribution and a data-dependent one is hard to code from text.}
 
-\input{tables/insights-objectives}
+\paragraph{Block-cyclic and mapping arrays stop after Era~4}
+Block-cyclic decompositions appear in 9 and 7 Era~3 papers under the two codings, in 3 Era~4 papers under both, and in none of the Era~5 or Era~6 papers. Mapping arrays follow the same course: 4 and 3 in Era~3, one in Era~4, and none later. \infer{This is a claim about the read set, not about the field. The Era~4 PGAS and HPCS papers are the least covered, and the pattern should be tested on them first.}
 
-\paragraph{The decomposition vocabulary changed}
-Block-cyclic appears in 6 of 11 Era~2 papers and 9 of 15 Era~3 papers, and in none after Era~4; mapping arrays follow the same course; model-state sharding and sparse-tensor partitions appear only from Era~5 (Table~\ref{tab:decomposition-vocab}). \infer{Benkner and Zima's recommendation to drop block-cyclic alignment from the language~\cite{benkner1999compiling} was, in effect, taken by the tensor systems, whose even block shardings need no cyclic address arithmetic.}
+\paragraph{Model-state sharding and sparse partitions are recent}
+Model-state sharding is recorded from Era~5 under both codings and in none of the earlier eras. Sparse-tensor partitions appear only in Era~6, in one or two papers.
 
-\input{tables/insights-decomposition}
+\paragraph{Partition propagation appears only in Era~6, and owner-computes persists}
+Partition propagation is recorded for two papers in Era~6 under both codings and for none earlier. Owner-computes is recorded in every era under both codings, with six or more papers in Eras~2 and~3 and five or six of the ten Era~6 papers. \infer{The rule is not replaced in the read set. Propagation is a second mechanism for the same question in two systems.}
 
-\paragraph{Owner-computes gave way to propagation, but only for graphs}
-Owner-computes is recorded in 6 of 11 Era~2 papers and 11 of 15 Era~3 papers, falls to 2 of 9 in Era~5, and returns in 6 of 10 Era~6 papers, while propagation appears in 2 (Table~\ref{tab:owner}). \infer{The rule survives where the programmer writes the loop and the compiler places iterations; propagation is used where the program is a graph of operators. This is a claim about the programming model, not the era.}
-
-\input{tables/insights-owner}
-
-\paragraph{Pure element-level communication is disappearing}
-Systems whose communication is only element-level number 4 of 11 in Era~2 and 4 of 15 in Era~3, and fall to one in Era~5 and none in Era~6 (Table~\ref{tab:comm-family}). \infer{Element-level generation survives as the local set that feeds a collective rather than as the whole strategy.}
-
-\input{tables/insights-communication}
+\paragraph{What the codings withdraw}
+Four claims of the first analysis are withdrawn. Element-level communication is recorded for 8 of 9 Era~4 papers under the second coding, so it does not disappear after the 2000s. Productivity is recorded for 8 of 11 Era~2 papers under the second coding, so it does not rise from none to seven. Local memory fit is recorded for at most two papers in any era under the second coding, so it does not grow to eight. Halo overlap is recorded in every era under the first coding but not in Era~3 under the second. Halo exchange is recorded in Eras~2, 3 and~6 under both codings and in Eras~4 and~5 only under the first.
 
 \subsection{HPF's four causes, applied to today}
 \fact{Kennedy, Koelbel and Zima attribute HPF's decline to immature compilers combined with an impatient community, insufficient support for important features, inconsistent implementations, and the complex link between program and performance~\cite{kennedy2007rise}.} \infer{Each cause can be checked against the sharding compilers from their own cards.}
@@ -80,28 +75,33 @@ Systems whose communication is only element-level number 4 of 11 in Era~2 and 4 
 \infer{On this evidence the sharding compilers have removed the first cause, share the second and third, and have made the fourth a design goal rather than a side effect. Whether that is enough is the question the next decade answers; the catalog records what would count as evidence.}
 
 \subsection{Generalizations}
-Table~\ref{tab:generalizations} states what we are prepared to claim. Strength is ``supported'' when the cited table or card set shows it with no counterexample among the read papers, ``suggested'' when the count is consistent but one era's sample is below ten, and ``open'' when the claim is an inference we have not tested.
+Table~\ref{tab:generalizations} states what we are prepared to claim. Strength is ``supported across codings'' when the pattern holds under both codings and their intersection, ``suggested'' when one coding or a small sample qualifies it, and the refuting observation is the one that would overturn it.
 
 \begin{table*}[t]
 \centering
 \scriptsize
 \caption{Generalizations, their evidence strength in the read set, the observation that would refute each, and the test that would settle it.}
 \label{tab:generalizations}
-\begin{tabular}{p{0.04\textwidth}p{0.30\textwidth}p{0.10\textwidth}p{0.26\textwidth}p{0.20\textwidth}}
+\begin{tabular}{p{0.04\textwidth}p{0.30\textwidth}p{0.12\textwidth}p{0.26\textwidth}p{0.20\textwidth}}
 \toprule
 ID & Generalization & Strength & Refuting observation & Test \\
 \midrule
-G1 & A runtime stage is present whenever the ownership of an element is data-dependent at run time. & supported (17 papers) & A read paper with data-dependent ownership and no run-time stage. & Read the Vienna Fortran INDIRECT implementation and further mapping-array systems. \\
-G2 & The decomposition decision moved from analytic network models (1990s) to profiled or simulated program costs (2019 onward). & suggested & A 2019+ system with an analytic network model as its primary optimiser, or a 1990s system that profiles. & Read the Kali and CHAOS cost discussions in full; read further 2019+ systems. \\
-G3 & Message count was the leading objective of the 1990s and has given way to memory fit and productivity. & suggested & A recent system that optimises message count as its primary objective. & Second coding of objectives against each paper's stated goals. \\
-G4 & Block-cyclic and mapping-array decompositions disappear after about 2000; model-state and sparse partitions appear. & suggested & A post-2005 read system with block-cyclic as its main decomposition. & Survey the 2000--2010 PGAS and HPCS papers, the least covered era. \\
-G5 & Owner-computes is replaced by propagation only where the program is a graph of operators. & open & A graph-based system that uses owner-computes as its main mechanism. & Compare Kali and Fortran~D's statement rules with GSPMD's on one workload. \\
-G6 & Element-level communication survives only inside collective systems. & suggested & A read Era~5 or later system with element-level generation and no collective component. & Read the inspector and element-level systems of 2010 onward. \\
-G7 & Halo overlap is the one ownership feature present in every era. & supported (2--3 per era) & A read era with no halo-overlap system. & Extend the read set to Eras 0 and 1. \\
-G8 & Seven of eight 1990s mechanisms reappear with the same structure in the 2020s systems; in three of the eight no newer paper cites the older line, and in only one do all of them. & supported (Table~\ref{tab:thennow}) & A structural difference missed in the table, or a citation the cards did not record. & Second reader checks each row of Table~\ref{tab:thennow} against both cards and the papers' reference lists. \\
+G1 & Where ownership is set by an explicit map, the read systems that describe a run-time mechanism for it have a run-time stage. & suggested (12 of 14; 11 of 12) & An explicit-map read paper that describes a mechanism and has no run-time stage. & Read the Vienna Fortran VFCS implementation; resolve the Chapel coding. \\
+G2 & Choosing a decomposition by profile or search appears only from 2019. & supported across codings & A read system before 2019 that chooses a decomposition from profiles or search. & Read the 2010--2018 systems in the catalog that profile. \\
+G3 & Message count is the leading recorded objective of Era~3 and is nearly absent from Era~6. & supported across codings (narrow margin) & A read Era~5 or Era~6 system that records message count as its leading objective. & Recode objectives with a codebook; current agreement is 6\%. \\
+G4 & Block-cyclic and mapping-array decompositions do not appear in read papers from 2010 onward. & supported across codings & A read paper from 2010 onward with block-cyclic or mapping-array decomposition. & Read the 2010--2019 HPF follow-ups and the Era~4 PGAS and HPCS papers. \\
+G5 & Model-state sharding is recorded from 2010; sparse-tensor partitions only from 2020. & supported across codings (small samples) & A read paper before 2010 with model-state sharding, or before 2020 with sparse-tensor partitions. & Read ZeRO and the 2010s sparse systems. \\
+G6 & Partition propagation appears only in Era~6, and owner-computes persists alongside it. & supported across codings (two systems) & A propagation system before 2020, or an Era~6 read set with no owner-computes under both codings. & Read Shardy and the MLIR shard dialect in full; read the remaining 2020s systems. \\
+G7 & Halo overlap recurs across the eras. & suggested (absent from Era~3 under the second coding) & A recoding that finds halo overlap in Era~3, or a read era with none. & Recode the Era~3 papers for halo overlap. \\
+G8 & Seven of the eight 1990s mechanisms in Table~\ref{tab:thennow} reappear with the same structure in the 2020s systems. & suggested (structural, not counted) & A structural difference missed in the table. & A second reader checks each row against both cards and reference lists. \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
+\subsection{What the generalizations say together}
+\infer{G1 and G2 are two answers to one limit. A compiler cannot decide the owner of data it does not know until run time, so it adds a run-time stage (G1). A compiler that must choose among decompositions without a program-level analysis searches configurations by measurement (G2). G4 and G5 describe which decompositions the two answers kept: the cyclic families of the 1990s give way to block shardings, mesh-named layouts and sparse partitions. G3 is the one objective pattern that survives both codings, and we infer that it is the reason the 1990s systems minimised messages.}
+
 \subsection{What the generalizations do not say}
-The read set has no Era~0 or Era~1 paper, so none of this is a claim about the foundations. The counts are over 54 papers; 51 catalog entries rest on bibliographic records alone. The tags were assigned by one coder. The then-and-now rows are structural comparisons by one reader of two cards each. A second coding and a second reading are the preconditions for calling any row a finding.
+The read set has no Era~0 or Era~1 paper, so none of this is a claim about the foundations. The counts are over 54 read papers, and 51 further catalog entries rest on bibliographic records alone. The two codings agree exactly on only a minority of papers on every axis, and the objectives axis is not coded reliably; patterns that depend only on it are not reported. The then-and-now rows are structural comparisons by one reader of two cards each, pending a second reader on the citation column.
+
+\todo{Test G2 and G6 on the Era~4 PGAS and HPCS papers, which are the least covered era in the read set.}

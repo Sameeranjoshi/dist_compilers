@@ -35,8 +35,10 @@ figures:
 	$(PYTHON) scripts/render_citation_graph.py
 
 tables:
-	python3 scripts/generate_insights.py
+	$(PYTHON) scripts/generate_insights.py
 	$(PYTHON) scripts/generate_tables.py
+	$(PYTHON) scripts/second_coding_agreement.py
+	$(PYTHON) scripts/coding_sensitivity.py
 
 readme:
 	$(PYTHON) scripts/generate_readme.py

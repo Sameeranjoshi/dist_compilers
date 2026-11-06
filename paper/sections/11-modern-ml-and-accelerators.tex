@@ -1,7 +1,7 @@
 \section{Multi-GPU, ML, Spatial, and AI-Accelerator Compilers}
 \label{sec:modern}
 
-The recent systems share one design choice: the programmer writes an unpartitioned model and a mesh, and the compiler propagates a layout through the program. The choice is the source of the propagation value on the owner-rule axis (Table~\ref{tab:owner}), and the rest of this section examines what it changes and what it leaves to the programmer.
+The recent systems share one design choice: the programmer writes an unpartitioned model and a mesh, and the compiler propagates a layout through the program. The choice is the source of the propagation value on the owner-rule axis (Section~\ref{sec:synthesis}), and the rest of this section examines what it changes and what it leaves to the programmer.
 
 \subsection{Propagation of shardings}
 \fact{Mesh-TensorFlow expresses a program as named tensor dimensions mapped onto a mesh of processors, so any dimension can be split and the collectives follow from the layouts~\cite{shazeer2018meshtf}.} \fact{GSPMD completes sharding annotations by priority-based propagation and partitions every operator, covering data, model, spatial and pipeline parallelism through one mechanism~\cite{xu2021gspmd}.} \fact{PartIR separates partitioning tactics from the model and composes them on an MLIR-based IR, and its propagation uses rewrite rules rather than cost heuristics~\cite{alabed2025partir}.} \fact{Its authors report 50--62\% TPUv3 utilisation on up to 2048 cores for GSPMD, without a cost model or a search~\cite{xu2021gspmd}.}

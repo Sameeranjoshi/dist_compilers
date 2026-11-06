@@ -1,7 +1,7 @@
 \section{Runtime Analysis and Irregular Computation}
 \label{sec:runtime}
 
-The boundary between compiler and runtime is where the systems differ most sharply. the runtime pattern in Section~\ref{sec:synthesis} states the central regularity: in the read set, every system that resolves irregular ownership has a runtime stage. This section explains the forms that stage takes and the costs they carry.
+The boundary between compiler and runtime is where the systems differ most sharply. the runtime pattern in Section~\ref{sec:synthesis} states the central regularity under both codings: where ownership is set by an explicit map, the read systems that describe a run-time mechanism for it have a run-time stage, with two named exceptions (Section~\ref{sec:synthesis}). This section explains the forms that stage takes and the costs they carry.
 
 \subsection{Three forms of run-time stage}
 The inspector–executor form separates an inspection of the index arrays from the execution that uses its result. \fact{Saltz and colleagues' executor runs a table-driven schedule built by a preprocessor, and the executor overhead is measured at about 9--10\% for sparse matrix-vector multiplication on an iPSC/2~\cite{saltz1990runtime}.} \fact{Kali caches the results of its inspector across repeated executions~\cite{mehrotra1990kali}.} The reuse condition is the decisive design point. \fact{Ponnusamy et al.\ reuse inspector results with a test that is conservative and can add overhead in some cases~\cite{ponnusamy1995runtime}.}
