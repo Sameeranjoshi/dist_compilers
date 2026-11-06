@@ -50,6 +50,7 @@
 | stichnoth1994generating | 1994 | Generating Communication for Array Statements: Design, Implementation, and Evaluation | compiler-technique | core | discovered | no | paywalled |
 | ancourt1997linear | 1995 | A Linear Algebra Framework for Static High Performance Fortran Code Distribution | compiler-technique | core | screened | no | paywalled |
 | banerjee1995paradigm | 1995 | The Paradigm compiler for distributed-memory multicomputers | full-system | core | read | no | paywalled |
+| chatterjee1995generating | 1995 | Generating Local Addresses and Communication Sets for Data-Parallel Programs | compiler-technique | core | screened | no | paywalled |
 | gupta1995hpf | 1995 | An HPF compiler for the IBM SP2 | full-system | core | read | no | paywalled |
 | harris1995dechpf | 1995 | Compiling High Performance Fortran for Distributed-Memory Systems | full-system | core | read | no | open |
 | hwang1995chaos | 1995 | Runtime and language support for compiling adaptive irregular programs on distributed‐memory machines | runtime | core | read | no | paywalled |
@@ -75,7 +76,8 @@
 | shen2007eliminating | 2007 | Eliminating Redundant Communication of Code Generation for Distributed Memory Machines | compiler-technique | core | read | no | paywalled |
 | yelick2007titanium | 2007 | Parallel Languages and Compilers: Perspective From the Titanium Experience | language | bridge | read | no | paywalled |
 | baskaran2008automatic | 2008 | Automatic data movement and computation mapping for multi-level parallel architectures with explicitly managed memories | compiler-technique | core | read | no | paywalled |
-| bondhugula2008pluto | 2008 | A practical automatic polyhedral parallelizer and locality optimizer | full-system | foundation | read | no | paywalled |
+| bondhugula2008pldi | 2008 | A practical automatic polyhedral parallelizer and locality optimizer | full-system | foundation | screened | no | paywalled |
+| bondhugula2008pluto | 2008 | PLuTo: A Practical and Fully Automatic Polyhedral Program Optimization System | full-system | foundation | read | no | unavailable |
 | su2010irregular | 2010 | Optimizing Irregular Data Accesses for Cluster and Multicore Architectures | compiler-technique | bridge | read | no | open |
 | bondhugula2011automatic | 2011 | Automatic Distributed-Memory Parallelization and Code Generation using the Polyhedral Framework | compiler-technique | core | read | no | open |
 | bauer2012legion | 2012 | Legion: Expressing locality and independence with logical regions | runtime | core | read | no | paywalled |

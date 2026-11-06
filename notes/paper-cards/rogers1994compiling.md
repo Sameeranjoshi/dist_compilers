@@ -31,7 +31,7 @@ Table I (p. 287): Gauss-Seidel, 128x128 grid, iPSC/2, 4 to 32 processors. The bl
 
 ## Principal limitation
 The paper states that compile-time resolution "will not be helpful" for applications with complex data structures, such as sparse problems or irregular meshes, because their references may not be analyzable (Sec. XIII, p. 297). It also says the improvements are not enough to compete with handwritten code (Sec. XIII).
-our observation: The abstract claims 60 to 70 percent of handwritten efficiency, but Table I gives about 75 percent for Gauss-Seidel. The SIMPLE comparison uses a model, and the text's 24 s run-time figure differs from Table I's 23.4 s.
+our observation: The abstract's 60 to 70 percent figure refers to SIMPLE, where the handwritten baseline is a model (Sec. XI-A), not a measured program. Table I compares blocked code with a handwritten Gauss-Seidel program and gives about 75 to 77 percent. The two statements concern different programs and different baselines, so they do not conflict. Separately, the text's 24 s run-time figure differs from Table I's 23.357 s.
 
 ## Relationship to earlier / later work
 - Callahan and Kennedy [19], developed concurrently, use a similar run-time resolution with more aggressive optimizations (Sec. XII.A).
@@ -52,9 +52,9 @@ our observation: The abstract claims 60 to 70 percent of handwritten efficiency,
 | Accumulation | Sec. X, p. 293 |
 | SIMPLE timings (Table II) and model | Sec. XI, pp. 294-295 |
 | Related work | Sec. XII, pp. 295-296 |
-| Limitations and 60-70 percent statement | Sec. XIII, p. 297 |
+| The 60 to 70 percent figure refers to SIMPLE, against a modelled handwritten baseline | Abstract; Sec. XI, p. 294; Sec. XI-A |
 
 ## Open questions for the survey
 - Does the vectorization and pipelining gain hold for irregular or sparse programs, which the paper excludes from compile-time resolution?
-- How large is the gap between the Table I blocked variant and handwritten code when measured against the 60 to 70 percent claim, and does it hold on other machines?
+- Does the 60 to 70 percent figure for SIMPLE hold against a measured handwritten SIMPLE, and does the Gauss-Seidel gap of about 75 percent hold on other machines?
 - The SIMPLE comparison uses a modeled handwritten baseline. What is the measured gap on a real handwritten SIMPLE implementation?

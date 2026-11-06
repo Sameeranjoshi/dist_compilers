@@ -179,3 +179,34 @@ Russell 1978, Seitz 1985, Hillis 1986, Kuck et al. 1981, Misunas 1977, Allen and
   independent coder (`coding/second_coder_D.json`). The read set is now 71 papers.
   Agreement and sensitivity are regenerated. Robustness without surveys is in
   `docs/coding/sensitivity.md`.
+
+### Naming and version pass (point 4)
+
+- Chatterjee et al. 1993 has two DOIs in Crossref: the PPoPP 1993 proceedings
+  (10.1145/155332.155348, catalogued) and a SIGPLAN Notices listing
+  (10.1145/173284.155348, not catalogued). The journal version is Chatterjee, Gilbert,
+  Long, Schreiber and Teng, Journal of Parallel and Distributed Computing 26(1), 72-84,
+  1995, DOI 10.1006/jpdc.1995.1049. It is catalogued as `chatterjee1995generating` and
+  not read. A 1995 "TOPLAS" note in the catalog was wrong and is removed.
+- PLuTo: the supplied copy is the undated 2008 technical report "PLuTo: A Practical and
+  Fully Automatic Polyhedral Program Optimization System" (footers 2008/3/31). The PLDI
+  2008 paper, "A practical automatic polyhedral parallelizer and locality optimizer",
+  DOI 10.1145/1375581.1375595, is `bondhugula2008pldi`. The report's content is cited
+  under `bondhugula2008pluto`. The relation between the two is inferred from title and
+  authors.
+- Fortran D: the supplied copies are "Compiler Optimization for Fortran D on MIMD
+  Distributed-Memory Machines" (1991 Supercomputing) and "Evaluation of Compiler
+  Optimization for Fortran D on MIMD Distributed-Memory Machines" (1992). Authors and
+  affiliation (Hiranandani, Kennedy, Tseng; Rice) match the catalog. The ACM titles use
+  "optimizations"; the variant is noted on both entries.
+- Titanium: `yelick2007titanium` (IJHPCA 2007) is the supplied paper. `yelick1998titanium`
+  is a separate, unread record. The paper cites only the 2007 key for content.
+- Stawinoga et al.: the DOI 10.1145/3779212.3790124 resolves in Crossref to the ASPLOS
+  2026 paper with the catalog title, first author and year. Confirmed.
+- Rogers and Pingali: the 60 to 70 percent figure in the abstract refers to SIMPLE, where
+  the handwritten baseline is a model (Sec. XI-A). Table I's Gauss-Seidel comparison gives
+  about 75 to 77 percent against a handwritten program. These are different programs and
+  baselines. The card's earlier reading that they conflicted is withdrawn. The paper's
+  three-quarters statement matches Table I.
+- The validator now allows one title to appear twice only when the two entries name each
+  other in `related_versions`.

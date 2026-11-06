@@ -25,13 +25,13 @@ been read beyond their bibliographic record say so.
 <!-- BEGIN:status -->
 | metric | value |
 |---|---|
-| papers in catalog | 108 |
+| papers in catalog | 110 |
 | systems | 28 |
-| metadata-verified against Crossref/arXiv | 95 |
+| metadata-verified against Crossref/arXiv | 96 |
 | status `verified` (primary source read) | 4 |
 | status `read` | 67 |
-| status `screened` / `discovered` | 37 |
-| tier core / bridge / foundation / adjacent | 73 / 17 / 12 / 6 |
+| status `screened` / `discovered` | 39 |
+| tier core / bridge / foundation / adjacent | 74 / 17 / 13 / 6 |
 | paper cards | 71 |
 <!-- END:status -->
 
@@ -376,7 +376,7 @@ rationale in `docs/taxonomy.md`.
 - **Baskaran et al. (2008)** — [Automatic data movement and computation mapping for multi-level parallel architectures with explicitly managed memories](https://doi.org/10.1145/1345206.1345210) — *compiler-technique*.  
   It shows how a compiler can manage explicitly managed memories and map polyhedral loop nests onto a two-level parallel machine, a useful precursor for polyhedral code generation on distributed memory.  
   `polyhedral` `explicit-memory`
-- **Bondhugula et al. (2008)** — [A practical automatic polyhedral parallelizer and locality optimizer](https://doi.org/10.1145/1375581.1375595) — *full-system*.  
+- **Bondhugula et al. (2008)** — PLuTo: A Practical and Fully Automatic Polyhedral Program Optimization System — *full-system*.  
   It shows end to end how a polyhedral tool chooses tiling hyperplanes for locality and multicore parallelism, and it is a shared-memory reference point for this survey.  
   `polyhedral` `pluto`
 - **Bondhugula (2011)** — [Automatic Distributed-Memory Parallelization and Code Generation using the Polyhedral Framework](https://www.csa.iisc.ac.in/~udayb/publications/uday11distmem-tr.pdf) — *compiler-technique*.  
@@ -667,6 +667,7 @@ rationale in `docs/taxonomy.md`.
   `hpf` `polyhedral`
 - **Banerjee et al. (1995)** — [The Paradigm compiler for distributed-memory multicomputers](https://doi.org/10.1109/2.467577) — *full-system*.  
   `paradigm` `automatic-distribution`
+- **Chatterjee et al. (1995)** — [Generating Local Addresses and Communication Sets for Data-Parallel Programs](https://doi.org/10.1006/jpdc.1995.1049) — *compiler-technique*. *(metadata-verified; summary pending full read)*
 - **Gupta et al. (1995)** — [An HPF compiler for the IBM SP2](https://doi.org/10.1145/224170.224422) — *full-system*.  
   `hpf` `production-compiler`
 - **Harris et al. (1995)** — [Compiling High Performance Fortran for Distributed-Memory Systems](https://ftp.math.utah.edu/pub/tex/bib/idx/dectechj/7/3/5_23.html) — *full-system*.  
@@ -721,7 +722,8 @@ rationale in `docs/taxonomy.md`.
   `pgas` `titanium`
 - **Baskaran et al. (2008)** — [Automatic data movement and computation mapping for multi-level parallel architectures with explicitly managed memories](https://doi.org/10.1145/1345206.1345210) — *compiler-technique*.  
   `polyhedral` `explicit-memory`
-- **Bondhugula et al. (2008)** — [A practical automatic polyhedral parallelizer and locality optimizer](https://doi.org/10.1145/1375581.1375595) — *full-system*.  
+- **Bondhugula et al. (2008)** — [A practical automatic polyhedral parallelizer and locality optimizer](https://doi.org/10.1145/1375581.1375595) — *full-system*. *(metadata-verified; summary pending full read)*
+- **Bondhugula et al. (2008)** — PLuTo: A Practical and Fully Automatic Polyhedral Program Optimization System — *full-system*.  
   `polyhedral` `pluto`
 - **Su (2010)** — [Optimizing Irregular Data Accesses for Cluster and Multicore Architectures](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2010/EECS-2010-170.html) — *compiler-technique*.
 
@@ -1040,7 +1042,7 @@ rationale in `docs/taxonomy.md`.
 | X10 | 2004-2020 | X10 | ? | at(place) / async | ? | X10RT | clusters | archived | [2005](https://doi.org/10.1145/1094811.1094852) |
 | Chapel | 2005-present | Chapel | user-defined domain maps (Block, Cyclic, BlockCyclic, Replicated, ...) | forall over distributed domains; on clauses | compiler + runtime (GET/PUT, aggregation) | Chapel runtime | clusters, GPUs | open source | [2007](https://doi.org/10.1177/1094342007078442) |
 | Sequoia | 2006-2010 | task trees | ? | task-to-memory-level mapping | bulk copies between levels | Sequoia runtime | Cell, clusters | unavailable | [2006](https://doi.org/10.1109/sc.2006.55) |
-| Pluto distributed-memory code generation (Bondhugula et al.) | 2011-2016 | C affine loop nests | derived from computation partition (flow-out sets) | polyhedral iteration-space partitioning | polyhedral communication sets to MPI | MPI / dynamic scheduler | InfiniBand clusters | open source (pluto distmem branch) | [2008](https://doi.org/10.1145/1375581.1375595), [2011](https://www.csa.iisc.ac.in/~udayb/publications/uday11distmem-tr.pdf), [2013](https://doi.org/10.1145/2503210.2503289), [2016](https://doi.org/10.1145/2948975) |
+| Pluto distributed-memory code generation (Bondhugula et al.) | 2011-2016 | C affine loop nests | derived from computation partition (flow-out sets) | polyhedral iteration-space partitioning | polyhedral communication sets to MPI | MPI / dynamic scheduler | InfiniBand clusters | open source (pluto distmem branch) | [2011](https://www.csa.iisc.ac.in/~udayb/publications/uday11distmem-tr.pdf), [2013](https://doi.org/10.1145/2503210.2503289), [2016](https://doi.org/10.1145/2948975) |
 | Legion / Regent | 2012-present | tasks + logical regions | region partitions chosen by program/mapper | mapper interface | runtime-managed coherence and copies | Legion/Realm | GPU clusters | open source | [2012](https://doi.org/10.1109/sc.2012.71), [2015](https://doi.org/10.1145/2807591.2807629) |
 | Molly | 2014-2015 | C++ + layout declarations | programmer-declared | polyhedral | generated asynchronous MPI | MPI | Blue Gene/Q (intended) | archived | [2014](https://arxiv.org/abs/1409.2088) |
 | Mesh-TensorFlow | 2018-2021 | TF graph + named dims + layout | dimension-to-mesh-axis layout | SPMD per layout | allreduce/allgather/alltoall derived from layouts | TF/TPU | TPUv2 pods | archived | [2018](https://arxiv.org/abs/1811.02084) |

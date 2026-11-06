@@ -3058,7 +3058,8 @@ papers:
   - full text read (paper card)
   - supplied PDF (owner-provided, not redistributed)
   notes: 'Discusses: SUPERB; ParaScope; Id Nouveau; Crystal; ASPAR; Kali; PARTI; ARF; AL; CM Fortran; DINO; MIMDizer;
-    Pandore; Paragon; SPOT; Li and Chen; Balasundaram.'
+    Pandore; Paragon; SPOT; Li and Chen; Balasundaram. Printed title on the supplied copy: ''Compiler Optimization
+    for Fortran D on MIMD Distributed-Memory Machines'' (singular); the ACM record uses ''optimizations''.'
 - id: hiranandani1992compiling
   title: Compiling Fortran D for MIMD distributed-memory machines
   authors:
@@ -3248,7 +3249,8 @@ papers:
   - supplied PDF (owner-provided, not redistributed)
   notes: 'Discusses: SUPERB; Vienna Fortran; Kali; PARTI; Id Nouveau; Crystal; ASPAR; P3 C; CM Fortran; ParaScope;
     DINO; PARAFRASE-2; Callahan and Kennedy; Li and Chen; Balasundaram; Gerndt; Rogers and Pingali; Hiranandani,
-    Kennedy and Tseng (1991).'
+    Kennedy and Tseng (1991). Printed title on the supplied copy: ''Evaluation of Compiler Optimization for Fortran
+    D on MIMD Distributed-Memory Machines''; the ACM record uses ''optimizations'' and ''distributed memory''.'
 - id: das1991irregular
   title: 'Distributed memory compiler methods for irregular problems: data copy reuse and runtime partitioning'
   authors:
@@ -3983,7 +3985,8 @@ papers:
     without a stated bound, and the evaluation is a single DAXPY kernel on one workstation.
   predecessors: []
   successors: []
-  related_versions: []
+  related_versions:
+  - chatterjee1995generating
   systems: []
   taxonomy_tags:
   - communication-generation
@@ -4008,14 +4011,15 @@ papers:
   - crossref
   - full text read (paper card)
   - supplied PDF (owner-provided, not redistributed)
-  notes: 'A TOPLAS version appeared in 1995 (to be added as related version after verification). Discusses: Koelbel
-    and Mehrotra 1991 (block or cyclic with unit stride); Koelbel 1991 (compile-time generation of regular communication
-    patterns); MacDonald et al. 1992 (Cray MPP Fortran addressing); Dongarra, van de Geijn and Walker 1992 (cyclic(k)
-    for dense linear algebra); Mirchandaney et al. 1988 (inspector-executor analogy); Bailey 1992 (unfavorable cache
-    strides); High Performance Fortran and Fortran D (language specifications). No conflict with the catalog id:
-    title, first author and 1993 year match the PDF. Version note: this PDF is the 1993 PPoPP paper, while the reference
-    list of the supplied Ramaswamy, Simons and Banerjee 1996 paper cites the same title as J. Parallel Distrib.
-    Comput. 26 (1995) 72-84; the catalog may need to point to the journal version if that is the intended record.'
+  notes: 'A 1995 journal article with the same title (Journal of Parallel and Distributed Computing 26(1), DOI 10.1006/jpdc.1995.1049,
+    checked in Crossref) is catalogued as chatterjee1995generating; it was not read. Discusses: Koelbel and Mehrotra
+    1991 (block or cyclic with unit stride); Koelbel 1991 (compile-time generation of regular communication patterns);
+    MacDonald et al. 1992 (Cray MPP Fortran addressing); Dongarra, van de Geijn and Walker 1992 (cyclic(k) for dense
+    linear algebra); Mirchandaney et al. 1988 (inspector-executor analogy); Bailey 1992 (unfavorable cache strides);
+    High Performance Fortran and Fortran D (language specifications). No conflict with the catalog id: title, first
+    author and 1993 year match the PDF. Version note: this PDF is the 1993 PPoPP paper, while the reference list
+    of the supplied Ramaswamy, Simons and Banerjee 1996 paper cites the same title as J. Parallel Distrib. Comput.
+    26 (1995) 72-84; the catalog may need to point to the journal version if that is the intended record.'
 - id: rogers1994compiling
   title: Compiling for distributed memory architectures
   authors:
@@ -5702,7 +5706,8 @@ papers:
     pages: 825-836
   metadata_sources:
   - crossref
-  notes: null
+  notes: Not supplied. The supplied Titanium paper is yelick2007titanium (IJHPCA 2007). Kept as a separate, unread
+    record.
 - id: charles2005x10
   title: 'X10: an object-oriented approach to non-uniform cluster computing'
   authors:
@@ -6108,21 +6113,20 @@ papers:
     [38]; Kandemir et al. scratchpad management [25]; Anantharaman and Pande [1]; Eisenbeis et al. [12]; Clauss
     [9]; Pugh [35].'
 - id: bondhugula2008pluto
-  title: A practical automatic polyhedral parallelizer and locality optimizer
+  title: 'PLuTo: A Practical and Fully Automatic Polyhedral Program Optimization System'
   authors:
   - Uday Bondhugula
-  - Albert Hartono
   - J. Ramanujam
   - P. Sadayappan
   year: 2008
-  venue: Proceedings of the 29th ACM SIGPLAN Conference on Programming Language Design and Implementation
+  venue: Technical report (undated; page footers 2008/3/31); supplied copy
   venue_short: null
   paper_type: full-system
-  doi: 10.1145/1375581.1375595
+  doi: null
   arxiv: null
-  official_url: https://doi.org/10.1145/1375581.1375595
+  official_url: null
   pdf_url: null
-  access_status: paywalled
+  access_status: unavailable
   artifact_url: null
   source_code_url: https://github.com/bondhugula/pluto
   era: era4
@@ -6181,7 +6185,8 @@ papers:
     scope is local and shared-memory parallel execution.
   predecessors: []
   successors: []
-  related_versions: []
+  related_versions:
+  - bondhugula2008pldi
   systems:
   - pluto-distmem
   taxonomy_tags:
@@ -6213,7 +6218,6 @@ papers:
   - source: full text
     section: References, p. 14 (title of reference [22])
   metadata_sources:
-  - crossref
   - full text read (paper card)
   - supplied PDF (owner-provided, not redistributed)
   notes: 'Discusses: Feautrier scheduling [18, 19]; Griebl space and time tiling [22]; Lim and Lam affine partitioning
@@ -6236,7 +6240,9 @@ papers:
     its only PLDI''08 mention is reference [41], which is a different paper. Correction: the card instruction list
     omitted analytic-optimization, so the card coded fully-static and static-with-directives. The text describes
     an integer linear program over a bounding cost function and no programmer annotations, which is the analytic-optimization
-    definition.'
+    definition. Version note (naming and version pass): the supplied copy is the 2008 technical report. The PLDI
+    2008 paper with DOI 10.1145/1375581.1375595 is catalogued as bondhugula2008pldi. The relation is inferred from
+    the title and authors; the report does not cite the PLDI paper.'
 - id: bondhugula2011automatic
   title: Automatic Distributed-Memory Parallelization and Code Generation using the Polyhedral Framework
   authors:
@@ -9108,8 +9114,8 @@ papers:
   - arxiv (abs page lists ASPLOS '26 and DOI 10.1145/3779212.3790124)
   - full text read (paper card)
   - supplied PDF (owner-provided, not redistributed)
-  notes: DOI 10.1145/3779212.3790124 is taken from the arXiv record; it did not resolve in Crossref at catalog time
-    and is therefore not entered in the doi field until confirmed.
+  notes: 'DOI confirmed on 2026-11-06: Crossref resolves 10.1145/3779212.3790124 to the ASPLOS 2026 paper with the
+    same title, first author and year.'
 - id: misunas1977workshop
   title: Report on the Workshop on Data Flow Computer and Program Organization
   authors:
@@ -10206,3 +10212,123 @@ papers:
     and venue (PhD dissertation, University of California, Berkeley, Technical Report UCB/EECS-2010-170) match the
     title page. The title page prints the report URL as http://www.eecs.berkeley.edu/Pubs/TechRpts/2010/EECS-2010-170.html;
     the access URL used for this card is the www2 https address.'
+- id: chatterjee1995generating
+  title: Generating Local Addresses and Communication Sets for Data-Parallel Programs
+  authors:
+  - S. Chatterjee
+  - J. R. Gilbert
+  - F. J. E. Long
+  - R. Schreiber
+  - S. H. Teng
+  year: 1995
+  venue: Journal of Parallel and Distributed Computing (26(1), 72-84)
+  venue_short: null
+  paper_type: compiler-technique
+  doi: 10.1006/jpdc.1995.1049
+  arxiv: null
+  official_url: https://doi.org/10.1006/jpdc.1995.1049
+  pdf_url: null
+  access_status: paywalled
+  artifact_url: null
+  source_code_url: null
+  era: era3
+  relevance_tier: core
+  status: screened
+  verified: false
+  verified_by: null
+  verified_date: null
+  summary: 'Provisional: a journal article with the same title as the 1993 proceedings paper. Not read; relation
+    inferred from title and authors.'
+  why_read: null
+  problem: null
+  input_abstraction: []
+  target_hardware: []
+  memory_model: null
+  programming_model: null
+  data_decomposition: []
+  computation_mapping: []
+  communication_generation: []
+  compiler_runtime_boundary: []
+  compiler_architecture: []
+  ir_representation: []
+  optimization_objectives: []
+  maturity: []
+  evaluation_method: null
+  benchmarks: []
+  main_contribution: null
+  main_limitation: null
+  predecessors: []
+  successors: []
+  related_versions:
+  - chatterjee1993generating
+  systems: []
+  taxonomy_tags: []
+  readme_categories: []
+  technique_lists: []
+  start_here: null
+  evidence:
+  - source: bibliographic record (Crossref)
+    section: metadata
+  metadata_sources:
+  - crossref
+  notes: Added in the naming and version pass. Not read.
+- id: bondhugula2008pldi
+  title: A practical automatic polyhedral parallelizer and locality optimizer
+  authors:
+  - Uday Bondhugula
+  - Albert Hartono
+  - J. Ramanujam
+  - P. Sadayappan
+  year: 2008
+  venue: Proceedings of the 29th ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI
+    2008), pp. 101-113
+  venue_short: null
+  paper_type: full-system
+  doi: 10.1145/1375581.1375595
+  arxiv: null
+  official_url: https://doi.org/10.1145/1375581.1375595
+  pdf_url: null
+  access_status: paywalled
+  artifact_url: null
+  source_code_url: null
+  era: era4
+  relevance_tier: foundation
+  status: screened
+  verified: false
+  verified_by: null
+  verified_date: null
+  summary: 'Provisional: the PLDI 2008 paper on an automatic polyhedral parallelizer and locality optimizer. Not
+    read; the supplied copy is the related 2008 report.'
+  why_read: null
+  problem: null
+  input_abstraction: []
+  target_hardware: []
+  memory_model: null
+  programming_model: null
+  data_decomposition: []
+  computation_mapping: []
+  communication_generation: []
+  compiler_runtime_boundary: []
+  compiler_architecture: []
+  ir_representation: []
+  optimization_objectives: []
+  maturity: []
+  evaluation_method: null
+  benchmarks: []
+  main_contribution: null
+  main_limitation: null
+  predecessors: []
+  successors: []
+  related_versions:
+  - bondhugula2008pluto
+  systems: []
+  taxonomy_tags: []
+  readme_categories: []
+  technique_lists: []
+  start_here: null
+  evidence:
+  - source: bibliographic record (Crossref)
+    section: metadata
+  metadata_sources:
+  - crossref
+  notes: Added in the naming and version pass. Not read.

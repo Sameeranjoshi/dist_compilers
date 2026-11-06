@@ -74,9 +74,17 @@ def main():
         for k, n in vals.items():
             if k and n > 1:
                 errors.append(f"duplicate {field}: {k}")
-    titles = Counter(re.sub(r"[^a-z0-9]", "", p["title"].lower()) for p in papers)
-    for k, n in titles.items():
-        if n > 1:
+    # A title may repeat only between entries that name each other in related_versions
+    # (a journal and a proceedings version of one paper). Any other repeat is an error.
+    by_title = {}
+    for p in papers:
+        by_title.setdefault(re.sub(r"[^a-z0-9]", "", p["title"].lower()), []).append(p)
+    for k, group in by_title.items():
+        if len(group) < 2:
+            continue
+        ids_in = {p["id"] for p in group}
+        linked = all(set(p.get("related_versions") or []) & (ids_in - {p["id"]}) for p in group)
+        if not linked:
             errors.append(f"duplicate title (normalised): {k[:60]}")
 
     for p in papers:
