@@ -64,3 +64,6 @@ our observation: the expressiveness claim rests on line counts rather than a con
 - The paper ties communication to one-sided operations and collects the results on several networks; how do the survey's other one-sided systems handle the same small-message cost?
 - Which of the analyses (barrier alignment, concurrency, LQI) were carried into the later Titanium and UPC implementations, and how do they compare with the survey's static compiler categories?
 - How does the survey treat the reported C back-end variance (up to a factor of three), which affects how compile-time results should be compared across compilers?
+
+## Reference list check (open author copy ftp.eecs.berkeley.edu/~yelick/papers/ti_experience.pdf, checked 2026-11-07)
+60 entries. Present: HPF Forum specification [27], Co-Array Fortran [44]. Absent: Fortran D, Kali, Koelbel 1991, Saltz/PARTI/CHAOS, Vienna Fortran, Sequoia, Chapel, Legion.

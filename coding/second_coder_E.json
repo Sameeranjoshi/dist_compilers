@@ -1,0 +1,58 @@
+{
+  "huang2019gpipe": {
+    "data_decomposition": ["model-state-sharding", "uneven-block"],
+    "computation_mapping": ["pipeline-parallelism"],
+    "communication_generation": ["compiler-p2p", "communication-pipelining"],
+    "compiler_runtime_boundary": ["static-with-directives", "analytic-optimization"],
+    "optimization_objectives": ["local-memory-fit", "load-balance", "communication-volume"],
+    "basis": "Data decomposition: model-state-sharding and uneven-block from §2.1/§2.2 (consecutive layers with their parameters form cell k on accelerator k; cell boundaries balanced by estimated cost, not layer count). Computation mapping: pipeline-parallelism from §2.2/Figure 2c (micro-batches flow through K cells). Communication generation: compiler-p2p and communication-pipelining from §2.2/§2.3 (primitives automatically inserted at partition boundaries between neighbouring partitions; activations cross once per micro-batch). Compiler/runtime boundary: static-with-directives and analytic-optimization from §2.1/§2.2 (partition fixed before execution from user-supplied K, M and cost estimates; partitioner minimizes variance of estimated cost). Optimization objectives: local-memory-fit from Abstract/§2.3 (models beyond one accelerator; re-materialization), load-balance from §2.2/§2.3 (cost-variance partitioner, bubble), communication-volume from §2.3/§6 (only boundary activations cross, usable without fast interconnect)."
+  },
+  "shoeybi2019megatron": {
+    "data_decomposition": ["model-state-sharding", "block-1d", "replicated"],
+    "computation_mapping": ["operator-tensor-parallelism", "data-parallelism"],
+    "communication_generation": ["programmer-explicit", "reduction-allreduce"],
+    "compiler_runtime_boundary": ["fully-static"],
+    "optimization_objectives": ["local-memory-fit", "communication-volume", "synchronization", "productivity"],
+    "basis": "Data decomposition: model-state-sharding and block-1d from §3/Fig. 3 (weights split by hand along one dimension, column- or row-wise, embedding along vocabulary); replicated from §3 and App. B.1 (layer-norm parameters duplicated on every GPU, parameters replicated across data-parallel groups). Computation mapping: operator-tensor-parallelism and data-parallelism from §5.1/App. B.1 (8-way tensor parallel times 64-way data parallel). Communication generation: programmer-explicit and reduction-allreduce from §3/Fig. 4 (programmer-inserted f/g operators issuing all-reduces over NCCL). Compiler/runtime boundary: fully-static from §3/Abstract (no compiler, no partitioner; every split fixed by the authors in the model source). Optimization objectives: local-memory-fit from §1 (models exceed accelerator memory), communication-volume from §3 (fused logits/loss replaces an all-gather of logits), synchronization from §3 and the limitation note (splits chosen so GeLU applies locally and no communication precedes the second GEMM; removed synchronization point), productivity from §1 (no custom C++ code or compiler, few targeted modifications)."
+  },
+  "rajbhandari2020zero": {
+    "data_decomposition": ["model-state-sharding"],
+    "computation_mapping": ["data-parallelism"],
+    "communication_generation": ["reduction-allreduce", "scatter-gather", "broadcast-multicast", "overlapped"],
+    "compiler_runtime_boundary": ["load-time"],
+    "optimization_objectives": ["local-memory-fit", "communication-volume", "overlap"],
+    "basis": "Data decomposition: model-state-sharding from §5/Fig. 1 and §6 (optimizer states, gradients, parameters partitioned across the N_d data-parallel processes; activation checkpoints partitioned across MP processes). Computation mapping: data-parallelism from §2.1/§5.1 (every process runs the full forward/backward on its mini-batch slice; partitioning changes state ownership, not computation). Communication generation: reduction-allreduce and scatter-gather from §7.1/§7.2.1 (reduce-scatter of gradients plus all-gather of parameters), broadcast-multicast from §5.3/§7.2.2 (owner broadcasts each parameter partition before use), overlapped from §5.2 (bucketized gradient reduction overlapping communication and computation). Compiler/runtime boundary: load-time from §5.1 (no compiler; the runtime library fixes the partition from the DP degree N_d). Optimization objectives: local-memory-fit from §1/§3 and Table 1, communication-volume from §7–§8 (2Ψ/3Ψ accounting, P_a under 10% of MP volume), overlap from §5.2."
+  },
+  "baghdadi2019tiramisu": {
+    "data_decomposition": ["block-1d", "halo-overlap"],
+    "computation_mapping": ["loop-to-processor", "iteration-space-partitioning"],
+    "communication_generation": ["programmer-explicit", "halo-exchange"],
+    "compiler_runtime_boundary": ["static-with-directives"],
+    "optimization_objectives": ["performance-portability", "communication-volume"],
+    "basis": "Data decomposition: block-1d and halo-overlap from §III-C/Fig. 3c and §VI-B.c (no distribution construct; input assumed pre-distributed by rows, node n holding a contiguous row chunk and receiving two border rows from node n+1 into the end of that chunk). Computation mapping: loop-to-processor and iteration-space-partitioning from §III-C/Table II/§IV-C.2/§V-A (distribute(i) tags a loop level so each iteration runs on a different node, split by N/Ranks, lowered to an MPI-rank conditional; Layer I has no notion of data location). Communication generation: programmer-explicit and halo-exchange from §III-C/§IV-C.4/§V.c and §VI-B.c (user-written send/receive commands lowered to MPI; kernels exchange overlapping boundary regions). Compiler/runtime boundary: static-with-directives from §V-A and §II.a (all decisions static from the user schedule, only the rank test at run time). Optimization objectives: performance-portability from §I/§III/§V-A (hand-tuned-library performance across CPU, GPU and MPI backends), communication-volume from §VI-B.c (speedup over distributed Halide attributed to its over-estimated sends)."
+  },
+  "jacquelin2022wse": {
+    "data_decomposition": ["block-nd"],
+    "computation_mapping": ["spatial-placement"],
+    "communication_generation": ["programmer-explicit", "broadcast-multicast", "halo-exchange", "overlapped"],
+    "compiler_runtime_boundary": ["fully-static"],
+    "optimization_objectives": ["memory-bandwidth", "local-memory-fit"],
+    "basis": "Data decomposition: block-nd from §IV-B/Fig. 3 (X and Y mapped onto the 2-D PE fabric, Z into each PE's local memory; each PE owns one column; the card notes no X/Y halo is stored). Computation mapping: spatial-placement from §IV-B–§IV-D (one PE per (x, y) column on the fabric, consuming neighbour streams). Communication generation: programmer-explicit and broadcast-multicast from §IV-C.1 (programmer-specified, router-executed localized broadcast patterns per cardinal direction), halo-exchange from the card's observation on §IV-C.1 (the stencil's halo exchange realised as shifting multicasts), overlapped from §IV-C.1/§IV-C.2 (routing updates need no PE action so computation continues; cells multiplied as they arrive). Compiler/runtime boundary: fully-static from §IV (decomposition, colors, router configurations and block size fixed by the programmer in CSL; no cost model). Optimization objectives: memory-bandwidth from Abstract/§I/§VI (trading memory accesses for communication to make the kernel compute-bound), local-memory-fit from §IV-B/Table III (block size chosen as the largest that fits the 48 KB PE memory)."
+  },
+  "openxla2024shardy": {
+    "data_decomposition": ["block-nd", "replicated", "model-state-sharding"],
+    "computation_mapping": ["partition-propagation", "data-parallelism", "operator-tensor-parallelism"],
+    "communication_generation": ["redistribution-resharding", "programmer-explicit"],
+    "compiler_runtime_boundary": ["static-with-directives"],
+    "optimization_objectives": ["communication-volume", "local-memory-fit", "productivity"],
+    "basis": "Data decomposition: block-nd and replicated from sharding_representation.md 'Basic structure' and 'Explicitly replicated axes' (per-dimension shardings over mesh axes; unused or listed axes replicated), model-state-sharding from propagation.md 'Conflict resolution hierarchy' (named uses megatron and ZeRO). Computation mapping: partition-propagation from propagation.md 'Overview'/'Core Propagation Algorithm' (fixed-point inference along use-def chains via OpShardingRules), data-parallelism and operator-tensor-parallelism from the same section's named uses (batch parallelism, megatron). Communication generation: redistribution-resharding from compiler_api.md 'Sharding Constraint' and sharding_representation.md 'Multiple logical meshes' (resharding when uses differ or tensors cross meshes), programmer-explicit from compiler_api.md 'Manual Computation' (user-written collectives such as collective matmul); the card says collective insertion itself is not designed in these pages. Compiler/runtime boundary: static-with-directives from compiler_api.md 'Background' (all compile time; compiler decides unannotated shardings under user constraints, priorities, closed dimensions). Optimization objectives: communication-volume from overview.md 'Benefits' and sharding_representation.md 'Axis splitting and sub-axes' (reshapes generating extra communication; sub-axes keep data in place), local-memory-fit from propagation.md 'Conflict resolution hierarchy' (aggressive propagation reduces memory footprint), productivity from overview.md 'Benefits' (control, predictability, usability)."
+  },
+  "mlir2025shard": {
+    "data_decomposition": ["block-nd", "replicated", "uneven-block", "halo-overlap"],
+    "computation_mapping": [],
+    "communication_generation": ["reduction-allreduce", "scatter-gather", "broadcast-multicast", "all-to-all", "halo-exchange"],
+    "compiler_runtime_boundary": ["static-with-directives", "load-time"],
+    "optimization_objectives": [],
+    "basis": "Data decomposition: block-nd, replicated, uneven-block and halo-overlap from the 'shard.sharding' op entry (contiguous sharding of each dimension along grid axes, [[]] for full replication, sharded_dims_offsets for uneven shards, halo_sizes for halos). Computation mapping: empty; 'Purity and Execution Model' states only an SPMD model and the card says per-device operator partitioning is not described, which matches no taxonomy value. Communication generation: reduction-allreduce (all_reduce, reduce, reduce_scatter), scatter-gather (all_gather, gather, scatter, reduce_scatter), broadcast-multicast (broadcast), all-to-all (all_to_all) and halo-exchange (update_halo) from the named op entries; no inserting pass is named, so neither compiler-p2p nor programmer-explicit is tagged for send/recv. Compiler/runtime boundary: static-with-directives from the 'shard.shard' op (sharding declared by IR annotation), load-time from the 'shard.grid'/'shard.sharding' ops (grid shape, halo sizes and offsets may stay dynamic where the device count is not known at compile time). Optimization objectives: empty; the card states no motivation beyond the vocabulary and no cost model."
+  }
+}

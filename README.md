@@ -29,10 +29,10 @@ been read beyond their bibliographic record say so.
 | systems | 28 |
 | metadata-verified against Crossref/arXiv | 98 |
 | status `verified` (primary source read) | 4 |
-| status `read` | 67 |
-| status `screened` / `discovered` | 41 |
+| status `read` | 74 |
+| status `screened` / `discovered` | 34 |
 | tier core / bridge / foundation / adjacent | 74 / 17 / 13 / 8 |
-| paper cards | 71 |
+| paper cards | 78 |
 <!-- END:status -->
 
 Status meanings: `discovered` = metadata verified against Crossref/arXiv
@@ -397,8 +397,8 @@ rationale in `docs/taxonomy.md`.
 - **Dathathri et al. (2016)** — [Compiling Affine Loop Nests for a Dynamic Scheduling Runtime on Shared and Distributed Memory](https://doi.org/10.1145/2948975) — *compiler-technique*. *(metadata-verified; summary pending full read)*  
   Polyhedral analysis feeding a dynamic task runtime, an explicit move of the compiler/runtime boundary.  
   `polyhedral` `runtime`
-- **Baghdadi et al. (2019)** — [Tiramisu: A Polyhedral Compiler for Expressing Fast and Portable Code](https://doi.org/10.1109/cgo.2019.8661197) — *full-system*. *(metadata-verified; summary pending full read)*  
-  A scheduling-language compiler whose schedule can place computations on distributed nodes.  
+- **Baghdadi et al. (2019)** — [Tiramisu: A Polyhedral Compiler for Expressing Fast and Portable Code](https://doi.org/10.1109/cgo.2019.8661197) — *full-system*.  
+  It is the scheduling-language polyhedral compiler in which distribution and point-to-point communication are explicit schedule commands rather than compiler-derived, the opposite design point from distributed Pluto.  
   `polyhedral` `scheduling-languages`
 - **Thangamani et al. (2024)** — [A Survey of General-purpose Polyhedral Compilers](https://doi.org/10.1145/3674735) — *survey*.  
   A newcomer gets a current list of general-purpose polyhedral compilers and a reproducible single-node benchmark of how they behave, which is useful background for loop-optimization work.  
@@ -427,8 +427,8 @@ rationale in `docs/taxonomy.md`.
 - **Shazeer et al. (2018)** — [Mesh-TensorFlow: Deep Learning for Supercomputers](https://arxiv.org/abs/1811.02084) — *full-system*.  
   Learn the named-dimension plus mesh computation-layout abstraction that underlies later per-dimension sharding systems and the analytic communication/computation cost table for data, model and mixed layouts.  
   `ml-compilers` `mesh-sharding`
-- **Huang et al. (2018)** — [GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism](https://arxiv.org/abs/1811.06965) — *runtime*. *(metadata-verified; summary pending full read)*  
-  Pipeline parallelism as a training-system mechanism; the baseline that Alpa's inter-operator pass automates.  
+- **Huang et al. (2018)** — [GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism](https://arxiv.org/abs/1811.06965) — *runtime*.  
+  The manual, sequence-of-layers pipeline-parallel baseline that later compilers (GSPMD pipelining, Alpa inter-operator pass) subsume or automate; also the source of the micro-batch bubble bound O((K-1)/(M+K-1)).  
   `ml-systems` `pipeline`
 - **Jia et al. (2019)** — [Beyond Data and Model Parallelism for Deep Neural Networks](https://arxiv.org/abs/1807.05358) — *full-system*.  
   Learn how a profiled, incremental execution simulator can replace on-hardware measurement as the cost oracle for randomized search over per-operator parallelization configurations.  
@@ -436,14 +436,14 @@ rationale in `docs/taxonomy.md`.
 - **Narayanan et al. (2019)** — [PipeDream: generalized pipeline parallelism for DNN training](https://doi.org/10.1145/3341301.3359646) — *runtime*.  
   It is the canonical example of profile-guided automatic pipeline partitioning, where choosing data versus pipeline parallelism per layer group became a planning problem instead of a hand-written choice.  
   `ml-systems` `pipeline`
-- **Shoeybi et al. (2019)** — [Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism](https://arxiv.org/abs/1909.08053) — *runtime*. *(metadata-verified; summary pending full read)*  
-  The hand-written tensor-parallel baseline that automatic partitioners compare against.  
+- **Shoeybi et al. (2019)** — [Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism](https://arxiv.org/abs/1909.08053) — *runtime*.  
+  It is the hand-written intra-layer tensor-parallel scheme that automatic sharding compilers reproduce and benchmark against.  
   `ml-systems` `tensor-parallel`
 - **Wang et al. (2019)** — [Supporting Very Large Models using Automatic Dataflow Graph Partitioning](https://doi.org/10.1145/3302424.3303953) — *full-system*. *(metadata-verified; summary pending full read)*  
   Automatic operator partitioning from operator semantics, a precursor of propagation-based partitioners.  
   `ml-compilers` `auto-parallel`
-- **Rajbhandari et al. (2020)** — [ZeRO: Memory optimizations Toward Training Trillion Parameter Models](https://doi.org/10.1109/sc41405.2020.00024) — *runtime*. *(metadata-verified; summary pending full read)*  
-  Model-state sharding, the memory-capacity objective that dominates Era 6.  
+- **Rajbhandari et al. (2020)** — [ZeRO: Memory optimizations Toward Training Trillion Parameter Models](https://doi.org/10.1109/sc41405.2020.00024) — *runtime*.  
+  It is the reference formulation of model-state sharding and of its memory and communication-volume accounting, which later compilers (GSPMD and others) reproduce as a sharding special case.  
   `ml-systems` `memory`
 - **Lepikhin et al. (2020)** — [GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding](https://arxiv.org/abs/2006.16668) — *full-system*. *(metadata-verified; summary pending full read)*  
   Where XLA's annotate-and-propagate sharding model first appeared.  
@@ -463,14 +463,14 @@ rationale in `docs/taxonomy.md`.
 - **Kong et al. (2023)** — [Automatic Generation of Distributed-Memory Mappings for Tensor Computations](https://doi.org/10.1145/3581784.3607096) — *compiler-technique*.  
   It is the clearest recent statement of deriving the distributed algorithm rather than merely implementing it for tensor DAGs, benchmarked against CTF and Distributed-Memory Pluto.  
   `tensor-compilers` `automatic-distribution`
-- **Project (2024)** — [Shardy: an MLIR-based tensor partitioning system (official documentation)](https://openxla.org/shardy) — *specification*. *(metadata-verified; summary pending full read)*  
-  The current production sharding IR in the XLA ecosystem; read the dialect reference after GSPMD and PartIR.  
+- **Project (2024)** — [Shardy: an MLIR-based tensor partitioning system (official documentation)](https://openxla.org/shardy) — *specification*.  
+  It is the current production sharding representation in the XLA/JAX stack and the documented successor of GSPMD's propagation.  
   `ml-compilers` `mlir` `mesh-sharding`
 - **Alabed et al. (2025)** — [PartIR: Composing SPMD Partitioning Strategies for Machine Learning](https://doi.org/10.1145/3669940.3707284) — *full-system*.  
   Learn how distribution can be modelled as semantics-preserving program rewrites (loops plus slices over named mesh axes) instead of per-tensor layout annotations.  
   `ml-compilers` `mlir` `mesh-sharding` `spmd`
-- **community (2025)** — [MLIR 'shard' Dialect (official documentation; formerly 'mesh')](https://mlir.llvm.org/docs/Dialects/Shard/) — *specification*. *(metadata-verified; summary pending full read)*  
-  The upstream MLIR representation of grids, shardings and collectives; the closest thing today to a shared ownership IR.  
+- **community (2025)** — [MLIR 'shard' Dialect (official documentation; formerly 'mesh')](https://mlir.llvm.org/docs/Dialects/Shard/) — *specification*.  
+  The upstream MLIR representation of device grids, shardings and collectives; the closest thing today to a shared ownership IR.  
   `mlir` `mesh-sharding`
 - **Vaidya et al. (2025)** — [Distributed Sparse Tensor Computations in MLIR](https://doi.org/10.1145/3731599.3767484) — *compiler-technique*.  
   It is the first MLIR-native path from sparse linalg operators to multi-node MPI code, and shows what a distributed sparse dialect looks like when partition choice stays with the programmer.  
@@ -481,8 +481,8 @@ rationale in `docs/taxonomy.md`.
 - **Rocki et al. (2020)** — [Fast Stencil-Code Computation on a Wafer-Scale Processor](https://doi.org/10.1109/sc41405.2020.00062) — *experience*.  
   See what a spatial, static-routing, task-triggered programming model on a wafer-scale 2D mesh looks like, and which decisions (placement, channel colouring, reduction trees) a compiler for such targets would have to automate.  
   `wafer-scale` `stencil`
-- **Jacquelin et al. (2022)** — [Scalable Distributed High-Order Stencil Computations](https://doi.org/10.1109/sc41404.2022.00035) — *experience*. *(metadata-verified; summary pending full read)*  
-  Second data point on wafer-scale stencils, with higher-order stencils and scaling.  
+- **Jacquelin et al. (2022)** — [Scalable Distributed High-Order Stencil Computations](https://doi.org/10.1109/sc41404.2022.00035) — *experience*.  
+  Second wafer-scale stencil data point after Rocki et al. 2020: a deeper (4-wide) stencil forces a color-economical neighbour-exchange scheme, showing which routing and color decisions a compiler for this target class would have to make.  
   `wafer-scale` `stencil`
 - **Bisbas et al. (2024)** — [A shared compilation stack for distributed-memory parallelism in stencil DSLs](https://doi.org/10.1145/3620666.3651344) — *full-system*.  
   Learn how domain decomposition and halo exchange can be made reusable compiler IR (SSA dialects) instead of per-DSL runtime code, and what MLIR currently lacks for distributed memory.  
@@ -752,17 +752,17 @@ rationale in `docs/taxonomy.md`.
   `polyhedral` `runtime`
 - **Unat et al. (2017)** — [Trends in Data Locality Abstractions for HPC Systems](https://doi.org/10.1109/tpds.2017.2703149) — *survey*.  
   `survey` `locality`
-- **Huang et al. (2018)** — [GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism](https://arxiv.org/abs/1811.06965) — *runtime*. *(metadata-verified; summary pending full read)*  
+- **Huang et al. (2018)** — [GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism](https://arxiv.org/abs/1811.06965) — *runtime*.  
   `ml-systems` `pipeline`
 - **Shazeer et al. (2018)** — [Mesh-TensorFlow: Deep Learning for Supercomputers](https://arxiv.org/abs/1811.02084) — *full-system*.  
   `ml-compilers` `mesh-sharding`
-- **Baghdadi et al. (2019)** — [Tiramisu: A Polyhedral Compiler for Expressing Fast and Portable Code](https://doi.org/10.1109/cgo.2019.8661197) — *full-system*. *(metadata-verified; summary pending full read)*  
+- **Baghdadi et al. (2019)** — [Tiramisu: A Polyhedral Compiler for Expressing Fast and Portable Code](https://doi.org/10.1109/cgo.2019.8661197) — *full-system*.  
   `polyhedral` `scheduling-languages`
 - **Jia et al. (2019)** — [Beyond Data and Model Parallelism for Deep Neural Networks](https://arxiv.org/abs/1807.05358) — *full-system*.  
   `ml-compilers` `auto-parallel`
 - **Narayanan et al. (2019)** — [PipeDream: generalized pipeline parallelism for DNN training](https://doi.org/10.1145/3341301.3359646) — *runtime*.  
   `ml-systems` `pipeline`
-- **Shoeybi et al. (2019)** — [Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism](https://arxiv.org/abs/1909.08053) — *runtime*. *(metadata-verified; summary pending full read)*  
+- **Shoeybi et al. (2019)** — [Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism](https://arxiv.org/abs/1909.08053) — *runtime*.  
   `ml-systems` `tensor-parallel`
 - **Wang et al. (2019)** — [Supporting Very Large Models using Automatic Dataflow Graph Partitioning](https://doi.org/10.1145/3302424.3303953) — *full-system*. *(metadata-verified; summary pending full read)*  
   `ml-compilers` `auto-parallel`
@@ -774,7 +774,7 @@ rationale in `docs/taxonomy.md`.
 
 - **Lepikhin et al. (2020)** — [GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding](https://arxiv.org/abs/2006.16668) — *full-system*. *(metadata-verified; summary pending full read)*  
   `ml-compilers` `mesh-sharding`
-- **Rajbhandari et al. (2020)** — [ZeRO: Memory optimizations Toward Training Trillion Parameter Models](https://doi.org/10.1109/sc41405.2020.00024) — *runtime*. *(metadata-verified; summary pending full read)*  
+- **Rajbhandari et al. (2020)** — [ZeRO: Memory optimizations Toward Training Trillion Parameter Models](https://doi.org/10.1109/sc41405.2020.00024) — *runtime*.  
   `ml-systems` `memory`
 - **Rocki et al. (2020)** — [Fast Stencil-Code Computation on a Wafer-Scale Processor](https://doi.org/10.1109/sc41405.2020.00062) — *experience*.  
   `wafer-scale` `stencil`
@@ -782,7 +782,7 @@ rationale in `docs/taxonomy.md`.
   `survey` `ml-compilers`
 - **Xu et al. (2021)** — [GSPMD: General and Scalable Parallelization for ML Computation Graphs](https://arxiv.org/abs/2105.04663) — *full-system*.  
   `ml-compilers` `mesh-sharding` `spmd`
-- **Jacquelin et al. (2022)** — [Scalable Distributed High-Order Stencil Computations](https://doi.org/10.1109/sc41404.2022.00035) — *experience*. *(metadata-verified; summary pending full read)*  
+- **Jacquelin et al. (2022)** — [Scalable Distributed High-Order Stencil Computations](https://doi.org/10.1109/sc41404.2022.00035) — *experience*.  
   `wafer-scale` `stencil`
 - **Yadav et al. (2022)** — [DISTAL: the distributed tensor algebra compiler](https://doi.org/10.1145/3519939.3523437) — *full-system*.  
   `tensor-compilers` `distal`
@@ -794,7 +794,7 @@ rationale in `docs/taxonomy.md`.
   `tensor-compilers` `automatic-distribution`
 - **Bisbas et al. (2024)** — [A shared compilation stack for distributed-memory parallelism in stencil DSLs](https://doi.org/10.1145/3620666.3651344) — *full-system*.  
   `mlir` `stencil` `automatic-mpi`
-- **Project (2024)** — [Shardy: an MLIR-based tensor partitioning system (official documentation)](https://openxla.org/shardy) — *specification*. *(metadata-verified; summary pending full read)*  
+- **Project (2024)** — [Shardy: an MLIR-based tensor partitioning system (official documentation)](https://openxla.org/shardy) — *specification*.  
   `ml-compilers` `mlir` `mesh-sharding`
 - **Thangamani et al. (2024)** — [A Survey of General-purpose Polyhedral Compilers](https://doi.org/10.1145/3674735) — *survey*.  
   `survey` `polyhedral`
@@ -804,7 +804,7 @@ rationale in `docs/taxonomy.md`.
   `ml-compilers` `mlir` `mesh-sharding` `spmd`
 - **Hall et al. (2025)** — [Scheduling Language Chronology: Past, Present, and Future](https://doi.org/10.1145/3743135) — *survey*. *(metadata-verified; summary pending full read)*  
   `survey` `scheduling-languages`
-- **community (2025)** — [MLIR 'shard' Dialect (official documentation; formerly 'mesh')](https://mlir.llvm.org/docs/Dialects/Shard/) — *specification*. *(metadata-verified; summary pending full read)*  
+- **community (2025)** — [MLIR 'shard' Dialect (official documentation; formerly 'mesh')](https://mlir.llvm.org/docs/Dialects/Shard/) — *specification*.  
   `mlir` `mesh-sharding`
 - **Vaidya et al. (2025)** — [Distributed Sparse Tensor Computations in MLIR](https://doi.org/10.1145/3731599.3767484) — *compiler-technique*.  
   `mlir` `sparse` `tensor-compilers`
@@ -929,7 +929,7 @@ rationale in `docs/taxonomy.md`.
   `mlir` `stencil` `automatic-mpi`
 - **Alabed et al. (2025)** — [PartIR: Composing SPMD Partitioning Strategies for Machine Learning](https://doi.org/10.1145/3669940.3707284) — *full-system*.  
   `ml-compilers` `mlir` `mesh-sharding` `spmd`
-- **community (2025)** — [MLIR 'shard' Dialect (official documentation; formerly 'mesh')](https://mlir.llvm.org/docs/Dialects/Shard/) — *specification*. *(metadata-verified; summary pending full read)*  
+- **community (2025)** — [MLIR 'shard' Dialect (official documentation; formerly 'mesh')](https://mlir.llvm.org/docs/Dialects/Shard/) — *specification*.  
   `mlir` `mesh-sharding`
 - **Stawinoga et al. (2026)** — [An MLIR Lowering Pipeline for Stencils at Wafer-Scale](https://doi.org/10.1145/3779212.3790124) — *full-system*.  
   `wafer-scale` `mlir` `stencil`
@@ -995,11 +995,11 @@ rationale in `docs/taxonomy.md`.
   `ml-compilers` `auto-parallel` `mesh-sharding`
 - **Yadav et al. (2022)** — [DISTAL: the distributed tensor algebra compiler](https://doi.org/10.1145/3519939.3523437) — *full-system*.  
   `tensor-compilers` `distal`
-- **Project (2024)** — [Shardy: an MLIR-based tensor partitioning system (official documentation)](https://openxla.org/shardy) — *specification*. *(metadata-verified; summary pending full read)*  
+- **Project (2024)** — [Shardy: an MLIR-based tensor partitioning system (official documentation)](https://openxla.org/shardy) — *specification*.  
   `ml-compilers` `mlir` `mesh-sharding`
 - **Alabed et al. (2025)** — [PartIR: Composing SPMD Partitioning Strategies for Machine Learning](https://doi.org/10.1145/3669940.3707284) — *full-system*.  
   `ml-compilers` `mlir` `mesh-sharding` `spmd`
-- **community (2025)** — [MLIR 'shard' Dialect (official documentation; formerly 'mesh')](https://mlir.llvm.org/docs/Dialects/Shard/) — *specification*. *(metadata-verified; summary pending full read)*  
+- **community (2025)** — [MLIR 'shard' Dialect (official documentation; formerly 'mesh')](https://mlir.llvm.org/docs/Dialects/Shard/) — *specification*.  
   `mlir` `mesh-sharding`
 
 ### Compiler/runtime co-design

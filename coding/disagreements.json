@@ -2756,6 +2756,30 @@
    ]
   }
  },
+ "jacquelin2022wse": {
+  "computation_mapping": {
+   "first": [
+    "owner-computes",
+    "spatial-placement"
+   ],
+   "second": [
+    "spatial-placement"
+   ]
+  },
+  "optimization_objectives": {
+   "first": [
+    "energy",
+    "latency",
+    "local-memory-fit",
+    "memory-bandwidth",
+    "overlap"
+   ],
+   "second": [
+    "local-memory-fit",
+    "memory-bandwidth"
+   ]
+  }
+ },
  "chandra1997datadist": {
   "computation_mapping": {
    "first": [
@@ -2901,6 +2925,75 @@
    ]
   }
  },
+ "rajbhandari2020zero": {
+  "communication_generation": {
+   "first": [
+    "broadcast-multicast",
+    "message-vectorization",
+    "overlapped",
+    "reduction-allreduce",
+    "scatter-gather"
+   ],
+   "second": [
+    "broadcast-multicast",
+    "overlapped",
+    "reduction-allreduce",
+    "scatter-gather"
+   ]
+  },
+  "compiler_runtime_boundary": {
+   "first": [
+    "analytic-optimization",
+    "load-time"
+   ],
+   "second": [
+    "load-time"
+   ]
+  },
+  "optimization_objectives": {
+   "first": [
+    "communication-volume",
+    "local-memory-fit",
+    "overlap",
+    "productivity"
+   ],
+   "second": [
+    "communication-volume",
+    "local-memory-fit",
+    "overlap"
+   ]
+  }
+ },
+ "openxla2024shardy": {
+  "communication_generation": {
+   "first": [
+    "redistribution-resharding"
+   ],
+   "second": [
+    "programmer-explicit",
+    "redistribution-resharding"
+   ]
+  }
+ },
+ "mlir2025shard": {
+  "communication_generation": {
+   "first": [
+    "all-to-all",
+    "broadcast-multicast",
+    "compiler-p2p",
+    "halo-exchange",
+    "reduction-allreduce",
+    "scatter-gather"
+   ],
+   "second": [
+    "all-to-all",
+    "broadcast-multicast",
+    "halo-exchange",
+    "reduction-allreduce",
+    "scatter-gather"
+   ]
+  }
+ },
  "rocki2020cerebras": {
   "communication_generation": {
    "first": [
@@ -2926,6 +3019,14 @@
    "second": [
     "latency",
     "memory-bandwidth"
+   ]
+  }
+ },
+ "shoeybi2019megatron": {
+  "compiler_runtime_boundary": {
+   "first": [],
+   "second": [
+    "fully-static"
    ]
   }
  },

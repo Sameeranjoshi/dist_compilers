@@ -321,3 +321,36 @@ subagent to write it to the repository. The findings, in summary:
 
 Missing evidence that would change a cell: full texts of Kong et al., Legion, Titanium,
 PartTensor, and the 1990 Saltz Journal article; a SUPERB source for the overlap claim.
+
+### Card round for the point 6 open items (2026-11-07)
+
+Seven cards and records were written from open copies, merged with
+`scripts/merge_card_records.py`, and second-coded blind (`coding/second_coder_E.json`).
+
+| id | what was read | note |
+|---|---|---|
+| huang2019gpipe | arXiv 1811.06965v5 | v5 title "GPipe: Easy Scaling with Micro-Batch Pipeline Parallelism"; catalog keeps the v1 title |
+| shoeybi2019megatron | arXiv 1909.08053v4 | author-year references, 51 entries |
+| rajbhandari2020zero | arXiv 1910.02054v3 | SC20 version not read |
+| baghdadi2019tiramisu | arXiv 1804.10694v5 | CGO 2019 version not read |
+| jacquelin2022wse | arXiv 2204.03775v1 "Massively scalable stencil algorithm" | the SC22 paper of the catalog record (different title) is paywalled and not read |
+| openxla2024shardy | openxla/shardy docs: overview, sharding_representation, propagation, compiler_api, dialect_agnostic_sharding (GitHub main) | sdy_dialect and sdy_op_interfaces pages not read; pages name no hardware, so `target_hardware` was cleared |
+| mlir2025shard | mlir.llvm.org/docs/Dialects/Shard/ | 22 ops listed in the card; no partitioning pass documented; `target_hardware` cleared |
+
+Reference-list checks for the then-and-now table (`tab:thennow`):
+
+- None of GPipe (49 entries), Megatron-LM (51), ZeRO (26), Tiramisu (52) or Jacquelin (35)
+  cites HPF, Fortran D, Kali, Koelbel 1991, Saltz/PARTI/CHAOS or Vienna Fortran.
+  Tiramisu cites Pluto and distributed-memory Pluto; Jacquelin cites Rocki 2020.
+- SpDISTAL (arXiv 2207.13901, 34 entries) cites none of the inspector-row works, so that
+  cell now reads "no (SpDISTAL); unchecked (PartTensor)".
+- Legion SC12 (open copy at legion.stanford.edu, 27 entries) and Titanium 2007 (open author
+  copy at ftp.eecs.berkeley.edu, 60 entries) were fetched and their reference lists appended
+  to the cards. Neither is in the table any longer, so no cell changed. Titanium cites the
+  HPF specification and Co-Array Fortran; Legion cites Sequoia, Chapel, UPC and Titanium.
+- Kong et al. 2023 (ACM DL returned a bot-check page; NSF PAR record 10511959 has no PDF),
+  PartTensor (LLVM-HPC 2025; no open copy found on arXiv, OSTI or the SC25 workshop page)
+  and the Saltz 1990 JPDC article (Elsevier, paywalled) were not retrieved. The Kong card
+  records citations to Kennedy and Kremer, Chapman, Fahringer and Zima, and Gupta and
+  Banerjee, but its full reference list is unchecked. Owner-supplied PDFs would settle the
+  two remaining cells.

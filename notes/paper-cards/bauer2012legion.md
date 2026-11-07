@@ -57,3 +57,6 @@ Our observation: the strongest results rely on application-specific mappers, so 
 - Does the survey treat the runtime's region-based dependence analysis as compiler-visible information or as purely dynamic?
 - How much of the reported scaling comes from application-specific mappers, and what do default-mapper results look like?
 - Which later distributed compilers keep the separation of logical regions from physical placement?
+
+## Reference list check (open copy legion.stanford.edu/pdfs/sc2012.pdf, checked 2026-11-07)
+27 entries. Present: Sequoia [1], Chapel [2, 12, 13], UPC [3], Titanium [25], Gay and Aiken regions [27]. Absent: HPF, Fortran D, Kali, Koelbel 1991, Saltz/PARTI/CHAOS, Vienna Fortran, Co-Array Fortran.

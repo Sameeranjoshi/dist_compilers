@@ -1,0 +1,42 @@
+{
+ "id": "huang2019gpipe",
+ "summary": "GPipe is a pipeline-parallelism library (under Lingvo) that takes a model as a sequence of layers with optional per-layer cost estimates, partitions consecutive layers into K cells placed on K accelerators, splits each mini-batch into M micro-batches pipelined through the cells, and applies one synchronous gradient update per mini-batch. Re-materialization at partition boundaries cuts activation memory, and only activation tensors cross device boundaries.",
+ "why_read": "The manual, sequence-of-layers pipeline-parallel baseline that later compilers (GSPMD pipelining, Alpa inter-operator pass) subsume or automate; also the source of the micro-batch bubble bound O((K-1)/(M+K-1)).",
+ "main_contribution": "Synchronous micro-batch pipeline parallelism with re-materialization, giving near-linear training throughput with accelerator count for balanced layer stacks and gradient updates independent of the partition count.",
+ "main_limitation": "Each layer must fit one accelerator; the cost-balancing partitioner is an unspecified heuristic that leaves load imbalance on networks like AmoebaNet; layers that need cross-batch statistics complicate micro-batching.",
+ "evaluation_method": "Maximum trainable model size and normalized training throughput versus partition count K and micro-batch count M on Cloud TPUv2/v3 and on P100 GPUs without NVLink; two end-to-end training studies (ImageNet, 103-language NMT). No other model-parallel system is measured.",
+ "benchmarks": ["AmoebaNet-D / AmoebaNet-B image classification (ImageNet 2012, transfer to CIFAR, Cars, Pets, Food-101, Aircraft, Birdsnap)", "Transformer (24- to 128-layer, up to 83.9B parameters) multilingual NMT on 102 languages to English"],
+ "optimization_objectives": ["local-memory-fit", "load-balance", "communication-volume"],
+ "data_decomposition": ["uneven-block", "model-state-sharding"],
+ "computation_mapping": ["pipeline-parallelism"],
+ "communication_generation": ["compiler-p2p", "communication-pipelining"],
+ "compiler_runtime_boundary": ["static-with-directives", "analytic-optimization"],
+ "target_hardware": ["tpu-accelerator-mesh", "multi-gpu-cluster"],
+ "ir_representation": [],
+ "compiler_architecture": [],
+ "states_relationship_to": [
+  "Griewank & Walther, revolve checkpointing [13]",
+  "Chen et al. 2016, sublinear memory cost [14]",
+  "Lingvo [16]",
+  "Caffe [17], MXNet [18], PyTorch [19]",
+  "Model parallelism / device placement: Krizhevsky [42], Lee et al. [43], Mirhoseini et al. [44], Dean et al. DistBelief [45]",
+  "Mesh-TensorFlow (Shazeer et al. 2018) [34]",
+  "Pipelined backpropagation (Petrowski et al. 1993) [46]",
+  "GNMT (Wu et al. 2017) [47]",
+  "PipeDream (Harlap et al. 2018) [48]",
+  "Parameter server (Li et al. 2014) [49]",
+  "Batch normalization [20], MegDet [21]"
+ ],
+ "evidence": [
+  {"source": "full text (arXiv 1811.06965v5)", "section": "Abstract"},
+  {"source": "full text (arXiv 1811.06965v5)", "section": "Sec. 1"},
+  {"source": "full text (arXiv 1811.06965v5)", "section": "Sec. 2.1"},
+  {"source": "full text (arXiv 1811.06965v5)", "section": "Sec. 2.2"},
+  {"source": "full text (arXiv 1811.06965v5)", "section": "Sec. 2.3"},
+  {"source": "full text (arXiv 1811.06965v5)", "section": "Sec. 3, Tables 1-3"},
+  {"source": "full text (arXiv 1811.06965v5)", "section": "Sec. 4, Table 4"},
+  {"source": "full text (arXiv 1811.06965v5)", "section": "Sec. 5, Figure 3"},
+  {"source": "full text (arXiv 1811.06965v5)", "section": "Sec. 6"}
+ ],
+ "notes": "Catalog title is the v1 title; the v5 text read is titled 'GPipe: Easy Scaling with Micro-Batch Pipeline Parallelism'. Table 1 labels the AmoebaNet row 'NVIDIA GPUs (8GB each)' while Sec. 3 says Cloud TPUv2 (8GB); unresolved. ir_representation and compiler_architecture left empty: the paper describes a library over Lingvo with no IR or compiler. 'analytic-optimization' rests only on the statement that the partitioner minimizes variance of estimated cell costs; the algorithm itself is not given. 'communication-pipelining' reflects per-micro-batch activation transfers at boundaries (Sec. 2.2, Sec. 6)."
+}

@@ -53,3 +53,6 @@ Extends DISTAL and TACO; targets Legion and its dependent partitioning (Sec. I, 
 - Dependent partitioning moves sparse ownership computation to the runtime: what does it cost at scale, and could structured sparsity be handled statically?
 - How do universe/non-zero/fused partitions compare with graph partitioning used by other sparse systems?
 - Is the balance-versus-reduction-traffic trade-off amenable to an automatic selector?
+
+## Reference list check (arXiv 2207.13901, checked 2026-11-07)
+34 entries. Absent: Saltz 1990/1991, PARTI, CHAOS (Ponnusamy, Das), Kali (Mehrotra, Koelbel), HPF, Fortran D, Vienna Fortran, Koelbel 1991. Present: Legion [16], dependent partitioning (Treichler et al.) [14], Halide [21], distributed Halide [34], Tiramisu [23], DISTAL [13].

@@ -90,29 +90,29 @@
 | slaughter2015regent | 2015 | Regent: a high-productivity programming language for HPC with logical regions | language | core | read | no | paywalled |
 | dathathri2016compiling | 2016 | Compiling Affine Loop Nests for a Dynamic Scheduling Runtime on Shared and Distributed Memory | compiler-technique | core | screened | no | paywalled |
 | unat2017trends | 2017 | Trends in Data Locality Abstractions for HPC Systems | survey | adjacent | read | no | paywalled |
-| huang2019gpipe | 2018 | GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism | runtime | bridge | discovered | no | open |
+| huang2019gpipe | 2018 | GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism | runtime | bridge | read | no | open |
 | shazeer2018meshtf | 2018 | Mesh-TensorFlow: Deep Learning for Supercomputers | full-system | core | read | no | open |
-| baghdadi2019tiramisu | 2019 | Tiramisu: A Polyhedral Compiler for Expressing Fast and Portable Code | full-system | bridge | discovered | no | open |
+| baghdadi2019tiramisu | 2019 | Tiramisu: A Polyhedral Compiler for Expressing Fast and Portable Code | full-system | bridge | read | no | open |
 | jia2019flexflow | 2019 | Beyond Data and Model Parallelism for Deep Neural Networks | full-system | core | read | no | open |
 | narayanan2019pipedream | 2019 | PipeDream: generalized pipeline parallelism for DNN training | runtime | bridge | read | no | open |
-| shoeybi2019megatron | 2019 | Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism | runtime | bridge | discovered | no | open |
+| shoeybi2019megatron | 2019 | Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism | runtime | bridge | read | no | open |
 | wang2019tofu | 2019 | Supporting Very Large Models using Automatic Dataflow Graph Partitioning | full-system | core | discovered | no | open |
 | lepikhin2020gshard | 2020 | GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding | full-system | core | discovered | no | open |
-| rajbhandari2020zero | 2020 | ZeRO: Memory optimizations Toward Training Trillion Parameter Models | runtime | bridge | discovered | no | open |
+| rajbhandari2020zero | 2020 | ZeRO: Memory optimizations Toward Training Trillion Parameter Models | runtime | bridge | read | no | open |
 | rocki2020cerebras | 2020 | Fast Stencil-Code Computation on a Wafer-Scale Processor | experience | core | read | no | open |
 | li2021dlcompiler | 2021 | The Deep Learning Compiler: A Comprehensive Survey | survey | adjacent | screened | no | open |
 | xu2021gspmd | 2021 | GSPMD: General and Scalable Parallelization for ML Computation Graphs | full-system | core | verified | yes | open |
-| jacquelin2022wse | 2022 | Scalable Distributed High-Order Stencil Computations | experience | core | discovered | no | paywalled |
+| jacquelin2022wse | 2022 | Scalable Distributed High-Order Stencil Computations | experience | core | read | no | paywalled |
 | yadav2022distal | 2022 | DISTAL: the distributed tensor algebra compiler | full-system | core | read | no | open |
 | yadav2022spdistal | 2022 | SpDISTAL: Compiling Distributed Sparse Tensor Computations | full-system | core | read | no | open |
 | zheng2022alpa | 2022 | Alpa: Automating Inter- and Intra-Operator Parallelism for Distributed Deep Learning | full-system | core | verified | yes | open |
 | kong2023automatic | 2023 | Automatic Generation of Distributed-Memory Mappings for Tensor Computations | compiler-technique | core | read | no | open |
 | bisbas2024shared | 2024 | A shared compilation stack for distributed-memory parallelism in stencil DSLs | full-system | core | read | no | open |
-| openxla2024shardy | 2024 | Shardy: an MLIR-based tensor partitioning system (official documentation) | specification | core | screened | no | open |
+| openxla2024shardy | 2024 | Shardy: an MLIR-based tensor partitioning system (official documentation) | specification | core | read | no | open |
 | thangamani2024polyhedral | 2024 | A Survey of General-purpose Polyhedral Compilers | survey | adjacent | read | no | paywalled |
 | tramm2024cerebras | 2024 | Efficient algorithms for Monte Carlo particle transport on AI accelerator hardware | experience | adjacent | discovered | no | open |
 | alabed2025partir | 2025 | PartIR: Composing SPMD Partitioning Strategies for Machine Learning | full-system | core | read | no | open |
 | hall2025scheduling | 2025 | Scheduling Language Chronology: Past, Present, and Future | survey | adjacent | screened | no | open |
-| mlir2025shard | 2025 | MLIR 'shard' Dialect (official documentation; formerly 'mesh') | specification | core | screened | no | open |
+| mlir2025shard | 2025 | MLIR 'shard' Dialect (official documentation; formerly 'mesh') | specification | core | read | no | open |
 | vaidya2025distributed | 2025 | Distributed Sparse Tensor Computations in MLIR | compiler-technique | core | read | no | open |
 | stawinoga2026mlir | 2026 | An MLIR Lowering Pipeline for Stencils at Wafer-Scale | full-system | core | read | no | open |

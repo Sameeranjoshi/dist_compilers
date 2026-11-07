@@ -1,0 +1,43 @@
+{
+ "id": "openxla2024shardy",
+ "summary": "Shardy is an MLIR-based tensor partitioning system whose SDY dialect binds per-tensor, per-dimension shardings to named logical meshes, with open and closed dimensions, explicitly replicated axes, sub-axes and priorities. A propagation pass infers unannotated shardings along per-op factor rules to a fixed point, resolving conflicts through user priorities, op priorities, aggressive and basic propagation; the SPMD partitioner that emits collectives is, short term, GSPMD's.",
+ "why_read": "It is the current production sharding representation in the XLA/JAX stack and the documented successor of GSPMD's propagation.",
+ "main_contribution": "An axis-based sharding representation with sub-axes, open/closed dimensions and priorities, plus a factor-based propagation algorithm with a four-level conflict resolution hierarchy and a compiler API for constraints, groups and manual computations.",
+ "main_limitation": "Communication generation is delegated to the GSPMD partitioner and not described; propagation across meshes is not planned; the pages do not state how aggressive propagation picks among conflicting axes.",
+ "evaluation_method": "None in the documentation",
+ "benchmarks": [],
+ "optimization_objectives": ["communication-volume", "local-memory-fit", "productivity"],
+ "data_decomposition": ["replicated", "block-nd", "model-state-sharding"],
+ "computation_mapping": ["partition-propagation", "data-parallelism", "operator-tensor-parallelism"],
+ "communication_generation": ["redistribution-resharding"],
+ "compiler_runtime_boundary": ["static-with-directives"],
+ "target_hardware": [],
+ "ir_representation": ["mlir-dialect", "device-mesh"],
+ "compiler_architecture": ["mlir-based", "graph-compiler"],
+ "states_relationship_to": [
+  "GSPMD (arXiv 2105.04663)",
+  "PartIR (arXiv 2401.11202)",
+  "Megatron (arXiv 1909.08053)",
+  "ZeRO (arXiv 1910.02054)",
+  "JAX (jax.jit, PartitionSpec, NamedSharding, PositionalSharding)",
+  "StableHLO",
+  "MLIR"
+ ],
+ "evidence": [
+  {"source": "official documentation", "section": "overview.md, Benefits"},
+  {"source": "official documentation", "section": "overview.md, Components"},
+  {"source": "official documentation", "section": "sharding_representation.md, Basic structure"},
+  {"source": "official documentation", "section": "sharding_representation.md, Open/closed dimensions"},
+  {"source": "official documentation", "section": "sharding_representation.md, Explicitly replicated axes"},
+  {"source": "official documentation", "section": "sharding_representation.md, Axis splitting and sub-axes"},
+  {"source": "official documentation", "section": "sharding_representation.md, Multiple logical meshes"},
+  {"source": "official documentation", "section": "sharding_representation.md, Priorities"},
+  {"source": "official documentation", "section": "propagation.md, Overview"},
+  {"source": "official documentation", "section": "propagation.md, Conflict resolution hierarchy"},
+  {"source": "official documentation", "section": "propagation.md, Core Propagation Algorithm"},
+  {"source": "official documentation", "section": "compiler_api.md, Sharding Constraint"},
+  {"source": "official documentation", "section": "compiler_api.md, Manual Computation"},
+  {"source": "official documentation", "section": "dialect_agnostic_sharding.md, Interfaces not yet implemented"}
+ ],
+ "notes": "Documentation, not a paper; five docs pages read (fetched 2026-11-07). No hardware is named, so target_hardware is empty although the catalog entry lists tpu-accelerator-mesh and multi-gpu-cluster."
+}

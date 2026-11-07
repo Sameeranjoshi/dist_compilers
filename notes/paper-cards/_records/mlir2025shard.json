@@ -1,0 +1,43 @@
+{
+ "id": "mlir2025shard",
+ "summary": "Official MLIR documentation of the shard dialect (renamed from mesh): shard.grid declares a device grid with possibly dynamic shape, shard.sharding and shard.shard annotate tensors with split axes, optional halo sizes or uneven shard offsets, and tensor-level collectives (all_gather, all_reduce, all_slice, all_to_all, broadcast, gather, reduce, reduce_scatter, scatter, shift, update_halo) plus send/recv and process-index queries express SPMD communication over device groups defined by grid axes.",
+ "why_read": "The upstream MLIR representation of device grids, shardings and collectives; the closest thing today to a shared ownership IR.",
+ "main_contribution": "A dialect whose collectives are defined by how data moves across tensor dimensions, with participants inferred from the sharding and device groups, and whose sharding attribute carries halos and uneven shard offsets.",
+ "main_limitation": "The page documents vocabulary only: no propagation or partitioning pass, no lowering target, no cost model; contiguous sharding only and halos and shard offsets are mutually exclusive.",
+ "evaluation_method": "none in the documentation",
+ "benchmarks": [],
+ "optimization_objectives": [],
+ "data_decomposition": ["block-nd", "replicated", "halo-overlap", "uneven-block"],
+ "computation_mapping": [],
+ "communication_generation": ["reduction-allreduce", "all-to-all", "scatter-gather", "broadcast-multicast", "halo-exchange", "compiler-p2p"],
+ "compiler_runtime_boundary": ["static-with-directives", "load-time"],
+ "target_hardware": [],
+ "ir_representation": ["mlir-dialect", "device-mesh"],
+ "compiler_architecture": ["mlir-based"],
+ "states_relationship_to": [
+  "GSPMD (Xu et al. 2021), stated inspiration",
+  "MLIR 'mesh' dialect, former name of the same dialect"
+ ],
+ "evidence": [
+  {"source": "official documentation", "section": "dialect overview"},
+  {"source": "official documentation", "section": "Collective Communication Operations"},
+  {"source": "official documentation", "section": "Device Groups"},
+  {"source": "official documentation", "section": "In-group Devices"},
+  {"source": "official documentation", "section": "Purity and Execution Model"},
+  {"source": "official documentation", "section": "shard.grid"},
+  {"source": "official documentation", "section": "shard.sharding"},
+  {"source": "official documentation", "section": "shard.shard"},
+  {"source": "official documentation", "section": "shard.all_gather"},
+  {"source": "official documentation", "section": "shard.all_reduce"},
+  {"source": "official documentation", "section": "shard.all_to_all"},
+  {"source": "official documentation", "section": "shard.broadcast"},
+  {"source": "official documentation", "section": "shard.reduce_scatter"},
+  {"source": "official documentation", "section": "shard.scatter"},
+  {"source": "official documentation", "section": "shard.send"},
+  {"source": "official documentation", "section": "shard.recv"},
+  {"source": "official documentation", "section": "shard.update_halo"},
+  {"source": "official documentation", "section": "shard.process_multi_index"},
+  {"source": "official documentation", "section": "ReductionKindAttr"}
+ ],
+ "notes": "target_hardware left empty although the catalog entry lists tpu-accelerator-mesh and multi-gpu-cluster: the page names no hardware. load-time is supported by shard.grid's dynamic dimensions 'where the exact number of devices might not be determined during compile time'. compiler-p2p rests on shard.send/shard.recv being IR ops in the 'SPMD format of IR'; the page does not say which pass emits them."
+}
